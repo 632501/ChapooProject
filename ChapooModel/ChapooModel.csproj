@@ -60,6 +60,7 @@
     <Compile Include="Inlog.cs" />
     <Compile Include="MenuItem.cs" />
     <Compile Include="OrderItem.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Tafel.cs" />
     <Compile Include="Voorraad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

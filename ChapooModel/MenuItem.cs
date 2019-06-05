@@ -12,11 +12,12 @@ namespace ChapooModel
     using System;
     using System.Collections.Generic;
     
-    public class Menu
+    public class MenuItem
     {
         public int menu_ID { get; set; }
         public string naam { get; set; }
         public decimal prijs { get; set; }
         public string categorie { get; set; }
+        public int voorraad { get; set; }
     }
 }

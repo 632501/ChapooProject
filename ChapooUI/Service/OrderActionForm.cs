@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ChapooUI
 {
-    public partial class ManagementActionForm : MaterialForm
+    public partial class OrderActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        public ManagementActionForm()
+        public OrderActionForm()
         {
             InitializeComponent();
 
@@ -27,22 +27,19 @@ namespace ChapooUI
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void btn_Supply_Click(object sender, EventArgs e)
+        private void OrderForm_Load(object sender, EventArgs e)
         {
-            ManagementSupplyForm supplyForm = new ManagementSupplyForm();
-            supplyForm.ShowDialog();
+
         }
 
-        private void btn_Menu_Click(object sender, EventArgs e)
+        private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ManagementMenuForm menuForm = new ManagementMenuForm();
-            menuForm.ShowDialog();
+
         }
 
-        private void btn_EmployeeFiles_Click(object sender, EventArgs e)
+        private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
-            ManagementEmployeeForm EmployeeForm = new ManagementEmployeeForm();
-            EmployeeForm.ShowDialog();
+            OrderMenusForm orderMenusForm = new OrderMenusForm();
         }
     }
 }

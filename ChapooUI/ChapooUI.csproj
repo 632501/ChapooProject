@@ -48,6 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Management\ManagementEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementEmployeeForm.Designer.cs">
+      <DependentUpon>ManagementEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagementMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementMenuForm.Designer.cs">
+      <DependentUpon>ManagementMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagementSupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementSupplyForm.Designer.cs">
+      <DependentUpon>ManagementSupplyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\RevenueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +77,18 @@
     </Compile>
     <Compile Include="Management\ManagementActionForm.Designer.cs">
       <DependentUpon>ManagementActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderMenusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderMenusForm.Designer.cs">
+      <DependentUpon>OrderMenusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderActionForm.Designer.cs">
+      <DependentUpon>OrderActionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\OrderOverviewForm.cs">
       <SubType>Form</SubType>
@@ -127,11 +157,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Management\ManagementEmployeeForm.resx">
+      <DependentUpon>ManagementEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\ManagementMenuForm.resx">
+      <DependentUpon>ManagementMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\ManagementSupplyForm.resx">
+      <DependentUpon>ManagementSupplyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\RevenueForm.resx">
       <DependentUpon>RevenueForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\ManagementActionForm.resx">
       <DependentUpon>ManagementActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderMenusForm.resx">
+      <DependentUpon>OrderMenusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderActionForm.resx">
+      <DependentUpon>OrderActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderOverviewForm.resx">
       <DependentUpon>OrderOverviewForm.cs</DependentUpon>
@@ -165,18 +210,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapooDAL\ChapooDAL.csproj">
-      <Project>{b6f85835-cfba-40d0-bd7b-e2664c7487d4}</Project>
-      <Name>ChapooDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapooLogica\ChapooLogic.csproj">
-      <Project>{97b466ed-9a68-4747-92b7-79aaa076ffb2}</Project>
-      <Name>ChapooLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
-      <Project>{b3470bac-928d-4fd9-9384-2e738dec9c2c}</Project>
-      <Name>ChapooModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">
       <Project>{8EB7611B-68CD-4B8B-987A-11717E2B250C}</Project>
       <Name>MaterialSkin</Name>

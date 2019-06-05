@@ -14,6 +14,7 @@ namespace ChapooModel
     
     public partial class Bon
     {
+        Bestelling bestelling { get; set; }
         public int bon_ID { get; set; }
         public Nullable<System.DateTime> datum { get; set; }
         public decimal totaalprijs { get; set; }

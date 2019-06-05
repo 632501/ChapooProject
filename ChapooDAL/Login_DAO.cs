@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using ChapooModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,12 +29,12 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public bool Login(string wachtwoord)
+        public bool Login(string password)
         {
-            bool correcteInlog;
+            bool correctLogin;
             con = new SqlConnection(conn);
 
-            string query = "SELECT wachtwoord FROM Inlog WHERE wachtwoord = '" + wachtwoord + "'";
+            string query = "SELECT wachtwoord FROM Inlog WHERE wachtwoord = '" + password + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteSelectQuery(query, sqlParameters);
 
@@ -45,51 +46,55 @@ namespace ChapooDAL
             //als de inlogdata overeenkomt met dat uit de database dan wordt de login panel gehide
             if (dt.Rows.Count == 1)
             {
-                correcteInlog = true;
+                correctLogin = true;
             }
             //als de data niet kloppen dan wordt er een message geshowt dat de data verkeerd is
             else
             {
-                correcteInlog = false;
+                correctLogin = false;
             }
 
-            return correcteInlog;
+            return correctLogin;
         }
 
-        public string Functie(string wachtwoord)
+        public List<Inlog> Employee(string password)
         {
-            string functie = "";
+            List<Inlog> Employees = new List<Inlog>();
             con = new SqlConnection(conn);
-            string query = "Select wachtwoord, functie From Inlog Where wachtwoord = '" + wachtwoord + "'";
+            string query = "Select * From Inlog Where wachtwoord = '" + password + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             //ExecuteSelectQuery(query, sqlParameters);
 
-            if (Login(wachtwoord) == true)
+            if (Login(password) == true)
             {
                 con.Open();
+                Inlog employee = new Inlog();
 
                 SqlCommand command = new SqlCommand(query, con);
                 SqlDataReader dr = command.ExecuteReader();
                 dr.Read();
-                functie = dr["functie"].ToString();
+                employee.functie = dr["functie"].ToString();
+                employee.naam = dr["naam"].ToString();
+                employee.wachtwoord = dr["wachtwoord"].ToString();
+                Employees.Add(employee);
             }
-            return functie;
+            return Employees;
         }
 
-        public string Naam(string wachtwoord)
+        public string Name(string password)
         {
-            string naam = "";
+            string name = "";
             con = new SqlConnection(conn);
-            string query = "Select naam from Inlog where wachtwoord = '" + wachtwoord + "'";
+            string query = "Select naam from Inlog where wachtwoord = '" + password + "'";
 
             con.Open();
 
             SqlCommand command = new SqlCommand(query, con);
             SqlDataReader dr = command.ExecuteReader();
             dr.Read();
-            naam = (string)dr["naam"];
+            name = (string)dr["naam"];
 
-            return naam;
+            return name;
         }
     }
 }

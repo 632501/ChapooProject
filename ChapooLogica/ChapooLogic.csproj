@@ -44,11 +44,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Login_Service.cs" />
+    <Compile Include="Menu_Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChapooDAL\ChapooDAL.csproj">
+      <Project>{b6f85835-cfba-40d0-bd7b-e2664c7487d4}</Project>
+      <Name>ChapooDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
+      <Project>{b3470bac-928d-4fd9-9384-2e738dec9c2c}</Project>
+      <Name>ChapooModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

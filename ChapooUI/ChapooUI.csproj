@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{07AF0B04-1E96-4A21-85BA-299B2606487F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ChapooUI</RootNamespace>
+    <AssemblyName>ChapooUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Management\RevenueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\RevenueForm.Designer.cs">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagementActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementActionForm.Designer.cs">
+      <DependentUpon>ManagementActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderOverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderOverviewForm.Designer.cs">
+      <DependentUpon>OrderOverviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderForm.Designer.cs">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TableOverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\TableOverviewForm.Designer.cs">
+      <DependentUpon>TableOverviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TableActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\TableActionForm.Designer.cs">
+      <DependentUpon>TableActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KitchenBar\OrdersOverviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitchenBar\OrdersOverviewForm.Designer.cs">
+      <DependentUpon>OrdersOverviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KitchenBar\KitchenActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitchenBar\KitchenActionForm.Designer.cs">
+      <DependentUpon>KitchenActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharedForms\StockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharedForms\StockForm.Designer.cs">
+      <DependentUpon>StockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SharedForms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharedForms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\PaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\PaymentForm.Designer.cs">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\TableForm.Designer.cs">
+      <DependentUpon>TableForm.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Management\RevenueForm.resx">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\ManagementActionForm.resx">
+      <DependentUpon>ManagementActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderOverviewForm.resx">
+      <DependentUpon>OrderOverviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderForm.resx">
+      <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\TableOverviewForm.resx">
+      <DependentUpon>TableOverviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\TableActionForm.resx">
+      <DependentUpon>TableActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitchenBar\OrdersOverviewForm.resx">
+      <DependentUpon>OrdersOverviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KitchenBar\KitchenActionForm.resx">
+      <DependentUpon>KitchenActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedForms\StockForm.resx">
+      <DependentUpon>StockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharedForms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\PaymentForm.resx">
+      <DependentUpon>PaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\TableForm.resx">
+      <DependentUpon>TableForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">
+      <Project>{8EB7611B-68CD-4B8B-987A-11717E2B250C}</Project>
+      <Name>MaterialSkin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

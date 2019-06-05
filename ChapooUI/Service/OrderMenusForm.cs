@@ -9,17 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ChapooLogica;
-using ChapooModel;
-using Menu = ChapooModel.Menu;
 
 namespace ChapooUI
 {
-    public partial class OrderForm : MaterialForm
+    public partial class OrderMenusForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        public OrderForm()
+        public OrderMenusForm()
         {
             InitializeComponent();
 
@@ -32,31 +29,38 @@ namespace ChapooUI
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            GetOrder();
+
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-    
-        public void GetOrder()
+
+
+        private void OrderMenusForm_Load(object sender, EventArgs e)
         {
-            mlblSoortBestelling.Text = "Drinken";
-            Menu_Service menuService = new Menu_Service();
-            List<Menu> menuList = menuService.GetDrinks();
 
-            listviewMenu.Items.Clear();
+        }
 
-            foreach (Menu m in menuList)
-            {
-                ListViewItem li = new ListViewItem(m.naam);
-                li.Tag = m;
-                listviewMenu.Items.Add(li);
+        private void btnDrinks_Click(object sender, EventArgs e)
+        {
+            OrderForm drinksForm = new OrderForm();
+        }
 
-            }
-            listviewMenu.View = View.Details;
-            listviewMenu.Columns.Add("Naam");
+        private void btnLunch_Click(object sender, EventArgs e)
+        {
+            OrderForm lunchForm = new OrderForm();
+        }
+
+        private void btnDiner_Click(object sender, EventArgs e)
+        {
+            OrderForm dinerForm = new OrderForm();
+        }
+
+        private void btnToevoegen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

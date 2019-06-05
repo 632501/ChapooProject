@@ -8,8 +8,9 @@ namespace ChapooModel.Models
 {
     public class OrderItem
     {
-        public Menu menuItem { get; set; }
+        public List<MenuItem> menuItem { get; set; }
         public int Aantal { get; set; }
         public string comment { get; set; }
+        public string Status { get; set; }
     }
 }

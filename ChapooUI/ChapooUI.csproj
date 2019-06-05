@@ -48,6 +48,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Management\ManagementEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementEmployeeForm.Designer.cs">
+      <DependentUpon>ManagementEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagementMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementMenuForm.Designer.cs">
+      <DependentUpon>ManagementMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Management\ManagementSupplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\ManagementSupplyForm.Designer.cs">
+      <DependentUpon>ManagementSupplyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\RevenueForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +145,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Management\ManagementEmployeeForm.resx">
+      <DependentUpon>ManagementEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\ManagementMenuForm.resx">
+      <DependentUpon>ManagementMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\ManagementSupplyForm.resx">
+      <DependentUpon>ManagementSupplyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\RevenueForm.resx">
       <DependentUpon>RevenueForm.cs</DependentUpon>
     </EmbeddedResource>

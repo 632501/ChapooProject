@@ -18,7 +18,7 @@ namespace ChapooModel
 
         public Inlog werknemer { get; set; }
         public int bestelling_ID { get; set; }
-        public Tafel tafel { get; set; }
+        public int tafel_ID { get; set; }
         public Nullable<System.DateTime> datum { get; set; }
         public string commentaar { get; set; }
         public bool betaald { get; set; }

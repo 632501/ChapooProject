@@ -46,11 +46,18 @@
   <ItemGroup>
     <Compile Include="Base.cs" />
     <Compile Include="Login_DAO.cs" />
+    <Compile Include="Menu_DAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
+      <Project>{b3470bac-928d-4fd9-9384-2e738dec9c2c}</Project>
+      <Name>ChapooModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,11 +13,11 @@ namespace ChapooLogica
     {
         Menu_DAO menu_db = new Menu_DAO();
 
-        public List<Menu> GetMenus()
+        public List<MenuItem> GetMenus()
         {
             try
             {
-                List<Menu> menu = menu_db.Db_Get_All_Menus();
+                List<MenuItem> menu = menu_db.Db_Get_All_Menus();
                 return menu;
             }
             catch (Exception exp)
@@ -25,8 +25,8 @@ namespace ChapooLogica
                 //throw new Exception("Couldn't connect to database : " + exp.Message);
 
                 //something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!*/
-                List<Menu> menus = new List<Menu>();
-                Menu a = new Menu();
+                List<MenuItem> menus = new List<MenuItem>();
+                MenuItem a = new MenuItem();
                 a.menu_ID = 201;
                 menus.Add(a);
                 return menus;
@@ -36,24 +36,24 @@ namespace ChapooLogica
             }
         }
 
-        public List<Menu> GetDrinks()
+        public List<MenuItem> GetDrinks()
         {
             Menu_DAO DrinkDAO = new Menu_DAO();
-            List<Menu> drinks = DrinkDAO.GetAllDrinks();
+            List<MenuItem> drinks = DrinkDAO.GetAllDrinks();
             return drinks;
         }
 
-        public List<Menu> GetLunch()
+        public List<MenuItem> GetLunch()
         {
             Menu_DAO LunchDAO = new Menu_DAO();
-            List<Menu> lunches = LunchDAO.GetAllLunch();
+            List<MenuItem> lunches = LunchDAO.GetAllLunch();
             return lunches;
         }
 
-        public List<Menu> GetDiner()
+        public List<MenuItem> GetDiner()
         {
             Menu_DAO dinerDAO = new Menu_DAO();
-            List<Menu> diners = dinerDAO.GetAllDiner();
+            List<MenuItem> diners = dinerDAO.GetAllDiner();
             return diners;
         }
     }

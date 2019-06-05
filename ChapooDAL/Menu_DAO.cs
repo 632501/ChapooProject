@@ -12,20 +12,20 @@ namespace ChapooDAL
 {
     public class Menu_DAO : Base
     {
-        public List<Menu> Db_Get_All_Menus()
+        public List<MenuItem> Db_Get_All_Menus()
         {
             string query = "SELECT Menu_Id, Naam FROM [Menu]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Menu> ReadTables(DataTable dataTable)
+        private List<MenuItem> ReadTables(DataTable dataTable)
         {
-            List<Menu> menus = new List<Menu>();
+            List<MenuItem> menus = new List<MenuItem>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Menu menu = new Menu()
+                MenuItem menu = new MenuItem()
                 {
                     menu_ID = (int)dr["menu_Id"],
                     naam = (String)(dr["naam"].ToString()),
@@ -38,21 +38,21 @@ namespace ChapooDAL
             return menus;
         }
 
-        public List<Menu> GetAllLunch()
+        public List<MenuItem> GetAllLunch()
         {
             string query = "SELECT Menu_Id, Naam, Prijs, Categorie FROM [Menu] where Categorie = 'Lunch'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Menu> GetAllDiner()
+        public List<MenuItem> GetAllDiner()
         {
             string query = "SELECT Menu_Id, Naam, Prijs, Categorie FROM [Menu] where Categorie = 'Diner'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Menu> GetAllDrinks()
+        public List<MenuItem> GetAllDrinks()
         {
             string query = "SELECT menu_ID, naam, prijs, categorie FROM [Menu] ";
             SqlParameter[] sqlParameters = new SqlParameter[0];

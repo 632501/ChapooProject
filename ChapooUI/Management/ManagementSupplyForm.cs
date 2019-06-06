@@ -9,12 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapooModel;
+using ChapooLogica;
+using MenuItem = ChapooModel.MenuItem;
 
 namespace ChapooUI
 {
     public partial class ManagementSupplyForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        private Menu_Service menuService = new Menu_Service();
+        private List<MenuItem> menu;
 
         public ManagementSupplyForm()
         {
@@ -34,8 +39,102 @@ namespace ChapooUI
 
         private void ManagementSupplyForm_Load(object sender, EventArgs e)
         {
-
-           // ListView_ViewSupply.Items.
+            GetMenu();
+            DisplayListView(menu);
         }
-    }
+        private void DisplayListView(List<MenuItem> menu)
+        {
+            ListView_ViewSupply.Items.Clear();
+
+            ListView_ViewSupply.View = View.Details;
+            //ListViewItem add = new ListViewItem("Klik hier om een item aan de voorraad toe te voegen");
+            //add.SubItems.Add("+");
+            //ListView_ViewSupply.Items.Add(add);
+            foreach (MenuItem item in menu)
+            {
+
+                ListViewItem me = new ListViewItem(item.menu_ID.ToString());
+                me.SubItems.Add(item.naam);
+                me.SubItems.Add(item.categorie);
+                me.SubItems.Add(item.voorraad.ToString());
+                me.Tag = item;
+
+                ListView_ViewSupply.Items.Add(me);
+            }
+            
+        }
+        private void GetMenu()
+        {
+            menu = menuService.GetMenu();
+        }
+
+        private void ListView_ViewSupply_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MenuItem menuItem = new MenuItem();
+            
+            if (ListView_ViewSupply.SelectedItems.Count > 0)
+            {
+                menuItem = (MenuItem)ListView_ViewSupply.SelectedItems[0].Tag;
+            }
+            lbl_SelectedName.Text = menuItem.naam;
+            txt_SelectedAmount.Text = menuItem.voorraad.ToString();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Change_Click(object sender, EventArgs e)
+        {
+            string name = lbl_SelectedName.Text;
+            int amount = int.Parse(txt_SelectedAmount.Text);
+
+            menuService.ChangeSupply(name, amount);
+
+            GetMenu();
+            DisplayListView(menu);
+            lbl_SelectedName.Text = "";
+            txt_SelectedAmount.Clear();
+
+            MessageBox.Show("U heeft de voorraad van het item '" + name + "' veranderd naar " + amount);
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount + 100).ToString();
+        }
+
+        private void btn_MinHonderd_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount - 100).ToString();
+        }
+
+        private void btn_MinTen_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount - 10).ToString();
+        }
+
+        private void btn_MinOne_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount - 1).ToString();
+        }
+
+        private void btn_PlusOne_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount + 1).ToString();
+        }
+
+        private void btn_PlusTen_Click(object sender, EventArgs e)
+        {
+            int amount = int.Parse(txt_SelectedAmount.Text);
+            txt_SelectedAmount.Text = (amount + 10).ToString();
+        }
+    }   
 }

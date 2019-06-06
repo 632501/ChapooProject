@@ -13,27 +13,11 @@ namespace ChapooLogica
     {
         Menu_DAO menu_db = new Menu_DAO();
 
-        public List<MenuItem> GetMenus()
+        public List<MenuItem> GetMenu()
         {
-            try
-            {
-                List<MenuItem> menu = menu_db.Db_Get_All_Menus();
-                return menu;
-            }
-            catch (Exception exp)
-            {
-                //throw new Exception("Couldn't connect to database : " + exp.Message);
-
-                //something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!*/
-                List<MenuItem> menus = new List<MenuItem>();
-                MenuItem a = new MenuItem();
-                a.menu_ID = 201;
-                menus.Add(a);
-                return menus;
-
-                //throw new Exception("Chapoop couldn't connect to the database");
-
-            }
+            List<MenuItem> menu = new List<MenuItem>();
+            menu = menu_db.Db_Get_All_Menus();
+            return menu;
         }
 
         public List<MenuItem> GetDrinks()
@@ -55,6 +39,20 @@ namespace ChapooLogica
             Menu_DAO dinerDAO = new Menu_DAO();
             List<MenuItem> diners = dinerDAO.GetAllDiner();
             return diners;
+        }
+        public void ChangeSupply(string name, int amount)
+        {
+            menu_db.ChangeSupply(name, amount);
+        }
+        
+        public void ChangeMenu(int ID, string naam, int prijs, string categorie)
+        {
+            menu_db.ChangeMenu(ID, naam, prijs, categorie);
+        }
+
+        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad)
+        {
+            menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad);
         }
     }
 }

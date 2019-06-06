@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using ChapooModel;
+using ChapooDAL;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,7 +18,7 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        public TableForm()
+        public TableForm(Inlog inlog)
         {
             InitializeComponent();
 
@@ -31,5 +33,6 @@ namespace ChapooUI
         {
 
         }
+        
     }
 }

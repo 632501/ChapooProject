@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapooLogica;
 using ChapooModel;
-using Menu = ChapooModel.MenuItem;
+using MenuItem = ChapooModel.Menu;
 
 namespace ChapooUI
 {
@@ -31,8 +31,7 @@ namespace ChapooUI
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
-        {
-            GetOrder();
+        { 
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -40,15 +39,35 @@ namespace ChapooUI
 
         }
     
-        public void GetOrder()
+        public void GetOrder(string sort)
         {
-            mlblSoortBestelling.Text = "Drinken";
-            Menu_Service menuService = new Menu_Service();
-            List<Menu> menuList = menuService.GetDrinks();
-
+            List<MenuItem> menuList = new List<MenuItem>();
             listviewMenu.Items.Clear();
 
-            foreach (Menu m in menuList)
+            if (sort == "Drinks")
+            {
+                mlblSoortBestelling.Text = "Drinken";
+                Menu_Service menuService = new Menu_Service();
+                menuList = menuService.GetDrinks();
+
+                
+            } else if (sort == "Lunch")
+            {
+                mlblSoortBestelling.Text = "Lunch";
+                Menu_Service menuService = new Menu_Service();
+                menuList = menuService.GetLunch();
+
+                
+            } else if (sort == "Diner")
+            {
+                mlblSoortBestelling.Text = "Diner";
+                Menu_Service menuService = new Menu_Service();
+                menuList = menuService.GetDiner();
+            }
+
+            
+
+            foreach (MenuItem m in menuList)
             {
                 ListViewItem li = new ListViewItem(m.naam);
                 li.Tag = m;

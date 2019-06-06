@@ -46,16 +46,19 @@ namespace ChapooUI
         private void btnDrinks_Click(object sender, EventArgs e)
         {
             OrderForm drinksForm = new OrderForm();
+            drinksForm.GetOrder("Drinks")
         }
 
         private void btnLunch_Click(object sender, EventArgs e)
         {
             OrderForm lunchForm = new OrderForm();
+            lunchForm.GetOrder("Lunch");
         }
 
         private void btnDiner_Click(object sender, EventArgs e)
         {
             OrderForm dinerForm = new OrderForm();
+            dinerForm.GetOrder("Diner");
         }
 
         private void btnToevoegen_Click(object sender, EventArgs e)

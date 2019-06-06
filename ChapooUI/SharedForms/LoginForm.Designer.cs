@@ -196,6 +196,7 @@
             this.btn_inlog.TabIndex = 28;
             this.btn_inlog.Text = "Inloggen";
             this.btn_inlog.UseVisualStyleBackColor = true;
+            this.btn_inlog.Click += new System.EventHandler(this.btn_inlog_Click);
             // 
             // LoginForm
             // 

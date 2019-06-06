@@ -30,13 +30,7 @@ namespace ChapooUI
            
             //password characters
             txt_Password.PasswordChar = '*';
-
-            Button b1 = new Button();
-            b1.Click += Global_Button_Click;
-        }
-        private void Global_Button_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(((Button)sender).Name + " was pressed!");
+            
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -53,12 +47,14 @@ namespace ChapooUI
             if(inlog.functie == "manager" && login_dao.Login(password) == true)
             {
                 this.Hide();
-                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
+                OrderOverviewForm orderOverview = new OrderOverviewForm(//inlog
+                    );
                 orderOverview.Show();
             }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
             {
                 this.Hide();
-                KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(//inlog
+                    );
                 kitchenAndBar.Show();
             }else if (inlog.functie == "bediening" == login_dao.Login(password) == true)
             {
@@ -127,16 +123,8 @@ namespace ChapooUI
             {
                 s = s.Substring(0, s.Length - 1);
             }
-            else
-            {
-                s = "0";
-            }
 
             txt_Password.Text = s;
         }
-
-
-
-
     }
 }

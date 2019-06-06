@@ -39,7 +39,26 @@ namespace ChapooUI
 
         
 
-
+            if(inlog.functie == "manager" && login_dao.Login(password) == true)
+            {
+                this.Hide();
+                OrderOverviewForm orderOverview = new OrderOverviewForm(//inlog
+                    );
+                orderOverview.Show();
+            }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
+            {
+                this.Hide();
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(//inlog
+                    );
+                kitchenAndBar.Show();
+            }else if (inlog.functie == "bediening" == login_dao.Login(password) == true)
+            {
+                this.Hide();
+                TableForm tables = new TableForm(inlog);
+                tables.Show();
+            }
+            
+        }
         //zorgen dat de buttons een string invoeren met opklikken
         private void btn_Nr1_Click(object sender, EventArgs e)
         {

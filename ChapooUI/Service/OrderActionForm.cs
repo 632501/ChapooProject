@@ -39,7 +39,16 @@ namespace ChapooUI
 
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
+            this.Hide();
             OrderMenusForm orderMenusForm = new OrderMenusForm();
+            orderMenusForm.Show();
+        }
+
+        private void btnActionBekijken_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            //OrderOverviewForm orderOverviewForm = new OrderOverviewForm();
+            //orderOverviewForm.Show();
         }
     }
 }

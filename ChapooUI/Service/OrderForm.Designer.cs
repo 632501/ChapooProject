@@ -31,13 +31,18 @@
             this.listviewMenu = new System.Windows.Forms.ListView();
             this.mlblSoortBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.mlblBestelling = new MaterialSkin.Controls.MaterialLabel();
+            this.btnAddItem = new System.Windows.Forms.Button();
+            this.btnRemoveItem = new System.Windows.Forms.Button();
+            this.btnAddOrder = new System.Windows.Forms.Button();
+            this.listviewOrder = new System.Windows.Forms.ListView();
+            this.mlblMenu = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // listviewMenu
             // 
-            this.listviewMenu.Location = new System.Drawing.Point(12, 185);
+            this.listviewMenu.Location = new System.Drawing.Point(12, 176);
             this.listviewMenu.Name = "listviewMenu";
-            this.listviewMenu.Size = new System.Drawing.Size(173, 284);
+            this.listviewMenu.Size = new System.Drawing.Size(130, 284);
             this.listviewMenu.TabIndex = 0;
             this.listviewMenu.UseCompatibleStateImageBehavior = false;
             this.listviewMenu.SelectedIndexChanged += new System.EventHandler(this.listviewMenu_SelectedIndexChanged);
@@ -61,22 +66,78 @@
             this.mlblBestelling.Depth = 0;
             this.mlblBestelling.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblBestelling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mlblBestelling.Location = new System.Drawing.Point(18, 140);
+            this.mlblBestelling.Location = new System.Drawing.Point(211, 138);
             this.mlblBestelling.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblBestelling.Name = "mlblBestelling";
             this.mlblBestelling.Size = new System.Drawing.Size(152, 24);
             this.mlblBestelling.TabIndex = 2;
             this.mlblBestelling.Text = "Wat is er besteld";
             // 
+            // btnAddItem
+            // 
+            this.btnAddItem.Location = new System.Drawing.Point(22, 471);
+            this.btnAddItem.Name = "btnAddItem";
+            this.btnAddItem.Size = new System.Drawing.Size(76, 72);
+            this.btnAddItem.TabIndex = 3;
+            this.btnAddItem.Text = "Add";
+            this.btnAddItem.UseVisualStyleBackColor = true;
+            this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
+            // 
+            // btnRemoveItem
+            // 
+            this.btnRemoveItem.Location = new System.Drawing.Point(119, 471);
+            this.btnRemoveItem.Name = "btnRemoveItem";
+            this.btnRemoveItem.Size = new System.Drawing.Size(76, 72);
+            this.btnRemoveItem.TabIndex = 4;
+            this.btnRemoveItem.Text = "Remove";
+            this.btnRemoveItem.UseVisualStyleBackColor = true;
+            this.btnRemoveItem.Click += new System.EventHandler(this.btnRemoveItem_Click);
+            // 
+            // btnAddOrder
+            // 
+            this.btnAddOrder.Location = new System.Drawing.Point(223, 471);
+            this.btnAddOrder.Name = "btnAddOrder";
+            this.btnAddOrder.Size = new System.Drawing.Size(140, 72);
+            this.btnAddOrder.TabIndex = 5;
+            this.btnAddOrder.Text = "Toevoegen";
+            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
+            // 
+            // listviewOrder
+            // 
+            this.listviewOrder.Location = new System.Drawing.Point(203, 176);
+            this.listviewOrder.Name = "listviewOrder";
+            this.listviewOrder.Size = new System.Drawing.Size(160, 280);
+            this.listviewOrder.TabIndex = 6;
+            this.listviewOrder.UseCompatibleStateImageBehavior = false;
+            // 
+            // mlblMenu
+            // 
+            this.mlblMenu.AutoSize = true;
+            this.mlblMenu.Depth = 0;
+            this.mlblMenu.Font = new System.Drawing.Font("Roboto", 11F);
+            this.mlblMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mlblMenu.Location = new System.Drawing.Point(12, 138);
+            this.mlblMenu.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlblMenu.Name = "mlblMenu";
+            this.mlblMenu.Size = new System.Drawing.Size(57, 24);
+            this.mlblMenu.TabIndex = 7;
+            this.mlblMenu.Text = "Menu";
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 566);
+            this.Controls.Add(this.mlblMenu);
+            this.Controls.Add(this.listviewOrder);
+            this.Controls.Add(this.btnAddOrder);
+            this.Controls.Add(this.btnRemoveItem);
+            this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.mlblBestelling);
             this.Controls.Add(this.mlblSoortBestelling);
             this.Controls.Add(this.listviewMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "OrderForm";
             this.Sizable = false;
@@ -93,5 +154,10 @@
         private System.Windows.Forms.ListView listviewMenu;
         private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
         private MaterialSkin.Controls.MaterialLabel mlblBestelling;
+        private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.Button btnRemoveItem;
+        private System.Windows.Forms.Button btnAddOrder;
+        private System.Windows.Forms.ListView listviewOrder;
+        private MaterialSkin.Controls.MaterialLabel mlblMenu;
     }
 }

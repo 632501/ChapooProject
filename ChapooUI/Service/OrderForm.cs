@@ -11,18 +11,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapooLogica;
 using ChapooModel;
-using MenuItem = ChapooModel.Menu;
+using MenuItem = ChapooModel.MenuItem;
 
 namespace ChapooUI
 {
     public partial class OrderForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        private string sort;
+        private List<MenuItem> menuList;
 
-        public OrderForm()
+        public OrderForm(string sort)
         {
+            this.sort = sort;
             InitializeComponent();
-
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -31,41 +33,42 @@ namespace ChapooUI
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
-        { 
+        {
+            GetMenus();
+            GetOrder();
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-    
-        public void GetOrder(string sort)
+        
+        public void GetMenus()
         {
-            List<MenuItem> menuList = new List<MenuItem>();
-            listviewMenu.Items.Clear();
+            menuList = new List<MenuItem>();
 
+            listviewMenu.Items.Clear();
+            
             if (sort == "Drinks")
             {
                 mlblSoortBestelling.Text = "Drinken";
                 Menu_Service menuService = new Menu_Service();
                 menuList = menuService.GetDrinks();
 
-                
+
             } else if (sort == "Lunch")
             {
                 mlblSoortBestelling.Text = "Lunch";
                 Menu_Service menuService = new Menu_Service();
                 menuList = menuService.GetLunch();
 
-                
             } else if (sort == "Diner")
             {
                 mlblSoortBestelling.Text = "Diner";
                 Menu_Service menuService = new Menu_Service();
                 menuList = menuService.GetDiner();
-            }
 
-            
+            }
 
             foreach (MenuItem m in menuList)
             {
@@ -76,6 +79,47 @@ namespace ChapooUI
             }
             listviewMenu.View = View.Details;
             listviewMenu.Columns.Add("Naam");
+
+
+
+        }
+
+        public void GetOrder()
+        {
+            listviewOrder.Clear();
+
+            listviewOrder.View = View.Details;
+            listviewOrder.Columns.Add("Naam");
+            listviewOrder.Columns.Add("Aantal");
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            string name = listviewMenu.SelectedItems[0].Text;
+            int aantal = 0;
+            foreach (MenuItem m in menuList)
+            {
+                ListViewItem li = new ListViewItem(m.naam);
+                if (name == m.naam)
+                {
+                    
+                        li.SubItems.Add(aantal.ToString());
+                        listviewOrder.Items.Add(li);
+                    
+                }
+                
+            }
+        }
+        
+
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddOrder_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

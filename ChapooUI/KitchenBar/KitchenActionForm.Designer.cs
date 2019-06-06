@@ -30,16 +30,18 @@
         {
             this.SuspendLayout();
             // 
-            // OrderForm
+            // KitchenActionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 460);
+            this.ClientSize = new System.Drawing.Size(375, 566);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "KitchenActionForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "KitchenActionForm";
+            this.Load += new System.EventHandler(this.KitchenActionForm_Load);
             this.ResumeLayout(false);
 
         }

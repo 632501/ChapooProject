@@ -210,12 +210,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChapooDAL\ChapooDAL.csproj">
+      <Project>{b6f85835-cfba-40d0-bd7b-e2664c7487d4}</Project>
+      <Name>ChapooDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChapooLogica\ChapooLogic.csproj">
-      <Project>{97B466ED-9A68-4747-92B7-79AAA076FFB2}</Project>
+      <Project>{97b466ed-9a68-4747-92b7-79aaa076ffb2}</Project>
       <Name>ChapooLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
-      <Project>{B3470BAC-928D-4FD9-9384-2E738DEC9C2C}</Project>
+      <Project>{b3470bac-928d-4fd9-9384-2e738dec9c2c}</Project>
       <Name>ChapooModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">

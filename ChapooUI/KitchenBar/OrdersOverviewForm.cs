@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapooModel;
 
 namespace ChapooUI
 {
@@ -16,7 +17,7 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        public OrdersOverviewForm()
+        public OrdersOverviewForm(Inlog inlog)
         {
             InitializeComponent();
 
@@ -27,6 +28,9 @@ namespace ChapooUI
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        private void OrdersOverviewForm_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

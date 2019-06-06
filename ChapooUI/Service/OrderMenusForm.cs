@@ -45,25 +45,46 @@ namespace ChapooUI
 
         private void btnDrinks_Click(object sender, EventArgs e)
         {
-            OrderForm drinksForm = new OrderForm();
-            drinksForm.GetOrder("Drinks")
+            
         }
 
         private void btnLunch_Click(object sender, EventArgs e)
         {
-            OrderForm lunchForm = new OrderForm();
-            lunchForm.GetOrder("Lunch");
+            
         }
 
         private void btnDiner_Click(object sender, EventArgs e)
         {
-            OrderForm dinerForm = new OrderForm();
-            dinerForm.GetOrder("Diner");
+            
         }
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void btnDrinks_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            OrderForm drinksForm = new OrderForm("Drinks");
+            //drinksForm.GetOrder("Drinks");
+            drinksForm.Show();
+        }
+
+        public void btnLunch_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            OrderForm lunchForm = new OrderForm("Lunch");
+            //lunchForm.GetOrder("Lunch");
+            lunchForm.Show();
+        }
+
+        public void btnDiner_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            OrderForm dinerForm = new OrderForm("Diner");
+            //dinerForm.GetOrder("Diner");
+            dinerForm.Show();
         }
     }
 }

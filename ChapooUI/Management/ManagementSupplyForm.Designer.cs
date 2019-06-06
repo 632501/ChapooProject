@@ -211,7 +211,7 @@
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.ListView_ViewSupply);
             this.MaximizeBox = false;
-            this.Name = "ManagementSupplyForm";
+            //this.Name = "ManagementSupplyForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management voorraad ";

@@ -50,6 +50,7 @@
             this.btnActionBekijken.TabIndex = 1;
             this.btnActionBekijken.Text = "Bekijken en\r\nAanpassen\r\n";
             this.btnActionBekijken.UseVisualStyleBackColor = true;
+            this.btnActionBekijken.Click += new System.EventHandler(this.btnActionBekijken_Click);
             // 
             // OrderActionForm
             // 

@@ -16,7 +16,7 @@ namespace ChapooUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrderActionForm());
+            Application.Run(new LoginForm());
         }
     }
 }

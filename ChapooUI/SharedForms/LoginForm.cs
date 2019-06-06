@@ -47,13 +47,13 @@ namespace ChapooUI
             if(inlog.functie == "manager" && login_dao.Login(password) == true)
             {
                 this.Hide();
-                OrderOverviewForm orderOverview = new OrderOverviewForm(//inlog
-                    );
+                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
+                    
                 orderOverview.Show();
             }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
             {
                 this.Hide();
-                KitchenActionForm kitchenAndBar = new KitchenActionForm(//inlog
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog
                     );
                 kitchenAndBar.Show();
             }else if (inlog.functie == "bediening" == login_dao.Login(password) == true)

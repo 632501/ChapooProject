@@ -43,16 +43,21 @@ namespace ChapooUI
             //Inlog_DAO inlog_DAO = new Inlog_DAO();
 
             
-            foreach(Button button in btnList)
-            {
-                if (table_dao.Occupied(int.Parse(button.ToString())) == true)
+            
+                for (int i = 0; i < btnList.Length; i++)
                 {
-                    ForeColor = Color.Red;
-                }else if(table_dao.Occupied(int.Parse(button.ToString())) == false)
-                {
-                    ForeColor = Color.Green;
+                    if (table_dao.Occupied(i + 1)/*(int.Parse(button.ToString()))*/ == true)
+                    {
+                    //btn_Tafel1.ForeColor = Color.Red;
+                    btnList[i].BackColor = Color.Red;
+                    }
+                    else if (table_dao.Occupied(i + 1)/*(int.Parse(button.ToString()))*/ == false)
+                    {
+                       btnList[i].BackColor = Color.Green;
+                    }
                 }
-            }
+                
+            
             
 
             //if (table_dao.Occupied(1) == true)

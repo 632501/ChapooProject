@@ -28,48 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDrinks = new System.Windows.Forms.Button();
+            this.btnDiner = new System.Windows.Forms.Button();
+            this.btnLunch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.mlblHuidigeBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
-            // button1
+            // btnDrinks
             // 
-            this.button1.Location = new System.Drawing.Point(55, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(198, 45);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDrinks.Location = new System.Drawing.Point(55, 243);
+            this.btnDrinks.Name = "btnDrinks";
+            this.btnDrinks.Size = new System.Drawing.Size(198, 50);
+            this.btnDrinks.TabIndex = 0;
+            this.btnDrinks.Text = "Drinks";
+            this.btnDrinks.UseVisualStyleBackColor = true;
+            this.btnDrinks.Click += new System.EventHandler(this.btnDrinks_Click_1);
             // 
-            // button2
+            // btnDiner
             // 
-            this.button2.Location = new System.Drawing.Point(68, 319);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(185, 50);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDiner.Location = new System.Drawing.Point(55, 355);
+            this.btnDiner.Name = "btnDiner";
+            this.btnDiner.Size = new System.Drawing.Size(198, 50);
+            this.btnDiner.TabIndex = 1;
+            this.btnDiner.Text = "Diner";
+            this.btnDiner.UseVisualStyleBackColor = true;
+            this.btnDiner.Click += new System.EventHandler(this.btnDiner_Click_1);
             // 
-            // button3
+            // btnLunch
             // 
-            this.button3.Location = new System.Drawing.Point(68, 375);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(176, 27);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnLunch.Location = new System.Drawing.Point(55, 299);
+            this.btnLunch.Name = "btnLunch";
+            this.btnLunch.Size = new System.Drawing.Size(198, 50);
+            this.btnLunch.TabIndex = 2;
+            this.btnLunch.Text = "Lunch";
+            this.btnLunch.UseVisualStyleBackColor = true;
+            this.btnLunch.Click += new System.EventHandler(this.btnLunch_Click_1);
             // 
-            // button4
+            // btnAdd
             // 
-            this.button4.Location = new System.Drawing.Point(40, 433);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(203, 35);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(55, 428);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(203, 35);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Toevoegen";
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // mlblHuidigeBestelling
             // 
@@ -88,10 +91,10 @@
             // 
             this.ClientSize = new System.Drawing.Size(345, 484);
             this.Controls.Add(this.mlblHuidigeBestelling);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnLunch);
+            this.Controls.Add(this.btnDiner);
+            this.Controls.Add(this.btnDrinks);
             this.Name = "OrderMenusForm";
             this.Load += new System.EventHandler(this.OrderMenusForm_Load);
             this.ResumeLayout(false);
@@ -104,10 +107,10 @@
         private System.Windows.Forms.ListView listviewMenu;
         private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
         private MaterialSkin.Controls.MaterialLabel mlblBestelling;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDrinks;
+        private System.Windows.Forms.Button btnDiner;
+        private System.Windows.Forms.Button btnLunch;
+        private System.Windows.Forms.Button btnAdd;
         private MaterialSkin.Controls.MaterialLabel mlblHuidigeBestelling;
     }
 }

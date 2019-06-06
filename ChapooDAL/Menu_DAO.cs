@@ -30,7 +30,8 @@ namespace ChapooDAL
                     menu_ID = (int)dr["menu_Id"],
                     naam = (String)(dr["naam"].ToString()),
                     prijs = (int)dr["prijs"],
-                    categorie = (String)(dr["categorie"].ToString())
+                    categorie = (String)(dr["categorie"].ToString()),
+                    voorraad = (int)dr["vorraad"]
 
                 };
                 menus.Add(menu);
@@ -40,21 +41,21 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT Menu_Id, Naam, Prijs, Categorie FROM [Menu] where Categorie = 'Lunch'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, vorraad FROM [Menu]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT Menu_Id, Naam, Prijs, Categorie FROM [Menu] where Categorie = 'Diner'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, vorraad FROM [Menu]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie FROM [Menu] ";
+            string query = "SELECT menu_ID, naam, prijs, categorie, vorraad FROM [Menu] ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

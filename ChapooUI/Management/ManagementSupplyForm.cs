@@ -15,7 +15,6 @@ namespace ChapooUI
     public partial class ManagementSupplyForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        private 
 
         public ManagementSupplyForm()
         {
@@ -36,7 +35,7 @@ namespace ChapooUI
         private void ManagementSupplyForm_Load(object sender, EventArgs e)
         {
 
-            ListView_ViewSupply.Items.
+           // ListView_ViewSupply.Items.
         }
     }
 }

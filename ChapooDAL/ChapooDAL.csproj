@@ -53,5 +53,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
+      <Project>{B3470BAC-928D-4FD9-9384-2E738DEC9C2C}</Project>
+      <Name>ChapooModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

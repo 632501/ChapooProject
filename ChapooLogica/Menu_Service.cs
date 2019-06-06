@@ -13,48 +13,46 @@ namespace ChapooLogica
     {
         Menu_DAO menu_db = new Menu_DAO();
 
-        public List<Menu> GetMenus()
+        public List<MenuItem> GetMenu()
         {
-            try
-            {
-                List<Menu> menu = menu_db.Db_Get_All_Menus();
-                return menu;
-            }
-            catch (Exception exp)
-            {
-                //throw new Exception("Couldn't connect to database : " + exp.Message);
-
-                //something went wrong connecting to the database, so we will add a fake student to the list to make sure the rest of the application continues working!*/
-                List<Menu> menus = new List<Menu>();
-                Menu a = new Menu();
-                a.menu_ID = 201;
-                menus.Add(a);
-                return menus;
-
-                //throw new Exception("Chapoop couldn't connect to the database");
-
-            }
+            List<MenuItem> menu = new List<MenuItem>();
+            menu = menu_db.Db_Get_All_Menus();
+            return menu;
         }
 
-        public List<Menu> GetDrinks()
+        public List<MenuItem> GetDrinks()
         {
             Menu_DAO DrinkDAO = new Menu_DAO();
-            List<Menu> drinks = DrinkDAO.GetAllDrinks();
+            List<MenuItem> drinks = DrinkDAO.GetAllDrinks();
             return drinks;
         }
 
-        public List<Menu> GetLunch()
+        public List<MenuItem> GetLunch()
         {
             Menu_DAO LunchDAO = new Menu_DAO();
-            List<Menu> lunches = LunchDAO.GetAllLunch();
+            List<MenuItem> lunches = LunchDAO.GetAllLunch();
             return lunches;
         }
 
-        public List<Menu> GetDiner()
+        public List<MenuItem> GetDiner()
         {
             Menu_DAO dinerDAO = new Menu_DAO();
-            List<Menu> diners = dinerDAO.GetAllDiner();
+            List<MenuItem> diners = dinerDAO.GetAllDiner();
             return diners;
+        }
+        public void ChangeSupply(string name, int amount)
+        {
+            menu_db.ChangeSupply(name, amount);
+        }
+        
+        public void ChangeMenu(int ID, string naam, int prijs, string categorie)
+        {
+            menu_db.ChangeMenu(ID, naam, prijs, categorie);
+        }
+
+        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad)
+        {
+            menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad);
         }
     }
 }

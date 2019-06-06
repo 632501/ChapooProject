@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapooLogica;
 using ChapooModel;
-using Menu = ChapooModel.Menu;
+using Menu = ChapooModel.MenuItem;
 
 namespace ChapooUI
 {

@@ -102,9 +102,10 @@ namespace ChapooUI
                 ListViewItem li = new ListViewItem(m.naam);
                 if (name == m.naam)
                 {
-                    aantal = 1;
-                    li.SubItems.Add(aantal.ToString());
-                    listviewOrder.Items.Add(li);
+                    
+                        li.SubItems.Add(aantal.ToString());
+                        listviewOrder.Items.Add(li);
+                    
                 }
                 
             }

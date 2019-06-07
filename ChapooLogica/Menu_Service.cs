@@ -54,5 +54,10 @@ namespace ChapooLogica
         {
             menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad);
         }
+
+        public void RemoveItem(int ID)
+        {
+            menu_db.RemoveItem(ID);
+        }
     }
 }

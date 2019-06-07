@@ -31,5 +31,10 @@ namespace ChapooLogica
         {
             inlog_db.ChangeUser(ID, password, name, function);
         }
+
+        public void RemoveUser(string password)
+        {
+            inlog_db.RemoveUser(password);
+        }
     }
 }

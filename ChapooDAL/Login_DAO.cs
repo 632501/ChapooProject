@@ -22,7 +22,7 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void RemoveUser(int wachtwoord)
+        public void RemoveUser(string wachtwoord)
         {
             string query = "DELETE FROM Inlog WHERE wachtwoord = " + wachtwoord + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -127,7 +127,7 @@ namespace ChapooDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public List<Inlog> ReadTables (DataTable dataTable)
+        private List<Inlog> ReadTables (DataTable dataTable)
         {
             List<Inlog> EmployeeList = new List<Inlog>();
 
@@ -148,7 +148,7 @@ namespace ChapooDAL
 
         public void ChangeUser(int ID, string name, string password, string function)
         {
-            string query = "UPDATE Inlog SET naam = '" + name + "', wachtwoord = '" + password + "', functie = '" + function + "' WHERE werknemer_ID = " + ID; 
+            string query = "UPDATE Inlog SET wachtwoord = '" + password + "', naam = '" + name + "', functie = '" + function+"' WHERE werknemer_ID = " + ID; 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

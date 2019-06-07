@@ -119,5 +119,22 @@ namespace ChapooDAL
 
             return name;
         }
+
+        public string Function(string password)
+        {
+            string function = "";
+            con = new SqlConnection(conn);
+            string query = "select functie from Inlog where wachtwoord = " + password;
+
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand(query, con);
+            SqlDataReader dr = command.ExecuteReader();
+            dr.Read();
+            function = dr["functie"].ToString();
+
+            return function;
+        }
     }
 }

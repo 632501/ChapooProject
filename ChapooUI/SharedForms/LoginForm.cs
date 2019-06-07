@@ -107,19 +107,19 @@ namespace ChapooUI
 
             string password = txt_Password.Text;
 
-            //if (login_dao.Login(password) == true && login.functie == "manager")
-            //{
-            //    this.Hide();
-            //    ManagementActionForm management = new ManagementActionForm();
-            //    management.Show();
-            //}
-            //else if (login_dao.Login(password) == true && login.functie == "barman" || login.functie == "kok")
-            //{
-            //    this.Hide();
-            //    KitchenActionForm kitchenAndBar = new KitchenActionForm(login);
-            //    kitchenAndBar.Show();
-            //}
-           /* else*/ if (login_dao.Login(password) == true /*&& login.functie == "Bediening"*/)
+            if (login_dao.Login(password) == true && login_dao.Function(password) == "manager")
+            {
+                this.Hide();
+                ManagementActionForm management = new ManagementActionForm();
+                management.Show();
+            }
+            else if (login_dao.Login(password) == true && login_dao.Function(password) == "barman" || login_dao.Function(password) == "kok")
+            {
+                this.Hide();
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(login);
+                kitchenAndBar.Show();
+            }
+            else if (login_dao.Login(password) == true && login_dao.Function(password) == "Bediening")
             {
                 this.Hide();
                 TableForm table = new TableForm(login);

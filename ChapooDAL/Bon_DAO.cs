@@ -47,32 +47,45 @@ namespace ChapooDAL
             ExecuteEditQuery(queryComment, sqlParameters);
         }
 
-        public List<OrderItem> Order(int tafel_ID)
+        public Bestelling Orders(int tafel_ID)
         {
-            string query = "";
+            string query = "SELECT O.aantal, M.naam, M.prijs FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID WHERE B.tafel_ID = 4";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
+            return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<OrderItem> ReadOrder(DataTable dataTable)
+        private Bestelling ReadOrders(DataTable dataTable)
         {
-            List<OrderItem> Orders = new List<OrderItem>();
+            Bestelling Orders = new Bestelling();
+            Orders.orderItems = new List<OrderItem>();
+            List<MenuItem> menuItems = new List<MenuItem>();
 
+            
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderItem O = new OrderItem()
+                MenuItem mI = new MenuItem()
                 {
-                    Menu_ID = (int)(dr["menu_ID"]),
+                    naam = (string)dr["naam"],
+                    prijs = (int)dr["prijs"]
+                };
+                menuItems.Add(mI);
+
+                OrderItem oI = new OrderItem()
+                {
                     Aantal = (int)dr["aantal"]
                 };
-                Orders.Add(O);
+                
+                Orders.orderItems.Add(oI);
+            }
+
+            for (int i = 0; i < Orders.orderItems.Count; i++)
+            {
+                for (int p = 0; p < menuItems.Count; i++)
+                {
+                    Orders.orderItems[i].MenuItem.Add(menuItems[p]);
+                }
             }
             return Orders;
         }
-        //SELECT O.aantal, M.naam, M.prijs
-        //FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID
-
-                    //JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID
-        //WHERE B.tafel_ID = 4
     }
 }

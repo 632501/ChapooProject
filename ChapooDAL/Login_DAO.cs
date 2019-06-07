@@ -31,30 +31,53 @@ namespace ChapooDAL
 
         public bool Login(string password)
         {
+            //bool correctLogin;
+            //con = new SqlConnection(conn);
+
+            //string query = "SELECT wachtwoord FROM Inlog WHERE wachtwoord = '" + password + "'";
+            //SqlParameter[] sqlParameters = new SqlParameter[0];
+            //ExecuteSelectQuery(query, sqlParameters);
+
+
+            //SqlDataAdapter sda = new SqlDataAdapter(query, con);
+
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            ////als de inlogdata overeenkomt met dat uit de database dan wordt de login panel gehide
+            //if (dt.Rows.Count == 1)
+            //{
+            //    correctLogin = true;
+            //}
+            ////als de data niet kloppen dan wordt er een message geshowt dat de data verkeerd is
+            //else
+            //{
+            //    correctLogin = false;
+            //}
+
+            //return correctLogin;
+
             bool correctLogin;
             con = new SqlConnection(conn);
 
-            string query = "SELECT wachtwoord FROM Inlog WHERE wachtwoord = '" + password + "'";
+            string query = "select wachtwoord from Inlog where wachtwoord = '" + password + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            ExecuteSelectQuery(query, sqlParameters);
-
+            //ExecuteSelectQuery(query, sqlParameters);
 
             SqlDataAdapter sda = new SqlDataAdapter(query, con);
 
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            //als de inlogdata overeenkomt met dat uit de database dan wordt de login panel gehide
-            if (dt.Rows.Count == 1)
+            if(dt.Rows.Count == 1)
             {
                 correctLogin = true;
             }
-            //als de data niet kloppen dan wordt er een message geshowt dat de data verkeerd is
             else
             {
                 correctLogin = false;
             }
 
             return correctLogin;
+
         }
 
         public List<Inlog> Employee(string password)

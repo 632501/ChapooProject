@@ -69,5 +69,10 @@ namespace ChapooDAL
             }
             return Orders;
         }
+        //SELECT O.aantal, M.naam, M.prijs
+        //FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID
+
+                    //JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID
+        //WHERE B.tafel_ID = 4
     }
 }

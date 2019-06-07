@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBetaald = new System.Windows.Forms.Button();
+            this.BtnBetalen = new System.Windows.Forms.Button();
             this.btnTerug = new System.Windows.Forms.Button();
             this.lblTotaalbedrag = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -38,17 +38,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.materialListViewBestelling = new MaterialSkin.Controls.MaterialListView();
+            this.txtboxTotalPayment = new System.Windows.Forms.TextBox();
+            this.lblPayment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnBetaald
+            // BtnBetalen
             // 
-            this.btnBetaald.Location = new System.Drawing.Point(12, 462);
-            this.btnBetaald.Name = "btnBetaald";
-            this.btnBetaald.Size = new System.Drawing.Size(351, 53);
-            this.btnBetaald.TabIndex = 35;
-            this.btnBetaald.Text = "Betalen";
-            this.btnBetaald.UseVisualStyleBackColor = true;
-            this.btnBetaald.Click += new System.EventHandler(this.btnBetaald_Click);
+            this.BtnBetalen.Location = new System.Drawing.Point(12, 462);
+            this.BtnBetalen.Name = "BtnBetalen";
+            this.BtnBetalen.Size = new System.Drawing.Size(351, 53);
+            this.BtnBetalen.TabIndex = 35;
+            this.BtnBetalen.Text = "Betalen";
+            this.BtnBetalen.UseVisualStyleBackColor = true;
+            this.BtnBetalen.Click += new System.EventHandler(this.btnBetaald_Click);
             // 
             // btnTerug
             // 
@@ -72,9 +74,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(12, 402);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 17);
+            this.label6.Size = new System.Drawing.Size(58, 17);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Totaalbedrag";
+            this.label6.Text = "Bedrag:";
             // 
             // btnLogOut
             // 
@@ -123,9 +125,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 427);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 17);
+            this.label2.Size = new System.Drawing.Size(117, 17);
             this.label2.TabIndex = 41;
-            this.label2.Text = "Fooi";
+            this.label2.Text = "Betaalde bedrag:";
             // 
             // materialListViewBestelling
             // 
@@ -144,18 +146,35 @@
             this.materialListViewBestelling.UseCompatibleStateImageBehavior = false;
             this.materialListViewBestelling.View = System.Windows.Forms.View.Details;
             // 
+            // txtboxTotalPayment
+            // 
+            this.txtboxTotalPayment.Location = new System.Drawing.Point(225, 424);
+            this.txtboxTotalPayment.Name = "txtboxTotalPayment";
+            this.txtboxTotalPayment.Size = new System.Drawing.Size(100, 22);
+            this.txtboxTotalPayment.TabIndex = 43;
+            // 
+            // lblPayment
+            // 
+            this.lblPayment.AutoSize = true;
+            this.lblPayment.Location = new System.Drawing.Point(222, 402);
+            this.lblPayment.Name = "lblPayment";
+            this.lblPayment.Size = new System.Drawing.Size(0, 17);
+            this.lblPayment.TabIndex = 44;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 566);
+            this.Controls.Add(this.lblPayment);
+            this.Controls.Add(this.txtboxTotalPayment);
             this.Controls.Add(this.materialListViewBestelling);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.lbl_Naam);
             this.Controls.Add(this.btnLogOut);
-            this.Controls.Add(this.btnBetaald);
+            this.Controls.Add(this.BtnBetalen);
             this.Controls.Add(this.btnTerug);
             this.Controls.Add(this.lblTotaalbedrag);
             this.Controls.Add(this.label6);
@@ -172,7 +191,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnBetaald;
+        private System.Windows.Forms.Button BtnBetalen;
         private System.Windows.Forms.Button btnTerug;
         private System.Windows.Forms.Label lblTotaalbedrag;
         private System.Windows.Forms.Label label6;
@@ -182,5 +201,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private MaterialSkin.Controls.MaterialListView materialListViewBestelling;
+        private System.Windows.Forms.TextBox txtboxTotalPayment;
+        private System.Windows.Forms.Label lblPayment;
     }
 }

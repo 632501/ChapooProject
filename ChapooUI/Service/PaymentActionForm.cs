@@ -14,12 +14,14 @@ using System.Windows.Forms;
 
 namespace ChapooUI
 {
-    public partial class PaymentForm : MaterialForm
+    public partial class PaymentActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
 
-        public PaymentForm()
+        int betaaldbedrag;
+
+        public PaymentActionForm(int betaaldbedrag)
         {
             InitializeComponent();
 
@@ -28,36 +30,45 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.betaaldbedrag = betaaldbedrag;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
-
             Bestelling bestelling = new Bestelling();
 
-            bestelling = bonService.Orders(4); // tafelnummer nog op de goede manier
+            int amount = bonService.TotalAmount(4);
+            int btw = 0;
+            int btwAmount = amount + btw;
+            int tip = betaaldbedrag - amount;
+            int totalamount = btwAmount + tip;
 
-            materialListViewBestelling.Items.Clear();
-            materialListViewBestelling.View = View.Details;
-
-            foreach(Bestelling b in b)
-            {
-
-            }
-
-            ListViewItem bestellijst = new ListViewItem("Aantal");
-            bestellijst.SubItems.Add("Naam");
-            bestellijst.SubItems.Add("Totaalprijs");
+            lblAmount.Text = amount.ToString();
+            lblBtw.Text = btw.ToString();
+            lblBtwAmount.Text = btwAmount.ToString();
+            lblTip.Text = tip.ToString();
+            lblTotalAmount.Text = totalamount.ToString();
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            int betaalbedrag = int.Parse(txtboxTotalPayment.Text);
-            PaymentActionForm pay = new PaymentActionForm(betaalbedrag);
-            pay.ShowDialog();
+            if (radioBtnCreditcard.Checked)
+            {
+
+            }
 
 
+            
+            
+
+            // doorverwijzen naar tafelform
+        }
+
+        private void btnTerug_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void label1_Click(object sender, EventArgs e)

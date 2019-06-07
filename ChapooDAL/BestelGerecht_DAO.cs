@@ -16,7 +16,7 @@ namespace ChapooDAL
         public string OrderStatus(int tableNumber)
         {
             string status = " ";
-            string query = "Select status from Bestel_Gerecht where tafelnummer = '" + tableNumber + "'";
+            string query = "Select status from OrderItem where tafelnummer = '" + tableNumber + "'";
             con = new SqlConnection(conn);
 
             con.Open();

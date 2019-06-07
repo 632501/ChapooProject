@@ -80,5 +80,12 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public void RemoveItem(int ID)
+        {
+            string query = "DELETE FROM Menu WHERE menu_ID = " + ID + "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }

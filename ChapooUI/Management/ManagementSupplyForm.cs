@@ -44,31 +44,6 @@ namespace ChapooUI
 
             HideAllControls();
         }
-        private void DisplayListView(List<MenuItem> menu)
-        {
-            ListView_ViewSupply.Items.Clear();
-
-            ListView_ViewSupply.View = View.Details;
-            //ListViewItem add = new ListViewItem("Klik hier om een item aan de voorraad toe te voegen");
-            //add.SubItems.Add("+");
-            //ListView_ViewSupply.Items.Add(add);
-            foreach (MenuItem item in menu)
-            {
-
-                ListViewItem me = new ListViewItem(item.menu_ID.ToString());
-                me.SubItems.Add(item.naam);
-                me.SubItems.Add(item.categorie);
-                me.SubItems.Add(item.voorraad.ToString());
-                me.Tag = item;
-
-                ListView_ViewSupply.Items.Add(me);
-            }
-
-        }
-        private void GetMenu()
-        {
-            menu = menuService.GetMenu();
-        }
 
         private void ListView_ViewSupply_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -83,11 +58,6 @@ namespace ChapooUI
 
             lbl_SelectedName.Text = menuItem.naam;
             txt_SelectedAmount.Text = menuItem.voorraad.ToString();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
@@ -105,7 +75,6 @@ namespace ChapooUI
             HideAllControls();
 
             MessageBox.Show("U heeft de voorraad van het item '" + name + "' veranderd naar " + amount);
-
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -142,6 +111,29 @@ namespace ChapooUI
         {
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount + 10).ToString();
+        }
+
+        private void GetMenu()
+        {
+            menu = menuService.GetMenu();
+        }
+
+        private void DisplayListView(List<MenuItem> menu)
+        {
+            ListView_ViewSupply.Items.Clear();
+
+            ListView_ViewSupply.View = View.Details;
+            foreach (MenuItem item in menu)
+            {
+
+                ListViewItem me = new ListViewItem(item.menu_ID.ToString());
+                me.SubItems.Add(item.naam);
+                me.SubItems.Add(item.categorie);
+                me.SubItems.Add(item.voorraad.ToString());
+                me.Tag = item;
+
+                ListView_ViewSupply.Items.Add(me);
+            }
         }
 
         public void HideAllControls()

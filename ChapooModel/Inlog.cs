@@ -15,8 +15,8 @@ namespace ChapooModel
     public class Inlog
     {
         public int werknemer_ID { get; set; }
-        public string wachtwoord { get; set; }
         public string naam { get; set; }
+        public string wachtwoord { get; set; }
         public string functie { get; set; }
     }
 }

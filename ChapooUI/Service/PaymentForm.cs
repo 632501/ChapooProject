@@ -1,5 +1,6 @@
 ﻿using ChapooLogica;
 using ChapooModel;
+using ChapooModel.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -33,6 +34,7 @@ namespace ChapooUI
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
+            lblTotaalbedrag.Text = "€ " + totalAmount.ToString();
 
             Bestelling bestelling = new Bestelling();
 
@@ -41,10 +43,14 @@ namespace ChapooUI
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
+            foreach (OrderItem o in bestelling.orderItems)
+            {
+                ListViewItem bestellijst = new ListViewItem(o.Aantal.ToString());
+                bestellijst.SubItems.Add(o.menuItem.naam);
+                bestellijst.SubItems.Add(o.menuItem.prijs.ToString());
 
-            ListViewItem bestellijst = new ListViewItem("Aantal");
-            bestellijst.SubItems.Add("Naam");
-            bestellijst.SubItems.Add("Totaalprijs");
+                materialListViewBestelling.Items.Add(bestellijst);
+            }
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)

@@ -8,7 +8,7 @@ namespace ChapooModel.Models
 {
     public class OrderItem
     {
-        public MenuItem MenuItem { get; set; }
+        public MenuItem menuItem { get; set; }
         public int Aantal { get; set; }
         public int Menu_ID { get; set; }
         public string Comment { get; set; }

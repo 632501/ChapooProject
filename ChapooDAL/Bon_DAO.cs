@@ -22,13 +22,18 @@ namespace ChapooDAL
 
         private int ReadTotalAmount(DataTable dataTable)
         {
-            int totaalbedrag = 0;
+            int tp = 0;
+
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                totaalbedrag = (int)dr["totaalprijs"];
+                Bon bon = new Bon
+                {
+                    totaalprijs = (int)dr["totaalprijs"]
+                };
+                tp = bon.totaalprijs;
             }
-            return totaalbedrag;
+            return tp;
         }
 
         public void Paid(int tafel_ID, double tip, string paymentType, string comment)
@@ -58,33 +63,21 @@ namespace ChapooDAL
         {
             Bestelling Orders = new Bestelling();
             Orders.orderItems = new List<OrderItem>();
-            List<MenuItem> menuItems = new List<MenuItem>();
-
+            MenuItem m = new MenuItem();
             
             foreach (DataRow dr in dataTable.Rows)
             {
-                MenuItem mI = new MenuItem()
-                {
-                    naam = (string)dr["naam"],
-                    prijs = (int)dr["prijs"]
-                };
-                menuItems.Add(mI);
-
                 OrderItem oI = new OrderItem()
                 {
-                    Aantal = (int)dr["aantal"]
-                };
-                
-                Orders.orderItems.Add(oI);
-            }
+                    Aantal = (int)dr["aantal"],
 
-            for (int i = 0; i < Orders.orderItems.Count; i++)
-            {
-                for (int p = 0; p < menuItems.Count; i++)
-                {
-                    Orders.orderItems[i].MenuItem.Add(menuItems[p]);
-                }
-                //wortel
+                };
+                m.prijs = (int)dr["prijs"];
+                m.naam = (string)dr["naam"];
+
+                oI.menuItem = m;
+
+                Orders.orderItems.Add(oI);
             }
             return Orders;
         }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using ChapooDAL;
 using ChapooModel;
+using ChapooModel.Models;
 
 namespace ChapooLogica
 {
@@ -28,6 +29,21 @@ namespace ChapooLogica
         public Bestelling Orders(int tafel_ID)
         {
             Bestelling bestelling = new Bestelling();
+            Dictionary<string, int> bestelijst = new Dictionary<string, int>();
+            int value = 0;
+            int totaalprijs = 0;
+
+            foreach(OrderItem o in bestelling.orderItems)
+            {
+                if (bestelijst.Keys.Contains(o.menuItem.naam))
+                {
+                   // bestelijst.Values[bestelijst.Keys.
+                }
+                else
+                {
+                    bestelijst.Add(o.menuItem.naam, o.Aantal);
+                }
+            }
 
             bestelling = bon_db.Orders(tafel_ID);
 

@@ -17,7 +17,7 @@ namespace ChapooDAL
 
         public void AddUser(int werknemerID, string wachtWoord, string naam, string functie)
         {
-            string query = "INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "')";
+            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "') SET IDENTITY_INSERT Inlog OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -95,6 +95,39 @@ namespace ChapooDAL
             name = (string)dr["naam"];
 
             return name;
+        }
+
+        public List<Inlog> GetEmployeeList()
+        {
+            string query = "SELECT * FROM Inlog";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public List<Inlog> ReadTables (DataTable dataTable)
+        {
+            List<Inlog> EmployeeList = new List<Inlog>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Inlog Employee = new Inlog()
+                {
+                    werknemer_ID = (int)dr["werknemer_ID"],
+                    naam = (String)(dr["naam"]),
+                    wachtwoord = (string)dr["wachtwoord"],
+                    functie = (String)(dr["functie"])
+
+                };
+                EmployeeList.Add(Employee);
+            }
+            return EmployeeList;
+        }
+
+        public void ChangeUser(int ID, string name, string password, string function)
+        {
+            string query = "UPDATE Inlog SET naam = '" + name + "', wachtwoord = '" + password + "', functie = '" + function + "' WHERE werknemer_ID = " + ID; 
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

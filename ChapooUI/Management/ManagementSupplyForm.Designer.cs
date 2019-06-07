@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.ListView_ViewSupply = new MaterialSkin.Controls.MaterialListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Voorraad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_Back = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txt_SelectedAmount = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
-            this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbl_SelectedName = new System.Windows.Forms.Label();
             this.btn_MinOne = new System.Windows.Forms.Button();
             this.btn_MinTen = new System.Windows.Forms.Button();
@@ -68,10 +68,20 @@
             this.ListView_ViewSupply.View = System.Windows.Forms.View.Details;
             this.ListView_ViewSupply.SelectedIndexChanged += new System.EventHandler(this.ListView_ViewSupply_SelectedIndexChanged);
             // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 50;
+            // 
             // ItemName
             // 
             this.ItemName.Text = "Naam";
-            this.ItemName.Width = 570;
+            this.ItemName.Width = 550;
+            // 
+            // Category
+            // 
+            this.Category.Text = "Categorie";
+            this.Category.Width = 170;
             // 
             // Voorraad
             // 
@@ -112,16 +122,6 @@
             this.btn_Change.Text = "Pas toe";
             this.btn_Change.UseVisualStyleBackColor = true;
             this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
-            // 
-            // Category
-            // 
-            this.Category.Text = "Categorie";
-            this.Category.Width = 200;
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            this.ID.Width = 50;
             // 
             // lbl_SelectedName
             // 
@@ -211,7 +211,7 @@
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.ListView_ViewSupply);
             this.MaximizeBox = false;
-            //this.Name = "ManagementSupplyForm";
+            this.Name = "ManagementSupplyForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management voorraad ";

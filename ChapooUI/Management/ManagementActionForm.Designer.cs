@@ -32,6 +32,7 @@
             this.btn_Menu = new System.Windows.Forms.Button();
             this.btn_Supply = new System.Windows.Forms.Button();
             this.btn_LogOut = new System.Windows.Forms.Button();
+            this.lbl_name = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // btn_EmployeeFiles
@@ -81,11 +82,24 @@
             this.btn_LogOut.Text = "Log uit";
             this.btn_LogOut.UseVisualStyleBackColor = true;
             // 
+            // lbl_name
+            // 
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.Depth = 0;
+            this.lbl_name.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbl_name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_name.Location = new System.Drawing.Point(452, 35);
+            this.lbl_name.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(0, 19);
+            this.lbl_name.TabIndex = 4;
+            // 
             // ManagementActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
+            this.Controls.Add(this.lbl_name);
             this.Controls.Add(this.btn_LogOut);
             this.Controls.Add(this.btn_Supply);
             this.Controls.Add(this.btn_Menu);
@@ -94,7 +108,9 @@
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Management home";
+            this.Load += new System.EventHandler(this.ManagementActionForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +120,6 @@
         private System.Windows.Forms.Button btn_Menu;
         private System.Windows.Forms.Button btn_Supply;
         private System.Windows.Forms.Button btn_LogOut;
+        private MaterialSkin.Controls.MaterialLabel lbl_name;
     }
 }

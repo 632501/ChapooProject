@@ -85,6 +85,7 @@ namespace ChapooUI
             lbl_ItemID.Show();
             lbl_ItemName.Show();
             lbl_Prijs.Show();
+            btn_Change.Show();
 
             if (ListView_ViewMenu.Items[0].Selected)
             {
@@ -123,6 +124,15 @@ namespace ChapooUI
 
         private void txt_ItemID_TextChanged(object sender, EventArgs e)
         {
+            foreach(char ch in txt_ItemID.Text)
+            {
+                if (!Char.IsNumber(ch))
+                {
+                    MessageBox.Show("U kunt hier alleen een cijfer invoeren...");
+                    txt_ItemID.Text = "";
+                }
+            }
+
            // int nextMenuID;
 
            // nextMenuID = menu[menu.Count - 1].menu_ID + 1;
@@ -188,6 +198,7 @@ namespace ChapooUI
             lbl_ItemName.Hide();
             lbl_Prijs.Hide();
             lbl_Supply.Hide();
+            btn_Change.Hide();
         }
 
         private void ClearAllTextFields()

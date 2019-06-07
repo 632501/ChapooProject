@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.ListView_ViewMenu = new MaterialSkin.Controls.MaterialListView();
-            this.btn_Back = new MaterialSkin.Controls.MaterialRaisedButton();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Prijs = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Category = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btn_Back = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txt_ItemID = new System.Windows.Forms.TextBox();
             this.txt_ItemNaam = new System.Windows.Forms.TextBox();
             this.txt_ItemPrijs = new System.Windows.Forms.TextBox();
@@ -70,6 +70,26 @@
             this.ListView_ViewMenu.View = System.Windows.Forms.View.Details;
             this.ListView_ViewMenu.SelectedIndexChanged += new System.EventHandler(this.ListView_ViewMenu_SelectedIndexChanged);
             // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 50;
+            // 
+            // ItemName
+            // 
+            this.ItemName.Text = "Naam";
+            this.ItemName.Width = 570;
+            // 
+            // Prijs
+            // 
+            this.Prijs.Text = "Prijs";
+            this.Prijs.Width = 80;
+            // 
+            // Category
+            // 
+            this.Category.Text = "Categorie";
+            this.Category.Width = 180;
+            // 
             // btn_Back
             // 
             this.btn_Back.AutoSize = true;
@@ -85,26 +105,6 @@
             this.btn_Back.Text = "Terug";
             this.btn_Back.UseVisualStyleBackColor = true;
             this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            this.ID.Width = 50;
-            // 
-            // ItemName
-            // 
-            this.ItemName.Text = "Naam";
-            this.ItemName.Width = 590;
-            // 
-            // Prijs
-            // 
-            this.Prijs.Text = "Prijs";
-            this.Prijs.Width = 80;
-            // 
-            // Category
-            // 
-            this.Category.Text = "Categorie";
-            this.Category.Width = 193;
             // 
             // txt_ItemID
             // 

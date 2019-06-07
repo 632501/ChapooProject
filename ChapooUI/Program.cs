@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapooModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,13 @@ namespace ChapooUI
         [STAThread]
         static void Main()
         {
+            Inlog inlog = new Inlog();
+
+            inlog.naam = "Rom Dekker";
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManagementActionForm());
+            Application.Run(new ManagementActionForm(inlog));
         }
     }
 }

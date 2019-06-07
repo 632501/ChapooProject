@@ -47,7 +47,7 @@ namespace ChapooUI
             if(inlog.functie == "manager" && login_dao.Login(password) == true)
             {
                 this.Hide();
-                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
+                ManagementActionForm orderOverview = new ManagementActionForm(inlog);
                     
                 orderOverview.Show();
             }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)

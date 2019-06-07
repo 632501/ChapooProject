@@ -1,4 +1,5 @@
-﻿using MaterialSkin;
+﻿using ChapooModel;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,8 +16,8 @@ namespace ChapooUI
     public partial class ManagementActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-
-        public ManagementActionForm()
+        private Inlog inlog;
+        public ManagementActionForm(Inlog inlog)
         {
             InitializeComponent();
 
@@ -25,6 +26,8 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.inlog = inlog;
         }
 
         private void btn_Supply_Click(object sender, EventArgs e)
@@ -43,6 +46,11 @@ namespace ChapooUI
         {
             ManagementEmployeeForm EmployeeForm = new ManagementEmployeeForm();
             EmployeeForm.ShowDialog();
+        }
+
+        private void ManagementActionForm_Load(object sender, EventArgs e)
+        {
+            lbl_name.Text = inlog.naam;
         }
     }
 }

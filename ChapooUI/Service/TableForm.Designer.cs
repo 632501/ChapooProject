@@ -145,9 +145,9 @@
             // 
             // btn_Uitlog
             // 
-            this.btn_Uitlog.Location = new System.Drawing.Point(294, 80);
+            this.btn_Uitlog.Location = new System.Drawing.Point(309, 106);
             this.btn_Uitlog.Name = "btn_Uitlog";
-            this.btn_Uitlog.Size = new System.Drawing.Size(88, 36);
+            this.btn_Uitlog.Size = new System.Drawing.Size(101, 36);
             this.btn_Uitlog.TabIndex = 14;
             this.btn_Uitlog.Text = "Uitloggen";
             this.btn_Uitlog.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             // 
             this.lbl_Naam.AutoSize = true;
             this.lbl_Naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Naam.Location = new System.Drawing.Point(45, 96);
+            this.lbl_Naam.Location = new System.Drawing.Point(44, 109);
             this.lbl_Naam.Name = "lbl_Naam";
             this.lbl_Naam.Size = new System.Drawing.Size(75, 26);
             this.lbl_Naam.TabIndex = 27;

@@ -223,10 +223,9 @@
       <Name>ChapooModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\MaterialSkin\MaterialSkin.csproj">
-      <Project>{8EB7611B-68CD-4B8B-987A-11717E2B250C}</Project>
+      <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
       <Name>MaterialSkin</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

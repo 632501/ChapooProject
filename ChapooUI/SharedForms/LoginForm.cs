@@ -36,34 +36,6 @@ namespace ChapooUI
         {
 
         }
-
-        private void btn_inlog_Click(object sender, EventArgs e)
-        {
-            Login_DAO login_dao = new Login_DAO();
-            Inlog inlog = new Inlog();
-            string password = txt_Password.Text;
-
-
-            if(inlog.functie == "manager" && login_dao.Login(password) == true)
-            {
-                this.Hide();
-                ManagementActionForm orderOverview = new ManagementActionForm(inlog);
-                    
-                orderOverview.Show();
-            }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
-            {
-                this.Hide();
-                KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog
-                    );
-                kitchenAndBar.Show();
-            }else if (inlog.functie == "bediening" == login_dao.Login(password) == true)
-            {
-                this.Hide();
-                TableForm tables = new TableForm(inlog);
-                tables.Show();
-            }
-            
-        }
         //zorgen dat de buttons een string invoeren met opklikken
         private void btn_Nr1_Click(object sender, EventArgs e)
         {
@@ -95,10 +67,12 @@ namespace ChapooUI
             txt_Password.Text += "6";
         }
 
+
         private void btn_Nr7_Click(object sender, EventArgs e)
         {
             txt_Password.Text += "7";
         }
+
 
         private void btn_Nr8_Click(object sender, EventArgs e)
         {
@@ -125,6 +99,36 @@ namespace ChapooUI
             }
 
             txt_Password.Text = s;
+        }
+
+        private void btn_inlog_Click(object sender, EventArgs e)
+        {
+
+            Login_DAO login = new Login_DAO();
+            Inlog inlog = new Inlog();
+            string password = txt_Password.Text;
+
+            if(login.Function(password) == "manager" && login.Login(password) == true)
+            {
+                this.Hide();
+                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
+                orderOverview.Show();
+            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
+            {
+                this.Hide();
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
+                kitchenAndBar.Show();
+            }else if(login.Function(password) == "Bediening" && login.Login(password) == true)
+            {
+                this.Hide();
+                TableForm table = new TableForm(inlog);
+                table.Show();
+            }
+            else
+            {
+                lbl_IncorrectPassword.ForeColor = Color.Red;
+                lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
+            }
         }
     }
 }

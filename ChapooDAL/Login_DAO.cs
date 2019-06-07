@@ -22,7 +22,7 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void RemoveUser(string wachtwoord)
+        public void RemoveUser(int wachtwoord)
         {
             string query = "DELETE FROM Inlog WHERE wachtwoord = " + wachtwoord + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -31,30 +31,6 @@ namespace ChapooDAL
 
         public bool Login(string password)
         {
-            //bool correctLogin;
-            //con = new SqlConnection(conn);
-
-            //string query = "SELECT wachtwoord FROM Inlog WHERE wachtwoord = '" + password + "'";
-            //SqlParameter[] sqlParameters = new SqlParameter[0];
-            //ExecuteSelectQuery(query, sqlParameters);
-
-
-            //SqlDataAdapter sda = new SqlDataAdapter(query, con);
-
-            //DataTable dt = new DataTable();
-            //sda.Fill(dt);
-            ////als de inlogdata overeenkomt met dat uit de database dan wordt de login panel gehide
-            //if (dt.Rows.Count == 1)
-            //{
-            //    correctLogin = true;
-            //}
-            ////als de data niet kloppen dan wordt er een message geshowt dat de data verkeerd is
-            //else
-            //{
-            //    correctLogin = false;
-            //}
-
-            //return correctLogin;
 
             bool correctLogin;
             con = new SqlConnection(conn);
@@ -120,6 +96,24 @@ namespace ChapooDAL
             return name;
         }
 
+        public string Function(string password)
+        {
+            string function = " ";
+            con = new SqlConnection(conn);
+            string query = "Select functie from Inlog where wachtwoord = '" + password + "'";
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand(query, con);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+            function = (string)reader["functie"];
+
+            return function;
+        }
+
+
         public List<Inlog> GetEmployeeList()
         {
             string query = "SELECT * FROM Inlog";
@@ -127,7 +121,7 @@ namespace ChapooDAL
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<Inlog> ReadTables (DataTable dataTable)
+        public List<Inlog> ReadTables(DataTable dataTable)
         {
             List<Inlog> EmployeeList = new List<Inlog>();
 
@@ -148,7 +142,7 @@ namespace ChapooDAL
 
         public void ChangeUser(int ID, string name, string password, string function)
         {
-            string query = "UPDATE Inlog SET wachtwoord = '" + password + "', naam = '" + name + "', functie = '" + function+"' WHERE werknemer_ID = " + ID; 
+            string query = "UPDATE Inlog SET naam = '" + name + "', wachtwoord = '" + password + "', functie = '" + function + "' WHERE werknemer_ID = " + ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

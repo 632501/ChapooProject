@@ -14,5 +14,6 @@ namespace ChapooModel.Models
         public string Comment { get; set; }
         public string Status { get; set; }
         
+        public int Totaalprijs { get; set; }
     }
 }

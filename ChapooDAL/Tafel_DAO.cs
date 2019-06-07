@@ -8,7 +8,7 @@ using ChapooModel;
 
 namespace ChapooDAL
 {
-    public class Tafel_DAO
+    public class Tafel_DAO : Base
     {
         public string conn = "Data Source=den1.mssql7.gear.host; Initial Catalog = chapoo1819sdb15; User=chapoo1819sdb15; Password=Uh6Q-7?9ykHi";
         protected SqlConnection con;
@@ -48,6 +48,20 @@ namespace ChapooDAL
             occupied = (bool)dr["bezet"];
 
             return occupied;
+        }
+
+        public void EditStatus(int tableNumber, bool status)
+        {
+
+            int state = 1;
+            if(status == true)
+            {
+                state = 1;
+            }
+
+            string query = "UPDATE Tafel Set bezet = " + state + " where tafelnummer = " + tableNumber;
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

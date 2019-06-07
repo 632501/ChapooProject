@@ -21,7 +21,7 @@ namespace ChapooUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ManagementActionForm(inlog));
+            Application.Run(new LoginForm());
         }
     }
 }

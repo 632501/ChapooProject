@@ -42,7 +42,7 @@ namespace ChapooUI
         {
 
             //Inlog_DAO inlog_DAO = new Inlog_DAO();
-            //BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
+            BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
             
             
             for (int i = 0; i < btnList.Length; i++)
@@ -56,18 +56,14 @@ namespace ChapooUI
                     btnList[i].BackColor = Color.Green;
                 }
 
-                //if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Klaar")
-                //{
-                //    btnList[i].BackColor = Color.Yellow;
-                //}
-                //else if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
-                //{
-                //    btnList[i].BackColor = Color.Orange;
-                //}
-                //else if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == " ")
-                //{
-                //    btnList[i].BackColor = Color.Red;
-                //}
+                if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "nietafgeleverd")
+                {
+                    btnList[i].BackColor = Color.Yellow;
+                }else if(table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
+                {
+                    btnList[i].BackColor = Color.Orange;
+                }
+
             }
         }
 

@@ -45,20 +45,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="BestelGerecht_DAO.cs" />
+    <Compile Include="Bon_DAO.cs" />
     <Compile Include="Login_DAO.cs" />
     <Compile Include="Menu_DAO.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tafel_DAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\ChapooDAL.exe.config" />
+    <None Include="obj\Debug\ChapooDAL.csproj.CopyComplete" />
+    <None Include="obj\Debug\ChapooDAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\ChapooDAL.csprojAssemblyReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Release\ChapooDAL.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\ChapooDAL.csprojAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChapooModel\ChapooModel.csproj">
       <Project>{b3470bac-928d-4fd9-9384-2e738dec9c2c}</Project>
       <Name>ChapooModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ChapooDAL.exe" />
+    <Content Include="bin\Debug\ChapooDAL.pdb" />
+    <Content Include="bin\Debug\ChapooModel.exe" />
+    <Content Include="bin\Debug\ChapooModel.pdb" />
+    <Content Include="obj\Debug\ChapooDAL.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ChapooDAL.exe" />
+    <Content Include="obj\Debug\ChapooDAL.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

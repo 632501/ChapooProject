@@ -1,4 +1,6 @@
-﻿using MaterialSkin;
+﻿using ChapooLogica;
+using ChapooModel;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace ChapooUI
     public partial class PaymentForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        Bon_Service bonService = new Bon_Service();
 
         public PaymentForm()
         {
@@ -29,12 +32,33 @@ namespace ChapooUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
+            int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
 
+            Bestelling bestelling = new Bestelling();
+
+            bestelling = bonService.Orders(4); // tafelnummer nog op de goede manier
+
+            materialListViewBestelling.Items.Clear();
+            materialListViewBestelling.View = View.Details;
+
+            foreach(Bestelling b in b)
+            {
+
+            }
+
+            ListViewItem bestellijst = new ListViewItem("Aantal");
+            bestellijst.SubItems.Add("Naam");
+            bestellijst.SubItems.Add("Totaalprijs");
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBetaald_Click(object sender, EventArgs e)
+        {
+            // doorverwijzen naar betaalform
         }
     }
 }

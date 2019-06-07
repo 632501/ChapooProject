@@ -111,8 +111,8 @@ namespace ChapooUI
             if(login.Function(password) == "manager" && login.Login(password) == true)
             {
                 this.Hide();
-                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
-                orderOverview.Show();
+                ManagementActionForm managementOverview = new ManagementActionForm(inlog);
+                managementOverview.Show();
             }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
             {
                 this.Hide();

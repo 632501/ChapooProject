@@ -22,7 +22,7 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void RemoveUser(int wachtwoord)
+        public void RemoveUser(string wachtwoord)
         {
             string query = "DELETE FROM Inlog WHERE wachtwoord = " + wachtwoord + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];

@@ -82,7 +82,7 @@ namespace ChapooDAL
             {
                 for (int p = 0; p < menuItems.Count; i++)
                 {
-                    Orders.orderItems[i].MenuItem.Add(menuItems[p]);
+                    //Orders.orderItems[i].MenuItem.Add(menuItems[p]);
                 }
                 //wortel
             }

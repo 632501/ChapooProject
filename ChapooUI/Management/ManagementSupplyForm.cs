@@ -41,6 +41,8 @@ namespace ChapooUI
         {
             GetMenu();
             DisplayListView(menu);
+
+            HideAllControls();
         }
         private void DisplayListView(List<MenuItem> menu)
         {
@@ -61,7 +63,7 @@ namespace ChapooUI
 
                 ListView_ViewSupply.Items.Add(me);
             }
-            
+
         }
         private void GetMenu()
         {
@@ -71,11 +73,14 @@ namespace ChapooUI
         private void ListView_ViewSupply_SelectedIndexChanged(object sender, EventArgs e)
         {
             MenuItem menuItem = new MenuItem();
-            
+
             if (ListView_ViewSupply.SelectedItems.Count > 0)
             {
                 menuItem = (MenuItem)ListView_ViewSupply.SelectedItems[0].Tag;
             }
+
+            ShowAllControls();
+
             lbl_SelectedName.Text = menuItem.naam;
             txt_SelectedAmount.Text = menuItem.voorraad.ToString();
         }
@@ -97,8 +102,10 @@ namespace ChapooUI
             lbl_SelectedName.Text = "";
             txt_SelectedAmount.Clear();
 
+            HideAllControls();
+
             MessageBox.Show("U heeft de voorraad van het item '" + name + "' veranderd naar " + amount);
-            
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -135,6 +142,32 @@ namespace ChapooUI
         {
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount + 10).ToString();
+        }
+
+        public void HideAllControls()
+        {
+            lbl_SelectedName.Hide();
+            txt_SelectedAmount.Hide();
+            btn_Change.Hide();
+            btn_MinHundred.Hide();
+            btn_MinOne.Hide();
+            btn_MinTen.Hide();
+            btn_PlusHundred.Hide();
+            btn_PlusOne.Hide();
+            btn_PlusTen.Hide();
+        }
+
+        public void ShowAllControls()
+        {
+            lbl_SelectedName.Show();
+            txt_SelectedAmount.Show();
+            btn_Change.Show();
+            btn_MinHundred.Show();
+            btn_MinOne.Show();
+            btn_MinTen.Show();
+            btn_PlusHundred.Show();
+            btn_PlusOne.Show();
+            btn_PlusTen.Show();
         }
     }   
 }

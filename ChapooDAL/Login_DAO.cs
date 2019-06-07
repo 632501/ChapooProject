@@ -17,7 +17,7 @@ namespace ChapooDAL
 
         public void AddUser(int werknemerID, string wachtWoord, string naam, string functie)
         {
-            string query = "INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "')";
+            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "') SET IDENTITY_INSERT Inlog OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -118,23 +118,6 @@ namespace ChapooDAL
             name = (string)dr["naam"];
 
             return name;
-        }
-
-        public string Function(string password)
-        {
-            string function = "";
-            con = new SqlConnection(conn);
-            string query = "select functie from Inlog where wachtwoord = " + password;
-
-
-            con.Open();
-
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-            function = dr["functie"].ToString();
-
-            return function;
         }
     }
 }

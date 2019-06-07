@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base.cs" />
-    <Compile Include="BestelGerecht_DAO.cs" />
     <Compile Include="Login_DAO.cs" />
     <Compile Include="Menu_DAO.cs" />
     <Compile Include="Program.cs" />

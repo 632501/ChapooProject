@@ -37,6 +37,28 @@ namespace ChapooUI
 
         }
 
+        
+
+            if(inlog.functie == "manager" && login_dao.Login(password) == true)
+            {
+                this.Hide();
+                OrderOverviewForm orderOverview = new OrderOverviewForm(//inlog
+                    );
+                orderOverview.Show();
+            }else if(inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
+            {
+                this.Hide();
+                KitchenActionForm kitchenAndBar = new KitchenActionForm(//inlog
+                    );
+                kitchenAndBar.Show();
+            }else if (inlog.functie == "bediening" == login_dao.Login(password) == true)
+            {
+                this.Hide();
+                TableForm tables = new TableForm(inlog);
+                tables.Show();
+            }
+            
+        }
         //zorgen dat de buttons een string invoeren met opklikken
         private void btn_Nr1_Click(object sender, EventArgs e)
         {
@@ -102,37 +124,57 @@ namespace ChapooUI
 
         private void btn_inlog_Click(object sender, EventArgs e)
         {
-            Login_DAO login_dao = new Login_DAO();
-            Inlog login = new Inlog();
+            //Login_DAO login_dao = new Login_DAO();
+            //Inlog inlog = new Inlog();
+            //string password = txt_Password.Text;
 
+
+            //if (inlog.functie == "manager" && login_dao.Login(password) == true)
+            //{
+            //    this.Hide();
+            //    OrderOverviewForm orderOverview = new OrderOverviewForm(//inlog
+            //        );
+            //    orderOverview.Show();
+            //}
+            //else if (inlog.functie == "barman" || inlog.functie == "kok" && login_dao.Login(password) == true)
+            //{
+            //    this.Hide();
+            //    KitchenActionForm kitchenAndBar = new KitchenActionForm(//inlog
+            //        );
+            //    kitchenAndBar.Show();
+            //}
+            //else if (inlog.functie == "bediening" == login_dao.Login(password) == true)
+            //{
+            //    this.Hide();
+            //    TableForm tables = new TableForm(inlog);
+            //    tables.Show();
+            //}
+
+            Login_DAO login = new Login_DAO();
+            Inlog inlog = new Inlog();
             string password = txt_Password.Text;
 
-            if (login_dao.Login(password) == true && login_dao.Function(password) == "manager")
+            if(inlog.functie == "manager" && login.Login(password) == true)
             {
                 this.Hide();
-                ManagementActionForm management = new ManagementActionForm();
-                management.Show();
-            }
-            else if (login_dao.Login(password) == true && login_dao.Function(password) == "barman" || login_dao.Function(password) == "kok")
+                OrderOverviewForm orderOverview = new OrderOverviewForm();
+                orderOverview.Show();
+            }else if(inlog.functie == "barman" || inlog.functie == "kok" && login.Login(password) == true)
             {
                 this.Hide();
-                KitchenActionForm kitchenAndBar = new KitchenActionForm(login);
+                KitchenActionForm kitchenAndBar = new KitchenActionForm();
                 kitchenAndBar.Show();
-            }
-            else if (login_dao.Login(password) == true && login_dao.Function(password) == "Bediening")
+            }else if(inlog.functie == "bediening" && login.Login(password) == true)
             {
                 this.Hide();
-                TableForm table = new TableForm(login);
+                TableForm table = new TableForm(inlog);
                 table.Show();
             }
             else
             {
                 lbl_IncorrectPassword.ForeColor = Color.Red;
                 lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
-                txt_Password.Clear();
             }
-
-            
         }
     }
 }

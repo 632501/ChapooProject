@@ -44,7 +44,7 @@ namespace ChapooDAL
             string queryTip = "UPDATE Bon SET fooi = " + tip + " FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
             ExecuteEditQuery(queryTip, sqlParameters);
 
-            string queryPaymentType = "UPDATE Bon SET fooi = '" + paymentType + "' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string queryPaymentType = "UPDATE Bon SET betaaltype = '" + paymentType + "' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
             ExecuteEditQuery(queryPaymentType, sqlParameters);
 
             string queryComment = "UPDATE Bon SET commentaar = '" + comment + "' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
@@ -53,7 +53,7 @@ namespace ChapooDAL
 
         public Bestelling Orders(int tafel_ID)
         {
-            string query = "SELECT O.aantal, M.naam, M.prijs FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID WHERE B.tafel_ID = 4";
+            string query = "SELECT O.aantal, M.naam, M.prijs, M.btwPercentage FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID WHERE B.tafel_ID = 4";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -72,6 +72,7 @@ namespace ChapooDAL
                 };
                 m.prijs = (int)dr["prijs"];
                 m.naam = (string)dr["naam"];
+                m.btwPercentage = (int)dr["btwPercentage"];
 
                 oI.menuItem = m;
 

@@ -28,26 +28,23 @@ namespace ChapooLogica
 
         public Bestelling Orders(int tafel_ID)
         {
-            Bestelling bestelling = new Bestelling();
-            Dictionary<string, int> bestelijst = new Dictionary<string, int>();
-            int value = 0;
-            int totaalprijs = 0;
+            Bestelling orders = new Bestelling();
+            orders = bon_db.Orders(tafel_ID);
+            
+            Bestelling orderitems = new Bestelling();
+            int count = 1;
 
-            foreach(OrderItem o in bestelling.orderItems)
+            foreach(OrderItem x in orders.orderItems)
             {
-                if (bestelijst.Keys.Contains(o.menuItem.naam))
+                for (int i = count; i < orders.orderItems.Count; i++)
                 {
-                   // bestelijst.Values[bestelijst.Keys.
+
                 }
-                else
-                {
-                    bestelijst.Add(o.menuItem.naam, o.Aantal);
-                }
+                count++;
             }
 
-            bestelling = bon_db.Orders(tafel_ID);
-
-            return bestelling;
+            
+            return orders;
         }
     }
 }

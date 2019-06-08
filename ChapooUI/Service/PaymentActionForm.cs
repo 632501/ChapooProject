@@ -1,5 +1,6 @@
 ﻿using ChapooLogica;
 using ChapooModel;
+using ChapooModel.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -19,9 +20,10 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
 
-        int betaaldbedrag;
+        int amount;
+        int tip;
 
-        public PaymentActionForm(int betaaldbedrag)
+        public PaymentActionForm(int amount, int tip)
         {
             InitializeComponent();
 
@@ -31,18 +33,22 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            this.betaaldbedrag = betaaldbedrag;
+            this.amount = amount;
+            this.tip = tip;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
-            Bestelling bestelling = new Bestelling();
-
-            int amount = bonService.TotalAmount(4);
             int btw = 0;
+            Bestelling order = new Bestelling();
+            order = bonService.Orders(4); // tafelnummer nog op een goede manier
+            
+            foreach(OrderItem o in order.orderItems)
+            {
+                btw += (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
+            }
+            
             int btwAmount = amount + btw;
-            int tip = betaaldbedrag - amount;
             int totalamount = btwAmount + tip;
 
             lblAmount.Text = amount.ToString();

@@ -54,16 +54,29 @@ namespace ChapooUI
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            if (radioBtnCreditcard.Checked)
+            string paymenttype;
+            string comment = txtboxOpmerking.Text;
+            int tip = int.Parse(lblTip.Text);
+            int table = 4; // tafelnummer fixen
+
+            if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
             {
-
+                paymenttype = "Creditcard";
+                bonService.Paid(table, tip, paymenttype, comment);
+                // doorverwijzen naar tafelform
             }
-
-
-            
-            
-
-            // doorverwijzen naar tafelform
+            if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
+            {
+                paymenttype = "Contant";
+                bonService.Paid(table, tip, paymenttype, comment);
+                // doorverwijzen naar tafelform
+            }
+            if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
+            {
+                paymenttype = "Pinpas";
+                bonService.Paid(table, tip, paymenttype, comment);
+                // doorverwijzen naar tafelform
+            }
         }
 
         private void btnTerug_Click(object sender, EventArgs e)

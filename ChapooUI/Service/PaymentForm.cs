@@ -36,20 +36,19 @@ namespace ChapooUI
             int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
             lblTotaalbedrag.Text = "€ " + totalAmount.ToString();
 
-            Bestelling bestelling = new Bestelling();
-
-            bestelling = bonService.Orders(4); // tafelnummer nog op de goede manier
+            Bestelling order = new Bestelling();
+            order = bonService.Orders(4); // tafelnummer nog op de goede manier
 
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            foreach (OrderItem o in bestelling.orderItems)
+            foreach (OrderItem o in order.orderItems)
             {
-                ListViewItem bestellijst = new ListViewItem(o.Aantal.ToString());
-                bestellijst.SubItems.Add(o.menuItem.naam);
-                bestellijst.SubItems.Add(o.menuItem.prijs.ToString());
+                ListViewItem orderlist = new ListViewItem(o.Aantal.ToString());
+                orderlist.SubItems.Add(o.menuItem.naam);
+                orderlist.SubItems.Add(o.menuItem.prijs.ToString());
 
-                materialListViewBestelling.Items.Add(bestellijst);
+                materialListViewBestelling.Items.Add(orderlist);
             }
         }
 
@@ -58,8 +57,6 @@ namespace ChapooUI
             int betaalbedrag = int.Parse(txtboxTotalPayment.Text);
             PaymentActionForm pay = new PaymentActionForm(betaalbedrag);
             pay.ShowDialog();
-
-
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -24,7 +24,6 @@ namespace ChapooDAL
         {
             int tp = 0;
 
-
             foreach (DataRow dr in dataTable.Rows)
             {
                 Bon bon = new Bon
@@ -70,7 +69,6 @@ namespace ChapooDAL
                 OrderItem oI = new OrderItem()
                 {
                     Aantal = (int)dr["aantal"],
-
                 };
                 m.prijs = (int)dr["prijs"];
                 m.naam = (string)dr["naam"];

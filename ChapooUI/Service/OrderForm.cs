@@ -100,6 +100,7 @@ namespace ChapooUI
             foreach (MenuItem m in menuList)
             {
                 ListViewItem li = new ListViewItem(m.naam);
+                
                 if (name == m.naam)
                 {
                     
@@ -109,12 +110,16 @@ namespace ChapooUI
                 }
                 
             }
+
+            int increase = int.Parse(listviewOrder.SelectedItems[0].SubItems[1].Text);
+            increase++;
+            listviewOrder.SelectedItems[0].SubItems[1].Text = increase.ToString();
         }
         
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
-
+            //listviewOrder.SelectedItems();
         }
 
         private void btnAddOrder_Click(object sender, EventArgs e)

@@ -31,7 +31,8 @@ namespace ChapooDAL
                     naam = (String)(dr["naam"].ToString()),
                     prijs = (int)dr["prijs"],
                     categorie = (String)(dr["categorie"].ToString()),
-                    voorraad = (int)dr["vorraad"]
+                    voorraad = (int)dr["vorraad"],
+                    btwPercentage = (int)dr["btwPercentage"]
 
                 };
                 menu.Add(menuItem);

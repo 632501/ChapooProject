@@ -17,14 +17,14 @@ namespace ChapooDAL
 
         public void AddUser(int werknemerID, string wachtWoord, string naam, string functie)
         {
-            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "') SET IDENTITY_INSERT Inlog OFF";
+            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie, status) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "', 'werkend') SET IDENTITY_INSERT Inlog OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void RemoveUser(string wachtwoord)
+        public void FireEmployee(int ID)
         {
-            string query = "DELETE FROM Inlog WHERE wachtwoord = " + wachtwoord + "";
+            string query = "UPDATE Inlog SET [status] = 'inactief' WHERE werknemer_ID = "+ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -56,28 +56,24 @@ namespace ChapooDAL
 
         }
 
-        public List<Inlog> Employee(string password)
+        public Inlog GetEmployee(int ID)
         {
-            List<Inlog> Employees = new List<Inlog>();
-            con = new SqlConnection(conn);
-            string query = "Select * From Inlog Where wachtwoord = '" + password + "'";
+            string query = "Select * From Inlog Where werknemer_ID = '" +ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            //ExecuteSelectQuery(query, sqlParameters);
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
 
-            if (Login(password) == true)
+            DataRow dr = dataTable.Rows[0];
+
+            Inlog Employee = new Inlog()
             {
-                con.Open();
-                Inlog employee = new Inlog();
+                werknemer_ID = (int) dr["werknemer_ID"],
+                wachtwoord = (string) dr["wachtwoord"],
+                naam = (string) dr["naam"],
+                functie = (string) dr["functie"],
+                status = (string) dr["status"]
+            };
 
-                SqlCommand command = new SqlCommand(query, con);
-                SqlDataReader dr = command.ExecuteReader();
-                dr.Read();
-                employee.functie = dr["functie"].ToString();
-                employee.naam = dr["naam"].ToString();
-                employee.wachtwoord = dr["wachtwoord"].ToString();
-                Employees.Add(employee);
-            }
-            return Employees;
+            return Employee;
         }
 
         public string Name(string password)
@@ -132,7 +128,8 @@ namespace ChapooDAL
                     werknemer_ID = (int)dr["werknemer_ID"],
                     naam = (String)(dr["naam"]),
                     wachtwoord = (string)dr["wachtwoord"],
-                    functie = (String)(dr["functie"])
+                    functie = (String)(dr["functie"]),
+                    status = (string)(dr["status"])
 
                 };
                 EmployeeList.Add(Employee);
@@ -146,5 +143,15 @@ namespace ChapooDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
+
+        public void AlterStatusEmployee(int ID)
+        {
+            string query = "UPDATE Inlog SET [status] = 'werkend' WHERE werknemer_ID = " + ID;
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+
+
     }
 }

@@ -59,7 +59,6 @@
             this.ListView_ViewMenu.Depth = 0;
             this.ListView_ViewMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.ListView_ViewMenu.FullRowSelect = true;
-            this.ListView_ViewMenu.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.ListView_ViewMenu.Location = new System.Drawing.Point(12, 142);
             this.ListView_ViewMenu.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ListView_ViewMenu.MouseState = MaterialSkin.MouseState.OUT;

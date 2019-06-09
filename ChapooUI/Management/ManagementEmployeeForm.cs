@@ -57,12 +57,15 @@ namespace ChapooUI
             }
             else
             {
+                if (ListView_Employee.SelectedItems.Count > 0)
+                {
                     werknemer = (Inlog)ListView_Employee.SelectedItems[0].Tag;
 
                     txt_ID.Text = werknemer.werknemer_ID.ToString();
                     txt_Name.Text = werknemer.naam;
                     txt_Function.Text = werknemer.functie;
                     txt_Password.Text = werknemer.wachtwoord;
+                }
               
             }
         }
@@ -97,7 +100,7 @@ namespace ChapooUI
             string password = txt_Password.Text;
             string function = txt_Function.Text;
 
-            inlogService.RemoveUser(password);
+            inlogService.FireEmployee(ID);
 
             GetEmployeeList();
             DisplayListView(employeeList);

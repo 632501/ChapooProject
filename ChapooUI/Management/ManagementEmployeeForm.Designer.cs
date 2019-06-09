@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.ListView_Employee = new MaterialSkin.Controls.MaterialListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EmployeeName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Function = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_Back = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.txt_ID = new System.Windows.Forms.TextBox();
@@ -39,10 +43,6 @@
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.txt_Function = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
-            this.Function = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.EmployeeName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_Remove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -68,6 +68,26 @@
             this.ListView_Employee.UseCompatibleStateImageBehavior = false;
             this.ListView_Employee.View = System.Windows.Forms.View.Details;
             this.ListView_Employee.SelectedIndexChanged += new System.EventHandler(this.ListView_Employee_SelectedIndexChanged);
+            // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 100;
+            // 
+            // EmployeeName
+            // 
+            this.EmployeeName.Text = "Naam";
+            this.EmployeeName.Width = 500;
+            // 
+            // Password
+            // 
+            this.Password.Text = "Wachtwoord";
+            this.Password.Width = 150;
+            // 
+            // Function
+            // 
+            this.Function.Text = "Functie";
+            this.Function.Width = 150;
             // 
             // btn_Back
             // 
@@ -172,33 +192,13 @@
             this.btn_Change.UseVisualStyleBackColor = true;
             this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
             // 
-            // Function
-            // 
-            this.Function.Text = "Functie";
-            this.Function.Width = 150;
-            // 
-            // EmployeeName
-            // 
-            this.EmployeeName.Text = "Naam";
-            this.EmployeeName.Width = 500;
-            // 
-            // Password
-            // 
-            this.Password.Text = "Wachtwoord";
-            this.Password.Width = 150;
-            // 
-            // ID
-            // 
-            this.ID.Text = "ID";
-            this.ID.Width = 100;
-            // 
             // btn_Remove
             // 
             this.btn_Remove.Location = new System.Drawing.Point(661, 663);
             this.btn_Remove.Name = "btn_Remove";
             this.btn_Remove.Size = new System.Drawing.Size(265, 61);
             this.btn_Remove.TabIndex = 14;
-            this.btn_Remove.Text = "Verwijder";
+            this.btn_Remove.Text = "Ontsla";
             this.btn_Remove.UseVisualStyleBackColor = true;
             this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 

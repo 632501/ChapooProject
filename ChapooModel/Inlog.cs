@@ -18,5 +18,6 @@ namespace ChapooModel
         public string naam { get; set; }
         public string wachtwoord { get; set; }
         public string functie { get; set; }
+        public string status { get; set; }
     }
 }

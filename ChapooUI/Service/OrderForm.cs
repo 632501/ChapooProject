@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ChapooLogica;
 using ChapooModel;
 using MenuItem = ChapooModel.MenuItem;
+using ChapooModel.Models;
 
 namespace ChapooUI
 {
@@ -20,6 +21,7 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         private string sort;
         private List<MenuItem> menuList;
+        Menu_Service menuService = new Menu_Service();
 
         public OrderForm(string sort)
         {
@@ -112,9 +114,22 @@ namespace ChapooUI
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
+            OrderItem o;
+            MenuItem m = new MenuItem();
+            int i = 0;
             foreach (ListViewItem li in listviewMenu.Items)
             {
-                
+                m.naam = li.SubItems[0].ToString();
+                i = int.Parse(li.SubItems[1].ToString());
+                if (i != 0)
+                {
+                    m = menuService.GetItem(m.naam);
+                    o = new OrderItem();
+                    o.menuItem = m;
+                    o.Aantal = i;
+                    o.Status = "bezig";
+
+                }
             }
         }
     }

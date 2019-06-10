@@ -59,5 +59,13 @@ namespace ChapooLogica
         {
             menu_db.RemoveItem(ID);
         }
+
+        public MenuItem GetItem(string naam)
+        {
+            MenuItem m = new MenuItem();
+            m = menu_db.GetSingleItem(naam);
+
+            return m;
+        }
     }
 }

@@ -56,9 +56,8 @@ namespace ChapooUI
 
         private void btnActionBekijken_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            //OrderOverviewForm orderOverviewForm = new OrderOverviewForm();
-            //orderOverviewForm.Show();
+            PaymentForm form = new PaymentForm();
+            form.ShowDialog();
         }
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
@@ -72,6 +71,13 @@ namespace ChapooUI
             bestelling = bestellingService.GetLatestOrder();
 
             MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
+        }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            TableForm form = new TableForm(werknemer);
+            this.Close();
+            form.ShowDialog();
         }
     }
 }

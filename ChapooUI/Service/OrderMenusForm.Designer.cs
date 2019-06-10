@@ -34,6 +34,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.mlblHuidigeBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
+            this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // btnDrinks
@@ -100,9 +101,27 @@
             this.lbl_Table.Size = new System.Drawing.Size(0, 46);
             this.lbl_Table.TabIndex = 5;
             // 
+            // btn_Terug
+            // 
+            this.btn_Terug.AutoSize = true;
+            this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_Terug.Depth = 0;
+            this.btn_Terug.Icon = null;
+            this.btn_Terug.Location = new System.Drawing.Point(244, 25);
+            this.btn_Terug.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_Terug.Name = "btn_Terug";
+            this.btn_Terug.Primary = false;
+            this.btn_Terug.Size = new System.Drawing.Size(135, 36);
+            this.btn_Terug.TabIndex = 6;
+            this.btn_Terug.Text = "Terug";
+            this.btn_Terug.UseVisualStyleBackColor = true;
+            this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
+            // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(417, 691);
+            this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Table);
             this.Controls.Add(this.mlblHuidigeBestelling);
             this.Controls.Add(this.btnAdd);
@@ -127,5 +146,6 @@
         private System.Windows.Forms.Button btnAdd;
         private MaterialSkin.Controls.MaterialLabel mlblHuidigeBestelling;
         private MaterialSkin.Controls.MaterialLabel lbl_Table;
+        private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
     }
 }

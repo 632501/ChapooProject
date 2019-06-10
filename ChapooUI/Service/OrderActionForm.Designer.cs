@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.btnActionOpnemen = new System.Windows.Forms.Button();
-            this.btnActionBekijken = new System.Windows.Forms.Button();
+            this.btn_Afronden = new System.Windows.Forms.Button();
             this.btn_NewOrder = new System.Windows.Forms.Button();
             this.lbl_Name = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Tafel = new MaterialSkin.Controls.MaterialLabel();
+            this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // btnActionOpnemen
@@ -46,16 +47,16 @@
             this.btnActionOpnemen.UseVisualStyleBackColor = true;
             this.btnActionOpnemen.Click += new System.EventHandler(this.btnActionOpnemen_Click);
             // 
-            // btnActionBekijken
+            // btn_Afronden
             // 
-            this.btnActionBekijken.Location = new System.Drawing.Point(108, 397);
-            this.btnActionBekijken.Margin = new System.Windows.Forms.Padding(6);
-            this.btnActionBekijken.Name = "btnActionBekijken";
-            this.btnActionBekijken.Size = new System.Drawing.Size(532, 229);
-            this.btnActionBekijken.TabIndex = 1;
-            this.btnActionBekijken.Text = "Bekijken en\r\nAanpassen\r\n";
-            this.btnActionBekijken.UseVisualStyleBackColor = true;
-            this.btnActionBekijken.Click += new System.EventHandler(this.btnActionBekijken_Click);
+            this.btn_Afronden.Location = new System.Drawing.Point(108, 397);
+            this.btn_Afronden.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_Afronden.Name = "btn_Afronden";
+            this.btn_Afronden.Size = new System.Drawing.Size(532, 229);
+            this.btn_Afronden.TabIndex = 1;
+            this.btn_Afronden.Text = "Afronden";
+            this.btn_Afronden.UseVisualStyleBackColor = true;
+            this.btn_Afronden.Click += new System.EventHandler(this.btnActionBekijken_Click);
             // 
             // btn_NewOrder
             // 
@@ -91,15 +92,33 @@
             this.lbl_Tafel.Size = new System.Drawing.Size(0, 46);
             this.lbl_Tafel.TabIndex = 4;
             // 
+            // btn_Terug
+            // 
+            this.btn_Terug.AutoSize = true;
+            this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_Terug.Depth = 0;
+            this.btn_Terug.Icon = null;
+            this.btn_Terug.Location = new System.Drawing.Point(295, 29);
+            this.btn_Terug.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_Terug.Name = "btn_Terug";
+            this.btn_Terug.Primary = false;
+            this.btn_Terug.Size = new System.Drawing.Size(456, 36);
+            this.btn_Terug.TabIndex = 5;
+            this.btn_Terug.Text = "Terug naar tafel keuze";
+            this.btn_Terug.UseVisualStyleBackColor = true;
+            this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
+            // 
             // OrderActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 1097);
+            this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Tafel);
             this.Controls.Add(this.lbl_Name);
             this.Controls.Add(this.btn_NewOrder);
-            this.Controls.Add(this.btnActionBekijken);
+            this.Controls.Add(this.btn_Afronden);
             this.Controls.Add(this.btnActionOpnemen);
             this.Margin = new System.Windows.Forms.Padding(8);
             this.MaximizeBox = false;
@@ -116,9 +135,10 @@
         #endregion
 
         private System.Windows.Forms.Button btnActionOpnemen;
-        private System.Windows.Forms.Button btnActionBekijken;
+        private System.Windows.Forms.Button btn_Afronden;
         private System.Windows.Forms.Button btn_NewOrder;
         private MaterialSkin.Controls.MaterialLabel lbl_Name;
         private MaterialSkin.Controls.MaterialLabel lbl_Tafel;
+        private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
     }
 }

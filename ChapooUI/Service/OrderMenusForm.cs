@@ -92,5 +92,13 @@ namespace ChapooUI
             //dinerForm.GetOrder("Diner");
             dinerForm.Show();
         }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            Inlog werknemer = new Inlog();
+            OrderActionForm form = new OrderActionForm(werknemer, tafelNummer);
+            this.Close();
+            form.ShowDialog();
+        }
     }
 }

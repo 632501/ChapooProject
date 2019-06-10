@@ -108,12 +108,12 @@ namespace ChapooUI
             Inlog inlog = new Inlog();
             string password = txt_Password.Text;
 
-            if(login.Function(password) == "manager" && login.Login(password) == true)
+            if(login.Function(password) == "Manager" && login.Login(password) == true)
             {
                 this.Hide();
                 ManagementActionForm managementOverview = new ManagementActionForm(inlog);
                 managementOverview.Show();
-            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
+            }else if(login.Function(password) == "Barman" || login.Function(password) == "kok" && login.Login(password) == true)
             {
                 this.Hide();
                 KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);

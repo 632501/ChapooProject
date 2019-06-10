@@ -90,7 +90,7 @@ namespace ChapooDAL
 
         public MenuItem GetSingleItem(string naam)
         {
-            string query = "SELECT * FROM Menu WHERE naam = " + naam;
+            string query = "SELECT * FROM Menu WHERE naam = '" + naam+ "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
 

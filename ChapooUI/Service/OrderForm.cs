@@ -126,8 +126,10 @@ namespace ChapooUI
             int i = 0;
             foreach (ListViewItem li in listviewMenu.Items)
             {
-                m.naam = li.SubItems[0].ToString();
-                i = int.Parse(li.SubItems[1].ToString());
+                m.naam = li.SubItems[0].Text;
+                string a = "";
+                a = li.SubItems[1].Text;
+                i = int.Parse(a);
                 if (i != 0)
                 {
                     m = menuService.GetItem(m.naam);
@@ -138,6 +140,14 @@ namespace ChapooUI
                     bestelling.orderItems.Add(o);
                 }
             }
+            this.Close();
+        }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            OrderMenusForm form = new OrderMenusForm(tafelNummer, bestelling);
+            this.Close();
+            form.ShowDialog();
         }
     }
 }

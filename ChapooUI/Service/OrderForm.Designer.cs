@@ -35,6 +35,7 @@
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.mlblMenu = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
+            this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // listviewMenu
@@ -120,11 +121,29 @@
             this.lbl_Table.Size = new System.Drawing.Size(0, 46);
             this.lbl_Table.TabIndex = 8;
             // 
+            // btn_Terug
+            // 
+            this.btn_Terug.AutoSize = true;
+            this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_Terug.Depth = 0;
+            this.btn_Terug.Icon = null;
+            this.btn_Terug.Location = new System.Drawing.Point(285, 23);
+            this.btn_Terug.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_Terug.Name = "btn_Terug";
+            this.btn_Terug.Primary = false;
+            this.btn_Terug.Size = new System.Drawing.Size(452, 36);
+            this.btn_Terug.TabIndex = 9;
+            this.btn_Terug.Text = "Terug naar menu keuze";
+            this.btn_Terug.UseVisualStyleBackColor = true;
+            this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 1097);
+            this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Table);
             this.Controls.Add(this.mlblMenu);
             this.Controls.Add(this.btnAddOrder);
@@ -153,5 +172,6 @@
         private System.Windows.Forms.Button btnAddOrder;
         private MaterialSkin.Controls.MaterialLabel mlblMenu;
         private MaterialSkin.Controls.MaterialLabel lbl_Table;
+        private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
     }
 }

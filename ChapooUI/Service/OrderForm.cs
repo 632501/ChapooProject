@@ -35,7 +35,6 @@ namespace ChapooUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             GetMenus();
-            GetOrder();
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +44,7 @@ namespace ChapooUI
         
         public void GetMenus()
         {
+            int aantal = 0;
             menuList = new List<MenuItem>();
 
             listviewMenu.Items.Clear();
@@ -73,53 +73,49 @@ namespace ChapooUI
             foreach (MenuItem m in menuList)
             {
                 ListViewItem li = new ListViewItem(m.naam);
+                li.SubItems.Add(aantal.ToString());
                 li.Tag = m;
                 listviewMenu.Items.Add(li);
 
             }
             listviewMenu.View = View.Details;
             listviewMenu.Columns.Add("Naam");
-
-
-
+            listviewMenu.Columns.Add("Aantal");
         }
 
         public void GetOrder()
         {
-            listviewOrder.Clear();
-
-            listviewOrder.View = View.Details;
-            listviewOrder.Columns.Add("Naam");
-            listviewOrder.Columns.Add("Aantal");
+            //yikes
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            string name = listviewMenu.SelectedItems[0].Text;
-            int aantal = 0;
-            foreach (MenuItem m in menuList)
-            {
-                ListViewItem li = new ListViewItem(m.naam);
-                if (name == m.naam)
-                {
-                    
-                        li.SubItems.Add(aantal.ToString());
-                        listviewOrder.Items.Add(li);
-                    
-                }
-                
-            }
+            int aantal = int.Parse(listviewMenu.SelectedItems[0].SubItems[1].Text);
+            aantal++;
+            listviewMenu.SelectedItems[0].SubItems[1].Text = aantal.ToString();
+
         }
         
 
         private void btnRemoveItem_Click(object sender, EventArgs e)
         {
-
+            int aantal = int.Parse(listviewMenu.SelectedItems[0].SubItems[1].Text);
+            if (aantal == 0)
+            {
+                return;
+            } else
+            {
+                aantal--;
+            }
+            listviewMenu.SelectedItems[0].SubItems[1].Text = aantal.ToString();
         }
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            
+            foreach (ListViewItem li in listviewMenu.Items)
+            {
+                
+            }
         }
     }
 }

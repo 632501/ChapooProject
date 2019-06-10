@@ -66,16 +66,16 @@ namespace ChapooUI
                     txt_Function.Text = werknemer.functie;
                     txt_Password.Text = werknemer.wachtwoord;
                 }
+              
             }
-            
         }
 
         private void btn_Change_Click(object sender, EventArgs e)
         {
-            string function = txt_Function.Text;
-            string name = txt_Name.Text;
             int ID = int.Parse(txt_ID.Text);
+            string name = txt_Name.Text;
             string password = txt_Password.Text;
+            string function = txt_Function.Text;
 
             if (ListView_Employee.Items[0].Selected)
             {
@@ -91,6 +91,48 @@ namespace ChapooUI
 
             HideAllControlls();
             ClearAllTextFields();
+        }
+
+        private void btn_Remove_Click(object sender, EventArgs e)
+        {
+            int ID = int.Parse(txt_ID.Text);
+            string name = txt_Name.Text;
+            string password = txt_Password.Text;
+            string function = txt_Function.Text;
+
+            inlogService.FireEmployee(ID);
+
+            GetEmployeeList();
+            DisplayListView(employeeList);
+
+            HideAllControlls();
+            ClearAllTextFields();
+        }
+
+        private void txt_ID_TextChanged(object sender, EventArgs e)
+        {
+            if (ListView_Employee.Items[0].Selected)
+            {
+                foreach (char ch in txt_ID.Text)
+                {
+                    if (!Char.IsNumber(ch))
+                    {
+                        MessageBox.Show("U kunt hier alleen een cijfer invoeren...");
+                        txt_ID.Text = "";
+                    }
+                }
+            }
+            else
+            {
+                Inlog employee = new Inlog();
+
+                if (ListView_Employee.SelectedItems.Count > 0)
+                {
+                    employee = (Inlog)ListView_Employee.SelectedItems[0].Tag;
+                }
+
+                txt_ID.Text = employee.werknemer_ID.ToString();
+            }
         }
 
 
@@ -110,14 +152,13 @@ namespace ChapooUI
             {
 
                 ListViewItem em = new ListViewItem(werknemer.werknemer_ID.ToString());
-                em.SubItems.Add(werknemer.wachtwoord);
                 em.SubItems.Add(werknemer.naam);
+                em.SubItems.Add(werknemer.wachtwoord);
                 em.SubItems.Add(werknemer.functie);
                 em.Tag = werknemer;
 
                 ListView_Employee.Items.Add(em);
             }
-
         }
 
         private void GetEmployeeList()
@@ -136,6 +177,7 @@ namespace ChapooUI
             lbl_Name.Hide();
             lbl_Password.Hide();
             btn_Change.Hide();
+            btn_Remove.Hide();
         }
 
         private void ShowAllControlls()
@@ -149,6 +191,7 @@ namespace ChapooUI
             lbl_Name.Show();
             lbl_Password.Show();
             btn_Change.Show();
+            btn_Remove.Show();
         }
 
         private void ClearAllTextFields()

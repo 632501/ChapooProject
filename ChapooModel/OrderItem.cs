@@ -8,12 +8,10 @@ namespace ChapooModel.Models
 {
     public class OrderItem
     {
-        public List<MenuItem> MenuItem { get; set; }
+        public MenuItem menuItem { get; set; }
         public int Aantal { get; set; }
-        public int Menu_ID { get; set; }
         public string Comment { get; set; }
         public string Status { get; set; }
         
-        public int Totaalprijs { get; set; }
     }
 }

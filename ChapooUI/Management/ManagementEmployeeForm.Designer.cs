@@ -30,8 +30,8 @@
         {
             this.ListView_Employee = new MaterialSkin.Controls.MaterialListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EmployeeName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Password = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Function = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_Back = new MaterialSkin.Controls.MaterialRaisedButton();
             this.lbl_ID = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.txt_Function = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
+            this.btn_Remove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListView_Employee
@@ -50,8 +51,8 @@
             this.ListView_Employee.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ListView_Employee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
-            this.Password,
             this.EmployeeName,
+            this.Password,
             this.Function});
             this.ListView_Employee.Depth = 0;
             this.ListView_Employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
@@ -71,22 +72,22 @@
             // ID
             // 
             this.ID.Text = "ID";
-            this.ID.Width = 50;
-            // 
-            // Password
-            // 
-            this.Password.Text = "Wachtwoord";
-            this.Password.Width = 200;
+            this.ID.Width = 100;
             // 
             // EmployeeName
             // 
             this.EmployeeName.Text = "Naam";
-            this.EmployeeName.Width = 400;
+            this.EmployeeName.Width = 500;
+            // 
+            // Password
+            // 
+            this.Password.Text = "Wachtwoord";
+            this.Password.Width = 150;
             // 
             // Function
             // 
             this.Function.Text = "Functie";
-            this.Function.Width = 250;
+            this.Function.Width = 150;
             // 
             // btn_Back
             // 
@@ -122,6 +123,7 @@
             this.txt_ID.Name = "txt_ID";
             this.txt_ID.Size = new System.Drawing.Size(81, 31);
             this.txt_ID.TabIndex = 6;
+            this.txt_ID.TextChanged += new System.EventHandler(this.txt_ID_TextChanged);
             // 
             // lbl_Function
             // 
@@ -184,11 +186,21 @@
             // 
             this.btn_Change.Location = new System.Drawing.Point(660, 486);
             this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(265, 205);
+            this.btn_Change.Size = new System.Drawing.Size(265, 161);
             this.btn_Change.TabIndex = 13;
             this.btn_Change.Text = "Pas toe";
             this.btn_Change.UseVisualStyleBackColor = true;
             this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
+            // 
+            // btn_Remove
+            // 
+            this.btn_Remove.Location = new System.Drawing.Point(661, 663);
+            this.btn_Remove.Name = "btn_Remove";
+            this.btn_Remove.Size = new System.Drawing.Size(265, 61);
+            this.btn_Remove.TabIndex = 14;
+            this.btn_Remove.Text = "Ontsla";
+            this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
             // ManagementEmployeeForm
             // 
@@ -196,6 +208,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_Remove);
             this.Controls.Add(this.btn_Change);
             this.Controls.Add(this.txt_Function);
             this.Controls.Add(this.txt_Password);
@@ -222,10 +235,6 @@
 
         private MaterialSkin.Controls.MaterialListView ListView_Employee;
         private MaterialSkin.Controls.MaterialRaisedButton btn_Back;
-        private System.Windows.Forms.ColumnHeader ID;
-        private System.Windows.Forms.ColumnHeader Password;
-        private System.Windows.Forms.ColumnHeader EmployeeName;
-        private System.Windows.Forms.ColumnHeader Function;
         private System.Windows.Forms.Label lbl_ID;
         private System.Windows.Forms.TextBox txt_ID;
         private System.Windows.Forms.Label lbl_Function;
@@ -235,5 +244,10 @@
         private System.Windows.Forms.TextBox txt_Password;
         private System.Windows.Forms.TextBox txt_Function;
         private System.Windows.Forms.Button btn_Change;
+        private System.Windows.Forms.ColumnHeader Function;
+        private System.Windows.Forms.ColumnHeader EmployeeName;
+        private System.Windows.Forms.ColumnHeader Password;
+        private System.Windows.Forms.ColumnHeader ID;
+        private System.Windows.Forms.Button btn_Remove;
     }
 }

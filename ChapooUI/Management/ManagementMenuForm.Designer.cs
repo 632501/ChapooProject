@@ -45,6 +45,7 @@
             this.btn_Change = new System.Windows.Forms.Button();
             this.lbl_Supply = new System.Windows.Forms.Label();
             this.txt_Supply = new System.Windows.Forms.TextBox();
+            this.btn_Remove = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListView_ViewMenu
@@ -58,7 +59,6 @@
             this.ListView_ViewMenu.Depth = 0;
             this.ListView_ViewMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.ListView_ViewMenu.FullRowSelect = true;
-            this.ListView_ViewMenu.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.ListView_ViewMenu.Location = new System.Drawing.Point(12, 142);
             this.ListView_ViewMenu.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ListView_ViewMenu.MouseState = MaterialSkin.MouseState.OUT;
@@ -130,6 +130,7 @@
             this.txt_ItemPrijs.Name = "txt_ItemPrijs";
             this.txt_ItemPrijs.Size = new System.Drawing.Size(74, 31);
             this.txt_ItemPrijs.TabIndex = 4;
+            this.txt_ItemPrijs.TextChanged += new System.EventHandler(this.txt_ItemPrijs_TextChanged);
             // 
             // txt_ItemCategorie
             // 
@@ -171,7 +172,6 @@
             this.lbl_Prijs.Size = new System.Drawing.Size(104, 25);
             this.lbl_Prijs.TabIndex = 8;
             this.lbl_Prijs.Text = "Item prijs:";
-            this.lbl_Prijs.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbl_Category
             // 
@@ -188,7 +188,7 @@
             // 
             this.btn_Change.Location = new System.Drawing.Point(713, 492);
             this.btn_Change.Name = "btn_Change";
-            this.btn_Change.Size = new System.Drawing.Size(212, 183);
+            this.btn_Change.Size = new System.Drawing.Size(212, 157);
             this.btn_Change.TabIndex = 10;
             this.btn_Change.Text = "Pas toe";
             this.btn_Change.UseVisualStyleBackColor = true;
@@ -212,6 +212,17 @@
             this.txt_Supply.Name = "txt_Supply";
             this.txt_Supply.Size = new System.Drawing.Size(74, 31);
             this.txt_Supply.TabIndex = 12;
+            this.txt_Supply.TextChanged += new System.EventHandler(this.txt_Supply_TextChanged);
+            // 
+            // btn_Remove
+            // 
+            this.btn_Remove.Location = new System.Drawing.Point(713, 667);
+            this.btn_Remove.Name = "btn_Remove";
+            this.btn_Remove.Size = new System.Drawing.Size(212, 57);
+            this.btn_Remove.TabIndex = 13;
+            this.btn_Remove.Text = "Verwijder";
+            this.btn_Remove.UseVisualStyleBackColor = true;
+            this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
             // ManagementMenuForm
             // 
@@ -219,6 +230,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_Remove);
             this.Controls.Add(this.txt_Supply);
             this.Controls.Add(this.lbl_Supply);
             this.Controls.Add(this.btn_Change);
@@ -262,5 +274,6 @@
         private System.Windows.Forms.Button btn_Change;
         private System.Windows.Forms.Label lbl_Supply;
         private System.Windows.Forms.TextBox txt_Supply;
+        private System.Windows.Forms.Button btn_Remove;
     }
 }

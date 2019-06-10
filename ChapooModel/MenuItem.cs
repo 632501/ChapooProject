@@ -19,5 +19,6 @@ namespace ChapooModel
         public int prijs { get; set; }
         public string categorie { get; set; }
         public int voorraad { get; set; }
+        public int btwPercentage { get; set; }
     }
 }

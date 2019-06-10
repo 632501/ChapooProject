@@ -81,6 +81,7 @@
             this.btn_LogOut.TabIndex = 3;
             this.btn_LogOut.Text = "Log uit";
             this.btn_LogOut.UseVisualStyleBackColor = true;
+            this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
             // 
             // lbl_name
             // 

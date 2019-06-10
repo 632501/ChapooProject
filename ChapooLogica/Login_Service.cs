@@ -11,25 +11,47 @@ namespace ChapooLogica
     public class Login_Service
     {
         Login_DAO inlog_db = new Login_DAO();
-
+        List<Inlog> employeeList;
 
         public List<Inlog> GetEmployeeList()
         {
-            List<Inlog> employeeList = new List<Inlog>();
+            employeeList = new List<Inlog>();
+            List<Inlog> aangepasteLijst = new List<Inlog>();
 
+            aangepasteLijst = inlog_db.GetEmployeeList();
             employeeList = inlog_db.GetEmployeeList();
 
-            return employeeList;
+            for(int i = aangepasteLijst.Count - 1; i >= 0; i--)
+            {
+                if(aangepasteLijst[i].status == "inactief")
+                {
+                    aangepasteLijst.Remove(aangepasteLijst[i]);
+                }
+            }
+            return aangepasteLijst;
         }
 
         public void AddEmployee(int ID, string name, string password, string function)
         {
+            foreach(Inlog employee in employeeList)
+            {
+                if (employee.werknemer_ID == ID)
+                {
+                    inlog_db.AlterStatusEmployee(ID);
+                    return;
+                }
+            }
             inlog_db.AddUser(ID, password, name, function); 
         }
 
         public void ChangeEmployee(int ID, string name, string password, string function)
         {
             inlog_db.ChangeUser(ID, password, name, function);
+        }
+
+        public void FireEmployee(int ID)
+        {
+            inlog_db.FireEmployee(ID);
         }
     }
 }

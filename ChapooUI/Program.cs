@@ -17,11 +17,11 @@ namespace ChapooUI
         {
             Inlog inlog = new Inlog();
 
-            inlog.naam = "Rom Dekker";
+           
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new PaymentForm());
         }
     }
 }

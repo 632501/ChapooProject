@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using ChapooDAL;
 using ChapooModel;
+using ChapooModel.Models;
 
 namespace ChapooLogica
 {
@@ -27,11 +28,23 @@ namespace ChapooLogica
 
         public Bestelling Orders(int tafel_ID)
         {
-            Bestelling bestelling = new Bestelling();
+            Bestelling orders = new Bestelling();
+            orders = bon_db.Orders(tafel_ID);
+            
+            Bestelling orderitems = new Bestelling();
+            int count = 1;
 
-            bestelling = bon_db.Orders(tafel_ID);
+            foreach(OrderItem x in orders.orderItems)
+            {
+                for (int i = count; i < orders.orderItems.Count; i++)
+                {
 
-            return bestelling;
+                }
+                count++;
+            }
+
+            
+            return orders;
         }
     }
 }

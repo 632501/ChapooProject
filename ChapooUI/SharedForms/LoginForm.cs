@@ -113,7 +113,7 @@ namespace ChapooUI
                 this.Hide();
                 OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
                 orderOverview.Show();
-            }else if(login.Function(password) == "barman" || login.Function(password) == "Barman" || login.Function(password) == "kok" || login.Function(password) == "kok" && login.Login(password) == true)
+            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
             {
                 this.Hide();
                 KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);

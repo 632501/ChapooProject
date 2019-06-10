@@ -1,5 +1,6 @@
 ﻿using ChapooLogica;
 using ChapooModel;
+using ChapooModel.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
@@ -18,6 +19,7 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
+        int btw; 
 
         public PaymentForm()
         {
@@ -32,33 +34,50 @@ namespace ChapooUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            int totalAmount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
+            btw = 0;
+            int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
 
-            Bestelling bestelling = new Bestelling();
+            Bestelling order = new Bestelling();
+            order = bonService.Orders(4); // tafelnummer nog op de goede manier
+            
+            foreach (OrderItem o in order.orderItems)
+            {
+                btw += (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
+            }
 
-            bestelling = bonService.Orders(4); // tafelnummer nog op de goede manier
+            amount += btw;
+            lblTotaalbedrag.Text = "€ " + amount.ToString();
 
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            //foreach(Bestelling b in b)
-            //{
+            foreach(Bestelling b in b)
+            {
 
-            //}
+            }
 
-            ListViewItem bestellijst = new ListViewItem("Aantal");
-            bestellijst.SubItems.Add("Naam");
-            bestellijst.SubItems.Add("Totaalprijs");
+        private void btnBetaald_Click(object sender, EventArgs e)
+        {
+            int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier 
+            int totalPayment = 0;
+
+            if (txtboxTotalPayment.Text == "")
+            {
+                totalPayment = amount + btw;
+            }
+            else
+            {
+                totalPayment = int.Parse(txtboxTotalPayment.Text);
+            }
+
+            int tip = totalPayment - amount - btw;
+            PaymentActionForm pay = new PaymentActionForm(amount, tip, btw);
+            pay.ShowDialog();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnBetaald_Click(object sender, EventArgs e)
-        {
-            // doorverwijzen naar betaalform
         }
     }
 }

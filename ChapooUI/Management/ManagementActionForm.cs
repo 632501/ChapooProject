@@ -52,5 +52,14 @@ namespace ChapooUI
         {
             lbl_name.Text = inlog.naam;
         }
+
+        private void btn_LogOut_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginForm form = new LoginForm();
+            form.ShowDialog();
+
+            
+        }
     }
 }

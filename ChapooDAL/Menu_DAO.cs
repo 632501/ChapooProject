@@ -31,7 +31,7 @@ namespace ChapooDAL
                     naam = (String)(dr["naam"].ToString()),
                     prijs = (int)dr["prijs"],
                     categorie = (String)(dr["categorie"].ToString()),
-                    voorraad = (int)dr["vorraad"]
+                    voorraad = (int)dr["voorraad"]
 
                 };
                 menu.Add(menuItem);
@@ -41,28 +41,28 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, vorraad FROM [Menu]";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, vorraad FROM [Menu]";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie, vorraad FROM [Menu] ";
+            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public void ChangeSupply(string name, int amount)
         {
-            string query = "Update Menu set vorraad = " + amount + " where naam = '" + name + "'";
+            string query = "Update Menu set voorraad = " + amount + " where naam = '" + name + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -76,7 +76,14 @@ namespace ChapooDAL
 
         public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad)
         {
-            string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, vorraad) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ") set identity_insert  Menu  OFF";
+            string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ") set identity_insert  Menu  OFF";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void RemoveItem(int ID)
+        {
+            string query = "DELETE FROM Menu WHERE menu_ID = " + ID + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

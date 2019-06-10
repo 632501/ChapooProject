@@ -20,6 +20,7 @@ namespace ChapooUI
 
         Button[] btnList;
         Tafel_DAO table_dao = new Tafel_DAO();
+        Inlog werknemer = new Inlog();
 
 
         public TableForm(Inlog inlog)
@@ -28,6 +29,7 @@ namespace ChapooUI
 
           
             lbl_Naam.Text = inlog.naam;
+            werknemer = inlog;
 
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
@@ -72,7 +74,7 @@ namespace ChapooUI
             if(table_dao.Occupied(9) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,9);
                 orderForm.Show();
             }
             else
@@ -82,7 +84,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(9, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,9);
                     orderForm.Show();
 
                 }
@@ -94,7 +96,7 @@ namespace ChapooUI
             if (table_dao.Occupied(10) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,10);
                 orderForm.Show();
             }
             else
@@ -104,7 +106,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(10, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,10);
                     orderForm.Show();
 
                 }
@@ -116,7 +118,7 @@ namespace ChapooUI
             if (table_dao.Occupied(8) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,8);
                 orderForm.Show();
             }
             else
@@ -126,7 +128,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(8, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,8);
                     orderForm.Show();
 
                 }
@@ -138,7 +140,7 @@ namespace ChapooUI
             if (table_dao.Occupied(7) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,7);
                 orderForm.Show();
             }
             else
@@ -148,7 +150,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(7, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,7);
                     orderForm.Show();
 
                 }
@@ -160,7 +162,7 @@ namespace ChapooUI
             if (table_dao.Occupied(6) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,6);
                 orderForm.Show();
             }
             else
@@ -170,7 +172,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(6, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,6);
                     orderForm.Show();
 
                 }
@@ -182,7 +184,7 @@ namespace ChapooUI
             if (table_dao.Occupied(5) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer, 5);
                 orderForm.Show();
             }
             else
@@ -192,7 +194,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(5, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,5);
                     orderForm.Show();
 
                 }
@@ -204,7 +206,7 @@ namespace ChapooUI
             if (table_dao.Occupied(4) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,4);
                 orderForm.Show();
             }
             else
@@ -214,7 +216,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(4, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,4);
                     orderForm.Show();
 
                 }
@@ -226,7 +228,7 @@ namespace ChapooUI
             if (table_dao.Occupied(3) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,3);
                 orderForm.Show();
             }
             else
@@ -236,7 +238,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(3, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,3);
                     orderForm.Show();
 
                 }
@@ -248,7 +250,7 @@ namespace ChapooUI
             if (table_dao.Occupied(2) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,2);
                 orderForm.Show();
             }
             else
@@ -258,7 +260,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(2, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,2);
                     orderForm.Show();
 
                 }
@@ -270,7 +272,7 @@ namespace ChapooUI
             if (table_dao.Occupied(1) == true)
             {
                 this.Hide();
-                OrderActionForm orderForm = new OrderActionForm();
+                OrderActionForm orderForm = new OrderActionForm(werknemer,1);
                 orderForm.Show();
             }
             else
@@ -280,7 +282,7 @@ namespace ChapooUI
                 {
                     table_dao.EditStatus(1, true);
                     this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer,1);
                     orderForm.Show();
 
                 }

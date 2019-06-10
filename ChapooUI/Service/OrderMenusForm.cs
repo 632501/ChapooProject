@@ -15,8 +15,9 @@ namespace ChapooUI
     public partial class OrderMenusForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+        int tafelNummer;
 
-        public OrderMenusForm()
+        public OrderMenusForm(int tafelNummer)
         {
             InitializeComponent();
 
@@ -25,6 +26,8 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.tafelNummer = tafelNummer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)

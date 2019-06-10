@@ -33,6 +33,7 @@
             this.btnLunch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.mlblHuidigeBestelling = new MaterialSkin.Controls.MaterialLabel();
+            this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // btnDrinks
@@ -83,13 +84,26 @@
             this.mlblHuidigeBestelling.Location = new System.Drawing.Point(64, 134);
             this.mlblHuidigeBestelling.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblHuidigeBestelling.Name = "mlblHuidigeBestelling";
-            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(22, 24);
+            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(43, 46);
             this.mlblHuidigeBestelling.TabIndex = 4;
             this.mlblHuidigeBestelling.Text = "X";
+            // 
+            // lbl_Table
+            // 
+            this.lbl_Table.AutoSize = true;
+            this.lbl_Table.Depth = 0;
+            this.lbl_Table.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lbl_Table.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lbl_Table.Location = new System.Drawing.Point(148, 13);
+            this.lbl_Table.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lbl_Table.Name = "lbl_Table";
+            this.lbl_Table.Size = new System.Drawing.Size(0, 46);
+            this.lbl_Table.TabIndex = 5;
             // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(345, 484);
+            this.Controls.Add(this.lbl_Table);
             this.Controls.Add(this.mlblHuidigeBestelling);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLunch);
@@ -112,5 +126,6 @@
         private System.Windows.Forms.Button btnLunch;
         private System.Windows.Forms.Button btnAdd;
         private MaterialSkin.Controls.MaterialLabel mlblHuidigeBestelling;
+        private MaterialSkin.Controls.MaterialLabel lbl_Table;
     }
 }

@@ -22,8 +22,10 @@ namespace ChapooUI
         private string sort;
         private List<MenuItem> menuList;
         Menu_Service menuService = new Menu_Service();
+        private int tafelNummer;
+        Bestelling bestelling = new Bestelling();
 
-        public OrderForm(string sort)
+        public OrderForm(string sort, int tafelNummer, Bestelling bestelling)
         {
             this.sort = sort;
             InitializeComponent();
@@ -32,11 +34,16 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.bestelling = bestelling;
+            this.tafelNummer = tafelNummer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
             GetMenus();
+
+            lbl_Table.Text = "Tafel: " + tafelNummer;
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,7 +135,7 @@ namespace ChapooUI
                     o.menuItem = m;
                     o.Aantal = i;
                     o.Status = "bezig";
-
+                    bestelling.orderItems.Add(o);
                 }
             }
         }

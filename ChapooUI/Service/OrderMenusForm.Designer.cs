@@ -94,7 +94,7 @@
             this.lbl_Table.Depth = 0;
             this.lbl_Table.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbl_Table.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_Table.Location = new System.Drawing.Point(148, 13);
+            this.lbl_Table.Location = new System.Drawing.Point(178, 9);
             this.lbl_Table.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Table.Name = "lbl_Table";
             this.lbl_Table.Size = new System.Drawing.Size(0, 46);
@@ -102,7 +102,7 @@
             // 
             // OrderMenusForm
             // 
-            this.ClientSize = new System.Drawing.Size(345, 484);
+            this.ClientSize = new System.Drawing.Size(417, 691);
             this.Controls.Add(this.lbl_Table);
             this.Controls.Add(this.mlblHuidigeBestelling);
             this.Controls.Add(this.btnAdd);

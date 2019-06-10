@@ -20,6 +20,7 @@ namespace ChapooUI
         Bestelling_Service bestellingService = new Bestelling_Service();
         Inlog werknemer = new Inlog();
         int tafelNummer;
+        Bestelling bestelling = new Bestelling();
 
         public OrderActionForm(Inlog werknemer, int tafelNummer)
         {
@@ -38,7 +39,7 @@ namespace ChapooUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             lbl_Name.Text = werknemer.naam;
-            lbl_Tafel.Text = tafelNummer.ToString();
+            lbl_Tafel.Text = "Tafel: "+tafelNummer;
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,7 +50,7 @@ namespace ChapooUI
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderMenusForm orderMenusForm = new OrderMenusForm(tafelNummer);
+            OrderMenusForm orderMenusForm = new OrderMenusForm(tafelNummer,bestelling);
             orderMenusForm.Show();
         }
 
@@ -62,7 +63,6 @@ namespace ChapooUI
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
         {
-            Bestelling bestelling = new Bestelling();
             bestelling.werknemer = werknemer;
             bestelling.tafel_ID = tafelNummer;
             bestelling.datum = DateTime.Today;

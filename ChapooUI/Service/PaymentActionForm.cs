@@ -22,8 +22,9 @@ namespace ChapooUI
 
         int amount;
         int tip;
+        int btw;
 
-        public PaymentActionForm(int amount, int tip)
+        public PaymentActionForm(int amount, int tip, int btw)
         {
             InitializeComponent();
 
@@ -35,18 +36,14 @@ namespace ChapooUI
 
             this.amount = amount;
             this.tip = tip;
+            this.btw = btw;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            int btw = 0;
             Bestelling order = new Bestelling();
             order = bonService.Orders(4); // tafelnummer nog op een goede manier
             
-            foreach(OrderItem o in order.orderItems)
-            {
-                btw += (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
-            }
             
             int btwAmount = amount + btw;
             int totalamount = btwAmount + tip;

@@ -64,9 +64,19 @@ namespace ChapooUI
         private void btnBetaald_Click(object sender, EventArgs e)
         {
             int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier 
-            int totalPayment = int.Parse(txtboxTotalPayment.Text);
-            int tip = totalPayment - amount;
-            PaymentActionForm pay = new PaymentActionForm(amount, tip);
+            int totalPayment = 0;
+
+            if (txtboxTotalPayment.Text == "")
+            {
+                totalPayment = amount + btw;
+            }
+            else
+            {
+                totalPayment = int.Parse(txtboxTotalPayment.Text);
+            }
+
+            int tip = totalPayment - amount - btw;
+            PaymentActionForm pay = new PaymentActionForm(amount, tip, btw);
             pay.ShowDialog();
         }
 

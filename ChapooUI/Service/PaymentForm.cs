@@ -41,10 +41,10 @@ namespace ChapooUI
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            foreach(Bestelling b in b)
-            {
+            //foreach(Bestelling b in b)
+            //{
 
-            }
+            //}
 
             ListViewItem bestellijst = new ListViewItem("Aantal");
             bestellijst.SubItems.Add("Naam");

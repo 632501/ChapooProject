@@ -83,11 +83,13 @@ namespace ChapooUI
             listviewMenu.Columns.Add("Aantal");
         }
 
+        public void GetOrder()
+        {
+            //yikes
+        }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            
-            //string name = listviewMenu.SelectedItems[0].Text;
             int aantal = int.Parse(listviewMenu.SelectedItems[0].SubItems[1].Text);
             aantal++;
             listviewMenu.SelectedItems[0].SubItems[1].Text = aantal.ToString();

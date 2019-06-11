@@ -48,7 +48,7 @@ namespace ChapooUI
             if (isDone)
                 finishOrderButton.Text = "GEREED MELDEN";
             else
-                finishOrderButton.Text = "NIET GEREED MELDEN";
+                finishOrderButton.Text = "ONGEREED MELDEN";
 
         }
 

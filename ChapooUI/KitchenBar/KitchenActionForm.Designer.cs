@@ -39,6 +39,7 @@
             this.currentTime = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new MaterialSkin.Controls.MaterialLabel();
             this.gereedButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.stockButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.layoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPicture)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +48,7 @@
             // 
             this.layoutPanel.Controls.Add(this.loadingPicture);
             this.layoutPanel.Controls.Add(this.ordersListView);
-            this.layoutPanel.Location = new System.Drawing.Point(0, 64);
+            this.layoutPanel.Location = new System.Drawing.Point(0, 112);
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.Size = new System.Drawing.Size(984, 672);
             this.layoutPanel.TabIndex = 14;
@@ -103,7 +104,7 @@
             this.loginLabel.Depth = 0;
             this.loginLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.loginLabel.Location = new System.Drawing.Point(384, 12);
+            this.loginLabel.Location = new System.Drawing.Point(450, 32);
             this.loginLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(108, 19);
@@ -116,7 +117,7 @@
             this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(888, 16);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(897, 69);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
@@ -138,13 +139,12 @@
             this.timeLabel.Depth = 0;
             this.timeLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.timeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.timeLabel.Location = new System.Drawing.Point(384, 36);
+            this.timeLabel.Location = new System.Drawing.Point(800, 32);
             this.timeLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(108, 19);
             this.timeLabel.TabIndex = 17;
             this.timeLabel.Text = "materialLabel1";
-            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gereedButton
             // 
@@ -152,7 +152,7 @@
             this.gereedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gereedButton.Depth = 0;
             this.gereedButton.Icon = null;
-            this.gereedButton.Location = new System.Drawing.Point(608, 16);
+            this.gereedButton.Location = new System.Drawing.Point(112, 69);
             this.gereedButton.MouseState = MaterialSkin.MouseState.HOVER;
             this.gereedButton.Name = "gereedButton";
             this.gereedButton.Primary = true;
@@ -162,12 +162,29 @@
             this.gereedButton.UseVisualStyleBackColor = true;
             this.gereedButton.Click += new System.EventHandler(this.gereedButton_Click);
             // 
+            // stockButton
+            // 
+            this.stockButton.AutoSize = true;
+            this.stockButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.stockButton.Depth = 0;
+            this.stockButton.Icon = null;
+            this.stockButton.Location = new System.Drawing.Point(8, 69);
+            this.stockButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.stockButton.Name = "stockButton";
+            this.stockButton.Primary = true;
+            this.stockButton.Size = new System.Drawing.Size(93, 36);
+            this.stockButton.TabIndex = 19;
+            this.stockButton.Text = "Voorraad";
+            this.stockButton.UseVisualStyleBackColor = true;
+            this.stockButton.Click += new System.EventHandler(this.stockButton_Click);
+            // 
             // KitchenActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(980, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.stockButton);
             this.Controls.Add(this.gereedButton);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.materialRaisedButton1);
@@ -197,5 +214,6 @@
         private System.Windows.Forms.Timer currentTime;
         private MaterialSkin.Controls.MaterialLabel timeLabel;
         private MaterialSkin.Controls.MaterialRaisedButton gereedButton;
+        private MaterialSkin.Controls.MaterialRaisedButton stockButton;
     }
 }

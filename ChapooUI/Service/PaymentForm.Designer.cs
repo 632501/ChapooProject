@@ -33,16 +33,18 @@
             this.lblTotaalbedrag = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
-            this.lbl_Naam = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.materialListViewBestelling = new MaterialSkin.Controls.MaterialListView();
-            this.txtboxTotalPayment = new System.Windows.Forms.TextBox();
-            this.lblPayment = new System.Windows.Forms.Label();
             this.Amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NamePayment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtboxTotalPayment = new System.Windows.Forms.TextBox();
+            this.lblPayment = new System.Windows.Forms.Label();
+            this.lblTafelNr = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnBetalen
@@ -89,16 +91,17 @@
             this.btnLogOut.TabIndex = 37;
             this.btnLogOut.Text = "Log out";
             this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
-            // lbl_Naam
+            // label8
             // 
-            this.lbl_Naam.AutoSize = true;
-            this.lbl_Naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Naam.Location = new System.Drawing.Point(8, 87);
-            this.lbl_Naam.Name = "lbl_Naam";
-            this.lbl_Naam.Size = new System.Drawing.Size(64, 24);
-            this.lbl_Naam.TabIndex = 38;
-            this.lbl_Naam.Text = "Naam";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(8, 87);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 24);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Naam:";
             // 
             // materialLabel1
             // 
@@ -140,7 +143,7 @@
             this.NamePayment,
             this.Price});
             this.materialListViewBestelling.Depth = 0;
-            this.materialListViewBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListViewBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListViewBestelling.FullRowSelect = true;
             this.materialListViewBestelling.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.materialListViewBestelling.Location = new System.Drawing.Point(12, 182);
@@ -152,21 +155,6 @@
             this.materialListViewBestelling.TabIndex = 42;
             this.materialListViewBestelling.UseCompatibleStateImageBehavior = false;
             this.materialListViewBestelling.View = System.Windows.Forms.View.Details;
-            // 
-            // txtboxTotalPayment
-            // 
-            this.txtboxTotalPayment.Location = new System.Drawing.Point(225, 424);
-            this.txtboxTotalPayment.Name = "txtboxTotalPayment";
-            this.txtboxTotalPayment.Size = new System.Drawing.Size(100, 22);
-            this.txtboxTotalPayment.TabIndex = 43;
-            // 
-            // lblPayment
-            // 
-            this.lblPayment.AutoSize = true;
-            this.lblPayment.Location = new System.Drawing.Point(222, 402);
-            this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(0, 17);
-            this.lblPayment.TabIndex = 44;
             // 
             // Amount
             // 
@@ -183,18 +171,53 @@
             this.Price.Text = "Prijs";
             this.Price.Width = 70;
             // 
+            // txtboxTotalPayment
+            // 
+            this.txtboxTotalPayment.Location = new System.Drawing.Point(225, 424);
+            this.txtboxTotalPayment.Name = "txtboxTotalPayment";
+            this.txtboxTotalPayment.Size = new System.Drawing.Size(100, 22);
+            this.txtboxTotalPayment.TabIndex = 43;
+            // 
+            // lblPayment
+            // 
+            this.lblPayment.AutoSize = true;
+            this.lblPayment.Location = new System.Drawing.Point(222, 402);
+            this.lblPayment.Name = "lblPayment";
+            this.lblPayment.Size = new System.Drawing.Size(0, 17);
+            this.lblPayment.TabIndex = 44;
+            // 
+            // lblTafelNr
+            // 
+            this.lblTafelNr.AutoSize = true;
+            this.lblTafelNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTafelNr.Location = new System.Drawing.Point(112, 123);
+            this.lblTafelNr.Name = "lblTafelNr";
+            this.lblTafelNr.Size = new System.Drawing.Size(0, 24);
+            this.lblTafelNr.TabIndex = 45;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(112, 91);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(0, 24);
+            this.lblName.TabIndex = 46;
+            // 
             // PaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(375, 566);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblTafelNr);
             this.Controls.Add(this.lblPayment);
             this.Controls.Add(this.txtboxTotalPayment);
             this.Controls.Add(this.materialListViewBestelling);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.lbl_Naam);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.BtnBetalen);
             this.Controls.Add(this.btnTerug);
@@ -218,7 +241,7 @@
         private System.Windows.Forms.Label lblTotaalbedrag;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Label lbl_Naam;
+        private System.Windows.Forms.Label label8;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -228,5 +251,7 @@
         private System.Windows.Forms.ColumnHeader Amount;
         private System.Windows.Forms.ColumnHeader NamePayment;
         private System.Windows.Forms.ColumnHeader Price;
+        private System.Windows.Forms.Label lblTafelNr;
+        private System.Windows.Forms.Label lblName;
     }
 }

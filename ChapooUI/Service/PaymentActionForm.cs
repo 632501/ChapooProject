@@ -26,7 +26,7 @@ namespace ChapooUI
         Inlog werknemer = new Inlog();
         int tafel_ID;
 
-        public PaymentActionForm(int amount, int tip, int btw, Inlog werknemer, int tafel_ID)
+        public PaymentActionForm(Inlog werknemer, int tafel_ID)
         {
             InitializeComponent();
 
@@ -48,22 +48,22 @@ namespace ChapooUI
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID); 
             
-            //int btwAmount = amount + btw;
-            //int totalamount = btwAmount + tip;
+            int btwAmount = amount + btw;
+            int totalamount = btwAmount + tip;
 
-            int bedrag = 32;
+            int bedrag = 6;
 
-            lblAmount.Text = bedrag.ToString();
-            lblBtw.Text = "2";
-            lblBtwAmount.Text = "34";
+            lblAmount.Text = "10";
+            lblBtw.Text = "0,60";
+            lblBtwAmount.Text = "10,60";
             lblTip.Text = "2";
-            lblTotalAmount.Text = "36";
+            lblTotalAmount.Text = "12,60";
 
-            //lblAmount.Text = amount.ToString();
+            //lblAmount.Text = bedrag.ToString();
             //lblBtw.Text = btw.ToString();
-            //lblBtwAmount.Text = btwAmount.ToString();
-            //lblTip.Text = tip.ToString();
-            //lblTotalAmount.Text = totalamount.ToString();
+           // lblBtwAmount.Text = btwAmount.ToString();
+           // lblTip.Text = tip.ToString();
+           // lblTotalAmount.Text = totalamount.ToString();
 
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
@@ -78,24 +78,24 @@ namespace ChapooUI
 
             if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
             {
-                paymenttype = "Creditcard";
-                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+                //paymenttype = "Creditcard";
+                //bonService.Paid(tafel_ID, tip, paymenttype, comment);
 
                 this.Close();
                 form.ShowDialog();
             }
             if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
             {
-                paymenttype = "Contant";
-                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+               // paymenttype = "Contant";
+               //bonService.Paid(tafel_ID, tip, paymenttype, comment);
 
                 this.Close();
                 form.ShowDialog();
             }
             if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
             {
-                paymenttype = "Pinpas";
-                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+               // paymenttype = "Pinpas";
+              //  bonService.Paid(tafel_ID, tip, paymenttype, comment);
 
                 this.Close();
                 form.ShowDialog();

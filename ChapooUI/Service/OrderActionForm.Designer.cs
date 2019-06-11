@@ -38,10 +38,9 @@
             // 
             // btnActionOpnemen
             // 
-            this.btnActionOpnemen.Location = new System.Drawing.Point(106, 119);
-            this.btnActionOpnemen.Margin = new System.Windows.Forms.Padding(6);
+            this.btnActionOpnemen.Location = new System.Drawing.Point(54, 140);
             this.btnActionOpnemen.Name = "btnActionOpnemen";
-            this.btnActionOpnemen.Size = new System.Drawing.Size(534, 229);
+            this.btnActionOpnemen.Size = new System.Drawing.Size(267, 118);
             this.btnActionOpnemen.TabIndex = 0;
             this.btnActionOpnemen.Text = "Bestelling opnemen";
             this.btnActionOpnemen.UseVisualStyleBackColor = true;
@@ -49,10 +48,9 @@
             // 
             // btn_Afronden
             // 
-            this.btn_Afronden.Location = new System.Drawing.Point(108, 397);
-            this.btn_Afronden.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_Afronden.Location = new System.Drawing.Point(54, 277);
             this.btn_Afronden.Name = "btn_Afronden";
-            this.btn_Afronden.Size = new System.Drawing.Size(532, 229);
+            this.btn_Afronden.Size = new System.Drawing.Size(266, 118);
             this.btn_Afronden.TabIndex = 1;
             this.btn_Afronden.Text = "Afronden";
             this.btn_Afronden.UseVisualStyleBackColor = true;
@@ -60,9 +58,10 @@
             // 
             // btn_NewOrder
             // 
-            this.btn_NewOrder.Location = new System.Drawing.Point(106, 672);
+            this.btn_NewOrder.Location = new System.Drawing.Point(53, 441);
+            this.btn_NewOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_NewOrder.Name = "btn_NewOrder";
-            this.btn_NewOrder.Size = new System.Drawing.Size(534, 126);
+            this.btn_NewOrder.Size = new System.Drawing.Size(267, 65);
             this.btn_NewOrder.TabIndex = 2;
             this.btn_NewOrder.Text = "Nieuwe bestelling maken";
             this.btn_NewOrder.UseVisualStyleBackColor = true;
@@ -74,10 +73,11 @@
             this.lbl_Name.Depth = 0;
             this.lbl_Name.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbl_Name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_Name.Location = new System.Drawing.Point(337, 9);
+            this.lbl_Name.Location = new System.Drawing.Point(168, 5);
+            this.lbl_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Name.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Name.Name = "lbl_Name";
-            this.lbl_Name.Size = new System.Drawing.Size(0, 46);
+            this.lbl_Name.Size = new System.Drawing.Size(0, 24);
             this.lbl_Name.TabIndex = 3;
             // 
             // lbl_Tafel
@@ -86,10 +86,11 @@
             this.lbl_Tafel.Depth = 0;
             this.lbl_Tafel.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbl_Tafel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_Tafel.Location = new System.Drawing.Point(511, 22);
+            this.lbl_Tafel.Location = new System.Drawing.Point(274, 30);
+            this.lbl_Tafel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Tafel.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Tafel.Name = "lbl_Tafel";
-            this.lbl_Tafel.Size = new System.Drawing.Size(0, 46);
+            this.lbl_Tafel.Size = new System.Drawing.Size(0, 24);
             this.lbl_Tafel.TabIndex = 4;
             // 
             // btn_Terug
@@ -98,12 +99,12 @@
             this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Terug.Depth = 0;
             this.btn_Terug.Icon = null;
-            this.btn_Terug.Location = new System.Drawing.Point(295, 29);
-            this.btn_Terug.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_Terug.Location = new System.Drawing.Point(139, 67);
+            this.btn_Terug.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Terug.Name = "btn_Terug";
             this.btn_Terug.Primary = false;
-            this.btn_Terug.Size = new System.Drawing.Size(456, 36);
+            this.btn_Terug.Size = new System.Drawing.Size(236, 36);
             this.btn_Terug.TabIndex = 5;
             this.btn_Terug.Text = "Terug naar tafel keuze";
             this.btn_Terug.UseVisualStyleBackColor = true;
@@ -111,16 +112,16 @@
             // 
             // OrderActionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 1097);
+            this.ClientSize = new System.Drawing.Size(375, 566);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Tafel);
             this.Controls.Add(this.lbl_Name);
             this.Controls.Add(this.btn_NewOrder);
             this.Controls.Add(this.btn_Afronden);
             this.Controls.Add(this.btnActionOpnemen);
-            this.Margin = new System.Windows.Forms.Padding(8);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "OrderActionForm";
             this.Sizable = false;

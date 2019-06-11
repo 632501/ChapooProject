@@ -38,28 +38,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.materialListViewBestelling = new MaterialSkin.Controls.MaterialListView();
-            this.txtboxTotalPayment = new System.Windows.Forms.TextBox();
-            this.lblPayment = new System.Windows.Forms.Label();
             this.Amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.NamePayment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtboxTotalPayment = new System.Windows.Forms.TextBox();
+            this.lblPayment = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnBetalen
             // 
-            this.BtnBetalen.Location = new System.Drawing.Point(12, 462);
+            this.BtnBetalen.Location = new System.Drawing.Point(14, 578);
+            this.BtnBetalen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnBetalen.Name = "BtnBetalen";
-            this.BtnBetalen.Size = new System.Drawing.Size(351, 53);
+            this.BtnBetalen.Size = new System.Drawing.Size(395, 66);
             this.BtnBetalen.TabIndex = 35;
             this.BtnBetalen.Text = "Betalen";
             this.BtnBetalen.UseVisualStyleBackColor = true;
-            this.BtnBetalen.Click += new System.EventHandler(this.btnBetaald_Click);
+
             // 
             // btnTerug
             // 
-            this.btnTerug.Location = new System.Drawing.Point(12, 521);
+            this.btnTerug.Location = new System.Drawing.Point(14, 651);
+            this.btnTerug.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTerug.Name = "btnTerug";
-            this.btnTerug.Size = new System.Drawing.Size(351, 33);
+            this.btnTerug.Size = new System.Drawing.Size(395, 41);
             this.btnTerug.TabIndex = 34;
             this.btnTerug.Text = "Terug naar overzicht";
             this.btnTerug.UseVisualStyleBackColor = true;
@@ -67,25 +69,26 @@
             // lblTotaalbedrag
             // 
             this.lblTotaalbedrag.AutoSize = true;
-            this.lblTotaalbedrag.Location = new System.Drawing.Point(228, 402);
+            this.lblTotaalbedrag.Location = new System.Drawing.Point(256, 502);
             this.lblTotaalbedrag.Name = "lblTotaalbedrag";
-            this.lblTotaalbedrag.Size = new System.Drawing.Size(0, 17);
+            this.lblTotaalbedrag.Size = new System.Drawing.Size(0, 20);
             this.lblTotaalbedrag.TabIndex = 32;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 402);
+            this.label6.Location = new System.Drawing.Point(14, 502);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 17);
+            this.label6.Size = new System.Drawing.Size(65, 20);
             this.label6.TabIndex = 31;
             this.label6.Text = "Bedrag:";
             // 
             // btnLogOut
             // 
-            this.btnLogOut.Location = new System.Drawing.Point(267, 86);
+            this.btnLogOut.Location = new System.Drawing.Point(300, 108);
+            this.btnLogOut.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogOut.Name = "btnLogOut";
-            this.btnLogOut.Size = new System.Drawing.Size(96, 29);
+            this.btnLogOut.Size = new System.Drawing.Size(108, 36);
             this.btnLogOut.TabIndex = 37;
             this.btnLogOut.Text = "Log out";
             this.btnLogOut.UseVisualStyleBackColor = true;
@@ -94,9 +97,9 @@
             // 
             this.lbl_Naam.AutoSize = true;
             this.lbl_Naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Naam.Location = new System.Drawing.Point(8, 87);
+            this.lbl_Naam.Location = new System.Drawing.Point(9, 109);
             this.lbl_Naam.Name = "lbl_Naam";
-            this.lbl_Naam.Size = new System.Drawing.Size(64, 24);
+            this.lbl_Naam.Size = new System.Drawing.Size(75, 26);
             this.lbl_Naam.TabIndex = 38;
             this.lbl_Naam.Text = "Naam";
             // 
@@ -106,10 +109,10 @@
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(133, 155);
+            this.materialLabel1.Location = new System.Drawing.Point(150, 194);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(94, 24);
+            this.materialLabel1.Size = new System.Drawing.Size(107, 27);
             this.materialLabel1.TabIndex = 39;
             this.materialLabel1.Text = "Bestelling";
             // 
@@ -117,18 +120,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 123);
+            this.label1.Location = new System.Drawing.Point(9, 154);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 24);
+            this.label1.Size = new System.Drawing.Size(89, 26);
             this.label1.TabIndex = 40;
             this.label1.Text = "TafelNr";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 427);
+            this.label2.Location = new System.Drawing.Point(14, 534);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 17);
+            this.label2.Size = new System.Drawing.Size(131, 20);
             this.label2.TabIndex = 41;
             this.label2.Text = "Betaalde bedrag:";
             // 
@@ -140,54 +143,56 @@
             this.NamePayment,
             this.Price});
             this.materialListViewBestelling.Depth = 0;
-            this.materialListViewBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialListViewBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListViewBestelling.FullRowSelect = true;
             this.materialListViewBestelling.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListViewBestelling.Location = new System.Drawing.Point(12, 182);
+            this.materialListViewBestelling.Location = new System.Drawing.Point(14, 228);
+            this.materialListViewBestelling.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.materialListViewBestelling.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListViewBestelling.MouseState = MaterialSkin.MouseState.OUT;
             this.materialListViewBestelling.Name = "materialListViewBestelling";
             this.materialListViewBestelling.OwnerDraw = true;
-            this.materialListViewBestelling.Size = new System.Drawing.Size(351, 193);
+            this.materialListViewBestelling.Size = new System.Drawing.Size(395, 241);
             this.materialListViewBestelling.TabIndex = 42;
             this.materialListViewBestelling.UseCompatibleStateImageBehavior = false;
             this.materialListViewBestelling.View = System.Windows.Forms.View.Details;
             // 
+            // Amount
+            // 
+            this.Amount.Text = "Aantal";
+            this.Amount.Width = 119;
+            // 
+            // NamePayment
+            // 
+            this.NamePayment.Text = "Naam";
+            this.NamePayment.Width = 158;
+            // 
+            // Price
+            // 
+            this.Price.Text = "Prijs";
+            this.Price.Width = 152;
+            // 
             // txtboxTotalPayment
             // 
-            this.txtboxTotalPayment.Location = new System.Drawing.Point(225, 424);
+            this.txtboxTotalPayment.Location = new System.Drawing.Point(253, 530);
+            this.txtboxTotalPayment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtboxTotalPayment.Name = "txtboxTotalPayment";
-            this.txtboxTotalPayment.Size = new System.Drawing.Size(100, 22);
+            this.txtboxTotalPayment.Size = new System.Drawing.Size(112, 26);
             this.txtboxTotalPayment.TabIndex = 43;
             // 
             // lblPayment
             // 
             this.lblPayment.AutoSize = true;
-            this.lblPayment.Location = new System.Drawing.Point(222, 402);
+            this.lblPayment.Location = new System.Drawing.Point(250, 502);
             this.lblPayment.Name = "lblPayment";
-            this.lblPayment.Size = new System.Drawing.Size(0, 17);
+            this.lblPayment.Size = new System.Drawing.Size(0, 20);
             this.lblPayment.TabIndex = 44;
-            // 
-            // Amount
-            // 
-            this.Amount.Text = "Aantal";
-            this.Amount.Width = 70;
-            // 
-            // NamePayment
-            // 
-            this.NamePayment.Text = "Naam";
-            this.NamePayment.Width = 100;
-            // 
-            // Price
-            // 
-            this.Price.Text = "Prijs";
-            this.Price.Width = 70;
             // 
             // PaymentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 566);
+            this.ClientSize = new System.Drawing.Size(422, 708);
             this.Controls.Add(this.lblPayment);
             this.Controls.Add(this.txtboxTotalPayment);
             this.Controls.Add(this.materialListViewBestelling);
@@ -200,7 +205,7 @@
             this.Controls.Add(this.btnTerug);
             this.Controls.Add(this.lblTotaalbedrag);
             this.Controls.Add(this.label6);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "PaymentForm";
             this.Sizable = false;

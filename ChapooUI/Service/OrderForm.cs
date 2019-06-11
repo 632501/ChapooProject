@@ -147,7 +147,7 @@ namespace ChapooUI
         {
             OrderMenusForm form = new OrderMenusForm(tafelNummer, bestelling);
             this.Close();
-            form.ShowDialog();
+            form.Show();
         }
     }
 }

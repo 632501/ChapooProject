@@ -85,7 +85,7 @@
             this.mlblHuidigeBestelling.Location = new System.Drawing.Point(64, 134);
             this.mlblHuidigeBestelling.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblHuidigeBestelling.Name = "mlblHuidigeBestelling";
-            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(43, 46);
+            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(22, 24);
             this.mlblHuidigeBestelling.TabIndex = 4;
             this.mlblHuidigeBestelling.Text = "X";
             // 
@@ -95,10 +95,10 @@
             this.lbl_Table.Depth = 0;
             this.lbl_Table.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbl_Table.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_Table.Location = new System.Drawing.Point(178, 9);
+            this.lbl_Table.Location = new System.Drawing.Point(12, 37);
             this.lbl_Table.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Table.Name = "lbl_Table";
-            this.lbl_Table.Size = new System.Drawing.Size(0, 46);
+            this.lbl_Table.Size = new System.Drawing.Size(0, 24);
             this.lbl_Table.TabIndex = 5;
             // 
             // btn_Terug
@@ -112,7 +112,7 @@
             this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Terug.Name = "btn_Terug";
             this.btn_Terug.Primary = false;
-            this.btn_Terug.Size = new System.Drawing.Size(135, 36);
+            this.btn_Terug.Size = new System.Drawing.Size(76, 36);
             this.btn_Terug.TabIndex = 6;
             this.btn_Terug.Text = "Terug";
             this.btn_Terug.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             // 
             // OrderMenusForm
             // 
-            this.ClientSize = new System.Drawing.Size(417, 691);
+            this.ClientSize = new System.Drawing.Size(327, 575);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Table);
             this.Controls.Add(this.mlblHuidigeBestelling);

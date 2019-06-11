@@ -98,7 +98,7 @@ namespace ChapooUI
             Inlog werknemer = new Inlog();
             OrderActionForm form = new OrderActionForm(werknemer, tafelNummer);
             this.Close();
-            form.ShowDialog();
+            form.Show();
         }
     }
 }

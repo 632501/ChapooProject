@@ -61,10 +61,11 @@
             this.orderInfo.Location = new System.Drawing.Point(400, 88);
             this.orderInfo.Multiline = true;
             this.orderInfo.Name = "orderInfo";
+            this.orderInfo.ReadOnly = true;
             this.orderInfo.Size = new System.Drawing.Size(304, 280);
             this.orderInfo.TabIndex = 3;
             // 
-            // OrderActionForm
+            // OrderDoActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,7 +75,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.finishOrderButton);
             this.MaximizeBox = false;
-            this.Name = "OrderActionForm";
+            this.Name = "OrderDoActionForm";
             this.Sizable = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Actie";

@@ -9,6 +9,7 @@ namespace ChapooModel.Models
     public class OrderItem
     {
         public int order_ID { get; set; }
+        public int bestelling_ID { get; set;}
         public MenuItem menuItem { get; set; }
         public int TafelNummer { get; set; }
         public Inlog Werknemer { get; set; }

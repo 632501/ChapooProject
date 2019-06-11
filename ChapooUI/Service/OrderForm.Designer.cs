@@ -53,7 +53,7 @@
             this.mlblSoortBestelling.Depth = 0;
             this.mlblSoortBestelling.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblSoortBestelling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mlblSoortBestelling.Location = new System.Drawing.Point(102, 113);
+            this.mlblSoortBestelling.Location = new System.Drawing.Point(102, 122);
             this.mlblSoortBestelling.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblSoortBestelling.Name = "mlblSoortBestelling";
             this.mlblSoortBestelling.Size = new System.Drawing.Size(144, 24);
@@ -109,7 +109,7 @@
             this.lbl_Table.Depth = 0;
             this.lbl_Table.Font = new System.Drawing.Font("Roboto", 11F);
             this.lbl_Table.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_Table.Location = new System.Drawing.Point(313, 35);
+            this.lbl_Table.Location = new System.Drawing.Point(278, 35);
             this.lbl_Table.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Table.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Table.Name = "lbl_Table";
@@ -122,7 +122,7 @@
             this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Terug.Depth = 0;
             this.btn_Terug.Icon = null;
-            this.btn_Terug.Location = new System.Drawing.Point(142, 62);
+            this.btn_Terug.Location = new System.Drawing.Point(142, 74);
             this.btn_Terug.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Terug.Name = "btn_Terug";
@@ -146,7 +146,7 @@
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.mlblSoortBestelling);
             this.Controls.Add(this.listviewMenu);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "OrderForm";
             this.Sizable = false;

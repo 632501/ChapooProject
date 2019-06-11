@@ -145,14 +145,19 @@ namespace ChapooUI
                     o.menuItem = m;
                     o.Aantal = i;
                     o.Status = "bezig";
+                    o.TafelNummer = tafelNummer;
+                    o.order_ID = o.order_ID;
+                    o.bestelling_ID = bestelling.bestelling_ID;
+
+                    //bestellingService.AddOrderItem(o);
                     bestelling.orderItems.Add(o);
                 }
+                
             }
-            bestellingService.AddOrder(bestelling);
-            bestelling = bestellingService.GetLatestOrder();
-
-            MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
+            MessageBox.Show("Er is een nieuwe order gemaakt");
             this.Close();
+            OrderMenusForm orderForm = new OrderMenusForm(werknemer, tafelNummer, bestelling);
+            orderForm.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

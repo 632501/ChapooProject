@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapooLogica;
+using ChapooModel.Models;
 
 namespace ChapooUI
 {
@@ -19,6 +21,7 @@ namespace ChapooUI
         int tafelNummer;
         private Bestelling bestelling = new Bestelling();
         Inlog werknemer = new Inlog();
+        Bestelling_Service bestellingService = new Bestelling_Service();
 
         public OrderMenusForm(Inlog werknemer, int tafelNummer, Bestelling bestelling)
         {
@@ -38,6 +41,12 @@ namespace ChapooUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             lbl_Table.Text = "Tafel: " + tafelNummer;
+            foreach (OrderItem o in bestelling.orderItems)
+            {
+                 
+                mlblHuidigeBestelling.Text += o.menuItem.naam + " \r\n";
+            }
+            
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +110,14 @@ namespace ChapooUI
             OrderActionForm form = new OrderActionForm(werknemer, tafelNummer);
             this.Close();
             form.Show();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            bestellingService.AddOrder(bestelling);
+            bestelling = bestellingService.GetLatestOrder();
+
+            MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
         }
     }
 }

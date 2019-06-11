@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections.ObjectModel;
 using ChapooModel;
+using ChapooModel.Models;
 
 namespace ChapooDAL
 {
@@ -24,6 +25,13 @@ namespace ChapooDAL
                 i = 0;
             }
             string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald) VALUES (" + bestelling.tafel_ID + ", " + i + ")";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public void AddOrderItem(OrderItem o)
+        {
+            string query = "SET IDENTITY_INSERT OrderItem OFF INSERT INTO OrderItem (bestelling_ID, order_ID, werknemer_ID, status, commentaar, aantal, menu_ID, tafelnummer) VALUES ("+ o.bestelling_ID + ", " + o.order_ID + ", " + o.Werknemer + ", " + o.Status + ", " + o.Comment + ", "+o.Aantal+", "+o.menuItem+", "+o.TafelNummer+ ")";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

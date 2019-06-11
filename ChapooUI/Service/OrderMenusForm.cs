@@ -18,8 +18,9 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         int tafelNummer;
         private Bestelling bestelling = new Bestelling();
+        Inlog werknemer = new Inlog();
 
-        public OrderMenusForm(int tafelNummer, Bestelling bestelling)
+        public OrderMenusForm(Inlog werknemer, int tafelNummer, Bestelling bestelling)
         {
             InitializeComponent();
 
@@ -31,6 +32,7 @@ namespace ChapooUI
 
             this.bestelling = bestelling;
             this.tafelNummer = tafelNummer;
+            this.werknemer = werknemer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace ChapooUI
         public void btnDrinks_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            OrderForm drinksForm = new OrderForm("Drinks", tafelNummer, bestelling);
+            OrderForm drinksForm = new OrderForm("Drinks", tafelNummer, bestelling, werknemer);
             //drinksForm.GetOrder("Drinks");
             drinksForm.Show();
         }
@@ -80,7 +82,7 @@ namespace ChapooUI
         public void btnLunch_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            OrderForm lunchForm = new OrderForm("Lunch",tafelNummer, bestelling);
+            OrderForm lunchForm = new OrderForm("Lunch",tafelNummer, bestelling, werknemer);
             //lunchForm.GetOrder("Lunch");
             lunchForm.Show();
         }
@@ -88,7 +90,7 @@ namespace ChapooUI
         public void btnDiner_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            OrderForm dinerForm = new OrderForm("Diner",tafelNummer, bestelling);
+            OrderForm dinerForm = new OrderForm("Diner",tafelNummer, bestelling, werknemer);
             //dinerForm.GetOrder("Diner");
             dinerForm.Show();
         }

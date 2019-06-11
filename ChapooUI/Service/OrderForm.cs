@@ -24,8 +24,10 @@ namespace ChapooUI
         Menu_Service menuService = new Menu_Service();
         private int tafelNummer;
         Bestelling bestelling = new Bestelling();
+        Inlog werknemer = new Inlog();
+        Bestelling_Service bestellingService = new Bestelling_Service();
 
-        public OrderForm(string sort, int tafelNummer, Bestelling bestelling)
+        public OrderForm(string sort, int tafelNummer, Bestelling bestelling, Inlog werknemer)
         {
             this.sort = sort;
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace ChapooUI
 
             this.bestelling = bestelling;
             this.tafelNummer = tafelNummer;
+            this.werknemer = werknemer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -121,6 +124,11 @@ namespace ChapooUI
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
+            bestelling.werknemer = werknemer;
+            bestelling.tafel_ID = tafelNummer;
+            bestelling.datum = DateTime.Today;
+            bestelling.betaald = false;
+            bestelling.orderItems = new List<OrderItem>();
             OrderItem o;
             MenuItem m = new MenuItem();
             int i = 0;
@@ -140,12 +148,16 @@ namespace ChapooUI
                     bestelling.orderItems.Add(o);
                 }
             }
+            bestellingService.AddOrder(bestelling);
+            bestelling = bestellingService.GetLatestOrder();
+
+            MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
             this.Close();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)
         {
-            OrderMenusForm form = new OrderMenusForm(tafelNummer, bestelling);
+            OrderMenusForm form = new OrderMenusForm(werknemer, tafelNummer, bestelling);
             this.Close();
             form.Show();
         }

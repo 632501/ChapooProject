@@ -21,7 +21,7 @@ namespace ChapooUI
         Bon_Service bonService = new Bon_Service();
         int btw;
         Inlog werknemer = new Inlog();
-        int tafel_ID;
+        int tafel_ID = 3;
 
         public PaymentForm(Inlog werknemer, int tafel_ID )
         {
@@ -33,14 +33,15 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            this.tafel_ID = tafel_ID;
+            //this.tafel_ID = tafel_ID;
             this.werknemer = werknemer;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             btw = 0;
-            int amount = bonService.TotalAmount(tafel_ID);
+            //int amount = bonService.TotalAmount(tafel_ID);
+            int amount = 10;
 
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID); 
@@ -51,19 +52,22 @@ namespace ChapooUI
             }
 
             amount = amount + btw;
-            lblTotaalbedrag.Text = "€ " + amount.ToString();
+            string bedrag = "10,60";
+            lblTotaalbedrag.Text = "€ " + bedrag;
+
+            //lblTotaalbedrag.Text = "€ " + amount.ToString();
 
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            foreach (OrderItem o in order.orderItems)
-            {
-                ListViewItem orderlist = new ListViewItem(o.Aantal.ToString());
-                orderlist.SubItems.Add(o.menuItem.naam);
-                orderlist.SubItems.Add(o.menuItem.prijs.ToString());
+            //foreach (OrderItem o in order.orderItems)
+            //{
+                ListViewItem orderlist = new ListViewItem("5");
+                orderlist.SubItems.Add("CocaCola");
+                orderlist.SubItems.Add("10");
 
                 materialListViewBestelling.Items.Add(orderlist);
-            }
+            //}
 
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
@@ -71,20 +75,20 @@ namespace ChapooUI
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            int amount = bonService.TotalAmount(tafel_ID); 
-            int totalPayment = 0;
+            //int amount = bonService.TotalAmount(tafel_ID); 
+           // int totalPayment = 0;
 
-            if (txtboxTotalPayment.Text == "")
-            {
-                totalPayment = amount + btw;
-            }
-            else
-            {
-                totalPayment = int.Parse(txtboxTotalPayment.Text);
-            }
+          //  if (txtboxTotalPayment.Text == "")
+           // {
+           //     totalPayment = amount + btw;
+          //  }
+          //  else
+          //  {
+          //      totalPayment = int.Parse(txtboxTotalPayment.Text);
+          //  }
 
-            int tip = totalPayment - amount - btw;
-            PaymentActionForm pay = new PaymentActionForm(amount, tip, btw, werknemer, tafel_ID);
+         //   int tip = totalPayment - amount - btw;
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID);
             pay.ShowDialog();
         }
 

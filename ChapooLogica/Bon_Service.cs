@@ -31,8 +31,8 @@ namespace ChapooLogica
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
             
-            Bestelling returnlist = new Bestelling();
-            int count = 1;
+            //Bestelling returnlist = new Bestelling();
+            //int count = 1;
             
 
             //foreach(OrderItem x in orders.orderItems)

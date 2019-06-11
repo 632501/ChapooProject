@@ -37,7 +37,7 @@ namespace ChapooDAL
 
         public void Paid(int tafel_ID, double tip, string paymentType, string comment)
         {
-            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling AS BE JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
 
@@ -45,17 +45,17 @@ namespace ChapooDAL
             
             ExecuteEditQuery(queryTip, sqlParameters);
 
-            string queryPaymentType = "UPDATE Bon SET betaaltype = " + paymentType + " FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+            string queryPaymentType = "UPDATE Bon SET betaaltype = '" + paymentType + "' FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
 
             ExecuteEditQuery(queryPaymentType, sqlParameters);
 
-            string queryComment = "UPDATE Bon SET commentaat = " + comment + " FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+            string queryComment = "UPDATE Bon SET commentaar = '" + comment + "' FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             ExecuteEditQuery(queryComment, sqlParameters);
         }
 
         public Bestelling Orders(int tafel_ID)
         {
-            string query = "SELECT O.aantal, M.naam, M.prijs, M.btwPercentage FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID WHERE B.tafel_ID = 4";
+            string query = "SELECT O.aantal, M.naam, M.prijs, M.btwPercentage FROM OrderItem AS O JOIN Menu AS M ON O.menu_ID = M.menu_ID JOIN Bestelling AS B ON O.bestelling_ID = B.bestelling_ID WHERE B.tafel_ID = " + tafel_ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }

@@ -75,6 +75,7 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Toevoegen";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // mlblHuidigeBestelling
             // 
@@ -85,9 +86,8 @@
             this.mlblHuidigeBestelling.Location = new System.Drawing.Point(64, 134);
             this.mlblHuidigeBestelling.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblHuidigeBestelling.Name = "mlblHuidigeBestelling";
-            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(22, 24);
+            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(0, 24);
             this.mlblHuidigeBestelling.TabIndex = 4;
-            this.mlblHuidigeBestelling.Text = "X";
             // 
             // lbl_Table
             // 

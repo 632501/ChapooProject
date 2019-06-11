@@ -39,7 +39,7 @@ namespace ChapooUI
 
             Bestelling order = new Bestelling();
             order = bonService.Orders(4); // tafelnummer nog op de goede manier
-            
+
             foreach (OrderItem o in order.orderItems)
             {
                 btw += (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
@@ -51,11 +51,11 @@ namespace ChapooUI
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            foreach(Bestelling b in b)
-            {
+            //foreach (Bestelling b in b)
+            //{
 
-            }
-
+            //}
+        }
         private void btnBetaald_Click(object sender, EventArgs e)
         {
             int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier 

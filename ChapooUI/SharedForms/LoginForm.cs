@@ -111,9 +111,9 @@ namespace ChapooUI
             if(login.Function(password) == "manager" || login.Function(password) == "Manager" && login.Login(password) == true)
             {
                 this.Hide();
-                OrderOverviewForm orderOverview = new OrderOverviewForm(inlog);
-                orderOverview.Show();
-            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
+                ManagementActionForm management = new ManagementActionForm(inlog);
+                management.Show();
+            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" || login.Function(password) == "Kok" || login.Function(password) == "Barman" && login.Login(password) == true)
             {
                 this.Hide();
                 KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);

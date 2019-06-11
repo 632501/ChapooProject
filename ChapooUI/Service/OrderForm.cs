@@ -22,8 +22,10 @@ namespace ChapooUI
         private string sort;
         private List<MenuItem> menuList;
         Menu_Service menuService = new Menu_Service();
+        private int tafelNummer;
+        Bestelling bestelling = new Bestelling();
 
-        public OrderForm(string sort)
+        public OrderForm(string sort, int tafelNummer, Bestelling bestelling)
         {
             this.sort = sort;
             InitializeComponent();
@@ -32,11 +34,16 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.bestelling = bestelling;
+            this.tafelNummer = tafelNummer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
             GetMenus();
+
+            lbl_Table.Text = "Tafel: " + tafelNummer;
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,7 +60,7 @@ namespace ChapooUI
             
             if (sort == "Drinks")
             {
-                mlblSoortBestelling.Text = "Drinken";
+                mlblSoortBestelling.Text = "Dranken";
                 Menu_Service menuService = new Menu_Service();
                 menuList = menuService.GetDrinks();
 
@@ -119,8 +126,10 @@ namespace ChapooUI
             int i = 0;
             foreach (ListViewItem li in listviewMenu.Items)
             {
-                m.naam = li.SubItems[0].ToString();
-                i = int.Parse(li.SubItems[1].ToString());
+                m.naam = li.SubItems[0].Text;
+                string a = "";
+                a = li.SubItems[1].Text;
+                i = int.Parse(a);
                 if (i != 0)
                 {
                     m = menuService.GetItem(m.naam);
@@ -128,9 +137,17 @@ namespace ChapooUI
                     o.menuItem = m;
                     o.Aantal = i;
                     o.Status = "bezig";
-
+                    bestelling.orderItems.Add(o);
                 }
             }
+            this.Close();
+        }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            OrderMenusForm form = new OrderMenusForm(tafelNummer, bestelling);
+            this.Close();
+            form.Show();
         }
     }
 }

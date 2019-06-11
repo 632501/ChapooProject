@@ -107,13 +107,14 @@ namespace ChapooUI
             Login_DAO login = new Login_DAO();
             Inlog inlog = new Inlog();
             string password = txt_Password.Text;
+            inlog = login.GetEmployeeWithPassword(int.Parse(password));
 
-            if(login.Function(password) == "manager" || login.Function(password) == "Manager" && login.Login(password) == true)
+            if(login.Function(password) == "manager" && login.Login(password) == true)
             {
                 this.Hide();
-                ManagementActionForm management = new ManagementActionForm(inlog);
-                management.Show();
-            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" || login.Function(password) == "Kok" || login.Function(password) == "Barman" && login.Login(password) == true)
+                ManagementActionForm managementOverview = new ManagementActionForm(inlog);
+                managementOverview.Show();
+            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
             {
                 this.Hide();
                 KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);

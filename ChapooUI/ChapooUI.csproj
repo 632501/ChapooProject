@@ -78,6 +78,11 @@
     <Compile Include="Management\ManagementActionForm.Designer.cs">
       <DependentUpon>ManagementActionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Service\OrderMenusForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,11 +125,11 @@
     <Compile Include="Service\TableActionForm.Designer.cs">
       <DependentUpon>TableActionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="KitchenBar\OrdersOverviewForm.cs">
+    <Compile Include="KitchenBar\OrderDoActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KitchenBar\OrdersOverviewForm.Designer.cs">
-      <DependentUpon>OrdersOverviewForm.cs</DependentUpon>
+    <Compile Include="KitchenBar\OrderDoActionForm.Designer.cs">
+      <DependentUpon>OrderDoActionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="KitchenBar\KitchenActionForm.cs">
       <SubType>Form</SubType>
@@ -178,6 +183,10 @@
     <EmbeddedResource Include="Management\ManagementActionForm.resx">
       <DependentUpon>ManagementActionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenusForm.resx">
       <DependentUpon>OrderMenusForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,8 +208,8 @@
     <EmbeddedResource Include="Service\TableActionForm.resx">
       <DependentUpon>TableActionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KitchenBar\OrdersOverviewForm.resx">
-      <DependentUpon>OrdersOverviewForm.cs</DependentUpon>
+    <EmbeddedResource Include="KitchenBar\OrderDoActionForm.resx">
+      <DependentUpon>OrderDoActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KitchenBar\KitchenActionForm.resx">
       <DependentUpon>KitchenActionForm.cs</DependentUpon>
@@ -235,6 +244,9 @@
       <Project>{8eb7611b-68cd-4b8b-987a-11717e2b250c}</Project>
       <Name>MaterialSkin</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loadingGif.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

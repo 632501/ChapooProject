@@ -15,7 +15,7 @@ namespace ChapooDAL
 
         public int TotalAmount(int tafel_ID)
         {
-            string query = "SELECT B.totaalprijs FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string query = "SELECT B.totaalprijs FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTotalAmount(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -37,17 +37,19 @@ namespace ChapooDAL
 
         public void Paid(int tafel_ID, double tip, string paymentType, string comment)
         {
-            string queryPaid = "UPDATE Bestelling SET betaald = 'Afgerond' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
 
-            string queryTip = "UPDATE Bon SET fooi = " + tip + " FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string queryTip = "UPDATE Bon SET fooi = " + tip + " FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+            
             ExecuteEditQuery(queryTip, sqlParameters);
 
-            string queryPaymentType = "UPDATE Bon SET betaaltype = '" + paymentType + "' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string queryPaymentType = "UPDATE Bon SET betaaltype = " + paymentType + " FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+
             ExecuteEditQuery(queryPaymentType, sqlParameters);
 
-            string queryComment = "UPDATE Bon SET commentaar = '" + comment + "' FROM Bestelling AS B JOIN Tafel AS T ON T.tafel_ID = B.tafel_ID WHERE T.tafel_ID = " + tafel_ID;
+            string queryComment = "UPDATE Bon SET commentaat = " + comment + " FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             ExecuteEditQuery(queryComment, sqlParameters);
         }
 

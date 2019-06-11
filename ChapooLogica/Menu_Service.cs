@@ -67,5 +67,12 @@ namespace ChapooLogica
 
             return m;
         }
+        public MenuItem GetItem(int id)
+        {
+            MenuItem m = new MenuItem();
+            m = menu_db.GetSingleItem(id);
+
+            return m;
+        }
     }
 }

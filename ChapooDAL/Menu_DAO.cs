@@ -41,21 +41,21 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu]";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu]";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] ";
+            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' ";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -90,7 +90,27 @@ namespace ChapooDAL
 
         public MenuItem GetSingleItem(string naam)
         {
-            string query = "SELECT * FROM Menu WHERE naam = " + naam;
+            string query = "SELECT * FROM Menu WHERE naam = '" + naam+ "'";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+
+            DataRow dr = dataTable.Rows[0];
+
+            MenuItem item = new MenuItem()
+            {
+                menu_ID = (int)dr["menu_ID"],
+                prijs = (int)dr["prijs"],
+                naam = (string)dr["naam"],
+                btwPercentage = (int)dr["BtwPercentage"],
+                categorie = (string)dr["categorie"],
+                voorraad = (int)dr["voorraad"]
+            };
+
+            return item;
+        }
+        public MenuItem GetSingleItem(int id)
+        {
+            string query = "SELECT * FROM Menu WHERE menu_ID = '" + id + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
 

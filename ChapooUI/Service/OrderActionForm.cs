@@ -20,6 +20,7 @@ namespace ChapooUI
         Bestelling_Service bestellingService = new Bestelling_Service();
         Inlog werknemer = new Inlog();
         int tafelNummer;
+        Bestelling bestelling = new Bestelling();
 
         public OrderActionForm(Inlog werknemer, int tafelNummer)
         {
@@ -38,7 +39,7 @@ namespace ChapooUI
         private void OrderForm_Load(object sender, EventArgs e)
         {
             lbl_Name.Text = werknemer.naam;
-            lbl_Tafel.Text = tafelNummer.ToString();
+            lbl_Tafel.Text = "Tafel: "+tafelNummer;
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,20 +50,18 @@ namespace ChapooUI
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderMenusForm orderMenusForm = new OrderMenusForm(tafelNummer);
+            OrderMenusForm orderMenusForm = new OrderMenusForm(tafelNummer,bestelling);
             orderMenusForm.Show();
         }
 
         private void btnActionBekijken_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            //OrderOverviewForm orderOverviewForm = new OrderOverviewForm();
-            //orderOverviewForm.Show();
+            PaymentForm form = new PaymentForm();
+            form.Show();
         }
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
         {
-            Bestelling bestelling = new Bestelling();
             bestelling.werknemer = werknemer;
             bestelling.tafel_ID = tafelNummer;
             bestelling.datum = DateTime.Today;
@@ -72,6 +71,13 @@ namespace ChapooUI
             bestelling = bestellingService.GetLatestOrder();
 
             MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
+        }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            TableForm form = new TableForm(werknemer);
+            this.Close();
+            form.Show();
         }
     }
 }

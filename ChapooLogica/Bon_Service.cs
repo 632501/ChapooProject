@@ -31,20 +31,56 @@ namespace ChapooLogica
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
             
-            Bestelling orderitems = new Bestelling();
+            Bestelling returnlist = new Bestelling();
             int count = 1;
+            
 
             foreach(OrderItem x in orders.orderItems)
             {
-                for (int i = count; i < orders.orderItems.Count; i++)
+                if (count == 1)
                 {
-
+                    returnlist.orderItems.Add(x);
                 }
-                count++;
-            }
+                else
+                {
+                    foreach (OrderItem y in returnlist.orderItems)
+                    {
 
+
+                        if (y.menuItem.naam == x.menuItem.naam)
+                        {
+                            y.Aantal += x.Aantal;
+                            orders.orderItems.Remove(x);
+                        }
+                        else
+                        {
+                            returnlist.orderItems.Add(x);
+                        }
+
+                        if (count == 1)
+                        {
+                            returnlist.orderItems.Remove(y);
+                            count = 2;
+                        }
+                    }
+                }
+                
+            }
             
-            return orders;
+            return returnlist;
+        }
+        
+        Bestelling Fake (Bestelling fake)
+        {
+            OrderItem fakeOrderItem = new OrderItem();
+            fakeOrderItem.order_ID = 999;
+
+            fakeOrderItem.Aantal = 5;
+
+            MenuItem fakeMenuItem = new MenuItem();
+            fakeMenuItem.naam = "fake";
+
+            return fake;
         }
     }
 }

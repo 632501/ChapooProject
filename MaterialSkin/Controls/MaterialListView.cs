@@ -96,12 +96,24 @@ namespace MaterialSkin.Controls
 
             foreach (ListViewItem.ListViewSubItem subItem in e.Item.SubItems)
             {
+                
                 if (subItem.Text != "Picture")
                 {
-                    //Draw text
-                    g.DrawString(subItem.Text, SkinManager.ROBOTO_MEDIUM_10, SkinManager.GetPrimaryTextBrush(),
-                                     new Rectangle(subItem.Bounds.X + ITEM_PADDING, ITEM_PADDING, subItem.Bounds.Width - 2 * ITEM_PADDING, subItem.Bounds.Height - 2 * ITEM_PADDING),
-                                     getStringFormat());
+                    if(e.Item.ForeColor == Color.Red)
+                    {
+                        //Draw text
+                        g.DrawString(subItem.Text, SkinManager.ROBOTO_MEDIUM_10, Brushes.Red,
+                                         new Rectangle(subItem.Bounds.X + ITEM_PADDING, ITEM_PADDING, subItem.Bounds.Width - 2 * ITEM_PADDING, subItem.Bounds.Height - 2 * ITEM_PADDING),
+                                         getStringFormat());
+                    }
+                    else
+                    {
+                        //Draw text
+                        g.DrawString(subItem.Text, SkinManager.ROBOTO_MEDIUM_10, SkinManager.GetPrimaryTextBrush(),
+                                         new Rectangle(subItem.Bounds.X + ITEM_PADDING, ITEM_PADDING, subItem.Bounds.Width - 2 * ITEM_PADDING, subItem.Bounds.Height - 2 * ITEM_PADDING),
+                                         getStringFormat());
+                    }
+
                 }
                 else
                 {

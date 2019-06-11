@@ -58,10 +58,13 @@ namespace ChapooDAL
 
         public Inlog GetEmployee(int ID)
         {
-            string query = "Select * From Inlog Where werknemer_ID = '" +ID;
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
-
+            string query = "Select * From Inlog Where werknemer_ID = '" +ID + "'";
+            con = new SqlConnection(conn);
+            con.Open();
+            SqlCommand command = new SqlCommand(query, con);
+            SqlDataReader datareader = command.ExecuteReader();
+            var dataTable = new DataTable();
+            dataTable.Load(datareader);
             DataRow dr = dataTable.Rows[0];
 
             Inlog Employee = new Inlog()
@@ -75,7 +78,28 @@ namespace ChapooDAL
 
             return Employee;
         }
+        public Inlog GetEmployeeWithPassword(int password)
+        {
+            string query = "Select * From Inlog Where wachtwoord = '" + password + "'";
+            con = new SqlConnection(conn);
+            con.Open();
+            SqlCommand command = new SqlCommand(query, con);
+            SqlDataReader datareader = command.ExecuteReader();
+            var dataTable = new DataTable();
+            dataTable.Load(datareader);
+            DataRow dr = dataTable.Rows[0];
 
+            Inlog Employee = new Inlog()
+            {
+                werknemer_ID = (int)dr["werknemer_ID"],
+                wachtwoord = (string)dr["wachtwoord"],
+                naam = (string)dr["naam"],
+                functie = (string)dr["functie"],
+                status = (string)dr["status"]
+            };
+
+            return Employee;
+        }
         public string Name(string password)
         {
             string name = "";

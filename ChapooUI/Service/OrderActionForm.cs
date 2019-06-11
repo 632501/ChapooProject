@@ -50,7 +50,7 @@ namespace ChapooUI
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderMenusForm orderMenusForm = new OrderMenusForm(tafelNummer,bestelling);
+            OrderMenusForm orderMenusForm = new OrderMenusForm(werknemer, tafelNummer,bestelling);
             orderMenusForm.Show();
         }
 

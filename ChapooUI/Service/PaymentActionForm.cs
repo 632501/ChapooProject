@@ -23,8 +23,10 @@ namespace ChapooUI
         int amount;
         int tip;
         int btw;
+        Inlog werknemer = new Inlog();
+        int tafel_ID;
 
-        public PaymentActionForm(int amount, int tip, int btw)
+        public PaymentActionForm(int amount, int tip, int btw, Inlog werknemer, int tafel_ID)
         {
             InitializeComponent();
 
@@ -37,13 +39,14 @@ namespace ChapooUI
             this.amount = amount;
             this.tip = tip;
             this.btw = btw;
+            this.tafel_ID = tafel_ID;
+            this.werknemer = werknemer;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             Bestelling order = new Bestelling();
-            order = bonService.Orders(4); // tafelnummer nog op een goede manier
-            
+            order = bonService.Orders(tafel_ID); // tafelnummer nog op een goede manier
             
             int btwAmount = amount + btw;
             int totalamount = btwAmount + tip;
@@ -53,6 +56,9 @@ namespace ChapooUI
             lblBtwAmount.Text = btwAmount.ToString();
             lblTip.Text = tip.ToString();
             lblTotalAmount.Text = totalamount.ToString();
+
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
@@ -60,26 +66,37 @@ namespace ChapooUI
             string paymenttype;
             string comment = txtboxOpmerking.Text;
             int tip = int.Parse(lblTip.Text);
-            int table = 4; // tafelnummer fixen
+            TableForm form = new TableForm(werknemer);
 
             if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Creditcard";
-                bonService.Paid(table, tip, paymenttype, comment);
-                // doorverwijzen naar tafelform
+                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+
+                this.Close();
+                form.ShowDialog();
             }
             if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Contant";
-                bonService.Paid(table, tip, paymenttype, comment);
-                // doorverwijzen naar tafelform
+                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+
+                this.Close();
+                form.ShowDialog();
             }
             if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
             {
                 paymenttype = "Pinpas";
-                bonService.Paid(table, tip, paymenttype, comment);
-                // doorverwijzen naar tafelform
+                bonService.Paid(tafel_ID, tip, paymenttype, comment);
+
+                this.Close();
+                form.ShowDialog();
             }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnTerug_Click(object sender, EventArgs e)
@@ -88,6 +105,26 @@ namespace ChapooUI
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void lblTafelNr_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_Naam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblName_Click(object sender, EventArgs e)
         {
 
         }

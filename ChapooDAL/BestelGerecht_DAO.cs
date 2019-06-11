@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -23,8 +24,11 @@ namespace ChapooDAL
 
             SqlCommand command = new SqlCommand(query, con);
             SqlDataReader dr = command.ExecuteReader();
+            DataTable dt = new DataTable();
             dr.Read();
+            
             status = (string)dr["status"];
+            
 
             return status;
         }

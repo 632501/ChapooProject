@@ -19,9 +19,11 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
-        int btw; 
+        int btw;
+        Inlog werknemer = new Inlog();
+        int tafel_ID;
 
-        public PaymentForm()
+        public PaymentForm(Inlog werknemer, int tafel_ID )
         {
             InitializeComponent();
 
@@ -30,15 +32,18 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            this.tafel_ID = tafel_ID;
+            this.werknemer = werknemer;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             btw = 0;
-            int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier
+            int amount = bonService.TotalAmount(tafel_ID);
 
             Bestelling order = new Bestelling();
-            order = bonService.Orders(4); // tafelnummer nog op de goede manier
+            order = bonService.Orders(tafel_ID); 
             
             foreach (OrderItem o in order.orderItems)
             {
@@ -59,11 +64,14 @@ namespace ChapooUI
 
                 materialListViewBestelling.Items.Add(orderlist);
             }
+
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            int amount = bonService.TotalAmount(4); // Tafelnummer nog op een goede manier 
+            int amount = bonService.TotalAmount(tafel_ID); 
             int totalPayment = 0;
 
             if (txtboxTotalPayment.Text == "")
@@ -76,8 +84,13 @@ namespace ChapooUI
             }
 
             int tip = totalPayment - amount - btw;
-            PaymentActionForm pay = new PaymentActionForm(amount, tip, btw);
+            PaymentActionForm pay = new PaymentActionForm(amount, tip, btw, werknemer, tafel_ID);
             pay.ShowDialog();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void label1_Click(object sender, EventArgs e)

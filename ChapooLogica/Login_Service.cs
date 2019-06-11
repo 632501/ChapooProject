@@ -49,7 +49,7 @@ namespace ChapooLogica
 
         public void ChangeEmployee(int ID, string name, string password, string function)
         {
-            inlog_db.ChangeUser(ID, password, name, function);
+            inlog_db.ChangeUser(ID, name, password, function);
         }
 
         public void FireEmployee(int ID)

@@ -108,5 +108,25 @@ namespace ChapooDAL
 
             return item;
         }
+        public MenuItem GetSingleItem(int id)
+        {
+            string query = "SELECT * FROM Menu WHERE menu_ID = '" + id + "'";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+
+            DataRow dr = dataTable.Rows[0];
+
+            MenuItem item = new MenuItem()
+            {
+                menu_ID = (int)dr["menu_ID"],
+                prijs = (int)dr["prijs"],
+                naam = (string)dr["naam"],
+                btwPercentage = (int)dr["BtwPercentage"],
+                categorie = (string)dr["categorie"],
+                voorraad = (int)dr["voorraad"]
+            };
+
+            return item;
+        }
     }
 }

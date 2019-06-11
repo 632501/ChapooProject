@@ -30,7 +30,10 @@ namespace ChapooLogica
             }
             return aangepasteLijst;
         }
-
+        public Inlog GetEmployee(int id)
+        {
+            return inlog_db.GetEmployee(id);
+        }
         public void AddEmployee(int ID, string name, string password, string function)
         {
             foreach(Inlog employee in employeeList)

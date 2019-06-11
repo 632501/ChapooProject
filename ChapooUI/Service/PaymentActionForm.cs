@@ -46,16 +46,24 @@ namespace ChapooUI
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             Bestelling order = new Bestelling();
-            order = bonService.Orders(tafel_ID); // tafelnummer nog op een goede manier
+            order = bonService.Orders(tafel_ID); 
             
-            int btwAmount = amount + btw;
-            int totalamount = btwAmount + tip;
+            //int btwAmount = amount + btw;
+            //int totalamount = btwAmount + tip;
 
-            lblAmount.Text = amount.ToString();
-            lblBtw.Text = btw.ToString();
-            lblBtwAmount.Text = btwAmount.ToString();
-            lblTip.Text = tip.ToString();
-            lblTotalAmount.Text = totalamount.ToString();
+            int bedrag = 32;
+
+            lblAmount.Text = bedrag.ToString();
+            lblBtw.Text = "2";
+            lblBtwAmount.Text = "34";
+            lblTip.Text = "2";
+            lblTotalAmount.Text = "36";
+
+            //lblAmount.Text = amount.ToString();
+            //lblBtw.Text = btw.ToString();
+            //lblBtwAmount.Text = btwAmount.ToString();
+            //lblTip.Text = tip.ToString();
+            //lblTotalAmount.Text = totalamount.ToString();
 
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
@@ -96,7 +104,8 @@ namespace ChapooUI
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-
+            LoginForm login = new LoginForm();
+            login.Show();
         }
 
         private void btnTerug_Click(object sender, EventArgs e)

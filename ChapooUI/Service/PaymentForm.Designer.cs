@@ -65,6 +65,7 @@
             this.btnTerug.TabIndex = 34;
             this.btnTerug.Text = "Terug naar overzicht";
             this.btnTerug.UseVisualStyleBackColor = true;
+            this.btnTerug.Click += new System.EventHandler(this.btnTerug_Click);
             // 
             // lblTotaalbedrag
             // 

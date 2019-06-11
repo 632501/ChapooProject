@@ -47,10 +47,10 @@ namespace ChapooUI
             
             foreach (OrderItem o in order.orderItems)
             {
-                btw += (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
+                btw = btw + (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
             }
 
-            amount += btw;
+            amount = amount + btw;
             lblTotaalbedrag.Text = "€ " + amount.ToString();
 
             materialListViewBestelling.Items.Clear();
@@ -90,12 +90,18 @@ namespace ChapooUI
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-
+            LoginForm login = new LoginForm();
+            login.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTerug_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

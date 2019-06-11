@@ -57,7 +57,7 @@ namespace ChapooUI
         private void btnActionBekijken_Click(object sender, EventArgs e)
         {
             PaymentForm form = new PaymentForm();
-            form.ShowDialog();
+            form.Show();
         }
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace ChapooUI
         {
             TableForm form = new TableForm(werknemer);
             this.Close();
-            form.ShowDialog();
+            form.Show();
         }
     }
 }

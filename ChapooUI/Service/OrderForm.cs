@@ -60,7 +60,7 @@ namespace ChapooUI
             
             if (sort == "Drinks")
             {
-                mlblSoortBestelling.Text = "Drinken";
+                mlblSoortBestelling.Text = "Dranken";
                 Menu_Service menuService = new Menu_Service();
                 menuList = menuService.GetDrinks();
 

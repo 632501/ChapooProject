@@ -20,8 +20,9 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         private Menu_Service menuService = new Menu_Service();
         private List<MenuItem> menu;
+        Inlog werknemer = new Inlog();
 
-        public ManagementSupplyForm()
+        public ManagementSupplyForm(Inlog inlog)
         {
             InitializeComponent();
 
@@ -30,6 +31,8 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
+            werknemer = inlog;
         }
 
         private void btn_Back_Click(object sender, EventArgs e)
@@ -49,15 +52,18 @@ namespace ChapooUI
         {
             MenuItem menuItem = new MenuItem();
 
-            if (ListView_ViewSupply.SelectedItems.Count > 0)
+            if (werknemer.functie == "Manager")
             {
-                menuItem = (MenuItem)ListView_ViewSupply.SelectedItems[0].Tag;
+                if (ListView_ViewSupply.SelectedItems.Count > 0)
+                {
+                    menuItem = (MenuItem)ListView_ViewSupply.SelectedItems[0].Tag;
+                }
+
+                ShowAllControls();
+
+                lbl_SelectedName.Text = menuItem.naam;
+                txt_SelectedAmount.Text = menuItem.voorraad.ToString();
             }
-
-            ShowAllControls();
-
-            lbl_SelectedName.Text = menuItem.naam;
-            txt_SelectedAmount.Text = menuItem.voorraad.ToString();
         }
 
         private void btn_Change_Click(object sender, EventArgs e)

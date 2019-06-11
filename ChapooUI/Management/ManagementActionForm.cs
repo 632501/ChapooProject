@@ -32,7 +32,7 @@ namespace ChapooUI
 
         private void btn_Supply_Click(object sender, EventArgs e)
         {
-            ManagementSupplyForm supplyForm = new ManagementSupplyForm();
+            ManagementSupplyForm supplyForm = new ManagementSupplyForm(inlog);
             supplyForm.ShowDialog();
         }
 

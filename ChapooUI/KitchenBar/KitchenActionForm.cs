@@ -220,7 +220,7 @@ namespace ChapooUI
 
         private void stockButton_Click(object sender, EventArgs e)
         {
-            ManagementSupplyForm supplyForm = new ManagementSupplyForm();
+            ManagementSupplyForm supplyForm = new ManagementSupplyForm(inlog);
             supplyForm.ShowDialog();
         }
     }

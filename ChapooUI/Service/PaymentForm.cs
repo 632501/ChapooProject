@@ -19,7 +19,7 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
-        int btw;
+        Decimal btw;
         Inlog werknemer = new Inlog();
         int tafel_ID = 3;
 
@@ -40,7 +40,7 @@ namespace ChapooUI
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             btw = 0;
-            int amount = 0;
+            Decimal amount = 0;
 
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID);

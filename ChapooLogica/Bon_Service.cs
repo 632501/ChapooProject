@@ -14,9 +14,9 @@ namespace ChapooLogica
     {
         Bon_DAO bon_db = new Bon_DAO();
 
-        public int TotalAmount(int tafel_ID)
+        public Decimal TotalAmount(int tafel_ID)
         {
-            int totalAmount = bon_db.TotalAmount(tafel_ID);
+            Decimal totalAmount = bon_db.TotalAmount(tafel_ID);
 
             return totalAmount;
         }

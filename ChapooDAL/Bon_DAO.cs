@@ -13,22 +13,22 @@ namespace ChapooDAL
     public class Bon_DAO : Base
     {
 
-        public int TotalAmount(int tafel_ID)
+        public Decimal TotalAmount(int tafel_ID)
         {
             string query = "SELECT B.totaalprijs FROM Bon AS B JOIN Bestelling AS BE ON B.bestel_ID = BE.bestelling_ID JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTotalAmount(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private int ReadTotalAmount(DataTable dataTable)
+        private Decimal ReadTotalAmount(DataTable dataTable)
         {
-            int tp = 0;
+            Decimal tp = 0;
 
             foreach (DataRow dr in dataTable.Rows)
             {
                 Bon bon = new Bon
                 {
-                    totaalprijs = (int)dr["totaalprijs"]
+                    totaalprijs = (Decimal)dr["totaalprijs"]
                 };
                 tp = bon.totaalprijs;
             }

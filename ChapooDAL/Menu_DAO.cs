@@ -29,7 +29,7 @@ namespace ChapooDAL
                 {
                     menu_ID = (int)dr["menu_Id"],
                     naam = (String)(dr["naam"].ToString()),
-                    prijs = (int)dr["prijs"],
+                    prijs = (Decimal)dr["prijs"],
                     categorie = (String)(dr["categorie"].ToString()),
                     voorraad = (int)dr["voorraad"]
 
@@ -99,7 +99,7 @@ namespace ChapooDAL
             MenuItem item = new MenuItem()
             {
                 menu_ID = (int)dr["menu_ID"],
-                prijs = (int)dr["prijs"],
+                prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
                 btwPercentage = (int)dr["BtwPercentage"],
                 categorie = (string)dr["categorie"],
@@ -119,7 +119,7 @@ namespace ChapooDAL
             MenuItem item = new MenuItem()
             {
                 menu_ID = (int)dr["menu_ID"],
-                prijs = (int)dr["prijs"],
+                prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
                 btwPercentage = (int)dr["BtwPercentage"],
                 categorie = (string)dr["categorie"],

@@ -74,9 +74,9 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad)
+        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad, int btw)
         {
-            string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ") set identity_insert  Menu  OFF";
+            string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad, btwPercentage) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ", "+btw+") set identity_insert  Menu  OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

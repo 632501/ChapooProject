@@ -71,7 +71,6 @@ namespace ChapooUI
             if (!getOrdersWorker.IsBusy)
             {
                 loadingPicture.Visible = true;
-                updateTimer.Stop();
                 getOrdersWorker.RunWorkerAsync();
 
             }
@@ -147,7 +146,6 @@ namespace ChapooUI
                     loadingPicture.Visible = false;
                 });
             }
-            updateTimer.Start();
             e.Result = orderItems;
         }
 

@@ -68,6 +68,8 @@ namespace ChapooUI
             {
                 txt_Supply.Hide();
                 lbl_Supply.Hide();
+                txt_Btw.Hide();
+                lbl_btw.Hide();
 
                 if (ListView_ViewMenu.SelectedItems.Count > 0)
                 {
@@ -122,8 +124,9 @@ namespace ChapooUI
                 int prijs = int.Parse(txt_ItemPrijs.Text);
                 string categorie = txt_ItemCategorie.Text;
                 int voorraad = int.Parse(txt_Supply.Text);
+                int btw = int.Parse(txt_Btw.Text);
 
-                menuService.AddMenuItem(ID, naam, prijs, categorie, voorraad);
+                menuService.AddMenuItem(ID, naam, prijs, categorie, voorraad, btw);
             }
             else
             {
@@ -199,6 +202,8 @@ namespace ChapooUI
             lbl_Supply.Hide();
             btn_Change.Hide();
             btn_Remove.Hide();
+            txt_Btw.Hide();
+            lbl_btw.Hide();
         }
 
         private void ShowExistingListViewItems()
@@ -213,6 +218,8 @@ namespace ChapooUI
             lbl_Prijs.Show();
             btn_Change.Show();
             btn_Remove.Show();
+            lbl_btw.Show();
+            txt_Btw.Show();
         }
 
         private void ClearAllTextFields()
@@ -222,6 +229,7 @@ namespace ChapooUI
             txt_ItemNaam.Clear();
             txt_ItemPrijs.Clear();
             txt_Supply.Clear();
+            txt_Btw.Clear();
         }
 
         private void OnlyNumbersAllowed()

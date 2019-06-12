@@ -50,9 +50,9 @@ namespace ChapooLogica
             menu_db.ChangeMenu(ID, naam, prijs, categorie);
         }
 
-        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad)
+        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad,int btw)
         {
-            menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad);
+            menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad, btw);
         }
 
         public void RemoveItem(int ID)

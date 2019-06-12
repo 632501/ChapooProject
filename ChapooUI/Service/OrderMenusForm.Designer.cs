@@ -35,6 +35,7 @@
             this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
+            this.listviewTakenOrder = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // btnDrinks
@@ -92,6 +93,7 @@
             // 
             // btn_Terug
             // 
+            this.btn_Terug.AutoSize = true;
             this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Terug.Depth = 0;
             this.btn_Terug.Icon = null;
@@ -119,9 +121,18 @@
             this.mlblWerknemer.TabIndex = 9;
             this.mlblWerknemer.Text = "werknemer";
             // 
+            // listviewTakenOrder
+            // 
+            this.listviewTakenOrder.Location = new System.Drawing.Point(44, 110);
+            this.listviewTakenOrder.Name = "listviewTakenOrder";
+            this.listviewTakenOrder.Size = new System.Drawing.Size(241, 201);
+            this.listviewTakenOrder.TabIndex = 10;
+            this.listviewTakenOrder.UseCompatibleStateImageBehavior = false;
+            // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.listviewTakenOrder);
             this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Table);
@@ -149,5 +160,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_Table;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
         private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
+        private System.Windows.Forms.ListView listviewTakenOrder;
     }
 }

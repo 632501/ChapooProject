@@ -27,8 +27,9 @@ namespace ChapooUI
         Inlog employee { get; set; }
         Bestelling_Service bestellingService = new Bestelling_Service();
         Menu_Service menuService = new Menu_Service();
+        OrderMenusForm orderMenusForm { get; set; }
 
-        public OrderForm(string sort, int tableNumber, Bestelling order, Inlog employee)
+        public OrderForm(string sort, int tableNumber, Bestelling order, Inlog employee, OrderMenusForm orderMenusForm)
         {
             this.sort = sort;
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace ChapooUI
             this.order = order;
             this.tableNumber = tableNumber;
             this.employee = employee;
+            this.orderMenusForm = orderMenusForm;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -121,7 +123,8 @@ namespace ChapooUI
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            order.orderItems = new List<OrderItem>();
+            //OrderMenusForm orderForm = new OrderMenusForm(employee, tableNumber);
+            //orderMenusForm.Show();
             OrderItem o;
             MenuItem m = new MenuItem();
             int i = 0;
@@ -146,15 +149,16 @@ namespace ChapooUI
                     //o.bestelling_ID = bestelling.bestelling_ID;
 
                     //bestellingService.AddOrderItem(o);
-                    order.orderItems.Add(o);
+                    orderMenusForm.bestelling.orderItems.Add(o);
+                    //orderForm.bestelling.orderItems.Add(o);
                 }
                 
             }
             MessageBox.Show("Er is een nieuwe order gemaakt");
             this.Close();
-            OrderMenusForm orderForm = new OrderMenusForm(employee, tableNumber);
-            orderForm.LoadOrder(order);
-            orderForm.Show();
+            orderMenusForm.Show();
+            orderMenusForm.LoadOrder();
+            //orderForm.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

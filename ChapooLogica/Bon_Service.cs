@@ -30,12 +30,11 @@ namespace ChapooLogica
         {
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
-            
+
             //Bestelling returnlist = new Bestelling();
             //int count = 1;
-            
 
-            //foreach(OrderItem x in orders.orderItems)
+            //foreach (OrderItem x in orders.orderItems)
             //{
             //    if (count == 1)
             //    {
@@ -45,28 +44,25 @@ namespace ChapooLogica
             //    {
             //        foreach (OrderItem y in returnlist.orderItems)
             //        {
-
-
             //            if (y.menuItem.naam == x.menuItem.naam)
-             //           {
-              //              y.Aantal += x.Aantal;
-               //             orders.orderItems.Remove(x);
-                //        }
-                 //       else
-                //        {
-               //             returnlist.orderItems.Add(x);
-               //         }
+            //            {
+            //                y.Aantal += x.Aantal;
+            //                orders.orderItems.Remove(x);
+            //            }
+            //            else
+            //            {
+            //                returnlist.orderItems.Add(x);
+            //            }
 
-              //          if (count == 1)
-              //          {
-              //              returnlist.orderItems.Remove(y);
-               //             count = 2;
-                //        }
-                 //   }
-                //}
-                
-           // }
-            
+            //            if (count == 1)
+            //            {
+            //                returnlist.orderItems.Remove(y);
+            //                count = 2;
+            //            }
+            //        }
+            //    }
+            //}
+
             return orders;
         }
     }

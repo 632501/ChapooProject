@@ -19,10 +19,10 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Order_Service orderService = new Order_Service();
-        int tafelnummer { get; set; }
+        int tafelNummer { get; set; }
         Inlog werknemer { get; set; }
 
-        public OrderOverviewForm(Inlog inlog, int tafelnummer)
+        public OrderOverviewForm(Inlog inlog, int tafelNummer)
         {
             InitializeComponent();
 
@@ -32,7 +32,7 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             werknemer = inlog;
-            this.tafelnummer = tafelnummer;
+            this.tafelNummer = tafelNummer;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -43,13 +43,13 @@ namespace ChapooUI
         public void LoadOrders()
         {
             listviewOverview.Clear();
-            List<Bestelling> bestellingen = orderService.GetTablesOrder(tafelnummer);
+            List<Bestelling> bestellingen = orderService.GetTablesOrder(tafelNummer);
             foreach (Bestelling bestelling in bestellingen)
             {
-                List<OrderItem> orderItems = orderService.GetTablesOrderItems(tafelnummer, bestelling.bestelling_ID);
+                List<OrderItem> orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_ID);
                 foreach (OrderItem item in orderItems)
                 {
-                    ListViewItem li = new ListViewItem(item.bestelling_ID.ToString());
+                    ListViewItem li = new ListViewItem(bestelling.bestelling_ID.ToString());
                     li.SubItems.Add(item.menuItem.naam);
                     li.SubItems.Add(item.Aantal.ToString());
                     listviewOverview.Items.Add(li);
@@ -73,9 +73,17 @@ namespace ChapooUI
             } else
             {
                 int orderId = int.Parse(listviewOverview.SelectedItems[0].Text);
-                orderService.DeleteOrder(orderId);   
-
+                orderService.DeleteOrder(orderId);
+                LoadOrders();
             }
+            
+        }
+
+        private void btn_Terug_Click(object sender, EventArgs e)
+        {
+            OrderActionForm form = new OrderActionForm(werknemer, tafelNummer);
+            this.Close();
+            form.Show();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace ChapooDAL
 
         public List<Bestelling> Get_Order_Per_Table(int tafelnummer)
         {
-            string query = string.Format("SELECT * FROM Bestelling ");
+            string query = string.Format("SELECT * FROM Bestelling WHERE tafel_ID = '{0}' ", tafelnummer);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }

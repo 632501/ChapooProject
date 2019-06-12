@@ -58,7 +58,7 @@ namespace ChapooUI
 
         }
         
-        public void GetMenus()
+        private void GetMenus()
         {
             int aantal = 0;
             menuList = new List<MenuItem>();
@@ -123,14 +123,14 @@ namespace ChapooUI
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            //OrderMenusForm orderForm = new OrderMenusForm(employee, tableNumber);
-            //orderMenusForm.Show();
-            OrderItem o;
-            MenuItem m = new MenuItem();
-            int i = 0;
+            
+            int i;
 
             foreach (ListViewItem li in listviewMenu.Items)
             {
+                OrderItem o;
+                MenuItem m = new MenuItem();
+
                 m.naam = li.SubItems[0].Text;
                 string a = "";
                 a = li.SubItems[1].Text;
@@ -138,19 +138,13 @@ namespace ChapooUI
                 if (i != 0)
                 {
                     m = menuService.GetItem(m.naam);
+                    
                     o = new OrderItem();
-                    o.order_ID = 1;
-                    o.bestelling_ID = 1;
                     o.menuItem = m;
                     o.Aantal = i;
                     o.Status = "bezig";
-                    o.TafelNummer = tableNumber;
-                    //o.order_ID = o.order_ID;
-                    //o.bestelling_ID = bestelling.bestelling_ID;
 
-                    //bestellingService.AddOrderItem(o);
                     orderMenusForm.bestelling.orderItems.Add(o);
-                    //orderForm.bestelling.orderItems.Add(o);
                 }
                 
             }
@@ -158,7 +152,6 @@ namespace ChapooUI
             this.Close();
             orderMenusForm.Show();
             orderMenusForm.LoadOrder();
-            //orderForm.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

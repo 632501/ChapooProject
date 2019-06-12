@@ -14,22 +14,21 @@ namespace ChapooLogica
     {
         Bon_DAO bon_db = new Bon_DAO();
 
-        public int TotalAmount(int tafel_ID)
-        {
-            int totalAmount = bon_db.TotalAmount(tafel_ID);
+        int Bestelling_ID;
 
-            return totalAmount;
-        }
-
-        public void Paid(int tafel_ID, double tip, string paymentType, string comment)
+        public void Paid(int tafel_ID, decimal totalPayment, decimal tip, string comment, string paymentType)
         {
-            bon_db.Paid(tafel_ID, tip, paymentType, comment);
+            DateTime date = DateTime.Now;
+
+            bon_db.Paid(tafel_ID, date, totalPayment, tip, comment, Bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
         {
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
+
+            this.Bestelling_ID = orders.bestelling_ID;
 
             //Bestelling returnlist = new Bestelling();
             //int count = 1;

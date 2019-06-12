@@ -19,9 +19,11 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
-        int btw;
         Inlog werknemer = new Inlog();
-        int tafel_ID = 3;
+        int tafel_ID;
+        decimal amountWithBtw;
+        decimal amount;
+        decimal btw;
 
         public PaymentForm(Inlog werknemer, int tafel_ID )
         {
@@ -39,57 +41,55 @@ namespace ChapooUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            btw = 0;
-            int amount = 0;
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
+            amount = 0;
+            amountWithBtw = 0;
 
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID);
-
             
-
             foreach (OrderItem o in order.orderItems)
             {
-                btw = btw + (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));
+                amountWithBtw = amountWithBtw + (o.Aantal * o.menuItem.prijs) * (o.menuItem.btwPercentage / 100 + 1);
+                amount = amount + (o.Aantal * o.menuItem.prijs);
             }
 
-            amount = amount + btw;
-            string bedrag = "10,60";
-            lblTotaalbedrag.Text = "€ " + bedrag;
-
-            //lblTotaalbedrag.Text = "€ " + amount.ToString();
-
+            btw = amountWithBtw - amount;
+            
+            lblTotaalbedrag.Text = "€ " + amountWithBtw.ToString("#.##");
+            
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
-            //foreach (OrderItem o in order.orderItems)
-            //{
-                ListViewItem orderlist = new ListViewItem("5");
-                orderlist.SubItems.Add("CocaCola");
-                orderlist.SubItems.Add("10");
+            foreach (OrderItem o in order.orderItems)
+            {
+                ListViewItem orderlist = new ListViewItem(o.Aantal.ToString());
+                orderlist.SubItems.Add(o.menuItem.naam);
+                orderlist.SubItems.Add(o.menuItem.prijs.ToString());
 
                 materialListViewBestelling.Items.Add(orderlist);
-            //}
-
-            lblName.Text = werknemer.naam;
-            lblTafelNr.Text = tafel_ID.ToString();
+            }
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            //int amount = bonService.TotalAmount(tafel_ID); 
-           // int totalPayment = 0;
+            // Manier bedenken dat fooi niet negatief wordt als er een lager bedrag wordt betaald dan de rekening is
 
-          //  if (txtboxTotalPayment.Text == "")
-           // {
-           //     totalPayment = amount + btw;
-          //  }
-          //  else
-          //  {
-          //      totalPayment = int.Parse(txtboxTotalPayment.Text);
-          //  }
+            decimal totalPayment = 0;
 
-         //   int tip = totalPayment - amount - btw;
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID);
+            if (txtboxTotalPayment.Text == "")
+            {
+                totalPayment = amountWithBtw + btw;
+            }
+            else
+            {
+                totalPayment = int.Parse(txtboxTotalPayment.Text);
+            }
+
+            decimal tip = totalPayment - amount - btw;
+
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amountWithBtw, amount, tip);
             pay.ShowDialog();
         }
 

@@ -41,21 +41,21 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' ";
+            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }

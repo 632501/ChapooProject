@@ -24,7 +24,7 @@ namespace ChapooDAL
             {
                 i = 0;
             }
-            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald) VALUES (" + bestelling.tafel_ID + ", " + i + ")";
+            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald, datum) VALUES (" + bestelling.tafel_ID + ", " + i + ", "+ bestelling.datum+ ")";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -48,7 +48,8 @@ namespace ChapooDAL
             {
                 bestelling_ID = (int)dr["bestelling_ID"],
                 tafel_ID = (int)dr["tafel_ID"],
-                betaald = (bool)dr["betaald"]
+                betaald = (bool)dr["betaald"],
+                datum = (DateTime)dr["datum"]
             };
 
             return bestelling;

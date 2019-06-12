@@ -18,12 +18,14 @@ namespace ChapooUI
     public partial class OrderMenusForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+
         int tafelNummer;
         private Bestelling bestelling = new Bestelling();
         Inlog werknemer = new Inlog();
         Bestelling_Service bestellingService = new Bestelling_Service();
+        
 
-        public OrderMenusForm(Inlog werknemer, int tafelNummer, Bestelling bestelling)
+        public OrderMenusForm(Inlog werknemer, int tafelNummer)
         {
             InitializeComponent();
 
@@ -33,58 +35,46 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            this.bestelling = bestelling;
+            bestelling.orderItems = new List<OrderItem>();
+
             this.tafelNummer = tafelNummer;
             this.werknemer = werknemer;
         }
 
-        private void OrderForm_Load(object sender, EventArgs e)
-        {
-            lbl_Table.Text = "Tafel: " + tafelNummer;
-            foreach (OrderItem o in bestelling.orderItems)
-            {
-                 
-                mlblHuidigeBestelling.Text += o.menuItem.naam + " \r\n";
-            }
-            
-        }
-
-        private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void OrderMenusForm_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnDrinks_Click(object sender, EventArgs e)
-        {
+            
+            lbl_Table.Text = "Tafel: " + tafelNummer;
+            mlblWerknemer.Text = werknemer.naam;
             
         }
 
-        private void btnLunch_Click(object sender, EventArgs e)
+        public void LoadOrder(Bestelling bestelling)
         {
-            
+            //listviewTakenOrder.Clear();
+            //if (bestelling.orderItems.Count < 1)
+            //{
+            //    return;
+            //} else
+            //{
+            //    foreach (OrderItem o in bestelling.orderItems)
+            //    {
+            //        ListViewItem li = new ListViewItem(o.menuItem.naam);
+            //        li.SubItems.Add(o.Aantal.ToString());
+            //    }
+
+            //    listviewTakenOrder.View = View.Details;
+            //    listviewTakenOrder.Columns.Add("Naam");
+            //    listviewTakenOrder.Columns.Add("Aantal");
+            //}
+
         }
 
-        private void btnDiner_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnToevoegen_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public void btnDrinks_Click_1(object sender, EventArgs e)
         {
             this.Hide();
             OrderForm drinksForm = new OrderForm("Drinks", tafelNummer, bestelling, werknemer);
-            //drinksForm.GetOrder("Drinks");
             drinksForm.Show();
         }
 
@@ -92,7 +82,6 @@ namespace ChapooUI
         {
             this.Hide();
             OrderForm lunchForm = new OrderForm("Lunch",tafelNummer, bestelling, werknemer);
-            //lunchForm.GetOrder("Lunch");
             lunchForm.Show();
         }
 
@@ -100,13 +89,11 @@ namespace ChapooUI
         {
             this.Hide();
             OrderForm dinerForm = new OrderForm("Diner",tafelNummer, bestelling, werknemer);
-            //dinerForm.GetOrder("Diner");
             dinerForm.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)
         {
-            Inlog werknemer = new Inlog();
             OrderActionForm form = new OrderActionForm(werknemer, tafelNummer);
             this.Close();
             form.Show();
@@ -114,8 +101,8 @@ namespace ChapooUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            bestellingService.AddOrder(bestelling);
-            bestelling = bestellingService.GetLatestOrder();
+            //bestellingService.AddOrder(bestelling);
+            //bestelling = bestellingService.GetLatestOrder();
 
             MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
         }

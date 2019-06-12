@@ -32,14 +32,14 @@
             this.btnDiner = new System.Windows.Forms.Button();
             this.btnLunch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.mlblHuidigeBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
+            this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // btnDrinks
             // 
-            this.btnDrinks.Location = new System.Drawing.Point(55, 243);
+            this.btnDrinks.Location = new System.Drawing.Point(50, 350);
             this.btnDrinks.Name = "btnDrinks";
             this.btnDrinks.Size = new System.Drawing.Size(198, 50);
             this.btnDrinks.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // btnDiner
             // 
-            this.btnDiner.Location = new System.Drawing.Point(55, 355);
+            this.btnDiner.Location = new System.Drawing.Point(50, 462);
             this.btnDiner.Name = "btnDiner";
             this.btnDiner.Size = new System.Drawing.Size(198, 50);
             this.btnDiner.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // btnLunch
             // 
-            this.btnLunch.Location = new System.Drawing.Point(55, 299);
+            this.btnLunch.Location = new System.Drawing.Point(50, 406);
             this.btnLunch.Name = "btnLunch";
             this.btnLunch.Size = new System.Drawing.Size(198, 50);
             this.btnLunch.TabIndex = 2;
@@ -69,25 +69,13 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(55, 428);
+            this.btnAdd.Location = new System.Drawing.Point(50, 518);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(203, 35);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Toevoegen";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // mlblHuidigeBestelling
-            // 
-            this.mlblHuidigeBestelling.AutoSize = true;
-            this.mlblHuidigeBestelling.Depth = 0;
-            this.mlblHuidigeBestelling.Font = new System.Drawing.Font("Roboto", 11F);
-            this.mlblHuidigeBestelling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mlblHuidigeBestelling.Location = new System.Drawing.Point(64, 134);
-            this.mlblHuidigeBestelling.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mlblHuidigeBestelling.Name = "mlblHuidigeBestelling";
-            this.mlblHuidigeBestelling.Size = new System.Drawing.Size(0, 24);
-            this.mlblHuidigeBestelling.TabIndex = 4;
             // 
             // lbl_Table
             // 
@@ -98,12 +86,12 @@
             this.lbl_Table.Location = new System.Drawing.Point(12, 37);
             this.lbl_Table.MouseState = MaterialSkin.MouseState.HOVER;
             this.lbl_Table.Name = "lbl_Table";
-            this.lbl_Table.Size = new System.Drawing.Size(0, 24);
+            this.lbl_Table.Size = new System.Drawing.Size(53, 24);
             this.lbl_Table.TabIndex = 5;
+            this.lbl_Table.Text = "Tafel";
             // 
             // btn_Terug
             // 
-            this.btn_Terug.AutoSize = true;
             this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Terug.Depth = 0;
             this.btn_Terug.Icon = null;
@@ -118,17 +106,31 @@
             this.btn_Terug.UseVisualStyleBackColor = true;
             this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
             // 
+            // mlblWerknemer
+            // 
+            this.mlblWerknemer.AutoSize = true;
+            this.mlblWerknemer.Depth = 0;
+            this.mlblWerknemer.Font = new System.Drawing.Font("Roboto", 11F);
+            this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mlblWerknemer.Location = new System.Drawing.Point(91, 37);
+            this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlblWerknemer.Name = "mlblWerknemer";
+            this.mlblWerknemer.Size = new System.Drawing.Size(103, 24);
+            this.mlblWerknemer.TabIndex = 9;
+            this.mlblWerknemer.Text = "werknemer";
+            // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Table);
-            this.Controls.Add(this.mlblHuidigeBestelling);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnLunch);
             this.Controls.Add(this.btnDiner);
             this.Controls.Add(this.btnDrinks);
             this.Name = "OrderMenusForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrderMenusForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,8 +146,8 @@
         private System.Windows.Forms.Button btnDiner;
         private System.Windows.Forms.Button btnLunch;
         private System.Windows.Forms.Button btnAdd;
-        private MaterialSkin.Controls.MaterialLabel mlblHuidigeBestelling;
         private MaterialSkin.Controls.MaterialLabel lbl_Table;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
+        private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
     }
 }

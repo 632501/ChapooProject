@@ -50,7 +50,7 @@ namespace ChapooUI
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderMenusForm orderMenusForm = new OrderMenusForm(werknemer, tafelNummer,bestelling);
+            OrderMenusForm orderMenusForm = new OrderMenusForm(werknemer, tafelNummer);
             orderMenusForm.Show();
         }
 
@@ -62,13 +62,10 @@ namespace ChapooUI
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
         {
-            bestelling.werknemer = werknemer;
-            bestelling.tafel_ID = tafelNummer;
-            bestelling.datum = DateTime.Today;
-            bestelling.betaald = false;
+            
 
-            bestellingService.AddOrder(bestelling);
-            bestelling = bestellingService.GetLatestOrder();
+            //bestellingService.AddOrder(bestelling);
+            //bestelling = bestellingService.GetLatestOrder();
 
             MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
         }

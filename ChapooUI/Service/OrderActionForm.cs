@@ -76,5 +76,12 @@ namespace ChapooUI
             this.Close();
             form.Show();
         }
+
+        private void btnBestellingOverview_Click(object sender, EventArgs e)
+        {
+            OrderOverviewForm form = new OrderOverviewForm(werknemer, tafelNummer);
+            this.Close();
+            form.Show();
+        }
     }
 }

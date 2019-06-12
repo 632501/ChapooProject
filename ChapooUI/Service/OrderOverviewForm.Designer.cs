@@ -28,13 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.listviewOverview = new System.Windows.Forms.ListView();
+            this.btnDeleteOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // listviewOverview
+            // 
+            this.listviewOverview.Location = new System.Drawing.Point(12, 80);
+            this.listviewOverview.Name = "listviewOverview";
+            this.listviewOverview.Size = new System.Drawing.Size(351, 261);
+            this.listviewOverview.TabIndex = 0;
+            this.listviewOverview.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnDeleteOrder
+            // 
+            this.btnDeleteOrder.Location = new System.Drawing.Point(23, 365);
+            this.btnDeleteOrder.Name = "btnDeleteOrder";
+            this.btnDeleteOrder.Size = new System.Drawing.Size(109, 59);
+            this.btnDeleteOrder.TabIndex = 1;
+            this.btnDeleteOrder.Text = "Delete Order";
+            this.btnDeleteOrder.UseVisualStyleBackColor = true;
+            this.btnDeleteOrder.Click += new System.EventHandler(this.btnDeleteOrder_Click);
             // 
             // OrderOverviewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 460);
+            this.ClientSize = new System.Drawing.Size(375, 566);
+            this.Controls.Add(this.btnDeleteOrder);
+            this.Controls.Add(this.listviewOverview);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "OrderOverviewForm";
             this.Sizable = false;
@@ -46,5 +69,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView listviewOverview;
+        private System.Windows.Forms.Button btnDeleteOrder;
     }
 }

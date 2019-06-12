@@ -121,6 +121,11 @@ namespace ChapooUI
             }
 
             MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
+
+            this.Close();
+            OrderOverviewForm overviewForm = new OrderOverviewForm(werknemer, tafelNummer);
+            overviewForm.Show();
+
         }
     }
 }

@@ -34,13 +34,14 @@
             this.lbl_Name = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Tafel = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btnBestellingOverview = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnActionOpnemen
             // 
-            this.btnActionOpnemen.Location = new System.Drawing.Point(29, 141);
+            this.btnActionOpnemen.Location = new System.Drawing.Point(29, 177);
             this.btnActionOpnemen.Name = "btnActionOpnemen";
-            this.btnActionOpnemen.Size = new System.Drawing.Size(267, 118);
+            this.btnActionOpnemen.Size = new System.Drawing.Size(267, 82);
             this.btnActionOpnemen.TabIndex = 0;
             this.btnActionOpnemen.Text = "Bestelling opnemen";
             this.btnActionOpnemen.UseVisualStyleBackColor = true;
@@ -48,9 +49,9 @@
             // 
             // btn_Afronden
             // 
-            this.btn_Afronden.Location = new System.Drawing.Point(29, 275);
+            this.btn_Afronden.Location = new System.Drawing.Point(30, 390);
             this.btn_Afronden.Name = "btn_Afronden";
-            this.btn_Afronden.Size = new System.Drawing.Size(266, 118);
+            this.btn_Afronden.Size = new System.Drawing.Size(266, 82);
             this.btn_Afronden.TabIndex = 1;
             this.btn_Afronden.Text = "Afronden";
             this.btn_Afronden.UseVisualStyleBackColor = true;
@@ -58,7 +59,7 @@
             // 
             // btn_NewOrder
             // 
-            this.btn_NewOrder.Location = new System.Drawing.Point(29, 430);
+            this.btn_NewOrder.Location = new System.Drawing.Point(29, 499);
             this.btn_NewOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btn_NewOrder.Name = "btn_NewOrder";
             this.btn_NewOrder.Size = new System.Drawing.Size(267, 65);
@@ -112,11 +113,22 @@
             this.btn_Terug.UseVisualStyleBackColor = true;
             this.btn_Terug.Click += new System.EventHandler(this.btn_Terug_Click);
             // 
+            // btnBestellingOverview
+            // 
+            this.btnBestellingOverview.Location = new System.Drawing.Point(29, 289);
+            this.btnBestellingOverview.Name = "btnBestellingOverview";
+            this.btnBestellingOverview.Size = new System.Drawing.Size(263, 75);
+            this.btnBestellingOverview.TabIndex = 6;
+            this.btnBestellingOverview.Text = "Bestelling overview";
+            this.btnBestellingOverview.UseVisualStyleBackColor = true;
+            this.btnBestellingOverview.Click += new System.EventHandler(this.btnBestellingOverview_Click);
+            // 
             // OrderActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.btnBestellingOverview);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Tafel);
             this.Controls.Add(this.lbl_Name);
@@ -142,5 +154,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_Name;
         private MaterialSkin.Controls.MaterialLabel lbl_Tafel;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
+        private System.Windows.Forms.Button btnBestellingOverview;
     }
 }

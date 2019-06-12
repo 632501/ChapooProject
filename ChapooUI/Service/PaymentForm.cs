@@ -27,25 +27,26 @@ namespace ChapooUI
         {
             InitializeComponent();
 
-            // Initialize MaterialSkinManager
+            //Initialize MaterialSkinManager;
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            //this.tafel_ID = tafel_ID;
+            this.tafel_ID = tafel_ID;
             this.werknemer = werknemer;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             btw = 0;
-            //int amount = bonService.TotalAmount(tafel_ID);
-            int amount = 10;
+            int amount = 0;
 
             Bestelling order = new Bestelling();
-            order = bonService.Orders(tafel_ID); 
+            order = bonService.Orders(tafel_ID);
+
             
+
             foreach (OrderItem o in order.orderItems)
             {
                 btw = btw + (o.Aantal * o.menuItem.prijs * (o.menuItem.btwPercentage / 100 + 1));

@@ -95,7 +95,7 @@
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 60000;
+            this.updateTimer.Interval = 30000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // loginLabel

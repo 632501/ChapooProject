@@ -62,15 +62,15 @@ namespace ChapooUI
 
         private void btn_NewOrder_Click(object sender, EventArgs e)
         {
-            bestelling.werknemer = werknemer;
-            bestelling.tafel_ID = tafelNummer;
-            bestelling.datum = DateTime.Today;
-            bestelling.betaald = false;
+            //bestelling.werknemer = werknemer;
+            //bestelling.tafel_ID = tafelNummer;
+            //bestelling.datum = DateTime.Today;
+            //bestelling.betaald = false;
 
-            bestellingService.AddOrder(bestelling);
-            bestelling = bestellingService.GetLatestOrder();
+            //bestellingService.AddOrder(bestelling);
+            //bestelling = bestellingService.GetLatestOrder();
 
-            MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
+            MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: 23");
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

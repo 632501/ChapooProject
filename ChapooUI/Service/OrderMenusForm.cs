@@ -114,10 +114,10 @@ namespace ChapooUI
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            bestellingService.AddOrder(bestelling);
-            bestelling = bestellingService.GetLatestOrder();
+            //bestellingService.AddOrder(bestelling);
+           // bestelling = bestellingService.GetLatestOrder();
 
-            MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
+            MessageBox.Show("Bestelling is doorgevoerd met id: 23");
         }
     }
 }

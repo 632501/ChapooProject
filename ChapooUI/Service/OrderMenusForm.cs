@@ -19,9 +19,9 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
 
-        int tafelNummer;
+        int tafelNummer { get; set; }
         public Bestelling bestelling = new Bestelling();
-        Inlog werknemer = new Inlog();
+        Inlog werknemer { get; set; }
         Bestelling_Service bestellingService = new Bestelling_Service();
         
 
@@ -121,6 +121,11 @@ namespace ChapooUI
             }
 
             MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
+
+            this.Close();
+            OrderOverviewForm overviewForm = new OrderOverviewForm(werknemer, tafelNummer);
+            overviewForm.Show();
+
         }
     }
 }

@@ -16,16 +16,11 @@ namespace ChapooLogica
 
         int Bestelling_ID;
 
-        public void Paid(int tafel_ID, decimal amountWithBtw, decimal tip, string comment, string paymentType)
+        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, string paymentType)
         {
-            DateTime date = DateTime.Now;
-            string amountString = amountWithBtw.ToString();
-            string tipString = tip.ToString();
+            string date = DateTime.Now.ToShortDateString();
 
-            amountString.Replace(',', '.');
-            tipString.Replace(',', '.');
-
-            bon_db.Paid(tafel_ID, date, amountString, tipString, comment, Bestelling_ID, paymentType);
+            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, Bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
@@ -34,7 +29,7 @@ namespace ChapooLogica
             orders = bon_db.Orders(tafel_ID);
             //Bestelling compareList = new Bestelling();
 
-            this.Bestelling_ID = orders.bestelling_ID;
+            this.Bestelling_ID = orders.orderItems[0].bestelling_ID;
             
             //int count1 = 0;
             //int count2 = 0;

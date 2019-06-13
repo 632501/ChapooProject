@@ -51,7 +51,9 @@ namespace ChapooUI
             
             foreach (OrderItem o in order.orderItems)
             {
-                amountWithBtw = amountWithBtw + (o.Aantal * o.menuItem.prijs) * (o.menuItem.btwPercentage / 100 + 1);
+                decimal btwPercentage = (decimal)o.menuItem.btwPercentage / 100;
+
+                amountWithBtw = amountWithBtw + (o.Aantal * o.menuItem.prijs) * (btwPercentage + 1);
                 amount = amount + (o.Aantal * o.menuItem.prijs);
             }
 

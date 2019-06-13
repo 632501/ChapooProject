@@ -19,52 +19,46 @@ namespace ChapooLogica
         public void Paid(int tafel_ID, decimal amountWithBtw, decimal tip, string comment, string paymentType)
         {
             DateTime date = DateTime.Now;
+            string amountString = amountWithBtw.ToString();
+            string tipString = tip.ToString();
 
-            
+            amountString.Replace(',', '.');
+            tipString.Replace(',', '.');
 
-            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, Bestelling_ID, paymentType);
+            bon_db.Paid(tafel_ID, date, amountString, tipString, comment, Bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
         {
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
+            //Bestelling compareList = new Bestelling();
 
             this.Bestelling_ID = orders.bestelling_ID;
+            
+            //int count1 = 0;
+            //int count2 = 0;
 
-            Bestelling returnlist = new Bestelling();
-            int count = 0;
-            int newItem = 0;
+            //foreach (OrderItem x in orders.orderItems)
+            //{
+            //    count1++;
+            //    count2 = count1;
 
-            foreach (OrderItem x in orders.orderItems)
-            {
-                if (count == 0)
-                {
-                    returnlist.orderItems.Add(x);
-                    count++;
-                }
+            //    foreach (OrderItem y in compareList.orderItems)
+            //    {
+            //        if (count1 != count2 && y.menuItem.naam == x.menuItem.naam)
+            //        {
+            //            x.Aantal += y.Aantal;
 
-                foreach (OrderItem y in returnlist.orderItems)
-                {
-                    if (y.menuItem.naam == x.menuItem.naam)
-                    {
-                        y.Aantal += x.Aantal;
-                    }
-                    else
-                    {
-                        newItem++;
-                    }
+            //            orders.orderItems.Remove(y);
+            //            compareList.orderItems.Remove(y);
+            //        }
 
-                    if (newItem == returnlist.orderItems.Count)
-                    {
-                        returnlist.orderItems.Add(x);
-                    }
-                }
+            //        count2++;
+            //    }
+            //}
 
-                newItem = 0;
-            }
-
-            return returnlist;
+            return orders;
         }
     }
 }

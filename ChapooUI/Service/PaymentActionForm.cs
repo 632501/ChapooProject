@@ -65,11 +65,13 @@ namespace ChapooUI
             TableForm form = new TableForm(werknemer);
             string paymenttype;
             string comment = txtboxOpmerking.Text;
+            string amountWithBtwS = amountWithBtw.ToString().Replace(',', '.');
+            string tipS = tip.ToString().Replace(',', '.');
 
             if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Creditcard";
-                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
@@ -77,7 +79,7 @@ namespace ChapooUI
             if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Contant";
-                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
@@ -85,7 +87,7 @@ namespace ChapooUI
             if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
             {
                 paymenttype = "Pinpas";
-                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();

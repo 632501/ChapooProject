@@ -69,7 +69,7 @@ namespace ChapooDAL
 
         public void ChangeMenu(int ID, string naam, string prijs, string categorie)
         {
-            string query = "UPDATE Menu SET naam = '" + naam + "', prijs = " + prijs + ", categorie = '" + categorie + "' WHERE menu_ID = " + ID;
+            string query = "UPDATE Menu SET naam = '" + naam + "', prijs = CONVERT(VARCHAR, CAST('" + prijs + "' AS MONEY)), categorie = '" + categorie + "' WHERE menu_ID = " + ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

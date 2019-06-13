@@ -45,12 +45,12 @@ namespace ChapooLogica
             menu_db.ChangeSupply(name, amount);
         }
         
-        public void ChangeMenu(int ID, string naam, int prijs, string categorie)
+        public void ChangeMenu(int ID, string naam, string prijs, string categorie)
         {
             menu_db.ChangeMenu(ID, naam, prijs, categorie);
         }
 
-        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad,int btw)
+        public void AddMenuItem(int ID, string naam, string prijs, string categorie, int voorraad,int btw)
         {
             menu_db.AddMenuItem(ID, naam, prijs, categorie, voorraad, btw);
         }

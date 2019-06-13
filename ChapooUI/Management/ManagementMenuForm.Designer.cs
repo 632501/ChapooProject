@@ -245,6 +245,7 @@
             this.txt_Btw.Name = "txt_Btw";
             this.txt_Btw.Size = new System.Drawing.Size(74, 31);
             this.txt_Btw.TabIndex = 15;
+            this.txt_Btw.TextChanged += new System.EventHandler(this.txt_Btw_TextChanged);
             // 
             // ManagementMenuForm
             // 

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ChapooModel;
 using ChapooLogica;
 using MenuItem = ChapooModel.MenuItem;
+using System.Globalization;
 
 namespace ChapooUI
 {
@@ -45,10 +46,6 @@ namespace ChapooUI
             HideAllControlls();
         }
 
-        
-
-        
-
         private void ListView_ViewMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             MenuItem menuItem = new MenuItem();
@@ -61,8 +58,9 @@ namespace ChapooUI
 
                 lbl_Supply.Show();
                 txt_Supply.Show();
+                btn_Remove.Hide();
 
-                IDDoesNotChange();
+                NextID();
             }
             else
             {
@@ -77,24 +75,29 @@ namespace ChapooUI
                     txt_ItemID.Text = menuItem.menu_ID.ToString();
                     txt_ItemNaam.Text = menuItem.naam;
                     txt_ItemCategorie.Text = menuItem.categorie;
-                    txt_ItemPrijs.Text = menuItem.prijs.ToString();
+                    txt_ItemPrijs.Text = menuItem.prijs.ToString().Replace(',', '.');
                 }
             }
         }
 
         private void txt_Supply_TextChanged(object sender, EventArgs e)
         {
-            OnlyNumbersAllowed();
+            OnlyNumbersAllowed(txt_Supply);
         }
 
         private void txt_ItemPrijs_TextChanged(object sender, EventArgs e)
         {
-            OnlyNumbersAllowed();
+            
+        }
+
+        private void txt_Btw_TextChanged(object sender, EventArgs e)
+        {
+            OnlyNumbersAllowed(txt_Btw);
         }
 
         private void txt_ItemID_TextChanged(object sender, EventArgs e)
         {
-            OnlyNumbersAllowed();
+            OnlyNumbersAllowed(txt_ItemID);
 
             if (ListView_ViewMenu.Items[0].Selected)
             {
@@ -115,28 +118,29 @@ namespace ChapooUI
 
         private void btn_Change_Click(object sender, EventArgs e)
         {
-            
-
-            if (ListView_ViewMenu.Items[0].Selected)
+            try
             {
                 int ID = int.Parse(txt_ItemID.Text);
                 string naam = txt_ItemNaam.Text;
-                int prijs = int.Parse(txt_ItemPrijs.Text);
-                string categorie = txt_ItemCategorie.Text;
-                int voorraad = int.Parse(txt_Supply.Text);
-                int btw = int.Parse(txt_Btw.Text);
+                string prijs = txt_ItemPrijs.Text;
+                string categorie = txt_ItemCategorie.Text.ToLower();
+                
+                if (CategoryCheck(categorie))
+                {
+                    return;
+                }
 
-                menuService.AddMenuItem(ID, naam, prijs, categorie, voorraad, btw);
-            }
-            else
-            {
-                int ID = int.Parse(txt_ItemID.Text);
-                string naam = txt_ItemNaam.Text;
-                int prijs = int.Parse(txt_ItemPrijs.Text);
-                string categorie = txt_ItemCategorie.Text;
+                if (ListView_ViewMenu.Items[0].Selected)
+                {
+                    int voorraad = int.Parse(txt_Supply.Text);
+                    int btw = int.Parse(txt_Btw.Text);
+
+                    menuService.AddMenuItem(ID, naam, prijs, categorie, voorraad, btw);
+                }
 
                 menuService.ChangeMenu(ID, naam, prijs, categorie);
             }
+            catch { MessageBox.Show("Oeps! Er is een verkeerde invoer gegeven..."); return; }
 
             GetMenu();
             DisplayListView(menu);
@@ -180,7 +184,7 @@ namespace ChapooUI
 
                 ListViewItem me = new ListViewItem(item.menu_ID.ToString());
                 me.SubItems.Add(item.naam);
-                me.SubItems.Add(item.prijs.ToString());
+                me.SubItems.Add(item.prijs.ToString("#.##"));
                 me.SubItems.Add(item.categorie);
                 me.Tag = item;
 
@@ -232,25 +236,36 @@ namespace ChapooUI
             txt_Btw.Clear();
         }
 
-        private void OnlyNumbersAllowed()
+        private void OnlyNumbersAllowed(TextBox textBox)
         {
-            foreach (char ch in txt_ItemPrijs.Text)
+            foreach (char ch in textBox.Text)
             {
                 if (!Char.IsNumber(ch))
                 {
-                    MessageBox.Show("U kunt hier alleen een cijfer invoeren...");
-                    txt_ItemPrijs.Text = "";
+                    MessageBox.Show("U kunt hier alleen positieve cijfers invoeren of '0'...");
+                    textBox.Text = "";
+                    
                 }
             }
         }
 
-        private void IDDoesNotChange()
+        private void NextID()
         {
             int nextMenuID;
 
             nextMenuID = menu[menu.Count - 1].menu_ID + 1;
 
             txt_ItemID.Text = nextMenuID.ToString();
+        }
+        private bool CategoryCheck(string category)
+        {
+            if(category.ToLower() != "dranken" && category.ToLower() != "lunch" && category.ToLower() != "diner")
+            {
+                MessageBox.Show("De categorie kan alleen 'dranken', 'lunch', 'diner' zijn...");
+                txt_ItemCategorie.Text = "";
+                return true;
+            }
+            return false;
         }
 
         

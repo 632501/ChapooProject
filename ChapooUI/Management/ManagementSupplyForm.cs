@@ -68,53 +68,67 @@ namespace ChapooUI
 
         private void btn_Change_Click(object sender, EventArgs e)
         {
-            string name = lbl_SelectedName.Text;
-            int amount = int.Parse(txt_SelectedAmount.Text);
+            try
+            {
+                string name = lbl_SelectedName.Text;
+                int amount = int.Parse(txt_SelectedAmount.Text);
 
-            menuService.ChangeSupply(name, amount);
+                menuService.ChangeSupply(name, amount);
 
-            GetMenu();
-            DisplayListView(menu);
-            lbl_SelectedName.Text = "";
-            txt_SelectedAmount.Clear();
+                GetMenu();
+                DisplayListView(menu);
+                lbl_SelectedName.Text = "";
+                txt_SelectedAmount.Clear();
 
-            HideAllControls();
+                HideAllControls();
 
-            MessageBox.Show("U heeft de voorraad van het item '" + name + "' veranderd naar " + amount);
+                MessageBox.Show("U heeft de voorraad van het item '" + name + "' veranderd naar " + amount);
+            }
+            catch
+            {
+                MessageBox.Show("Er is een ongeldige invoer gegeven...");
+                return;
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount + 100).ToString();
         }
 
         private void btn_MinHonderd_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount - 100).ToString();
         }
 
         private void btn_MinTen_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount - 10).ToString();
         }
 
         private void btn_MinOne_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount - 1).ToString();
         }
 
         private void btn_PlusOne_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount + 1).ToString();
         }
 
         private void btn_PlusTen_Click(object sender, EventArgs e)
         {
+            CheckAmount();
             int amount = int.Parse(txt_SelectedAmount.Text);
             txt_SelectedAmount.Text = (amount + 10).ToString();
         }
@@ -166,6 +180,27 @@ namespace ChapooUI
             btn_PlusHundred.Show();
             btn_PlusOne.Show();
             btn_PlusTen.Show();
+        }
+
+        private void CheckAmount()
+        {
+            if (txt_SelectedAmount.Text == "")
+            {
+                txt_SelectedAmount.Text = "0";
+            }
+        }
+
+        private void txt_SelectedAmount_TextChanged(object sender, EventArgs e)
+        {
+
+            foreach (char ch in txt_SelectedAmount.Text)
+            {
+                if (!char.IsNumber(ch))
+                {
+                    MessageBox.Show("U kunt hier alleen positieve cijfers invoeren of '0'...");
+                    txt_SelectedAmount.Text = "0";
+                }
+            }
         }
     }   
 }

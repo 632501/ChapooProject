@@ -54,6 +54,9 @@ namespace ChapooUI
             if (ListView_Employee.Items[0].Selected)
             {
                 ClearAllTextFields();
+
+                btn_Remove.Hide();
+                NextID();
             }
             else
             {
@@ -75,7 +78,12 @@ namespace ChapooUI
             int ID = int.Parse(txt_ID.Text);
             string name = txt_Name.Text;
             string password = txt_Password.Text;
-            string function = txt_Function.Text;
+            string function = txt_Function.Text.ToLower();
+
+            if (FunctionCheck(function) || PasswordCheck(password))
+            {
+                return;
+            }
 
             if (ListView_Employee.Items[0].Selected)
             {
@@ -113,14 +121,7 @@ namespace ChapooUI
         {
             if (ListView_Employee.Items[0].Selected)
             {
-                foreach (char ch in txt_ID.Text)
-                {
-                    if (!Char.IsNumber(ch))
-                    {
-                        MessageBox.Show("U kunt hier alleen een cijfer invoeren...");
-                        txt_ID.Text = "";
-                    }
-                }
+                OnlyNumbersAllowed(txt_ID);
             }
             else
             {
@@ -133,6 +134,12 @@ namespace ChapooUI
 
                 txt_ID.Text = employee.werknemer_ID.ToString();
             }
+        }
+
+        private void txt_Password_TextChanged(object sender, EventArgs e)
+        {
+            OnlyNumbersAllowed(txt_Password);
+
         }
 
 
@@ -202,6 +209,49 @@ namespace ChapooUI
             txt_Function.Clear();
         }
 
-        
+        public bool FunctionCheck(string function)
+        {
+            if (function.ToLower() != "kok" && function.ToLower() != "bediening" && function.ToLower() != "barman" && function.ToLower() != "manager")
+            {
+                MessageBox.Show("De categorie kan alleen 'bediening', 'kok', 'barman' of 'manager' zijn...");
+                txt_Function.Text = "";
+                return true;
+            }
+            return false;
+        }
+
+        public bool PasswordCheck(string password)
+        {
+            int count = password.Count();
+            if(count != 4)
+            {
+                MessageBox.Show("Het wachtwoord moet uit 4 cijfers bestaan");
+                txt_Password.Text = "";
+                return true;
+            }
+            return false;
+        }
+
+        private void OnlyNumbersAllowed(TextBox textBox)
+        {
+            foreach (char ch in textBox.Text)
+            {
+                if (!Char.IsNumber(ch))
+                {
+                    MessageBox.Show("U kunt hier alleen positieve cijfers invoeren of '0'...");
+                    textBox.Text = "";
+
+                }
+            }
+        }
+
+        private void NextID()
+        {
+            int nextEmployeeID;
+
+            nextEmployeeID = employeeList[employeeList.Count - 1].werknemer_ID + 1;
+
+            txt_ID.Text = nextEmployeeID.ToString();
+        }
     }
 }

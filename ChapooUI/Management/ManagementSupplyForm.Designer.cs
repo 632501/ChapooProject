@@ -111,6 +111,7 @@
             this.txt_SelectedAmount.Name = "txt_SelectedAmount";
             this.txt_SelectedAmount.Size = new System.Drawing.Size(99, 38);
             this.txt_SelectedAmount.TabIndex = 4;
+            this.txt_SelectedAmount.TextChanged += new System.EventHandler(this.txt_SelectedAmount_TextChanged);
             // 
             // btn_Change
             // 

@@ -17,7 +17,7 @@ namespace ChapooDAL
 
         public void AddUser(int werknemerID, string wachtWoord, string naam, string functie)
         {
-            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(werknemer_ID, wachtwoord, naam, functie, status) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "', 'werkend') SET IDENTITY_INSERT Inlog OFF";
+            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(wachtwoord, naam, functie, status) values(" + werknemerID + " '" + wachtWoord + "', '" + naam + "', '" + functie + "', 'werkend') SET IDENTITY_INSERT Inlog OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

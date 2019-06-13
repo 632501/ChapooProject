@@ -86,6 +86,7 @@
             // 
             this.lbl_Naam.AutoSize = true;
             this.lbl_Naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Naam.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbl_Naam.Location = new System.Drawing.Point(8, 83);
             this.lbl_Naam.Name = "lbl_Naam";
             this.lbl_Naam.Size = new System.Drawing.Size(64, 24);
@@ -97,6 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(8, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 24);
@@ -120,6 +122,7 @@
             // radioBtnCreditcard
             // 
             this.radioBtnCreditcard.AutoSize = true;
+            this.radioBtnCreditcard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.radioBtnCreditcard.Location = new System.Drawing.Point(21, 425);
             this.radioBtnCreditcard.Name = "radioBtnCreditcard";
             this.radioBtnCreditcard.Size = new System.Drawing.Size(94, 21);
@@ -131,6 +134,7 @@
             // radioBtnPinpas
             // 
             this.radioBtnPinpas.AutoSize = true;
+            this.radioBtnPinpas.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.radioBtnPinpas.Location = new System.Drawing.Point(163, 425);
             this.radioBtnPinpas.Name = "radioBtnPinpas";
             this.radioBtnPinpas.Size = new System.Drawing.Size(72, 21);
@@ -168,6 +172,7 @@
             // radioBtnContant
             // 
             this.radioBtnContant.AutoSize = true;
+            this.radioBtnContant.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.radioBtnContant.Location = new System.Drawing.Point(285, 425);
             this.radioBtnContant.Name = "radioBtnContant";
             this.radioBtnContant.Size = new System.Drawing.Size(78, 21);
@@ -286,6 +291,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblName.Location = new System.Drawing.Point(131, 87);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(0, 24);
@@ -296,6 +302,7 @@
             // 
             this.lblTafelNr.AutoSize = true;
             this.lblTafelNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTafelNr.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTafelNr.Location = new System.Drawing.Point(131, 119);
             this.lblTafelNr.Name = "lblTafelNr";
             this.lblTafelNr.Size = new System.Drawing.Size(0, 24);

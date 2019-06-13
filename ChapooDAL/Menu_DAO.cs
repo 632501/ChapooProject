@@ -27,12 +27,11 @@ namespace ChapooDAL
             {
                 MenuItem menuItem = new MenuItem()
                 {
-                    menu_ID = (int)dr["menu_ID"],
+                    menu_ID = (int)dr["menu_Id"],
                     naam = (String)(dr["naam"].ToString()),
-                    prijs = (decimal)dr["prijs"],
+                    prijs = (Decimal)dr["prijs"],
                     categorie = (String)(dr["categorie"].ToString()),
-                    voorraad = (int)dr["voorraad"],
-                    btwPercentage = (int)dr["btwPercentage"]
+                    voorraad = (int)dr["voorraad"]
 
                 };
                 menu.Add(menuItem);
@@ -42,21 +41,21 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner'";
+            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' ";
+            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -68,15 +67,14 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void ChangeMenu(int ID, string naam, string prijs, string categorie)
+        public void ChangeMenu(int ID, string naam, int prijs, string categorie)
         {
-            
-            string query = "UPDATE Menu SET naam = '" + naam + "', prijs = CONVERT(VARCHAR, CAST('" + prijs + "' AS MONEY)), categorie = '" + categorie + "' WHERE menu_ID = " + ID;
+            string query = "UPDATE Menu SET naam = '" + naam + "', prijs = " + prijs + ", categorie = '" + categorie + "' WHERE menu_ID = " + ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void AddMenuItem(int ID, string naam, string prijs, string categorie, int voorraad, int btw)
+        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad, int btw)
         {
             string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad, btwPercentage) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ", "+btw+") set identity_insert  Menu  OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
@@ -101,7 +99,7 @@ namespace ChapooDAL
             MenuItem item = new MenuItem()
             {
                 menu_ID = (int)dr["menu_ID"],
-                prijs = (int)dr["prijs"],
+                prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
                 btwPercentage = (int)dr["BtwPercentage"],
                 categorie = (string)dr["categorie"],
@@ -121,7 +119,7 @@ namespace ChapooDAL
             MenuItem item = new MenuItem()
             {
                 menu_ID = (int)dr["menu_ID"],
-                prijs = (int)dr["prijs"],
+                prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
                 btwPercentage = (int)dr["BtwPercentage"],
                 categorie = (string)dr["categorie"],

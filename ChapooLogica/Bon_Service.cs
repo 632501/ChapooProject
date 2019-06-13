@@ -14,60 +14,57 @@ namespace ChapooLogica
     {
         Bon_DAO bon_db = new Bon_DAO();
 
-        public int TotalAmount(int tafel_ID)
-        {
-            int totalAmount = bon_db.TotalAmount(tafel_ID);
+        int Bestelling_ID;
 
-            return totalAmount;
-        }
-
-        public void Paid(int tafel_ID, double tip, string paymentType, string comment)
+        public void Paid(int tafel_ID, decimal amountWithBtw, decimal tip, string comment, string paymentType)
         {
-            bon_db.Paid(tafel_ID, tip, paymentType, comment);
+            DateTime date = DateTime.Now;
+
+            
+
+            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, Bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
         {
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
-            
-            //Bestelling returnlist = new Bestelling();
-            //int count = 1;
-            
 
-            //foreach(OrderItem x in orders.orderItems)
-            //{
-            //    if (count == 1)
-            //    {
-            //        returnlist.orderItems.Add(x);
-            //    }
-            //    else
-            //    {
-            //        foreach (OrderItem y in returnlist.orderItems)
-            //        {
+            this.Bestelling_ID = orders.bestelling_ID;
 
+            Bestelling returnlist = new Bestelling();
+            int count = 0;
+            int newItem = 0;
 
-            //            if (y.menuItem.naam == x.menuItem.naam)
-             //           {
-              //              y.Aantal += x.Aantal;
-               //             orders.orderItems.Remove(x);
-                //        }
-                 //       else
-                //        {
-               //             returnlist.orderItems.Add(x);
-               //         }
+            foreach (OrderItem x in orders.orderItems)
+            {
+                if (count == 0)
+                {
+                    returnlist.orderItems.Add(x);
+                    count++;
+                }
 
-              //          if (count == 1)
-              //          {
-              //              returnlist.orderItems.Remove(y);
-               //             count = 2;
-                //        }
-                 //   }
-                //}
-                
-           // }
-            
-            return orders;
+                foreach (OrderItem y in returnlist.orderItems)
+                {
+                    if (y.menuItem.naam == x.menuItem.naam)
+                    {
+                        y.Aantal += x.Aantal;
+                    }
+                    else
+                    {
+                        newItem++;
+                    }
+
+                    if (newItem == returnlist.orderItems.Count)
+                    {
+                        returnlist.orderItems.Add(x);
+                    }
+                }
+
+                newItem = 0;
+            }
+
+            return returnlist;
         }
     }
 }

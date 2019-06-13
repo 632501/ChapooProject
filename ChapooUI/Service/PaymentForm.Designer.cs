@@ -70,6 +70,7 @@
             // lblTotaalbedrag
             // 
             this.lblTotaalbedrag.AutoSize = true;
+            this.lblTotaalbedrag.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTotaalbedrag.Location = new System.Drawing.Point(228, 402);
             this.lblTotaalbedrag.Name = "lblTotaalbedrag";
             this.lblTotaalbedrag.Size = new System.Drawing.Size(0, 17);
@@ -78,6 +79,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label6.Location = new System.Drawing.Point(12, 402);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 17);
@@ -98,6 +100,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label8.Location = new System.Drawing.Point(8, 87);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 24);
@@ -109,7 +112,7 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.materialLabel1.Location = new System.Drawing.Point(133, 155);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -121,6 +124,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label1.Location = new System.Drawing.Point(8, 123);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 24);
@@ -130,6 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Location = new System.Drawing.Point(12, 427);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 17);
@@ -182,6 +187,7 @@
             // lblPayment
             // 
             this.lblPayment.AutoSize = true;
+            this.lblPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPayment.Location = new System.Drawing.Point(222, 402);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(0, 17);
@@ -191,6 +197,7 @@
             // 
             this.lblTafelNr.AutoSize = true;
             this.lblTafelNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTafelNr.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTafelNr.Location = new System.Drawing.Point(112, 123);
             this.lblTafelNr.Name = "lblTafelNr";
             this.lblTafelNr.Size = new System.Drawing.Size(0, 24);
@@ -200,6 +207,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblName.Location = new System.Drawing.Point(112, 91);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(0, 24);

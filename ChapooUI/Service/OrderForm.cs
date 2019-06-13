@@ -19,15 +19,17 @@ namespace ChapooUI
     public partial class OrderForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        private string sort;
-        private List<MenuItem> menuList;
-        Menu_Service menuService = new Menu_Service();
-        private int tafelNummer;
-        Bestelling bestelling = new Bestelling();
-        Inlog werknemer = new Inlog();
+        private string sort { get; set; }
+        private List<MenuItem> menuList { get; set; }
+       
+        private int tableNumber { get; set; }
+        Bestelling order { get; set; }
+        Inlog employee { get; set; }
         Bestelling_Service bestellingService = new Bestelling_Service();
+        Menu_Service menuService = new Menu_Service();
+        OrderMenusForm orderMenusForm { get; set; }
 
-        public OrderForm(string sort, int tafelNummer, Bestelling bestelling, Inlog werknemer)
+        public OrderForm(string sort, int tableNumber, Bestelling order, Inlog employee, OrderMenusForm orderMenusForm)
         {
             this.sort = sort;
             InitializeComponent();
@@ -37,16 +39,18 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
-            this.bestelling = bestelling;
-            this.tafelNummer = tafelNummer;
-            this.werknemer = werknemer;
+            this.order = order;
+            this.tableNumber = tableNumber;
+            this.employee = employee;
+            this.orderMenusForm = orderMenusForm;
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
         {
             GetMenus();
 
-            lbl_Table.Text = "Tafel: " + tafelNummer;
+            lbl_Table.Text = "Tafel: " + tableNumber;
+            mlblWerknemer.Text = employee.naam;
         }
 
         private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,7 +58,7 @@ namespace ChapooUI
 
         }
         
-        public void GetMenus()
+        private void GetMenus()
         {
             int aantal = 0;
             menuList = new List<MenuItem>();
@@ -95,11 +99,6 @@ namespace ChapooUI
             listviewMenu.Columns.Add("Aantal");
         }
 
-        public void GetOrder()
-        {
-            //yikes
-        }
-
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             int aantal = int.Parse(listviewMenu.SelectedItems[0].SubItems[1].Text);
@@ -124,16 +123,14 @@ namespace ChapooUI
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-            bestelling.werknemer = werknemer;
-            bestelling.tafel_ID = tafelNummer;
-            bestelling.datum = DateTime.Today;
-            bestelling.betaald = false;
-            bestelling.orderItems = new List<OrderItem>();
-            OrderItem o;
-            MenuItem m = new MenuItem();
-            int i = 0;
+            
+            int i;
+
             foreach (ListViewItem li in listviewMenu.Items)
             {
+                OrderItem o;
+                MenuItem m = new MenuItem();
+
                 m.naam = li.SubItems[0].Text;
                 string a = "";
                 a = li.SubItems[1].Text;
@@ -141,28 +138,25 @@ namespace ChapooUI
                 if (i != 0)
                 {
                     m = menuService.GetItem(m.naam);
+                    
                     o = new OrderItem();
                     o.menuItem = m;
                     o.Aantal = i;
                     o.Status = "bezig";
-                    o.TafelNummer = tafelNummer;
-                    o.order_ID = o.order_ID;
-                    o.bestelling_ID = bestelling.bestelling_ID;
 
-                    //bestellingService.AddOrderItem(o);
-                    bestelling.orderItems.Add(o);
+                    orderMenusForm.bestelling.orderItems.Add(o);
                 }
                 
             }
             MessageBox.Show("Er is een nieuwe order gemaakt");
             this.Close();
-            OrderMenusForm orderForm = new OrderMenusForm(werknemer, tafelNummer, bestelling);
-            orderForm.Show();
+            orderMenusForm.Show();
+            orderMenusForm.LoadOrder();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)
         {
-            OrderMenusForm form = new OrderMenusForm(werknemer, tafelNummer, bestelling);
+            OrderMenusForm form = new OrderMenusForm(employee, tableNumber);
             this.Close();
             form.Show();
         }

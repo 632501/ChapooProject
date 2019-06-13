@@ -67,5 +67,39 @@ namespace ChapooLogica
         {
             bestelling_DB.UnFinish_Order(orderId);
         }
+
+        public List<Bestelling> GetTablesOrder(int tafelnummer)
+        {
+            List<Bestelling> orders = new List<Bestelling>();
+            orders = bestelling_DB.Get_Order_Per_Table(tafelnummer);
+            return orders;
+        }
+
+        public List<OrderItem> GetTablesOrderItems(int tafelnummer, int bestellingId)
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+            DataTable dataTable = bestelling_DB.Get_Order_Items_Per_Table(tafelnummer, bestellingId);
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderItem orderItem = new OrderItem()
+                {
+                    order_ID = (int)dr["order_ID"],
+                    Aantal = (int)dr["aantal"],
+                    Comment = (dr["commentaar"] == null) ? string.Empty : dr["commentaar"].ToString(),
+                    menuItem = menu_Service.GetItem((int)dr["menu_ID"]),
+                    Status = dr["status"].ToString(),
+                    TafelNummer = (int)dr["tafelnummer"],
+                    Werknemer = login_Service.GetEmployee((int)dr["werknemer_ID"])
+                };
+                orderItems.Add(orderItem);
+            }
+            return orderItems;
+        }
+
+        public void DeleteOrder(int orderId)
+        {
+            bestelling_DB.DeleteOrderItem(orderId);
+        }
     }
 }

@@ -24,14 +24,14 @@ namespace ChapooDAL
             {
                 i = 0;
             }
-            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald) VALUES (" + bestelling.tafel_ID + ", " + i + ")";
+            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald, datum) VALUES ('" + bestelling.tafel_ID + "', '" + i + "', '"+ bestelling.datum+ "')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
 
         public void AddOrderItem(OrderItem o)
         {
-            string query = "SET IDENTITY_INSERT OrderItem OFF INSERT INTO OrderItem (bestelling_ID, order_ID, werknemer_ID, status, commentaar, aantal, menu_ID, tafelnummer) VALUES ("+ o.bestelling_ID + ", " + o.order_ID + ", " + o.Werknemer + ", " + o.Status + ", " + o.Comment + ", "+o.Aantal+", "+o.menuItem+", "+o.TafelNummer+ ")";
+            string query = "SET IDENTITY_INSERT OrderItem OFF INSERT INTO OrderItem (bestelling_ID,  werknemer_ID, status, commentaar, aantal, menu_ID, tafelnummer) VALUES ('"+ o.bestelling_ID + "', '" + o.Werknemer.werknemer_ID + "', '" + o.Status + "', '" + o.Comment + "', '"+o.Aantal+"', '"+o.menuItem.menu_ID+"', '"+o.TafelNummer+ "')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -48,7 +48,8 @@ namespace ChapooDAL
             {
                 bestelling_ID = (int)dr["bestelling_ID"],
                 tafel_ID = (int)dr["tafel_ID"],
-                betaald = (bool)dr["betaald"]
+                betaald = (bool)dr["betaald"],
+                datum = (DateTime)dr["datum"]
             };
 
             return bestelling;

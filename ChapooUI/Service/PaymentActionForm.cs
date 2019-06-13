@@ -54,9 +54,9 @@ namespace ChapooUI
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
             lblAmount.Text = "€ " + amount.ToString("#.##");
-            lblBtw.Text = "€ " + btw.ToString("#.##");
+            lblBtw.Text = "€ " + btw.ToString("0.##");
             lblBtwAmount.Text = "€ " + amountWithBtw.ToString("#.##");
-            lblTip.Text = "€ " + tip.ToString("#.##");
+            lblTip.Text = "€ " + tip.ToString("0.##");
             lblTotalAmount.Text = "€ " + totalPayment.ToString("#.##");
         }
 
@@ -69,7 +69,7 @@ namespace ChapooUI
             if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Creditcard";
-                bonService.Paid(tafel_ID, totalPayment, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
@@ -77,7 +77,7 @@ namespace ChapooUI
             if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
             {
                 paymenttype = "Contant";
-                bonService.Paid(tafel_ID, totalPayment, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
@@ -85,7 +85,7 @@ namespace ChapooUI
             if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
             {
                 paymenttype = "Pinpas";
-                bonService.Paid(tafel_ID, totalPayment, tip, comment, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtw, tip, comment, paymenttype);
 
                 this.Close();
                 form.ShowDialog();

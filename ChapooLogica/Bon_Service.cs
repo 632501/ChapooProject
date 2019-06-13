@@ -16,11 +16,13 @@ namespace ChapooLogica
 
         int Bestelling_ID;
 
-        public void Paid(int tafel_ID, decimal totalPayment, decimal tip, string comment, string paymentType)
+        public void Paid(int tafel_ID, decimal amountWithBtw, decimal tip, string comment, string paymentType)
         {
             DateTime date = DateTime.Now;
 
-            bon_db.Paid(tafel_ID, date, totalPayment, tip, comment, Bestelling_ID, paymentType);
+            
+
+            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, Bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
@@ -30,39 +32,39 @@ namespace ChapooLogica
 
             this.Bestelling_ID = orders.bestelling_ID;
 
-            //Bestelling returnlist = new Bestelling();
-            //int count = 1;
+            Bestelling returnlist = new Bestelling();
+            int count = 0;
+            int newItem = 0;
 
-            //foreach (OrderItem x in orders.orderItems)
-            //{
-            //    if (count == 1)
-            //    {
-            //        returnlist.orderItems.Add(x);
-            //    }
-            //    else
-            //    {
-            //        foreach (OrderItem y in returnlist.orderItems)
-            //        {
-            //            if (y.menuItem.naam == x.menuItem.naam)
-            //            {
-            //                y.Aantal += x.Aantal;
-            //                orders.orderItems.Remove(x);
-            //            }
-            //            else
-            //            {
-            //                returnlist.orderItems.Add(x);
-            //            }
+            foreach (OrderItem x in orders.orderItems)
+            {
+                if (count == 0)
+                {
+                    returnlist.orderItems.Add(x);
+                    count++;
+                }
 
-            //            if (count == 1)
-            //            {
-            //                returnlist.orderItems.Remove(y);
-            //                count = 2;
-            //            }
-            //        }
-            //    }
-            //}
+                foreach (OrderItem y in returnlist.orderItems)
+                {
+                    if (y.menuItem.naam == x.menuItem.naam)
+                    {
+                        y.Aantal += x.Aantal;
+                    }
+                    else
+                    {
+                        newItem++;
+                    }
 
-            return orders;
+                    if (newItem == returnlist.orderItems.Count)
+                    {
+                        returnlist.orderItems.Add(x);
+                    }
+                }
+
+                newItem = 0;
+            }
+
+            return returnlist;
         }
     }
 }

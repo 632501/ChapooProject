@@ -12,16 +12,14 @@ namespace ChapooDAL
 {
     public class Bon_DAO : Base
     {
-        public void Paid(int tafel_ID, DateTime date, decimal totalPayment, decimal tip, string comment, int bestelling_ID, string paymentType)
+        public void Paid(int tafel_ID, DateTime date, decimal amountWithBtw, decimal tip, string comment, int bestelling_ID, string paymentType)
         {
             string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling AS BE JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
-
-            string nepdate = "NULL";
-
+            
             // fix de juiste datum erin
-            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestelling_ID, betaaltype) values(" + nepdate + ", " + totalPayment + ", " + tip + ", '" + comment + "', " + bestelling_ID + ", '" + paymentType + "')";
+            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestelling_ID, betaaltype) values(" + date + ", " + amountWithBtw + ", " + tip + ", '" + comment + "', " + bestelling_ID + ", '" + paymentType + "')";
             ExecuteEditQuery(queryBon, sqlParameters);
         }
 

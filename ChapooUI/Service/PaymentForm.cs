@@ -29,7 +29,7 @@ namespace ChapooUI
         {
             InitializeComponent();
 
-            //Initialize MaterialSkinManager;
+            //Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -79,17 +79,21 @@ namespace ChapooUI
             // Manier bedenken dat fooi niet negatief wordt als er een lager bedrag wordt betaald dan de rekening is
 
             decimal totalPayment = 0;
+            decimal tip = 0;
 
             if (txtboxTotalPayment.Text == "")
             {
-                totalPayment = amountWithBtw + btw;
+                totalPayment = amountWithBtw;
             }
             else
             {
-                totalPayment = int.Parse(txtboxTotalPayment.Text);
-            }
+                totalPayment = decimal.Parse(txtboxTotalPayment.Text);
 
-            decimal tip = totalPayment - amount - btw;
+                if (totalPayment >= amount)
+                {
+                    tip = totalPayment - amountWithBtw;
+                }
+            }
 
             PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amountWithBtw, amount, tip);
             pay.ShowDialog();

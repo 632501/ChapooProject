@@ -67,14 +67,14 @@ namespace ChapooDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void ChangeMenu(int ID, string naam, int prijs, string categorie)
+        public void ChangeMenu(int ID, string naam, string prijs, string categorie)
         {
             string query = "UPDATE Menu SET naam = '" + naam + "', prijs = " + prijs + ", categorie = '" + categorie + "' WHERE menu_ID = " + ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        public void AddMenuItem(int ID, string naam, int prijs, string categorie, int voorraad, int btw)
+        public void AddMenuItem(int ID, string naam, string prijs, string categorie, int voorraad, int btw)
         {
             string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad, btwPercentage) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ", "+btw+") set identity_insert  Menu  OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];

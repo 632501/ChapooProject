@@ -24,7 +24,9 @@ namespace ChapooDAL
             {
                 i = 0;
             }
-            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald, datum) VALUES ('" + bestelling.tafel_ID + "', '" + i + "', '"+ bestelling.datum+ "')";
+            DateTime varDate = DateTime.Now;
+            string format = "MM-dd-yyyy HH:mm:ss";
+            string query = "SET IDENTITY_INSERT Bestelling OFF INSERT INTO Bestelling (tafel_ID, betaald, datum, commentaar) VALUES ('" + bestelling.tafel_ID + "', '" + i + "', '"+ varDate.ToString(format)+ "', '"+bestelling.commentaar+"')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

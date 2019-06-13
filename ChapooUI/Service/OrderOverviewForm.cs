@@ -49,7 +49,7 @@ namespace ChapooUI
                 List<OrderItem> orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_ID);
                 foreach (OrderItem item in orderItems)
                 {
-                    ListViewItem li = new ListViewItem(bestelling.bestelling_ID.ToString());
+                    ListViewItem li = new ListViewItem(item.order_ID.ToString());
                     li.SubItems.Add(item.menuItem.naam);
                     li.SubItems.Add(item.Aantal.ToString());
                     listviewOverview.Items.Add(li);
@@ -74,6 +74,7 @@ namespace ChapooUI
             {
                 int orderId = int.Parse(listviewOverview.SelectedItems[0].Text);
                 orderService.DeleteOrder(orderId);
+
                 LoadOrders();
             }
             

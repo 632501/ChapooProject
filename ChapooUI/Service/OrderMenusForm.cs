@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapooLogica;
 using ChapooModel.Models;
+using MenuItem = ChapooModel.MenuItem;
 
 namespace ChapooUI
 {
@@ -23,6 +24,7 @@ namespace ChapooUI
         public Bestelling bestelling = new Bestelling();
         Inlog werknemer { get; set; }
         Bestelling_Service bestellingService = new Bestelling_Service();
+        Menu_Service menuService = new Menu_Service();
         
 
         public OrderMenusForm(Inlog werknemer, int tafelNummer)
@@ -36,14 +38,14 @@ namespace ChapooUI
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
             bestelling.orderItems = new List<OrderItem>();
-
+            
             this.tafelNummer = tafelNummer;
             this.werknemer = werknemer;
         }
 
         private void OrderMenusForm_Load(object sender, EventArgs e)
         {
-            
+            txtCommentaar.Height = 40; 
             lbl_Table.Text = "Tafel: " + tafelNummer;
             mlblWerknemer.Text = werknemer.naam;
             LoadOrder();
@@ -109,11 +111,16 @@ namespace ChapooUI
             bestelling.tafel_ID = tafelNummer;
             bestelling.datum = DateTime.Now;
             bestelling.werknemer = werknemer;
+            bestelling.commentaar = txtCommentaar.Text;
             bestellingService.AddOrder(bestelling);
             bestelling = bestellingService.GetLatestOrder();
             
             foreach (OrderItem o in orders)
             {
+                int voorraad = o.menuItem.voorraad;
+                voorraad = voorraad - o.Aantal;
+                menuService.ChangeSupply(o.menuItem.naam, voorraad);
+                
                 o.bestelling_ID = bestelling.bestelling_ID;
                 o.Werknemer = werknemer;
                 o.TafelNummer = tafelNummer;

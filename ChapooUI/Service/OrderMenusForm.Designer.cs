@@ -36,11 +36,14 @@
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
             this.listviewTakenOrder = new System.Windows.Forms.ListView();
+            this.lblHuidigeBestelling = new System.Windows.Forms.Label();
+            this.txtCommentaar = new System.Windows.Forms.TextBox();
+            this.lblCommentaar = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDrinks
             // 
-            this.btnDrinks.Location = new System.Drawing.Point(50, 350);
+            this.btnDrinks.Location = new System.Drawing.Point(50, 264);
             this.btnDrinks.Name = "btnDrinks";
             this.btnDrinks.Size = new System.Drawing.Size(198, 50);
             this.btnDrinks.TabIndex = 0;
@@ -50,7 +53,7 @@
             // 
             // btnDiner
             // 
-            this.btnDiner.Location = new System.Drawing.Point(50, 462);
+            this.btnDiner.Location = new System.Drawing.Point(50, 376);
             this.btnDiner.Name = "btnDiner";
             this.btnDiner.Size = new System.Drawing.Size(198, 50);
             this.btnDiner.TabIndex = 1;
@@ -60,7 +63,7 @@
             // 
             // btnLunch
             // 
-            this.btnLunch.Location = new System.Drawing.Point(50, 406);
+            this.btnLunch.Location = new System.Drawing.Point(50, 320);
             this.btnLunch.Name = "btnLunch";
             this.btnLunch.Size = new System.Drawing.Size(198, 50);
             this.btnLunch.TabIndex = 2;
@@ -123,15 +126,46 @@
             // 
             // listviewTakenOrder
             // 
-            this.listviewTakenOrder.Location = new System.Drawing.Point(44, 110);
+            this.listviewTakenOrder.Location = new System.Drawing.Point(32, 95);
             this.listviewTakenOrder.Name = "listviewTakenOrder";
-            this.listviewTakenOrder.Size = new System.Drawing.Size(241, 201);
+            this.listviewTakenOrder.Size = new System.Drawing.Size(241, 163);
             this.listviewTakenOrder.TabIndex = 10;
             this.listviewTakenOrder.UseCompatibleStateImageBehavior = false;
+            // 
+            // lblHuidigeBestelling
+            // 
+            this.lblHuidigeBestelling.AutoSize = true;
+            this.lblHuidigeBestelling.ForeColor = System.Drawing.Color.White;
+            this.lblHuidigeBestelling.Location = new System.Drawing.Point(92, 75);
+            this.lblHuidigeBestelling.Name = "lblHuidigeBestelling";
+            this.lblHuidigeBestelling.Size = new System.Drawing.Size(125, 17);
+            this.lblHuidigeBestelling.TabIndex = 11;
+            this.lblHuidigeBestelling.Text = "Huidige Bestelling:";
+            // 
+            // txtCommentaar
+            // 
+            this.txtCommentaar.Location = new System.Drawing.Point(50, 459);
+            this.txtCommentaar.MaximumSize = new System.Drawing.Size(200, 40);
+            this.txtCommentaar.Name = "txtCommentaar";
+            this.txtCommentaar.Size = new System.Drawing.Size(198, 22);
+            this.txtCommentaar.TabIndex = 12;
+            // 
+            // lblCommentaar
+            // 
+            this.lblCommentaar.AutoSize = true;
+            this.lblCommentaar.ForeColor = System.Drawing.Color.White;
+            this.lblCommentaar.Location = new System.Drawing.Point(106, 439);
+            this.lblCommentaar.Name = "lblCommentaar";
+            this.lblCommentaar.Size = new System.Drawing.Size(88, 17);
+            this.lblCommentaar.TabIndex = 13;
+            this.lblCommentaar.Text = "Commentaar";
             // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.lblCommentaar);
+            this.Controls.Add(this.txtCommentaar);
+            this.Controls.Add(this.lblHuidigeBestelling);
             this.Controls.Add(this.listviewTakenOrder);
             this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.btn_Terug);
@@ -161,5 +195,8 @@
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
         private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
         private System.Windows.Forms.ListView listviewTakenOrder;
+        private System.Windows.Forms.Label lblHuidigeBestelling;
+        private System.Windows.Forms.TextBox txtCommentaar;
+        private System.Windows.Forms.Label lblCommentaar;
     }
 }

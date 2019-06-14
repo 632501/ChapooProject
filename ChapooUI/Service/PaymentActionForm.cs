@@ -53,11 +53,11 @@ namespace ChapooUI
 
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
-            lblAmount.Text = "€ " + amount.ToString("#.##");
+            lblAmount.Text = "€ " + amount.ToString("0.##");
             lblBtw.Text = "€ " + btw.ToString("0.##");
-            lblBtwAmount.Text = "€ " + amountWithBtw.ToString("#.##");
+            lblBtwAmount.Text = "€ " + amountWithBtw.ToString("0.##");
             lblTip.Text = "€ " + tip.ToString("0.##");
-            lblTotalAmount.Text = "€ " + totalPayment.ToString("#.##");
+            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)

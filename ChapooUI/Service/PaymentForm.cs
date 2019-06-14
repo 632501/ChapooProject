@@ -59,7 +59,7 @@ namespace ChapooUI
 
             btw = amountWithBtw - amount;
             
-            lblTotaalbedrag.Text = "€ " + amountWithBtw.ToString("#.##");
+            lblTotaalbedrag.Text = "€ " + amountWithBtw.ToString("0.##");
             
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
@@ -76,8 +76,6 @@ namespace ChapooUI
 
         private void btnBetaald_Click(object sender, EventArgs e)
         {
-            // Manier bedenken dat fooi niet negatief wordt als er een lager bedrag wordt betaald dan de rekening is
-
             decimal totalPayment = 0;
             decimal tip = 0;
 

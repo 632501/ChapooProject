@@ -45,12 +45,12 @@ namespace ChapooUI
 
         private void OrderMenusForm_Load(object sender, EventArgs e)
         {
-            txtCommentaar.Height = 40; 
             lbl_Table.Text = "Tafel: " + tafelNummer;
             mlblWerknemer.Text = werknemer.naam;
             LoadOrder();
         }
 
+        //Laden van toegevoegde orders, leeg als er nog niks is toegevoegd
         public void LoadOrder()
         {
             if (bestelling.orderItems.Count < 1)
@@ -73,7 +73,7 @@ namespace ChapooUI
 
         }
 
-
+        //Button events
         public void btnDrinks_Click_1(object sender, EventArgs e)
         {
             listviewTakenOrder.Clear();
@@ -112,15 +112,19 @@ namespace ChapooUI
             bestelling.datum = DateTime.Now;
             bestelling.werknemer = werknemer;
             bestelling.commentaar = txtCommentaar.Text;
+
+            //Bestelling toevoegen aan db
             bestellingService.AddOrder(bestelling);
             bestelling = bestellingService.GetLatestOrder();
             
             foreach (OrderItem o in orders)
             {
+                //voorraad aanpassen in db
                 int voorraad = o.menuItem.voorraad;
                 voorraad = voorraad - o.Aantal;
                 menuService.ChangeSupply(o.menuItem.naam, voorraad);
                 
+                //Orderitem toevoegen aan db
                 o.bestelling_ID = bestelling.bestelling_ID;
                 o.Werknemer = werknemer;
                 o.TafelNummer = tafelNummer;

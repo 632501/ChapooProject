@@ -42,11 +42,12 @@ namespace ChapooUI
             lbl_Tafel.Text = "Tafel: "+tafelNummer;
         }
 
+        //Button events
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            OrderMenusForm orderMenusForm = new OrderMenusForm(werknemer, tafelNummer);
-            orderMenusForm.Show();
+            OrderMenusForm form = new OrderMenusForm(werknemer, tafelNummer);
+            form.Show();
         }
 
         private void btnActionBekijken_Click(object sender, EventArgs e)

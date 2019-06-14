@@ -43,6 +43,7 @@ namespace ChapooUI
             LoadOrders();
         }
 
+        //Laden van orders in overview
         public void LoadOrders()
         {
             listviewOverview.Clear();
@@ -69,6 +70,7 @@ namespace ChapooUI
           
         }
 
+        //Deleten van een enkele Orderitem
         private void btnDeleteOrder_Click(object sender, EventArgs e)
         {
                 if (listviewOverview.SelectedItems.Count < 1)
@@ -101,6 +103,7 @@ namespace ChapooUI
             form.Show();
         }
 
+        //Deleten van volledige order uit db
         private void btnDeleteFullOrder_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Weet je het zeker dat je deze bestelling wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);

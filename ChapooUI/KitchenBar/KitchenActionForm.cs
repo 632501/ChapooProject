@@ -39,7 +39,7 @@ namespace ChapooUI
         {
             UpdateData();
             loginLabel.Text = inlog.naam;
-            if(inlog.functie == "Barman")
+            if(inlog.functie == "barman")
             {
                 this.Text = "Bar Overzicht";
                 isBar = true;
@@ -49,16 +49,6 @@ namespace ChapooUI
                 this.Text = "Keuken Overzicht";
                 isBar = false;
             }
-        }
-
-        private void loadingPicture_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialListView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void ordersListView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
@@ -72,7 +62,6 @@ namespace ChapooUI
             {
                 loadingPicture.Visible = true;
                 getOrdersWorker.RunWorkerAsync();
-
             }
         }
         private void getOrdersWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -137,6 +126,10 @@ namespace ChapooUI
                     if (!isBar) { 
                     ordersListView.Columns[3].Width = 233;
                     }
+                    else
+                    {
+                        ordersListView.Columns[3].Width = 170;
+                    }
                 });
             }
             if (loadingPicture.InvokeRequired)
@@ -154,12 +147,7 @@ namespace ChapooUI
             UpdateData();
         }
 
-        private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        private void logOutButton_Click(object sender, EventArgs e)
         {
             this.Close();
             LoginForm form = new LoginForm();
@@ -188,15 +176,15 @@ namespace ChapooUI
             this.timeLabel.Text = DateTime.Now.ToString();
         }
 
-        private void gereedButton_Click(object sender, EventArgs e)
+        private void filterButton_Click(object sender, EventArgs e)
         {
             if (statusFilter)
             {
-                gereedButton.Text = "Gereed bestellingen niet zien";
+                filterButton.Text = "Gereed bestellingen niet zien";
             }
             else
             {
-                gereedButton.Text = "Gereed bestellingen zien";
+                filterButton.Text = "Gereed bestellingen zien";
 
             }
             UpdateData();

@@ -12,13 +12,13 @@ namespace ChapooLogica
 {
     public class Order_Service
     {
-        private Order_DAO bestelling_DB = new Order_DAO();
+        private Order_DAO order_DAO = new Order_DAO();
         private Menu_Service menu_Service = new Menu_Service();
         private Login_Service login_Service = new Login_Service();
         public List<Bestelling> GetTodaysOrders()
         {
             List<Bestelling> orders = new List<Bestelling>();
-            DataTable dataTable = bestelling_DB.Get_All_Orders();
+            DataTable dataTable = order_DAO.Get_All_Orders();
 
             foreach (DataRow dr in dataTable.Rows)
             {
@@ -38,13 +38,13 @@ namespace ChapooLogica
         }
         public void FinishOrder(int orderId)
         {
-            bestelling_DB.Finish_Order(orderId);
+            order_DAO.Finish_Order(orderId);
 
         }
         public List<OrderItem> GetOrderItems(int bestellingId)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
-            DataTable dataTable = bestelling_DB.Get_Order_Items(bestellingId);
+            DataTable dataTable = order_DAO.Get_Order_Items(bestellingId);
 
             foreach (DataRow dr in dataTable.Rows)
             {
@@ -65,20 +65,20 @@ namespace ChapooLogica
 
         public void UnFinishOrder(int orderId)
         {
-            bestelling_DB.UnFinish_Order(orderId);
+            order_DAO.UnFinish_Order(orderId);
         }
 
         public List<Bestelling> GetTablesOrder(int tafelnummer)
         {
             List<Bestelling> orders = new List<Bestelling>();
-            orders = bestelling_DB.Get_Order_Per_Table(tafelnummer);
+            orders = order_DAO.Get_Order_Per_Table(tafelnummer);
             return orders;
         }
 
         public List<OrderItem> GetTablesOrderItems(int tafelnummer, int bestellingId)
         {
             List<OrderItem> orderItems = new List<OrderItem>();
-            DataTable dataTable = bestelling_DB.Get_Order_Items_Per_Table(tafelnummer, bestellingId);
+            DataTable dataTable = order_DAO.Get_Order_Items_Per_Table(tafelnummer, bestellingId);
 
             foreach (DataRow dr in dataTable.Rows)
             {
@@ -99,12 +99,12 @@ namespace ChapooLogica
 
         public void DeleteOrder(int orderId)
         {
-            bestelling_DB.DeleteOrderItem(orderId);
+            order_DAO.DeleteOrderItem(orderId);
         }
 
         public void DeleteOrderItemsByID(int bestellingID)
         {
-            bestelling_DB.DeleteOrderItemByID(bestellingID);
+            order_DAO.DeleteOrderItemByID(bestellingID);
         }
     }
 }

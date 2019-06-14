@@ -35,10 +35,10 @@
             this.getOrdersWorker = new System.ComponentModel.BackgroundWorker();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.loginLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.currentTime = new System.Windows.Forms.Timer(this.components);
             this.timeLabel = new MaterialSkin.Controls.MaterialLabel();
-            this.gereedButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.filterButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.stockButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.layoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingPicture)).BeginInit();
@@ -84,7 +84,6 @@
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
             this.ordersListView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.ordersListView_ColumnWidthChanging);
-            this.ordersListView.SelectedIndexChanged += new System.EventHandler(this.ordersListView_SelectedIndexChanged);
             this.ordersListView.Click += new System.EventHandler(this.ordersListView_Click);
             // 
             // getOrdersWorker
@@ -95,7 +94,7 @@
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 30000;
+            this.updateTimer.Interval = 60000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // loginLabel
@@ -107,25 +106,25 @@
             this.loginLabel.Location = new System.Drawing.Point(450, 32);
             this.loginLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(108, 19);
+            this.loginLabel.Size = new System.Drawing.Size(78, 19);
             this.loginLabel.TabIndex = 15;
-            this.loginLabel.Text = "materialLabel1";
+            this.loginLabel.Text = "loginLabel";
             // 
-            // materialRaisedButton1
+            // logOutButton
             // 
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(897, 69);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(72, 36);
-            this.materialRaisedButton1.TabIndex = 16;
-            this.materialRaisedButton1.Text = "LOG UIT";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            this.logOutButton.AutoSize = true;
+            this.logOutButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.logOutButton.Depth = 0;
+            this.logOutButton.Icon = null;
+            this.logOutButton.Location = new System.Drawing.Point(897, 69);
+            this.logOutButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Primary = true;
+            this.logOutButton.Size = new System.Drawing.Size(72, 36);
+            this.logOutButton.TabIndex = 16;
+            this.logOutButton.Text = "LOG UIT";
+            this.logOutButton.UseVisualStyleBackColor = true;
+            this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
             // 
             // currentTime
             // 
@@ -142,25 +141,25 @@
             this.timeLabel.Location = new System.Drawing.Point(800, 32);
             this.timeLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(108, 19);
+            this.timeLabel.Size = new System.Drawing.Size(75, 19);
             this.timeLabel.TabIndex = 17;
-            this.timeLabel.Text = "materialLabel1";
+            this.timeLabel.Text = "timeLabel";
             // 
-            // gereedButton
+            // filterButton
             // 
-            this.gereedButton.AutoSize = true;
-            this.gereedButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gereedButton.Depth = 0;
-            this.gereedButton.Icon = null;
-            this.gereedButton.Location = new System.Drawing.Point(112, 69);
-            this.gereedButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.gereedButton.Name = "gereedButton";
-            this.gereedButton.Primary = true;
-            this.gereedButton.Size = new System.Drawing.Size(204, 36);
-            this.gereedButton.TabIndex = 18;
-            this.gereedButton.Text = "Gereed bestellingen zien";
-            this.gereedButton.UseVisualStyleBackColor = true;
-            this.gereedButton.Click += new System.EventHandler(this.gereedButton_Click);
+            this.filterButton.AutoSize = true;
+            this.filterButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.filterButton.Depth = 0;
+            this.filterButton.Icon = null;
+            this.filterButton.Location = new System.Drawing.Point(112, 69);
+            this.filterButton.MouseState = MaterialSkin.MouseState.HOVER;
+            this.filterButton.Name = "filterButton";
+            this.filterButton.Primary = true;
+            this.filterButton.Size = new System.Drawing.Size(204, 36);
+            this.filterButton.TabIndex = 18;
+            this.filterButton.Text = "Gereed bestellingen zien";
+            this.filterButton.UseVisualStyleBackColor = true;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // stockButton
             // 
@@ -185,9 +184,9 @@
             this.ClientSize = new System.Drawing.Size(980, 737);
             this.ControlBox = false;
             this.Controls.Add(this.stockButton);
-            this.Controls.Add(this.gereedButton);
+            this.Controls.Add(this.filterButton);
             this.Controls.Add(this.timeLabel);
-            this.Controls.Add(this.materialRaisedButton1);
+            this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.layoutPanel);
             this.MaximizeBox = false;
@@ -210,10 +209,10 @@
         private System.ComponentModel.BackgroundWorker getOrdersWorker;
         private System.Windows.Forms.Timer updateTimer;
         private MaterialSkin.Controls.MaterialLabel loginLabel;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton logOutButton;
         private System.Windows.Forms.Timer currentTime;
         private MaterialSkin.Controls.MaterialLabel timeLabel;
-        private MaterialSkin.Controls.MaterialRaisedButton gereedButton;
+        private MaterialSkin.Controls.MaterialRaisedButton filterButton;
         private MaterialSkin.Controls.MaterialRaisedButton stockButton;
     }
 }

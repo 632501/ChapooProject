@@ -59,11 +59,11 @@ namespace ChapooDAL
         }
         public void Finish_Order(int id)
         {
-            string query = string.Format("UPDATE OrderItem SET status = 'Gereed' WHERE bestelling_ID = '{0}'", id);
+            string query = string.Format("UPDATE OrderItem SET status = 'Gereed' WHERE order_ID = '{0}'", id);
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
 
-        public void UnFinish_Order(object id)
+        public void UnFinish_Order(int id)
         {
             string query = string.Format("UPDATE OrderItem SET status = 'Bezig' WHERE order_ID = '{0}'", id);
             ExecuteEditQuery(query, new SqlParameter[0]);

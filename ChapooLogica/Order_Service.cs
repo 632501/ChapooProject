@@ -101,5 +101,10 @@ namespace ChapooLogica
         {
             bestelling_DB.DeleteOrderItem(orderId);
         }
+
+        public void DeleteOrderItemsByID(int bestellingID)
+        {
+            bestelling_DB.DeleteOrderItemByID(bestellingID);
+        }
     }
 }

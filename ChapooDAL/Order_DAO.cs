@@ -75,5 +75,10 @@ namespace ChapooDAL
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
 
+        public void DeleteOrderItemByID(int bestellingID)
+        {
+            string query = string.Format("DELETE FROM OrderItem WHERE bestelling_ID = '{0}'", bestellingID);
+            ExecuteEditQuery(query, new SqlParameter[0]);
+        }
     }
 }

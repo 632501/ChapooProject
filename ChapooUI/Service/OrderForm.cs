@@ -148,7 +148,7 @@ namespace ChapooUI
                 }
                 
             }
-            MessageBox.Show("Er is een nieuwe order gemaakt");
+            MessageBox.Show("Er zijn items aan de bestelling toegevoegd.");
             this.Close();
             orderMenusForm.Show();
             orderMenusForm.LoadOrder();

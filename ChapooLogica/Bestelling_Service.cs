@@ -29,5 +29,10 @@ namespace ChapooLogica
         {
             bestelling_db.AddOrderItem(o);
         }
+
+        public void DeleteOrders(int bestellingID)
+        {
+            bestelling_db.DeleteOrder(bestellingID);
+        }
     }
 }

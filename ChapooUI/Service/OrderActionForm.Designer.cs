@@ -30,7 +30,6 @@
         {
             this.btnActionOpnemen = new System.Windows.Forms.Button();
             this.btn_Afronden = new System.Windows.Forms.Button();
-            this.btn_NewOrder = new System.Windows.Forms.Button();
             this.lbl_Name = new MaterialSkin.Controls.MaterialLabel();
             this.lbl_Tafel = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
@@ -56,17 +55,6 @@
             this.btn_Afronden.Text = "Afronden";
             this.btn_Afronden.UseVisualStyleBackColor = true;
             this.btn_Afronden.Click += new System.EventHandler(this.btnActionBekijken_Click);
-            // 
-            // btn_NewOrder
-            // 
-            this.btn_NewOrder.Location = new System.Drawing.Point(29, 499);
-            this.btn_NewOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_NewOrder.Name = "btn_NewOrder";
-            this.btn_NewOrder.Size = new System.Drawing.Size(267, 65);
-            this.btn_NewOrder.TabIndex = 2;
-            this.btn_NewOrder.Text = "Nieuwe bestelling maken";
-            this.btn_NewOrder.UseVisualStyleBackColor = true;
-            this.btn_NewOrder.Click += new System.EventHandler(this.btn_NewOrder_Click);
             // 
             // lbl_Name
             // 
@@ -132,7 +120,6 @@
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Tafel);
             this.Controls.Add(this.lbl_Name);
-            this.Controls.Add(this.btn_NewOrder);
             this.Controls.Add(this.btn_Afronden);
             this.Controls.Add(this.btnActionOpnemen);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -150,7 +137,6 @@
 
         private System.Windows.Forms.Button btnActionOpnemen;
         private System.Windows.Forms.Button btn_Afronden;
-        private System.Windows.Forms.Button btn_NewOrder;
         private MaterialSkin.Controls.MaterialLabel lbl_Name;
         private MaterialSkin.Controls.MaterialLabel lbl_Tafel;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;

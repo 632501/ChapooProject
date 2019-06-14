@@ -42,11 +42,6 @@ namespace ChapooUI
             lbl_Tafel.Text = "Tafel: "+tafelNummer;
         }
 
-        private void listviewMenu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -58,16 +53,6 @@ namespace ChapooUI
         {
             PaymentForm form = new PaymentForm(werknemer, tafelNummer);
             form.Show();
-        }
-
-        private void btn_NewOrder_Click(object sender, EventArgs e)
-        {
-            
-
-            //bestellingService.AddOrder(bestelling);
-            //bestelling = bestellingService.GetLatestOrder();
-
-            MessageBox.Show("Er is een nieuwe bestelling aan gemaakt met ID: " + bestelling.bestelling_ID);
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

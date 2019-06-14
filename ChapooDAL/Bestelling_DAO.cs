@@ -56,5 +56,11 @@ namespace ChapooDAL
 
             return bestelling;
         }
+
+        public void DeleteOrder(int bestellingID)
+        {
+                string query = string.Format("DELETE FROM Bestelling WHERE bestelling_ID = '{0}'", bestellingID);
+                ExecuteEditQuery(query, new SqlParameter[0]);
+        }
     }
 }

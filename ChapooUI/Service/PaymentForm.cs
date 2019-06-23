@@ -21,6 +21,7 @@ namespace ChapooUI
         Bon_Service bonService = new Bon_Service();
         Inlog werknemer = new Inlog();
         int tafel_ID;
+        int bestelling_ID;
         decimal amountWithBtw;
         decimal amount;
         decimal btw;
@@ -48,6 +49,7 @@ namespace ChapooUI
 
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID);
+            this.bestelling_ID = order.bestelling_ID;
             
             foreach (OrderItem o in order.orderItems)
             {
@@ -87,13 +89,13 @@ namespace ChapooUI
             {
                 totalPayment = decimal.Parse(txtboxTotalPayment.Text);
 
-                if (totalPayment >= amount)
+                if (totalPayment > amountWithBtw)
                 {
                     tip = totalPayment - amountWithBtw;
                 }
             }
 
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amountWithBtw, amount, tip);
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amountWithBtw, amount, tip, btw, bestelling_ID);
             pay.ShowDialog();
         }
 

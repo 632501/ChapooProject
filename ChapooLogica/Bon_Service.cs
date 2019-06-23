@@ -14,13 +14,11 @@ namespace ChapooLogica
     {
         Bon_DAO bon_db = new Bon_DAO();
 
-        int Bestelling_ID;
-
-        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, string paymentType)
+        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, int bestelling_ID, string paymentType)
         {
             string date = DateTime.Now.ToShortDateString();
 
-            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, Bestelling_ID, paymentType);
+            bon_db.Paid(tafel_ID, date, amountWithBtw, tip, comment, bestelling_ID, paymentType);
         }
 
         public Bestelling Orders(int tafel_ID)
@@ -28,8 +26,6 @@ namespace ChapooLogica
             Bestelling orders = new Bestelling();
             orders = bon_db.Orders(tafel_ID);
 
-            this.Bestelling_ID = orders.orderItems[0].bestelling_ID;
-            
             return orders;
         }
     }

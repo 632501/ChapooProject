@@ -50,6 +50,8 @@ namespace ChapooDAL
 
                 Orders.orderItems.Add(oI);
             }
+            Orders.bestelling_ID = Orders.orderItems[0].bestelling_ID;
+
             return Orders;
         }
     }

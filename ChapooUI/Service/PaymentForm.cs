@@ -19,10 +19,10 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
+        Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
         int bestelling_ID;
-        decimal amountWithBtw;
         decimal amount;
         decimal btw;
 
@@ -42,15 +42,27 @@ namespace ChapooUI
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            lblName.Text = werknemer.naam;
-            lblTafelNr.Text = tafel_ID.ToString();
-            amount = 0;
-            amountWithBtw = 0;
-
             Bestelling order = new Bestelling();
             order = bonService.Orders(tafel_ID);
-            this.bestelling_ID = order.bestelling_ID;
-            
+            bon.bestelling_ID = order.bestelling_ID;
+
+            Berekening(order);
+            ShowList(order);
+            FillLabels();
+        }
+
+        private void FillLabels()
+        {
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
+            lblTotaalbedrag.Text = "€ " + bon.totaalprijs.ToString("0.##");
+        }
+
+        private void Berekening(Bestelling order)
+        {
+            amount = 0;
+            decimal amountWithBtw = 0;
+
             foreach (OrderItem o in order.orderItems)
             {
                 decimal btwPercentage = (decimal)o.menuItem.btwPercentage / 100;
@@ -60,9 +72,11 @@ namespace ChapooUI
             }
 
             btw = amountWithBtw - amount;
-            
-            lblTotaalbedrag.Text = "€ " + amountWithBtw.ToString("0.##");
-            
+            bon.totaalprijs = amountWithBtw;
+        }
+
+        private void ShowList(Bestelling order)
+        {
             materialListViewBestelling.Items.Clear();
             materialListViewBestelling.View = View.Details;
 
@@ -83,19 +97,19 @@ namespace ChapooUI
 
             if (txtboxTotalPayment.Text == "")
             {
-                totalPayment = amountWithBtw;
+                totalPayment = bon.totaalprijs;
             }
             else
             {
                 totalPayment = decimal.Parse(txtboxTotalPayment.Text);
 
-                if (totalPayment > amountWithBtw)
+                if (totalPayment > bon.totaalprijs)
                 {
-                    tip = totalPayment - amountWithBtw;
+                    tip = totalPayment - bon.totaalprijs;
                 }
             }
 
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amountWithBtw, amount, tip, btw, bestelling_ID);
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, bon.totaalprijs, amount, tip, btw, bestelling_ID);
             pay.ShowDialog();
         }
 

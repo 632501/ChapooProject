@@ -19,6 +19,7 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Bon_Service bonService = new Bon_Service();
+        Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
         int bestelling_ID;
@@ -67,7 +68,7 @@ namespace ChapooUI
             string amountWithBtwS = amountWithBtw.ToString().Replace(',', '.');
             string tipS = tip.ToString().Replace(',', '.');
 
-            if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
+            if (radioBtnCreditcard.Checked)
             {
                 paymenttype = "Creditcard";
                 bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
@@ -75,7 +76,7 @@ namespace ChapooUI
                 this.Close();
                 form.ShowDialog();
             }
-            if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
+            if (radioBtnContant.Checked)
             {
                 paymenttype = "Contant";
                 bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
@@ -83,7 +84,7 @@ namespace ChapooUI
                 this.Close();
                 form.ShowDialog();
             }
-            if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
+            if (radioBtnPinpas.Checked)
             {
                 paymenttype = "Pinpas";
                 bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
@@ -92,6 +93,7 @@ namespace ChapooUI
                 form.ShowDialog();
             }
         }
+        
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {

@@ -20,6 +20,7 @@ namespace ChapooModel
         public decimal totaalprijs { get; set; }
         public Nullable<decimal> fooi { get; set; }
         public string commentaar { get; set; }
-        public Nullable<int> bestel_ID { get; set; }
+        public Nullable<int> bestelling_ID { get; set; }
+        public string betaaltype { get; set; }
     }
 }

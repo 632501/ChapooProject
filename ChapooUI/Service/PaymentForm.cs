@@ -22,7 +22,6 @@ namespace ChapooUI
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
-        int bestelling_ID;
         decimal amount;
         decimal btw;
 
@@ -93,7 +92,7 @@ namespace ChapooUI
         private void btnBetaald_Click(object sender, EventArgs e)
         {
             decimal totalPayment = 0;
-            decimal tip = 0;
+            bon.fooi = 0;
 
             if (txtboxTotalPayment.Text == "")
             {
@@ -105,11 +104,11 @@ namespace ChapooUI
 
                 if (totalPayment > bon.totaalprijs)
                 {
-                    tip = totalPayment - bon.totaalprijs;
+                    bon.fooi = totalPayment - bon.totaalprijs;
                 }
             }
 
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, bon.totaalprijs, amount, tip, btw, bestelling_ID);
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amount, btw, bon);
             pay.ShowDialog();
         }
 

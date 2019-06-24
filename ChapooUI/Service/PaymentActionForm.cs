@@ -22,14 +22,11 @@ namespace ChapooUI
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
-        int bestelling_ID;
         decimal totalPayment;
-        decimal amountWithBtw;
         decimal amount;
-        decimal tip;
         decimal btw;
 
-        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal totalPayment, decimal amountWithBtw, decimal amount, decimal tip, decimal btw, int bestelling_ID)
+        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal totalPayment, decimal amount, decimal btw, Bon bon)
         {
             InitializeComponent();
 
@@ -39,25 +36,17 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
+            this.bon = bon;
             this.werknemer = werknemer;
             this.tafel_ID = tafel_ID;
-            this.bestelling_ID = bestelling_ID;
             this.totalPayment = totalPayment;
-            this.amountWithBtw = amountWithBtw;
             this.amount = amount;
-            this.tip = tip;
             this.btw = btw;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            lblName.Text = werknemer.naam;
-            lblTafelNr.Text = tafel_ID.ToString();
-            lblAmount.Text = "€ " + amount.ToString("0.##");
-            lblBtw.Text = "€ " + btw.ToString("0.##");
-            lblBtwAmount.Text = "€ " + amountWithBtw.ToString("0.##");
-            lblTip.Text = "€ " + tip.ToString("0.##");
-            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
+            FillLabels();
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
@@ -65,35 +54,52 @@ namespace ChapooUI
             TableForm form = new TableForm(werknemer);
             string paymenttype;
             string comment = txtboxOpmerking.Text;
-            string amountWithBtwS = amountWithBtw.ToString().Replace(',', '.');
-            string tipS = tip.ToString().Replace(',', '.');
+            string amountWithBtwS = bon.totaalprijs.ToString().Replace(',', '.');
+            string tipS = bon.fooi.ToString().Replace(',', '.');
 
-            if (radioBtnCreditcard.Checked)
-            {
-                paymenttype = "Creditcard";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
+            //bon.bestelling_ID
 
-                this.Close();
-                form.ShowDialog();
-            }
-            if (radioBtnContant.Checked)
-            {
-                paymenttype = "Contant";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
+            paymenttype = PaymentType();
 
-                this.Close();
-                form.ShowDialog();
-            }
-            if (radioBtnPinpas.Checked)
+            if(paymenttype != "")
             {
-                paymenttype = "Pinpas";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bestelling_ID, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, 5, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
             }
         }
         
+        private string PaymentType()
+        {
+            string paymenttype = "";
+
+            if (radioBtnCreditcard.Checked)
+            {
+                paymenttype = "Creditcard";
+            }
+            if (radioBtnContant.Checked)
+            {
+                paymenttype = "Contant";
+            }
+            if (radioBtnPinpas.Checked)
+            {
+                paymenttype = "Pinpas";
+            }
+
+            return paymenttype;
+        }
+
+        private void FillLabels()
+        {
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
+            lblAmount.Text = "€ " + amount.ToString("0.##");
+            lblBtw.Text = "€ " + btw.ToString("0.##");
+            lblBtwAmount.Text = "€ " + bon.totaalprijs.ToString("0.##");
+            //lblTip.Text = "€ " + bon.fooi.ToString("0.##");
+            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
+        }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {

@@ -129,7 +129,6 @@ namespace ChapooUI
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
             int i;
-
             foreach (ListViewItem li in listviewMenu.Items)
             {
                 OrderItem o;
@@ -141,6 +140,8 @@ namespace ChapooUI
                 i = int.Parse(a);
                 if (i != 0)
                 {
+                    bool duplicate;
+                    duplicate = false;
                     m = menuService.GetItem(m.naam);
                     
                     o = new OrderItem();
@@ -149,7 +150,19 @@ namespace ChapooUI
                     o.Status = "bezig";
 
                     //orderitems toevoegen aan lijst met orders van het ordermenusform
-                    orderMenusForm.bestelling.orderItems.Add(o);
+                    foreach (OrderItem item in orderMenusForm.bestelling.orderItems)
+                    {
+                        if (item.menuItem.naam == o.menuItem.naam)
+                        {
+                            duplicate = true;
+                            item.Aantal += o.Aantal;
+                        } 
+                        continue;
+                    }
+                    if (duplicate == false)
+                    {
+                        orderMenusForm.bestelling.orderItems.Add(o);
+                    }
                 }
                 
             }

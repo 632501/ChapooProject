@@ -63,6 +63,7 @@ namespace ChapooUI
                 {
                     ListViewItem li = new ListViewItem(o.menuItem.naam);
                     li.SubItems.Add(o.Aantal.ToString());
+                    li.Tag = o;
                     listviewTakenOrder.Items.Add(li);
                 }
 
@@ -115,6 +116,8 @@ namespace ChapooUI
 
             //Bestelling toevoegen aan db
             bestellingService.AddOrder(bestelling);
+
+            //krijg het ID van toegevoegde bestelling voor orderitems.
             bestelling = bestellingService.GetLatestOrder();
             
             foreach (OrderItem o in orders)
@@ -137,6 +140,43 @@ namespace ChapooUI
             OrderOverviewForm overviewForm = new OrderOverviewForm(werknemer, tafelNummer);
             overviewForm.Show();
 
+        }
+
+        private void btnIncrease_Click(object sender, EventArgs e)
+        {
+            if (listviewTakenOrder.SelectedItems.Count > 0)
+            {
+                foreach (OrderItem item in bestelling.orderItems)
+                {
+                    if (item == (OrderItem)listviewTakenOrder.SelectedItems[0].Tag)
+                    {
+                        item.Aantal += 1;
+
+                    }
+                    listviewTakenOrder.Clear();
+                    LoadOrder();
+                }
+            }
+        }
+
+        private void btnDecrease_Click(object sender, EventArgs e)
+        {
+            if (listviewTakenOrder.SelectedItems.Count > 0)
+            {
+                OrderItem o = (OrderItem)listviewTakenOrder.SelectedItems[0].Tag;
+                o.Aantal -= 1;
+
+                listviewTakenOrder.Clear();
+                if (o.Aantal == 0)
+                {
+                    bestelling.orderItems.Remove(o);
+                }
+                LoadOrder();
+            }
+        }
+
+        private void listviewTakenOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

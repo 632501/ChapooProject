@@ -94,7 +94,7 @@ namespace ChapooUI
                 ListViewItem li = new ListViewItem(m.naam);
                 li.SubItems.Add(amount.ToString());
                 listviewMenu.Items.Add(li);
-
+                
             }
             listviewMenu.View = View.Details;
             listviewMenu.Columns.Add("Naam");

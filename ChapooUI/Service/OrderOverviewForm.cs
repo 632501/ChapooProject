@@ -57,16 +57,15 @@ namespace ChapooUI
                 foreach (OrderItem item in orderItems)
                 {
                     ListViewItem li = new ListViewItem(bestelling.bestelling_ID.ToString());
-                    li.SubItems.Add(item.order_ID.ToString());
                     li.SubItems.Add(item.menuItem.naam);
                     li.SubItems.Add(item.Aantal.ToString());
+                    li.Tag = item;
                     listviewOverview.Items.Add(li);
                 }
             }
             
 
             listviewOverview.View = View.Details;
-            listviewOverview.Columns.Add("OrderID");
             listviewOverview.Columns.Add("BestellingID");
             listviewOverview.Columns.Add("Besteld");
             listviewOverview.Columns.Add("Aantal");
@@ -86,8 +85,8 @@ namespace ChapooUI
                 DialogResult res = MessageBox.Show("Weet je het zeker dat je deze orderitem wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (res == DialogResult.OK)
                 {
-                    int orderId = int.Parse(listviewOverview.SelectedItems[0].SubItems[1].Text);
-                    orderService.DeleteOrder(orderId);
+                    OrderItem o = (OrderItem)listviewOverview.SelectedItems[0].Tag;
+                    orderService.DeleteOrder(o.order_ID);
 
                     LoadOrders();
                 } else if (res == DialogResult.Cancel)

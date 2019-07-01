@@ -68,5 +68,12 @@ namespace ChapooUI
             this.Close();
             form.Show();
         }
+
+        private void btn_Uitlog_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginForm login = new LoginForm();
+            login.Show();
+        }
     }
 }

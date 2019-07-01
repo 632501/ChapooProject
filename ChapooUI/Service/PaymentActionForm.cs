@@ -18,7 +18,7 @@ namespace ChapooUI
     public partial class PaymentActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        Bon_Service bonService = new Bon_Service();
+        Order_Service orderService = new Order_Service();
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
@@ -61,7 +61,7 @@ namespace ChapooUI
 
             if(paymenttype != "")
             {
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
+                orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
 
                 this.Close();
                 form.ShowDialog();

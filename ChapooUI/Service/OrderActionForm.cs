@@ -19,8 +19,7 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         Bestelling_Service bestellingService = new Bestelling_Service();
         Inlog werknemer = new Inlog();
-        int tafelNummer;
-        Bestelling bestelling = new Bestelling();
+        int tafelNummer { get; set; }
 
         public OrderActionForm(Inlog werknemer, int tafelNummer)
         {

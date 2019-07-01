@@ -31,7 +31,6 @@ namespace ChapooUI
 
         public OrderForm(string sort, int tafelnummer, Bestelling order, Inlog werknemer, OrderMenusForm orderMenusForm)
         {
-            this.sort = sort;
             InitializeComponent();
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
@@ -39,6 +38,7 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
+            this.sort = sort;
             this.order = order;
             this.tafelnummer = tafelnummer;
             this.werknemer = werknemer;

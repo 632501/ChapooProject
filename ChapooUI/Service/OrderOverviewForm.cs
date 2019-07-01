@@ -22,6 +22,8 @@ namespace ChapooUI
         Bestelling_Service bestellingService = new Bestelling_Service();
         int tafelNummer { get; set; }
         Inlog werknemer { get; set; }
+        List<Bestelling> bestellingen { get; set; }
+        List<OrderItem> orderItems { get; set; }
 
         public OrderOverviewForm(Inlog inlog, int tafelNummer)
         {
@@ -34,6 +36,7 @@ namespace ChapooUI
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
             werknemer = inlog;
             this.tafelNummer = tafelNummer;
+            bestellingen = new List<Bestelling>();
         }
 
         private void OrderForm_Load(object sender, EventArgs e)
@@ -47,10 +50,10 @@ namespace ChapooUI
         public void LoadOrders()
         {
             listviewOverview.Clear();
-            List<Bestelling> bestellingen = orderService.GetTablesOrder(tafelNummer);
+            bestellingen = orderService.GetTablesOrder(tafelNummer);
             foreach (Bestelling bestelling in bestellingen)
             {
-                List<OrderItem> orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_ID);
+                orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_ID);
                 foreach (OrderItem item in orderItems)
                 {
                     ListViewItem li = new ListViewItem(bestelling.bestelling_ID.ToString());

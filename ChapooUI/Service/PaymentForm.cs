@@ -18,7 +18,7 @@ namespace ChapooUI
     public partial class PaymentForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        Bon_Service bonService = new Bon_Service();
+        Order_Service orderService = new Order_Service();
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
@@ -42,7 +42,7 @@ namespace ChapooUI
         private void PaymentForm_Load(object sender, EventArgs e)
         {
             Bestelling order = new Bestelling();
-            order = bonService.Orders(tafel_ID);
+            order = orderService.Orders(tafel_ID);
             bon.bestelling_ID = order.bestelling_ID;
 
             calculation(order);

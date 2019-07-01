@@ -106,5 +106,22 @@ namespace ChapooLogica
         {
             order_DAO.DeleteOrderItemByID(bestellingID);
         }
+
+        // bon gedeelte 
+
+        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, int bestelling_ID, string paymentType)
+        {
+            string date = DateTime.Now.ToShortDateString();
+
+            order_DAO.Paid(tafel_ID, date, amountWithBtw, tip, comment, bestelling_ID, paymentType);
+        }
+
+        public Bestelling Orders(int tafel_ID)
+        {
+            Bestelling orders = new Bestelling();
+            orders = order_DAO.Orders(tafel_ID);
+
+            return orders;
+        }
     }
 }

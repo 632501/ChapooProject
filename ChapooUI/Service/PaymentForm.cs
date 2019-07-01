@@ -45,7 +45,7 @@ namespace ChapooUI
             order = bonService.Orders(tafel_ID);
             bon.bestelling_ID = order.bestelling_ID;
 
-            Berekening(order);
+            calculation(order);
             ShowList(order);
             FillLabels();
         }
@@ -57,7 +57,7 @@ namespace ChapooUI
             lblTotaalbedrag.Text = "€ " + bon.totaalprijs.ToString("0.##");
         }
 
-        private void Berekening(Bestelling order)
+        private void calculation(Bestelling order)
         {
             amount = 0;
             decimal amountWithBtw = 0;
@@ -108,7 +108,7 @@ namespace ChapooUI
                 }
             }
 
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, totalPayment, amount, btw, bon);
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, amount, btw, bon);
             pay.ShowDialog();
         }
 

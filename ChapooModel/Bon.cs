@@ -18,9 +18,9 @@ namespace ChapooModel
         public int bon_ID { get; set; }
         public Nullable<System.DateTime> datum { get; set; }
         public decimal totaalprijs { get; set; }
-        public Nullable<decimal> fooi { get; set; }
+        public decimal fooi { get; set; }
         public string commentaar { get; set; }
-        public Nullable<int> bestelling_ID { get; set; }
+        public int bestelling_ID { get; set; }
         public string betaaltype { get; set; }
     }
 }

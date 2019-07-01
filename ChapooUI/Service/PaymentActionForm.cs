@@ -22,11 +22,10 @@ namespace ChapooUI
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
-        decimal totalPayment;
         decimal amount;
         decimal btw;
 
-        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal totalPayment, decimal amount, decimal btw, Bon bon)
+        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal amount, decimal btw, Bon bon)
         {
             InitializeComponent();
 
@@ -39,7 +38,6 @@ namespace ChapooUI
             this.bon = bon;
             this.werknemer = werknemer;
             this.tafel_ID = tafel_ID;
-            this.totalPayment = totalPayment;
             this.amount = amount;
             this.btw = btw;
         }
@@ -63,7 +61,7 @@ namespace ChapooUI
 
             if(paymenttype != "")
             {
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, 5, paymenttype);
+                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
 
                 this.Close();
                 form.ShowDialog();
@@ -92,12 +90,14 @@ namespace ChapooUI
 
         private void FillLabels()
         {
+            decimal totalPayment = bon.totaalprijs + bon.fooi;
+
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
             lblAmount.Text = "€ " + amount.ToString("0.##");
             lblBtw.Text = "€ " + btw.ToString("0.##");
             lblBtwAmount.Text = "€ " + bon.totaalprijs.ToString("0.##");
-            //lblTip.Text = "€ " + bon.fooi.ToString("0.##");
+            lblTip.Text = "€ " + bon.fooi.ToString("0.##");
             lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
         }
 

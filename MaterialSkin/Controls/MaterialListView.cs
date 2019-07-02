@@ -99,10 +99,10 @@ namespace MaterialSkin.Controls
                 
                 if (subItem.Text != "Picture")
                 {
-                    if(e.Item.ForeColor == Color.Red)
+                    if(e.Item.ForeColor == Color.LightCoral)
                     {
                         //Draw text
-                        g.DrawString(subItem.Text, SkinManager.ROBOTO_MEDIUM_10, Brushes.Red,
+                        g.DrawString(subItem.Text, SkinManager.ROBOTO_MEDIUM_10, Brushes.LightCoral,
                                          new Rectangle(subItem.Bounds.X + ITEM_PADDING, ITEM_PADDING, subItem.Bounds.Width - 2 * ITEM_PADDING, subItem.Bounds.Height - 2 * ITEM_PADDING),
                                          getStringFormat());
                     }

@@ -45,7 +45,7 @@ namespace ChapooUI
             order = orderService.Orders(tafel_ID);
             bon.bestelling_ID = order.bestelling_ID;
 
-            calculation(order);
+            Calculation(order);
             ShowList(order);
             FillLabels();
         }
@@ -57,7 +57,7 @@ namespace ChapooUI
             lblTotaalbedrag.Text = "€ " + bon.totaalprijs.ToString("0.##");
         }
 
-        private void calculation(Bestelling order)
+        private void Calculation(Bestelling order)
         {
             amount = 0;
             decimal amountWithBtw = 0;

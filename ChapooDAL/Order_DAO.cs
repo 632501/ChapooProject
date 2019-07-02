@@ -84,7 +84,7 @@ namespace ChapooDAL
         // Bon gedeelte
         public void Paid(int tafel_ID, string date, string amountString, string tipString, string comment, int bestelling_ID, string paymentType)
         {
-            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling AS BE JOIN Tafel AS T ON T.tafel_ID = BE.tafel_ID WHERE T.tafel_ID = " + tafel_ID + " AND BE.betaald = 0";
+            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling tafel_ID = " + tafel_ID + " AND betaald = 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
 

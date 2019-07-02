@@ -58,7 +58,7 @@ namespace ChapooDAL
 
         public Inlog GetEmployee(int ID)
         {
-            string query = "Select * From Inlog Where werknemer_ID = '" +ID + "'";
+            string query = "Select * From Inlog Where werknemer_ID = '" + ID + "'";
             con = new SqlConnection(conn);
             con.Open();
             SqlCommand command = new SqlCommand(query, con);
@@ -69,11 +69,11 @@ namespace ChapooDAL
 
             Inlog Employee = new Inlog()
             {
-                werknemer_ID = (int) dr["werknemer_ID"],
-                wachtwoord = (string) dr["wachtwoord"],
-                naam = (string) dr["naam"],
-                functie = (string) dr["functie"],
-                status = (string) dr["status"]
+                werknemer_ID = (int)dr["werknemer_ID"],
+                wachtwoord = (string)dr["wachtwoord"],
+                naam = (string)dr["naam"],
+                functie = (string)dr["functie"],
+                status = (string)dr["status"]
             };
 
             return Employee;
@@ -100,38 +100,38 @@ namespace ChapooDAL
 
             return Employee;
         }
-        public string Name(string password)
-        {
-            string name = "";
-            con = new SqlConnection(conn);
-            string query = "Select naam from Inlog where wachtwoord = '" + password + "'";
+        //public string Name(string password)
+        //{
+        //    string name = "";
+        //    con = new SqlConnection(conn);
+        //    string query = "Select naam from Inlog where wachtwoord = '" + password + "'";
 
-            con.Open();
+        //    con.Open();
 
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-            name = (string)dr["naam"];
+        //    SqlCommand command = new SqlCommand(query, con);
+        //    SqlDataReader dr = command.ExecuteReader();
+        //    dr.Read();
+        //    name = (string)dr["naam"];
 
-            return name;
-        }
+        //    return name;
+        //}
 
-        public string Function(string password)
-        {
-            string function = " ";
-            con = new SqlConnection(conn);
-            string query = "Select functie from Inlog where wachtwoord = '" + password + "'";
+        //public string Function(string password)
+        //{
+        //    string function = " ";
+        //    con = new SqlConnection(conn);
+        //    string query = "Select functie from Inlog where wachtwoord = '" + password + "'";
 
-            con.Open();
+        //    con.Open();
 
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader reader = command.ExecuteReader();
+        //    SqlCommand command = new SqlCommand(query, con);
+        //    SqlDataReader reader = command.ExecuteReader();
 
-            reader.Read();
-            function = (string)reader["functie"];
+        //    reader.Read();
+        //    function = (string)reader["functie"];
 
-            return function;
-        }
+        //    return function;
+        //}
 
 
         public List<Inlog> GetEmployeeList()

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using ChapooDAL;
+using ChapooLogica;
 using ChapooModel;
 using System.Linq;
 using System.Text;
@@ -103,23 +104,23 @@ namespace ChapooUI
 
         private void btn_inlog_Click(object sender, EventArgs e)
         {
-
-            Login_DAO login = new Login_DAO();
+            Login_Service login = new Login_Service();
+            //Login_DAO login = new Login_DAO();
             Inlog inlog = new Inlog();
             string password = txt_Password.Text;
             inlog = login.GetEmployeeWithPassword(int.Parse(password));
 
-            if(login.Function(password) == "manager" && login.Login(password) == true)
+            if(inlog.functie == "manager" && inlog.wachtwoord == txt_Password.Text)
             {
                 this.Hide();
                 ManagementActionForm managementOverview = new ManagementActionForm(inlog);
                 managementOverview.Show();
-            }else if(login.Function(password) == "barman" || login.Function(password) == "kok" && login.Login(password) == true)
+            }else if(inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == txt_Password.Text)
             {
                 this.Hide();
                 KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
                 kitchenAndBar.Show();
-            }else if(login.Function(password) == "bediening" || login.Function(password) == "bediening" && login.Login(password) == true)
+            }else if(inlog.functie == "bediening" && inlog.wachtwoord == txt_Password.Text)
             {
                 this.Hide();
                 TableForm table = new TableForm(inlog);
@@ -129,6 +130,7 @@ namespace ChapooUI
             {
                 lbl_IncorrectPassword.ForeColor = Color.Red;
                 lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
+                txt_Password.Clear();
             }
         }
     }

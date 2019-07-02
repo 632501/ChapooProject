@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,26 +14,29 @@ namespace ChapooDAL
         public string conn = "Data Source=den1.mssql7.gear.host; Initial Catalog = chapoo1819sdb15; User=chapoo1819sdb15; Password=Uh6Q-7?9ykHi";
         protected SqlConnection con;
 
-        public List<Tafel> Tafels()
+        public List<Tafel> Db_Get_All_Tables()
         {
-            con = new SqlConnection(conn);
-            string query = "select * from Tafel";
+            string query = "SELECT bezet, tafelnummer FROM [Tafel]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadAllTables(ExecuteSelectQuery(query, sqlParameters));
+        }
 
+        private List<Tafel> ReadAllTables(DataTable dataTable)
+        {
             List<Tafel> tables = new List<Tafel>();
 
-            Tafel table = new Tafel();
-
-            //zorgen dat de query wordt uitgevoerd en de items aan de dingen worden gelinkt
-
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-            table.tafelnummer = (int)dr["tafelnummer"];
-            table.bezet = (bool)dr["naam"];
-            tables.Add(table);
-
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Tafel table = new Tafel()
+                {
+                    bezet = (bool)dr["bezet"],
+                    tafelnummer = (int)dr["tafelnummer"]
+                };
+                tables.Add(table);
+            }
             return tables;
         }
+
 
         public bool Occupied(int tableNumber)
         {

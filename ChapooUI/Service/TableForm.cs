@@ -53,33 +53,12 @@ namespace ChapooUI
             table_service = new Tafel_Service();
 
             tables = table_service.DB_Get_All_Tables();
-            btnList[6].BackColor = Color.Yellow;
-            btnList[8].BackColor = Color.Orange;
+            
             gerecht = new OrderItem_Service();
 
             SetTableColors();
-
-
-
-
-            //for (int i = 0; i < btnList.Length; i++)
-            //{
-            //    if (table_dao.Occupied(i + 1) == true)
-            //    {
-            //        btnList[i].BackColor = Color.Red;
-            //    }
-            //    else if (table_dao.Occupied(i + 1) == false)
-            //    {
-            //        btnList[i].BackColor = Color.Green;
-            //    }
-
-            //    //if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "nietafgeleverd")
-            //    //{
-            //    //    btnList[i].BackColor = Color.Yellow;
-            //    //}else if(table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
-            //    //{
-            //    //    btnList[i].BackColor = Color.Orange;
-            //    //}
+            btnList[6].BackColor = Color.Yellow;
+            btnList[8].BackColor = Color.Orange;
 
         }
 
@@ -95,8 +74,10 @@ namespace ChapooUI
                 else if (tables[i].bezet == true)
                 {
                     btnList[i].BackColor = Color.Red;
-                }
-                else if (orders[i].ToString() == "bezig" || orders[i].ToString() == "Bezig")
+                } else if (orders[i].ToString() == "nietafgeleverd")
+                {
+                    btnList[i].BackColor = Color.Orange;
+                } else if (orders[i].ToString() == "bezig" || orders[i].ToString() == "Bezig")
                 {
                     btnList[i].BackColor = Color.Yellow;
                 }

@@ -61,8 +61,8 @@ namespace ChapooUI
 
             if(paymenttype != "")
             {
-                orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
-
+                //orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
+                MessageBox.Show("De bestelling is betaald!");
                 this.Close();
                 form.ShowDialog();
             }

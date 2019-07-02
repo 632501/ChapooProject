@@ -146,16 +146,13 @@ namespace ChapooUI
         {
             if (listviewTakenOrder.SelectedItems.Count > 0)
             {
-                foreach (OrderItem item in bestelling.orderItems)
-                {
-                    if (item == (OrderItem)listviewTakenOrder.SelectedItems[0].Tag)
-                    {
-                        item.Aantal += 1;
-
-                    }
+                //foreach (OrderItem item in bestelling.orderItems)
+                //{
+                    OrderItem item = (OrderItem)listviewTakenOrder.SelectedItems[0].Tag;
+                    item.Aantal += 1;
                     listviewTakenOrder.Clear();
                     LoadOrder();
-                }
+                //}
             }
         }
 

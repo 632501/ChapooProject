@@ -138,11 +138,11 @@ namespace ChapooDAL
         // Bon gedeelte
         public void Paid(int tafel_ID, string date, string amountString, string tipString, string comment, int bestelling_ID, string paymentType)
         {
-            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling tafel_ID = " + tafel_ID + " AND betaald = 0";
+            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling tafel_ID = '" + tafel_ID + "' AND betaald =" + false;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
 
-            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestelling_ID, betaaltype) values(" + date + ", CONVERT(varchar, CAST('" + amountString + "' AS money)), CONVERT(varchar, CAST('" + tipString + "' AS money)), '" + comment + "', " + bestelling_ID + ", '" + paymentType + "')";
+            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestelling_ID, betaaltype) values(" + date + ", CONVERT(varchar, CAST('" + amountString + "' AS money)), CONVERT(varchar, CAST('" + tipString + "' AS money)), '" + comment + "', '" + bestelling_ID + "', '" + paymentType + "')";
             ExecuteEditQuery(queryBon, sqlParameters);
         }
 
@@ -159,23 +159,25 @@ namespace ChapooDAL
             Orders.orderItems = new List<OrderItem>();
             MenuItem m = new MenuItem();
 
-            foreach (DataRow dr in dataTable.Rows)
+            if (dataTable.Rows.Count > 0)
             {
-                OrderItem oI = new OrderItem()
+                foreach (DataRow dr in dataTable.Rows)
                 {
-                    Aantal = (int)dr["aantal"],
-                    bestelling_ID = (int)dr["bestelling_ID"]
-                };
-                m.prijs = (decimal)dr["prijs"];
-                m.naam = (string)dr["naam"];
-                m.btwPercentage = (int)dr["btwPercentage"];
+                    OrderItem oI = new OrderItem()
+                    {
+                        Aantal = (int)dr["aantal"],
+                        bestelling_ID = (int)dr["bestelling_ID"]
+                    };
+                    m.prijs = (decimal)dr["prijs"];
+                    m.naam = (string)dr["naam"];
+                    m.btwPercentage = (int)dr["btwPercentage"];
 
-                oI.menuItem = m;
+                    oI.menuItem = m;
 
-                Orders.orderItems.Add(oI);
+                    Orders.orderItems.Add(oI);
+                }
+                Orders.bestelling_ID = Orders.orderItems[0].bestelling_ID;
             }
-            Orders.bestelling_ID = Orders.orderItems[0].bestelling_ID;
-
             return Orders;
         }
     }

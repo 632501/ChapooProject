@@ -83,20 +83,21 @@ namespace ChapooDAL
             string query = "Select * From Inlog Where wachtwoord = '" + password + "'";
             con = new SqlConnection(conn);
             con.Open();
+            Inlog Employee = new Inlog(); 
             SqlCommand command = new SqlCommand(query, con);
             SqlDataReader datareader = command.ExecuteReader();
             var dataTable = new DataTable();
             dataTable.Load(datareader);
-            DataRow dr = dataTable.Rows[0];
-
-            Inlog Employee = new Inlog()
+            
+            if (dataTable.Rows.Count > 0)
             {
-                werknemer_ID = (int)dr["werknemer_ID"],
-                wachtwoord = (string)dr["wachtwoord"],
-                naam = (string)dr["naam"],
-                functie = (string)dr["functie"],
-                status = (string)dr["status"]
-            };
+                DataRow dr = dataTable.Rows[0];
+                Employee.werknemer_ID = (int)dr["werknemer_ID"];
+                    Employee.wachtwoord = (string)dr["wachtwoord"];
+                    Employee.naam = (string)dr["naam"];
+                    Employee.functie = (string)dr["functie"];
+                    Employee.status = (string)dr["status"];
+            }
 
             return Employee;
         }

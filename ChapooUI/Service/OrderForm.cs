@@ -157,7 +157,7 @@ namespace ChapooUI
                             duplicate = true;
                             item.Aantal += o.Aantal;
                         } 
-                        continue;
+                        //continue;
                     }
                     if (duplicate == false)
                     {

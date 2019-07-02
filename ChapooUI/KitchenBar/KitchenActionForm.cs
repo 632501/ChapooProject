@@ -22,7 +22,6 @@ namespace ChapooUI
         private Inlog inlog;
         private bool isBar;
         private bool statusFilter = true;
-        private List<OrderItem> orderItemLists = new List<OrderItem>();
         public KitchenActionForm(Inlog inlog)
         {
             InitializeComponent();
@@ -60,86 +59,29 @@ namespace ChapooUI
         {
             if (!getOrdersWorker.IsBusy)
             {
-                loadingPicture.Visible = true;
                 getOrdersWorker.RunWorkerAsync();
             }
         }
         private void getOrdersWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            List<OrderItem> orderItems = new List<OrderItem>();
-            List<Bestelling> todaysOrdersList = order_Service.GetTodaysOrders();
+            List<BestellingOrderItem> todaysOrdersList = new List<BestellingOrderItem>();
+
             if (ordersListView.InvokeRequired)
             {
                 ordersListView.Invoke((MethodInvoker)delegate ()
                 {
-                    ordersListView.Clear();
-
-                    foreach (Bestelling todaysOrder in todaysOrdersList)
+                    if (isBar == true)
                     {
-                        List<OrderItem> orderItemList = new List<OrderItem>();
-
-                        if(isBar == true)
-                        {
-                            if(statusFilter)
-                               orderItemList = todaysOrder.orderItems.Where(m => m.menuItem.categorie == "dranken" && m.Status != "Gereed").ToList();
-                            else
-                               orderItemList = todaysOrder.orderItems.Where(m => m.menuItem.categorie == "dranken").ToList();
-                        }
-                        else
-                        {
-                            if (statusFilter)
-                                orderItemList = todaysOrder.orderItems.Where(m => m.menuItem.categorie == "diner" &&  m.Status != "Gereed").ToList();
-                            else
-                                orderItemList = todaysOrder.orderItems.Where(m => m.menuItem.categorie == "diner").ToList();
-                        }
-
-                        foreach (var orderItem in orderItemList)
-                        {
-                            orderItems.Add(orderItem);
-                            var item = new ListViewItem(new[] {
-                            orderItem.order_ID.ToString(),
-                            orderItem.TafelNummer.ToString(),
-                            orderItem.Aantal.ToString(),
-                            orderItem.menuItem.naam.ToString(),
-                            orderItem.Comment.ToString(),
-                            orderItem.Werknemer.naam.ToString(),
-                            todaysOrder.datum.Value.ToString("hh:mm")
-                            });
-                            if(orderItem.Status == "Gereed") {
-                                item.ForeColor = Color.Red;
-                            }
-                            ordersListView.Items.Add(item);
-                        }
-                  
-                    }
-                    ordersListView.View = View.Details;
-                    ordersListView.Columns.Add("Order");
-                    ordersListView.Columns.Add("Tafel");
-                    ordersListView.Columns.Add("Aantal");
-                    ordersListView.Columns.Add("Bestelling");
-                    ordersListView.Columns.Add("Commentaar");
-                    ordersListView.Columns.Add("Werknemer");
-                    ordersListView.Columns.Add("Tijd");
-
-                    ordersListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    ordersListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-                    if (!isBar) { 
-                    ordersListView.Columns[3].Width = 233;
+                            todaysOrdersList = order_Service.GetAllBarOrders(statusFilter);
                     }
                     else
                     {
-                        ordersListView.Columns[3].Width = 170;
+                        todaysOrdersList = order_Service.GetAllKitchenOrders(statusFilter);
+
                     }
                 });
             }
-            if (loadingPicture.InvokeRequired)
-            {
-                loadingPicture.Invoke((MethodInvoker)delegate ()
-                {
-                    loadingPicture.Visible = false;
-                });
-            }
-            e.Result = orderItems;
+            e.Result = todaysOrdersList;
         }
 
         private void updateTimer_Tick(object sender, EventArgs e)
@@ -159,32 +101,28 @@ namespace ChapooUI
             if (ordersListView.SelectedItems.Count < 1) return;
 
             ListViewItem selectedItem = ordersListView.SelectedItems[0];
-            int selectedItemIndex = int.Parse(selectedItem.Text);
             bool isDone = true;
-            var item = orderItemLists.Where(m => m.order_ID == selectedItemIndex).FirstOrDefault();
-            if (selectedItem.ForeColor == Color.Red)
+
+            BestellingOrderItem item = (BestellingOrderItem)selectedItem.Tag;
+
+            if (selectedItem.ForeColor == Color.LightCoral)
                 isDone = false;
-            if (selectedItemIndex >= 0)
-            {
+      
                 OrderDoActionForm ordersOverviewForm = new OrderDoActionForm(item, this, isDone);
                 ordersOverviewForm.ShowDialog();
-            }
+            
         }
 
-        private void currentTime_Tick(object sender, EventArgs e)
-        {
-            this.timeLabel.Text = DateTime.Now.ToString();
-        }
 
         private void filterButton_Click(object sender, EventArgs e)
         {
             if (statusFilter)
             {
-                filterButton.Text = "Gereed bestellingen niet zien";
+                checkPicture.Visible = true;
             }
             else
             {
-                filterButton.Text = "Gereed bestellingen zien";
+                checkPicture.Visible = false;
 
             }
             UpdateData();
@@ -193,21 +131,63 @@ namespace ChapooUI
 
         private void getOrdersWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            List<OrderItem> orderList = (List<OrderItem>)e.Result;
-            if (orderList != null)
+            List<BestellingOrderItem> bestellingOrderItems = (List<BestellingOrderItem>)e.Result;
+            if (bestellingOrderItems.Count > 0)
             {
-                orderItemLists.Clear();
-                foreach (var item in orderList)
-                {
-                    orderItemLists.Add(item);
-                }
+                fillListView(bestellingOrderItems);
+                createColumns();
             }
         }
+        private void fillListView(List<BestellingOrderItem> bestellingOrderItems)
+        {
+            ordersListView.Clear();
+            foreach (BestellingOrderItem  orderItem in bestellingOrderItems)
+            {
+                var item = new ListViewItem(new[] {
+                            orderItem.TafelNummer.ToString(),
+                            orderItem.Aantal.ToString(),
+                            orderItem.MenuItemNaam.ToString(),
+                            orderItem.OrderCommentaar.ToString(),
+                            orderItem.WerknemerNaam.ToString(),
+                            orderItem.Datum.Value.ToString("hh:mm")
+                            });
+                item.Tag = orderItem;
+                if (orderItem.Status == "Gereed")
+                {
+                    item.ForeColor = Color.LightCoral;
+                }
+                ordersListView.Items.Add(item);
+            }
 
+        }
+        private void createColumns()
+        {
+            ordersListView.View = View.Details;
+            ordersListView.Columns.Add("Tafel");
+            ordersListView.Columns.Add("#");
+            ordersListView.Columns.Add("Bestelling");
+            ordersListView.Columns.Add("Commentaar");
+            ordersListView.Columns.Add("Werknemer");
+            ordersListView.Columns.Add("Tijd");
+
+            ordersListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            ordersListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
+            ordersListView.Columns[1].Width = 55;
+            ordersListView.Columns[2].Width = 320;
+            ordersListView.Columns[3].Width = 200;
+            ordersListView.Columns[4].Width = 235;
+
+        }
         private void stockButton_Click(object sender, EventArgs e)
         {
             ManagementSupplyForm supplyForm = new ManagementSupplyForm(inlog);
             supplyForm.ShowDialog();
+        }
+
+        private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

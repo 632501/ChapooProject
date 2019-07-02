@@ -58,13 +58,13 @@ namespace ChapooUI
                     btnList[i].BackColor = Color.Green;
                 }
 
-                if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "nietafgeleverd")
-                {
-                    btnList[i].BackColor = Color.Yellow;
-                }else if(table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
-                {
-                    btnList[i].BackColor = Color.Orange;
-                }
+                //if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "nietafgeleverd")
+                //{
+                //    btnList[i].BackColor = Color.Yellow;
+                //}else if(table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
+                //{
+                //    btnList[i].BackColor = Color.Orange;
+                //}
 
             }
         }

@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bestelling.cs" />
+    <Compile Include="BestellingOrderItems.cs" />
     <Compile Include="Bon.cs" />
     <Compile Include="Inlog.cs" />
     <Compile Include="MenuItem.cs" />

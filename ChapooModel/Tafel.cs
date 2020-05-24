@@ -15,8 +15,7 @@ namespace ChapooModel
     public partial class Tafel
     {
     
-        public int tafel_ID { get; set; }
-        public int tafelnummer { get; set; }
+        public int tafel_id { get; set; }
         public Nullable<bool> bezet { get; set; }
         public virtual ICollection<Bestelling> Bestelling { get; set; }
     }

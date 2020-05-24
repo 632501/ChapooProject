@@ -21,7 +21,7 @@ namespace ChapooDAL
 
         public DataTable Get_Order_Items(int bestelling_ID)
         {
-            string query = string.Format("SELECT * FROM OrderItem WHERE tafelnummer IS NOT null AND bestelling_ID = '{0}'", bestelling_ID);
+            string query = string.Format("SELECT * FROM Bestel_Gerecht WHERE tafelnummer IS NOT null AND bestelling_ID = '{0}'", bestelling_ID);
             return ExecuteSelectQuery(query, new SqlParameter[0]);
         }
 
@@ -54,30 +54,30 @@ namespace ChapooDAL
 
         public DataTable Get_Order_Items_Per_Table(int tafelnummer, int bestelling_ID)
         {
-            string query = string.Format("SELECT * FROM OrderItem WHERE tafelnummer = '{0}' AND bestelling_ID = '{1}'",tafelnummer, bestelling_ID);
+            string query = string.Format("SELECT * FROM Bestel_Gerecht WHERE tafelnummer = '{0}' AND bestelling_ID = '{1}'", tafelnummer, bestelling_ID);
             return ExecuteSelectQuery(query, new SqlParameter[0]);
         }
         public void Finish_Order(int id)
         {
-            string query = string.Format("UPDATE OrderItem SET status = 'Gereed' WHERE order_ID = '{0}'", id);
+            string query = string.Format("UPDATE Bestel_Gerecht SET status = 'Gereed' WHERE order_ID = '{0}'", id);
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
 
         public void UnFinish_Order(int id)
         {
-            string query = string.Format("UPDATE OrderItem SET status = 'Bezig' WHERE order_ID = '{0}'", id);
+            string query = string.Format("UPDATE Bestel_Gerecht SET status = 'Bezig' WHERE order_ID = '{0}'", id);
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
 
         public void DeleteOrderItem(int orderItem)
         {
-            string query = string.Format("DELETE FROM OrderItem WHERE order_ID = '{0}'",orderItem);
+            string query = string.Format("DELETE FROM Bestel_Gerecht WHERE order_ID = '{0}'", orderItem);
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
 
         public void DeleteOrderItemByID(int bestellingID)
         {
-            string query = string.Format("DELETE FROM OrderItem WHERE bestelling_ID = '{0}'", bestellingID);
+            string query = string.Format("DELETE FROM Bestel_Gerecht WHERE bestelling_ID = '{0}'", bestellingID);
             ExecuteEditQuery(query, new SqlParameter[0]);
         }
     }

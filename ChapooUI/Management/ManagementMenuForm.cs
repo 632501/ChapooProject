@@ -72,7 +72,7 @@ namespace ChapooUI
                 if (ListView_ViewMenu.SelectedItems.Count > 0)
                 {
                     menuItem = (MenuItem)ListView_ViewMenu.SelectedItems[0].Tag;
-                    txt_ItemID.Text = menuItem.menu_ID.ToString();
+                    txt_ItemID.Text = menuItem.menu_id.ToString();
                     txt_ItemNaam.Text = menuItem.naam;
                     txt_ItemCategorie.Text = menuItem.categorie;
                     txt_ItemPrijs.Text = menuItem.prijs.ToString().Replace(',', '.');
@@ -112,7 +112,7 @@ namespace ChapooUI
                     item = (MenuItem)ListView_ViewMenu.SelectedItems[0].Tag;
                 }
 
-                txt_ItemID.Text = item.menu_ID.ToString();
+                txt_ItemID.Text = item.menu_id.ToString();
             }
         }
 
@@ -182,7 +182,7 @@ namespace ChapooUI
             foreach (MenuItem item in menu)
             {
 
-                ListViewItem me = new ListViewItem(item.menu_ID.ToString());
+                ListViewItem me = new ListViewItem(item.menu_id.ToString());
                 me.SubItems.Add(item.naam);
                 me.SubItems.Add(item.prijs.ToString("#.##"));
                 me.SubItems.Add(item.categorie);
@@ -253,7 +253,7 @@ namespace ChapooUI
         {
             int nextMenuID;
 
-            nextMenuID = menu[menu.Count - 1].menu_ID + 1;
+            nextMenuID = menu[menu.Count - 1].menu_id + 1;
 
             txt_ItemID.Text = nextMenuID.ToString();
         }

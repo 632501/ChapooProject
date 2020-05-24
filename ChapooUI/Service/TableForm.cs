@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapooLogica;
 
 namespace ChapooUI
 {
@@ -19,7 +20,7 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
 
         Button[] btnList;
-        Tafel_DAO table_dao = new Tafel_DAO();
+        Tafel_Service tafelService = new Tafel_Service();
         Inlog werknemer = new Inlog();
 
 
@@ -44,24 +45,25 @@ namespace ChapooUI
         {
 
             //Inlog_DAO inlog_DAO = new Inlog_DAO();
-            BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
+            Tafel_Service tafelService = new Tafel_Service();
+            
             
             
             for (int i = 0; i < btnList.Length; i++)
             {
-                if (table_dao.Occupied(i + 1) == true)
+                if (tafelService.Occupied(i + 1) == true)
                 {
                     btnList[i].BackColor = Color.Red;
                 }
-                else if (table_dao.Occupied(i + 1) == false)
+                else if (tafelService.Occupied(i + 1) == false)
                 {
                     btnList[i].BackColor = Color.Green;
                 }
 
-                if (table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "nietafgeleverd")
+                if (tafelService.Occupied(i + 1) == true && tafelService.CheckOrderStatus(i + 1) == "nietafgeleverd")
                 {
                     btnList[i].BackColor = Color.Yellow;
-                }else if(table_dao.Occupied(i + 1) == true && gerecht.OrderStatus(i + 1) == "Bezig")
+                }else if(tafelService.Occupied(i + 1) == true && tafelService.CheckOrderStatus(i + 1) == "Bezig")
                 {
                     btnList[i].BackColor = Color.Orange;
                 }
@@ -71,7 +73,7 @@ namespace ChapooUI
 
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
-            if(table_dao.Occupied(9) == true)
+            if(tafelService.Occupied(9) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,9);
@@ -82,7 +84,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if(dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(9, true);
+                    tafelService.EditStatus(9, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,9);
                     orderForm.Show();
@@ -93,7 +95,7 @@ namespace ChapooUI
 
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(10) == true)
+            if (tafelService.Occupied(10) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,10);
@@ -104,7 +106,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(10, true);
+                    tafelService.EditStatus(10, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,10);
                     orderForm.Show();
@@ -115,7 +117,7 @@ namespace ChapooUI
 
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(8) == true)
+            if (tafelService.Occupied(8) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,8);
@@ -126,7 +128,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(8, true);
+                    tafelService.EditStatus(8, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,8);
                     orderForm.Show();
@@ -137,7 +139,7 @@ namespace ChapooUI
 
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(7) == true)
+            if (tafelService.Occupied(7) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,7);
@@ -148,7 +150,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(7, true);
+                    tafelService.EditStatus(7, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,7);
                     orderForm.Show();
@@ -159,7 +161,7 @@ namespace ChapooUI
 
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(6) == true)
+            if (tafelService.Occupied(6) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,6);
@@ -170,7 +172,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(6, true);
+                    tafelService.EditStatus(6, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,6);
                     orderForm.Show();
@@ -181,7 +183,7 @@ namespace ChapooUI
 
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(5) == true)
+            if (tafelService.Occupied(5) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer, 5);
@@ -192,7 +194,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(5, true);
+                    tafelService.EditStatus(5, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,5);
                     orderForm.Show();
@@ -203,7 +205,7 @@ namespace ChapooUI
 
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(4) == true)
+            if (tafelService.Occupied(4) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,4);
@@ -214,7 +216,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(4, true);
+                    tafelService.EditStatus(4, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,4);
                     orderForm.Show();
@@ -225,7 +227,7 @@ namespace ChapooUI
 
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(3) == true)
+            if (tafelService.Occupied(3) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,3);
@@ -236,7 +238,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(3, true);
+                    tafelService.EditStatus(3, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,3);
                     orderForm.Show();
@@ -247,7 +249,7 @@ namespace ChapooUI
 
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(2) == true)
+            if (tafelService.Occupied(2) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,2);
@@ -258,7 +260,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(2, true);
+                    tafelService.EditStatus(2, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,2);
                     orderForm.Show();
@@ -269,7 +271,7 @@ namespace ChapooUI
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
-            if (table_dao.Occupied(1) == true)
+            if (tafelService.Occupied(1) == true)
             {
                 this.Hide();
                 OrderActionForm orderForm = new OrderActionForm(werknemer,1);
@@ -280,7 +282,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_dao.EditStatus(1, true);
+                    tafelService.EditStatus(1, true);
                     this.Hide();
                     OrderActionForm orderForm = new OrderActionForm(werknemer,1);
                     orderForm.Show();

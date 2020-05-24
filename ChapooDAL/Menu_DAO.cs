@@ -27,7 +27,7 @@ namespace ChapooDAL
             {
                 MenuItem menuItem = new MenuItem()
                 {
-                    menu_ID = (int)dr["menu_Id"],
+                    menu_id = (int)dr["menu_id"],
                     naam = (String)(dr["naam"].ToString()),
                     prijs = (Decimal)dr["prijs"],
                     categorie = (String)(dr["categorie"].ToString()),
@@ -41,21 +41,21 @@ namespace ChapooDAL
 
         public List<MenuItem> GetAllLunch()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch' AND voorraad > 0";
+            string query = "SELECT menu_id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'lunch' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDiner()
         {
-            string query = "SELECT menu_Id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner' AND voorraad > 0";
+            string query = "SELECT menu_id, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'diner' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
         public List<MenuItem> GetAllDrinks()
         {
-            string query = "SELECT menu_ID, naam, prijs, categorie, voorraad FROM [Menu] where categorie = 'dranken' AND voorraad > 0";
+            string query = "SELECT menu_id, naam, prijs, categorie, voorraad FROM Menu where categorie = 'dranken' AND voorraad > 0";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -76,7 +76,7 @@ namespace ChapooDAL
 
         public void AddMenuItem(int ID, string naam, string prijs, string categorie, int voorraad, int btw)
         {
-            string query = "set identity_insert  Menu  ON insert into Menu (menu_ID, naam, prijs, categorie, voorraad, btwPercentage) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ", "+btw+") set identity_insert  Menu  OFF";
+            string query = "set identity_insert  Menu  ON insert into Menu (menu_id, naam, prijs, categorie, voorraad, btwPercentage) values(" + ID + ", '" + naam + "', " + prijs + ", '" + categorie + "', " + voorraad + ", "+btw+") set identity_insert  Menu  OFF";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -98,10 +98,10 @@ namespace ChapooDAL
 
             MenuItem item = new MenuItem()
             {
-                menu_ID = (int)dr["menu_ID"],
+                menu_id = (int)dr["menu_id"],
                 prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
-                btwPercentage = (int)dr["BtwPercentage"],
+                btwPercentage = (int)dr["btwpercentage"],
                 categorie = (string)dr["categorie"],
                 voorraad = (int)dr["voorraad"]
             };
@@ -110,7 +110,7 @@ namespace ChapooDAL
         }
         public MenuItem GetSingleItem(int id)
         {
-            string query = "SELECT * FROM Menu WHERE menu_ID = '" + id + "'";
+            string query = "SELECT * FROM Menu WHERE menu_id = '" + id + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
 
@@ -118,10 +118,10 @@ namespace ChapooDAL
 
             MenuItem item = new MenuItem()
             {
-                menu_ID = (int)dr["menu_ID"],
+                menu_id = (int)dr["menu_id"],
                 prijs = (Decimal)dr["prijs"],
                 naam = (string)dr["naam"],
-                btwPercentage = (int)dr["BtwPercentage"],
+                btwPercentage = (int)dr["btwpercentage"],
                 categorie = (string)dr["categorie"],
                 voorraad = (int)dr["voorraad"]
             };

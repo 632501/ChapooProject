@@ -14,7 +14,7 @@ namespace ChapooModel
     
     public class MenuItem
     {
-        public int menu_ID { get; set; }
+        public int menu_id { get; set; }
         public string naam { get; set; }
         public decimal prijs { get; set; }
         public string categorie { get; set; }

@@ -107,7 +107,7 @@ namespace ChapooUI
             Login_DAO login = new Login_DAO();
             Inlog inlog = new Inlog();
             string password = txt_Password.Text;
-            inlog = login.GetEmployeeWithPassword(int.Parse(password));
+            inlog = login.GetEmployeeWithPassword(password);
 
             if(login.Function(password) == "manager" && login.Login(password) == true)
             {

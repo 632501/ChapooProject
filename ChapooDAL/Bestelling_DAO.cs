@@ -33,7 +33,7 @@ namespace ChapooDAL
 
         public void AddOrderItem(OrderItem o)
         {
-            string query = "SET IDENTITY_INSERT OrderItem OFF INSERT INTO OrderItem (bestelling_ID,  werknemer_ID, status, commentaar, aantal, menu_ID, tafelnummer) VALUES ('"+ o.bestelling_ID + "', '" + o.Werknemer.werknemer_ID + "', '" + o.Status + "', '" + o.Comment + "', '"+o.Aantal+"', '"+o.menuItem.menu_ID+"', '"+o.TafelNummer+ "')";
+            string query = "SET IDENTITY_INSERT OrderItem OFF INSERT INTO OrderItem (bestelling_ID,  werknemer_ID, status, commentaar, aantal, menu_ID, tafelnummer) VALUES ('"+ o.bestelling_ID + "', '" + o.Werknemer.werknemer_ID + "', '" + o.Status + "', '" + o.Comment + "', '"+o.Aantal+"', '"+o.menuItem.menu_id+"', '"+o.TafelNummer+ "')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

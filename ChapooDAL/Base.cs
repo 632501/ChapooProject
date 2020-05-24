@@ -17,7 +17,7 @@ namespace ChapooDAL
         {
             // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'ChapooDatabase' IN YOUR APP.CONFIG!!
 
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ChapooDatabase"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapoo20"].ConnectionString);
             adapter = new SqlDataAdapter();
 
         }

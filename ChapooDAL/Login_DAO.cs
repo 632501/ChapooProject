@@ -11,7 +11,7 @@ namespace ChapooDAL
 {
     public class Login_DAO : Base
     {
-        public string conn = "Data Source=den1.mssql7.gear.host; Initial Catalog = chapoo1819sdb15; User=chapoo1819sdb15; Password=Uh6Q-7?9ykHi";
+        public string conn = "Data Source=den1.mssql7.gear.host; Initial Catalog = dbchapoo20; User=dbchapoo20; Password=Ct5E_c83t7-J";
         protected SqlConnection con;
 
 
@@ -31,7 +31,6 @@ namespace ChapooDAL
 
         public bool Login(string password)
         {
-
             bool correctLogin;
             con = new SqlConnection(conn);
 
@@ -78,7 +77,7 @@ namespace ChapooDAL
 
             return Employee;
         }
-        public Inlog GetEmployeeWithPassword(int password)
+        public Inlog GetEmployeeWithPassword(string password)
         {
             string query = "Select * From Inlog Where wachtwoord = '" + password + "'";
             con = new SqlConnection(conn);
@@ -88,6 +87,7 @@ namespace ChapooDAL
             var dataTable = new DataTable();
             dataTable.Load(datareader);
             DataRow dr = dataTable.Rows[0];
+
 
             Inlog Employee = new Inlog()
             {

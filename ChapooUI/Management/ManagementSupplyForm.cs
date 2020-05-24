@@ -52,7 +52,7 @@ namespace ChapooUI
         {
             MenuItem menuItem = new MenuItem();
 
-            if (werknemer.functie == "Manager")
+            if (werknemer.functie == "manager")
             {
                 if (ListView_ViewSupply.SelectedItems.Count > 0)
                 {
@@ -146,7 +146,7 @@ namespace ChapooUI
             foreach (MenuItem item in menu)
             {
 
-                ListViewItem me = new ListViewItem(item.menu_ID.ToString());
+                ListViewItem me = new ListViewItem(item.menu_id.ToString());
                 me.SubItems.Add(item.naam);
                 me.SubItems.Add(item.categorie);
                 me.SubItems.Add(item.voorraad.ToString());

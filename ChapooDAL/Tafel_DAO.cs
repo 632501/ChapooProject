@@ -1,51 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using ChapooModel;
+using ChapooModel.Models;
 
 namespace ChapooDAL
 {
     public class Tafel_DAO : Base
     {
-        public string conn = "Data Source=den1.mssql7.gear.host; Initial Catalog = chapoo1819sdb15; User=chapoo1819sdb15; Password=Uh6Q-7?9ykHi";
-        protected SqlConnection con;
-
-        public List<Tafel> Tafels()
+        private List<Tafel> ReadTafels(DataTable dataTable)
         {
-            con = new SqlConnection(conn);
-            string query = "select * from Tafel";
-
-            List<Tafel> tables = new List<Tafel>();
-
-            Tafel table = new Tafel();
-
-            //zorgen dat de query wordt uitgevoerd en de items aan de dingen worden gelinkt
-
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-            table.tafelnummer = (int)dr["tafelnummer"];
-            table.bezet = (bool)dr["naam"];
-            tables.Add(table);
-
-            return tables;
+            List<Tafel> tafels = new List<Tafel>();
+            
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Tafel tafel = new Tafel()
+                {
+                    tafel_id = (int)dr["tafel_id"],
+                    bezet = (bool)dr["bezet"]
+                    
+                };
+                tafels.Add(tafel);
+            }
+            return tafels;
         }
 
-        public bool Occupied(int tableNumber)
+        private Tafel ReadTafel(DataTable dataTable) {
+            DataRow dr = dataTable.Rows[0];
+            Tafel tafel = new Tafel() {
+                tafel_id = (int)dr["tafel_id"],
+                bezet = (bool)dr["bezet"]
+            };
+            return tafel;
+        }
+        public List<Tafel> Get_All_Tables() {
+            string query = string.Format("SELECT * FROM Tafel");
+            return ReadTafels(ExecuteSelectQuery(query, new SqlParameter[0]));
+        }
+
+        public bool CheckIfOccupied(int tableNumber)
         {
             bool occupied;
-            con = new SqlConnection(conn);
-            string query = "select bezet from Tafel where tafelnummer = '" + tableNumber + "'";
-
-            con.Open();
-            SqlCommand command = new SqlCommand(query, con);
-            SqlDataReader dr = command.ExecuteReader();
-            dr.Read();
-
-            occupied = (bool)dr["bezet"];
+            //"SELECT * FROM Bestelling WHERE tafel_ID = '{0}' ", tafelnummer
+            string query = string.Format("SELECT tafel_id, bezet FROM Tafel WHERE tafel_id = '" + tableNumber + "'");
+            DataTable dataTable = ExecuteSelectQuery(query, new SqlParameter[0]);
+            Tafel Tafel = ReadTafel(dataTable);
+            if (Tafel.bezet == true) {
+                occupied = true;
+            } else {
+                occupied = false;
+            }
 
             return occupied;
         }
@@ -59,9 +68,29 @@ namespace ChapooDAL
                 state = 1;
             }
 
-            string query = "UPDATE Tafel Set bezet = " + state + " where tafelnummer = " + tableNumber;
+            string query = "UPDATE Tafel Set bezet = " + state + " where tafel_id = " + tableNumber;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public string CheckOrderStatus(int tableNumber)
+        {
+            string status = " ";
+            try
+            {
+                string query = "Select status from Bestel_Gerecht where tafel_id = '" + tableNumber + "'";
+                SqlParameter[] sqlParameters = new SqlParameter[0];
+                DataTable table = ExecuteSelectQuery(query, sqlParameters);
+                DataRow dr = table.Rows[0];
+
+                status = (string)dr["status"];
+                
+
+                return status;
+            } catch
+            {
+                return status;
+            }
         }
     }
 }

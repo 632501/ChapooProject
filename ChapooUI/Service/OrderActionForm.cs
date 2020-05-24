@@ -19,8 +19,7 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
         Bestelling_Service bestellingService = new Bestelling_Service();
         Inlog werknemer = new Inlog();
-        int tafelNummer;
-        Bestelling bestelling = new Bestelling();
+        int tafelNummer { get; set; }
 
         public OrderActionForm(Inlog werknemer, int tafelNummer)
         {
@@ -45,13 +44,14 @@ namespace ChapooUI
         //Button events
         private void btnActionOpnemen_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             OrderMenusForm form = new OrderMenusForm(werknemer, tafelNummer);
             form.Show();
         }
 
         private void btnActionBekijken_Click(object sender, EventArgs e)
         {
+            this.Close();
             PaymentForm form = new PaymentForm(werknemer, tafelNummer);
             form.Show();
         }
@@ -68,6 +68,13 @@ namespace ChapooUI
             OrderOverviewForm form = new OrderOverviewForm(werknemer, tafelNummer);
             this.Close();
             form.Show();
+        }
+
+        private void btn_Uitlog_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            LoginForm login = new LoginForm();
+            login.Show();
         }
     }
 }

@@ -18,13 +18,20 @@ namespace ChapooUI
     public partial class OrderDoActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
+
+        // Order service object
         private readonly Order_Service order_Service = new Order_Service();
+        
+        // Our main window that send us here.
         private readonly KitchenActionForm mainWindow;
 
-        private OrderItem orderItem;
+        // Order item that we will work with.
+        private BestellingOrderItem orderItem;
+
+        // If the order is finished
         private bool isDone;
 
-        public OrderDoActionForm(OrderItem orderItem, KitchenActionForm mainWindowUI, bool isDone)
+        public OrderDoActionForm(BestellingOrderItem orderItem, KitchenActionForm mainWindowUI, bool isDone)
         {
             InitializeComponent();
 
@@ -41,9 +48,10 @@ namespace ChapooUI
 
         private void OrdersOverviewForm_Load(object sender, EventArgs e)
         {
-            Text = "Actie voor order: " + orderItem.order_ID;
+            // Visual changes based on our data.
+            Text = "Actie voor order: " + orderItem.OrderID;
             orderInfo.Text = string.Format("Order: {0}\r\nTafel: {1}\r\nAantal: {2}\r\nBestelling: {3}\r\nCommentaar: {4}\r\nWerknemer: {5}"
-                ,orderItem.order_ID, orderItem.TafelNummer, orderItem.Aantal, orderItem.menuItem.naam, orderItem.Comment, orderItem.Werknemer.naam);
+                ,orderItem.OrderID, orderItem.TafelNummer, orderItem.Aantal, orderItem.MenuItemNaam, orderItem.OrderCommentaar, orderItem.WerknemerNaam);
 
             if (isDone)
                 finishOrderButton.Text = "GEREED MELDEN";
@@ -54,16 +62,22 @@ namespace ChapooUI
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            // Close this form
             this.Close();
         }
 
         private void finishOrderButton_Click(object sender, EventArgs e)
         {
+            // Finish or unfinish order based on what it currently is.
             if(isDone)
-                order_Service.FinishOrder(this.orderItem.order_ID);
+                order_Service.FinishOrder(this.orderItem.OrderID);
             else
-                order_Service.UnFinishOrder(this.orderItem.order_ID);
+                order_Service.UnFinishOrder(this.orderItem.OrderID);
+
+            // Update our data on our main window so the user sees the changes.
             mainWindow.UpdateData();
+
+            // Close this form.
             this.Close();
         }
     }

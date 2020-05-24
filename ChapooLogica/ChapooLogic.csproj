@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bestelling_Service.cs" />
-    <Compile Include="Bon_Service.cs" />
     <Compile Include="Login_Service.cs" />
     <Compile Include="Menu_Service.cs" />
+    <Compile Include="OrderItem_Service.cs" />
     <Compile Include="Order_Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

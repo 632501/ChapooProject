@@ -39,6 +39,8 @@
             this.lblHuidigeBestelling = new System.Windows.Forms.Label();
             this.txtCommentaar = new System.Windows.Forms.TextBox();
             this.lblCommentaar = new System.Windows.Forms.Label();
+            this.btnIncrease = new System.Windows.Forms.Button();
+            this.btnDecrease = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDrinks
@@ -131,6 +133,7 @@
             this.listviewTakenOrder.Size = new System.Drawing.Size(241, 163);
             this.listviewTakenOrder.TabIndex = 10;
             this.listviewTakenOrder.UseCompatibleStateImageBehavior = false;
+            this.listviewTakenOrder.SelectedIndexChanged += new System.EventHandler(this.listviewTakenOrder_SelectedIndexChanged);
             // 
             // lblHuidigeBestelling
             // 
@@ -160,9 +163,31 @@
             this.lblCommentaar.TabIndex = 13;
             this.lblCommentaar.Text = "Commentaar";
             // 
+            // btnIncrease
+            // 
+            this.btnIncrease.Location = new System.Drawing.Point(279, 114);
+            this.btnIncrease.Name = "btnIncrease";
+            this.btnIncrease.Size = new System.Drawing.Size(40, 40);
+            this.btnIncrease.TabIndex = 14;
+            this.btnIncrease.Text = "+";
+            this.btnIncrease.UseVisualStyleBackColor = true;
+            this.btnIncrease.Click += new System.EventHandler(this.btnIncrease_Click);
+            // 
+            // btnDecrease
+            // 
+            this.btnDecrease.Location = new System.Drawing.Point(279, 177);
+            this.btnDecrease.Name = "btnDecrease";
+            this.btnDecrease.Size = new System.Drawing.Size(40, 40);
+            this.btnDecrease.TabIndex = 15;
+            this.btnDecrease.Text = "-";
+            this.btnDecrease.UseVisualStyleBackColor = true;
+            this.btnDecrease.Click += new System.EventHandler(this.btnDecrease_Click);
+            // 
             // OrderMenusForm
             // 
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.btnDecrease);
+            this.Controls.Add(this.btnIncrease);
             this.Controls.Add(this.lblCommentaar);
             this.Controls.Add(this.txtCommentaar);
             this.Controls.Add(this.lblHuidigeBestelling);
@@ -184,9 +209,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView listviewMenu;
-        private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
-        private MaterialSkin.Controls.MaterialLabel mlblBestelling;
+        //private System.Windows.Forms.ListView listviewMenu;
+        //private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
+        //private MaterialSkin.Controls.MaterialLabel mlblBestelling;
         private System.Windows.Forms.Button btnDrinks;
         private System.Windows.Forms.Button btnDiner;
         private System.Windows.Forms.Button btnLunch;
@@ -198,5 +223,7 @@
         private System.Windows.Forms.Label lblHuidigeBestelling;
         private System.Windows.Forms.TextBox txtCommentaar;
         private System.Windows.Forms.Label lblCommentaar;
+        private System.Windows.Forms.Button btnIncrease;
+        private System.Windows.Forms.Button btnDecrease;
     }
 }

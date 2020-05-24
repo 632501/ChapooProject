@@ -18,15 +18,14 @@ namespace ChapooUI
     public partial class PaymentActionForm : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        Bon_Service bonService = new Bon_Service();
+        Order_Service orderService = new Order_Service();
+        Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
-        decimal totalPayment;
-        decimal amountWithBtw;
         decimal amount;
-        decimal tip;
+        decimal btw;
 
-        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal totalPayment, decimal amountWithBtw, decimal amount, decimal tip)
+        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal amount, decimal btw, Bon bon)
         {
             InitializeComponent();
 
@@ -36,28 +35,16 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
+            this.bon = bon;
             this.werknemer = werknemer;
             this.tafel_ID = tafel_ID;
-            this.totalPayment = totalPayment;
-            this.amountWithBtw = amountWithBtw;
             this.amount = amount;
-            this.tip = tip;
+            this.btw = btw;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            Bestelling order = new Bestelling();
-            order = bonService.Orders(tafel_ID);
-
-            decimal btw = amountWithBtw - amount;
-
-            lblName.Text = werknemer.naam;
-            lblTafelNr.Text = tafel_ID.ToString();
-            lblAmount.Text = "€ " + amount.ToString("0.##");
-            lblBtw.Text = "€ " + btw.ToString("0.##");
-            lblBtwAmount.Text = "€ " + amountWithBtw.ToString("0.##");
-            lblTip.Text = "€ " + tip.ToString("0.##");
-            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
+            FillLabels();
         }
 
         private void btnBetaald_Click(object sender, EventArgs e)
@@ -65,33 +52,53 @@ namespace ChapooUI
             TableForm form = new TableForm(werknemer);
             string paymenttype;
             string comment = txtboxOpmerking.Text;
-            string amountWithBtwS = amountWithBtw.ToString().Replace(',', '.');
-            string tipS = tip.ToString().Replace(',', '.');
+            string amountWithBtwS = bon.totaalprijs.ToString().Replace(',', '.');
+            string tipS = bon.fooi.ToString().Replace(',', '.');
 
-            if (radioBtnCreditcard.Checked && !radioBtnContant.Checked && !radioBtnPinpas.Checked)
+            //bon.bestelling_ID
+
+            paymenttype = PaymentType();
+
+            if(paymenttype != "")
+            {
+                //orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
+                MessageBox.Show("De bestelling is betaald!");
+                this.Close();
+                form.ShowDialog();
+            }
+        }
+        
+        private string PaymentType()
+        {
+            string paymenttype = "";
+
+            if (radioBtnCreditcard.Checked)
             {
                 paymenttype = "Creditcard";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
-
-                this.Close();
-                form.ShowDialog();
             }
-            if (radioBtnContant.Checked && !radioBtnCreditcard.Checked && !radioBtnPinpas.Checked)
+            if (radioBtnContant.Checked)
             {
                 paymenttype = "Contant";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
-
-                this.Close();
-                form.ShowDialog();
             }
-            if (radioBtnPinpas.Checked && !radioBtnContant.Checked && !radioBtnCreditcard.Checked)
+            if (radioBtnPinpas.Checked)
             {
                 paymenttype = "Pinpas";
-                bonService.Paid(tafel_ID, amountWithBtwS, tipS, comment, paymenttype);
-
-                this.Close();
-                form.ShowDialog();
             }
+
+            return paymenttype;
+        }
+
+        private void FillLabels()
+        {
+            decimal totalPayment = bon.totaalprijs + bon.fooi;
+
+            lblName.Text = werknemer.naam;
+            lblTafelNr.Text = tafel_ID.ToString();
+            lblAmount.Text = "€ " + amount.ToString("0.##");
+            lblBtw.Text = "€ " + btw.ToString("0.##");
+            lblBtwAmount.Text = "€ " + bon.totaalprijs.ToString("0.##");
+            lblTip.Text = "€ " + bon.fooi.ToString("0.##");
+            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

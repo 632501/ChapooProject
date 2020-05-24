@@ -34,6 +34,7 @@
             this.lbl_Tafel = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.btnBestellingOverview = new System.Windows.Forms.Button();
+            this.btn_Uitlog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnActionOpnemen
@@ -111,11 +112,23 @@
             this.btnBestellingOverview.UseVisualStyleBackColor = true;
             this.btnBestellingOverview.Click += new System.EventHandler(this.btnBestellingOverview_Click);
             // 
+            // btn_Uitlog
+            // 
+            this.btn_Uitlog.Location = new System.Drawing.Point(225, 91);
+            this.btn_Uitlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Uitlog.Name = "btn_Uitlog";
+            this.btn_Uitlog.Size = new System.Drawing.Size(90, 29);
+            this.btn_Uitlog.TabIndex = 15;
+            this.btn_Uitlog.Text = "Uitloggen";
+            this.btn_Uitlog.UseVisualStyleBackColor = true;
+            this.btn_Uitlog.Click += new System.EventHandler(this.btn_Uitlog_Click);
+            // 
             // OrderActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 575);
+            this.Controls.Add(this.btn_Uitlog);
             this.Controls.Add(this.btnBestellingOverview);
             this.Controls.Add(this.btn_Terug);
             this.Controls.Add(this.lbl_Tafel);
@@ -141,5 +154,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_Tafel;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
         private System.Windows.Forms.Button btnBestellingOverview;
+        private System.Windows.Forms.Button btn_Uitlog;
     }
 }

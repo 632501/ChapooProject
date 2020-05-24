@@ -29,42 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenActionForm));
             this.layoutPanel = new System.Windows.Forms.Panel();
-            this.loadingPicture = new System.Windows.Forms.PictureBox();
             this.ordersListView = new MaterialSkin.Controls.MaterialListView();
             this.getOrdersWorker = new System.ComponentModel.BackgroundWorker();
             this.updateTimer = new System.Windows.Forms.Timer(this.components);
             this.loginLabel = new MaterialSkin.Controls.MaterialLabel();
             this.logOutButton = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.currentTime = new System.Windows.Forms.Timer(this.components);
-            this.timeLabel = new MaterialSkin.Controls.MaterialLabel();
             this.filterButton = new MaterialSkin.Controls.MaterialRaisedButton();
             this.stockButton = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.uncheckPicture = new System.Windows.Forms.PictureBox();
+            this.checkPicture = new System.Windows.Forms.PictureBox();
             this.layoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uncheckPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutPanel
             // 
-            this.layoutPanel.Controls.Add(this.loadingPicture);
             this.layoutPanel.Controls.Add(this.ordersListView);
             this.layoutPanel.Location = new System.Drawing.Point(0, 112);
             this.layoutPanel.Name = "layoutPanel";
             this.layoutPanel.Size = new System.Drawing.Size(984, 672);
             this.layoutPanel.TabIndex = 14;
-            // 
-            // loadingPicture
-            // 
-            this.loadingPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(30)))), ((int)(((byte)(38)))));
-            this.loadingPicture.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadingPicture.Image = global::ChapooUI.Properties.Resources.loadingGif;
-            this.loadingPicture.InitialImage = null;
-            this.loadingPicture.Location = new System.Drawing.Point(0, 0);
-            this.loadingPicture.Name = "loadingPicture";
-            this.loadingPicture.Size = new System.Drawing.Size(984, 672);
-            this.loadingPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.loadingPicture.TabIndex = 15;
-            this.loadingPicture.TabStop = false;
             // 
             // ordersListView
             // 
@@ -84,6 +71,7 @@
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
             this.ordersListView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.ordersListView_ColumnWidthChanging);
+            this.ordersListView.SelectedIndexChanged += new System.EventHandler(this.ordersListView_SelectedIndexChanged);
             this.ordersListView.Click += new System.EventHandler(this.ordersListView_Click);
             // 
             // getOrdersWorker
@@ -94,19 +82,19 @@
             // updateTimer
             // 
             this.updateTimer.Enabled = true;
-            this.updateTimer.Interval = 60000;
+            this.updateTimer.Interval = 30000;
             this.updateTimer.Tick += new System.EventHandler(this.updateTimer_Tick);
             // 
             // loginLabel
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Depth = 0;
-            this.loginLabel.Font = new System.Drawing.Font("Roboto", 11F);
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.loginLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.loginLabel.Location = new System.Drawing.Point(450, 32);
+            this.loginLabel.Location = new System.Drawing.Point(449, 33);
             this.loginLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(78, 19);
+            this.loginLabel.Size = new System.Drawing.Size(74, 18);
             this.loginLabel.TabIndex = 15;
             this.loginLabel.Text = "loginLabel";
             // 
@@ -125,25 +113,6 @@
             this.logOutButton.Text = "LOG UIT";
             this.logOutButton.UseVisualStyleBackColor = true;
             this.logOutButton.Click += new System.EventHandler(this.logOutButton_Click);
-            // 
-            // currentTime
-            // 
-            this.currentTime.Enabled = true;
-            this.currentTime.Interval = 1;
-            this.currentTime.Tick += new System.EventHandler(this.currentTime_Tick);
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Depth = 0;
-            this.timeLabel.Font = new System.Drawing.Font("Roboto", 11F);
-            this.timeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.timeLabel.Location = new System.Drawing.Point(800, 32);
-            this.timeLabel.MouseState = MaterialSkin.MouseState.HOVER;
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(75, 19);
-            this.timeLabel.TabIndex = 17;
-            this.timeLabel.Text = "timeLabel";
             // 
             // filterButton
             // 
@@ -177,6 +146,29 @@
             this.stockButton.UseVisualStyleBackColor = true;
             this.stockButton.Click += new System.EventHandler(this.stockButton_Click);
             // 
+            // uncheckPicture
+            // 
+            this.uncheckPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.uncheckPicture.Image = ((System.Drawing.Image)(resources.GetObject("uncheckPicture.Image")));
+            this.uncheckPicture.Location = new System.Drawing.Point(312, 69);
+            this.uncheckPicture.Name = "uncheckPicture";
+            this.uncheckPicture.Size = new System.Drawing.Size(40, 36);
+            this.uncheckPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.uncheckPicture.TabIndex = 21;
+            this.uncheckPicture.TabStop = false;
+            // 
+            // checkPicture
+            // 
+            this.checkPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.checkPicture.Image = global::ChapooUI.Properties.Resources.check;
+            this.checkPicture.Location = new System.Drawing.Point(312, 69);
+            this.checkPicture.Name = "checkPicture";
+            this.checkPicture.Size = new System.Drawing.Size(40, 36);
+            this.checkPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.checkPicture.TabIndex = 20;
+            this.checkPicture.TabStop = false;
+            this.checkPicture.Visible = false;
+            // 
             // KitchenActionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,11 +176,12 @@
             this.ClientSize = new System.Drawing.Size(980, 737);
             this.ControlBox = false;
             this.Controls.Add(this.stockButton);
-            this.Controls.Add(this.filterButton);
-            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.loginLabel);
             this.Controls.Add(this.layoutPanel);
+            this.Controls.Add(this.checkPicture);
+            this.Controls.Add(this.uncheckPicture);
+            this.Controls.Add(this.filterButton);
             this.MaximizeBox = false;
             this.Name = "KitchenActionForm";
             this.Sizable = false;
@@ -196,7 +189,8 @@
             this.Text = "Overzicht";
             this.Load += new System.EventHandler(this.KitchenActionForm_Load);
             this.layoutPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.loadingPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uncheckPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkPicture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,14 +199,13 @@
         #endregion
         private System.Windows.Forms.Panel layoutPanel;
         private MaterialSkin.Controls.MaterialListView ordersListView;
-        private System.Windows.Forms.PictureBox loadingPicture;
         private System.ComponentModel.BackgroundWorker getOrdersWorker;
         private System.Windows.Forms.Timer updateTimer;
         private MaterialSkin.Controls.MaterialLabel loginLabel;
         private MaterialSkin.Controls.MaterialRaisedButton logOutButton;
-        private System.Windows.Forms.Timer currentTime;
-        private MaterialSkin.Controls.MaterialLabel timeLabel;
         private MaterialSkin.Controls.MaterialRaisedButton filterButton;
         private MaterialSkin.Controls.MaterialRaisedButton stockButton;
+        private System.Windows.Forms.PictureBox checkPicture;
+        private System.Windows.Forms.PictureBox uncheckPicture;
     }
 }

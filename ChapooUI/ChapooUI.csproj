@@ -113,18 +113,6 @@
     <Compile Include="Service\PaymentActionForm.Designer.cs">
       <DependentUpon>PaymentActionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service\TableOverviewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Service\TableOverviewForm.Designer.cs">
-      <DependentUpon>TableOverviewForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Service\TableActionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Service\TableActionForm.Designer.cs">
-      <DependentUpon>TableActionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="KitchenBar\OrderDoActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +174,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenusForm.resx">
       <DependentUpon>OrderMenusForm.cs</DependentUpon>
@@ -201,12 +190,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service\PaymentActionForm.resx">
       <DependentUpon>PaymentActionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Service\TableOverviewForm.resx">
-      <DependentUpon>TableOverviewForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Service\TableActionForm.resx">
-      <DependentUpon>TableActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KitchenBar\OrderDoActionForm.resx">
       <DependentUpon>OrderDoActionForm.cs</DependentUpon>
@@ -246,7 +229,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\loadingGif.gif" />
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\uncheck.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

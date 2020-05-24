@@ -31,7 +31,6 @@ namespace ChapooUI
 
         public OrderForm(string sort, int tafelnummer, Bestelling order, Inlog werknemer, OrderMenusForm orderMenusForm)
         {
-            this.sort = sort;
             InitializeComponent();
             // Initialize MaterialSkinManager
             materialSkinManager = MaterialSkinManager.Instance;
@@ -39,6 +38,7 @@ namespace ChapooUI
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
+            this.sort = sort;
             this.order = order;
             this.tafelnummer = tafelnummer;
             this.werknemer = werknemer;
@@ -94,7 +94,7 @@ namespace ChapooUI
                 ListViewItem li = new ListViewItem(m.naam);
                 li.SubItems.Add(amount.ToString());
                 listviewMenu.Items.Add(li);
-
+                
             }
             listviewMenu.View = View.Details;
             listviewMenu.Columns.Add("Naam");
@@ -129,7 +129,6 @@ namespace ChapooUI
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
             int i;
-
             foreach (ListViewItem li in listviewMenu.Items)
             {
                 OrderItem o;
@@ -141,6 +140,8 @@ namespace ChapooUI
                 i = int.Parse(a);
                 if (i != 0)
                 {
+                    bool duplicate;
+                    duplicate = false;
                     m = menuService.GetItem(m.naam);
                     
                     o = new OrderItem();
@@ -149,7 +150,19 @@ namespace ChapooUI
                     o.Status = "bezig";
 
                     //orderitems toevoegen aan lijst met orders van het ordermenusform
-                    orderMenusForm.bestelling.orderItems.Add(o);
+                    foreach (OrderItem item in orderMenusForm.bestelling.orderItems)
+                    {
+                        if (item.menuItem.naam == o.menuItem.naam)
+                        {
+                            duplicate = true;
+                            item.Aantal += o.Aantal;
+                        } 
+                        //continue;
+                    }
+                    if (duplicate == false)
+                    {
+                        orderMenusForm.bestelling.orderItems.Add(o);
+                    }
                 }
                 
             }

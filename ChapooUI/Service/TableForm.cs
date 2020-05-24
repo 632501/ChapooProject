@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapooModel.Models;
 using ChapooLogica;
 
 namespace ChapooUI
@@ -20,15 +21,18 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
 
         Button[] btnList;
-        Tafel_Service tafelService = new Tafel_Service();
+        Tafel_Service table_service;
         Inlog werknemer = new Inlog();
+        public List<Tafel> tables;
+        public List<OrderItem> orders;
+        OrderItem_Service gerecht;
 
 
         public TableForm(Inlog inlog)
         {
             InitializeComponent();
 
-          
+
             lbl_Naam.Text = inlog.naam;
             werknemer = inlog;
 
@@ -45,250 +49,109 @@ namespace ChapooUI
         {
 
             //Inlog_DAO inlog_DAO = new Inlog_DAO();
-            Tafel_Service tafelService = new Tafel_Service();
+            //BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
+            table_service = new Tafel_Service();
+
+            tables = table_service.DB_Get_All_Tables();
             
-            
-            
-            for (int i = 0; i < btnList.Length; i++)
+            gerecht = new OrderItem_Service();
+
+            SetTableColors();
+            btnList[6].BackColor = Color.Yellow;
+            btnList[8].BackColor = Color.Orange;
+
+        }
+
+        public void SetTableColors()
+        {
+            for (int i = 0; i < tables.Count; i++)
             {
-                if (tafelService.Occupied(i + 1) == true)
-                {
-                    btnList[i].BackColor = Color.Red;
-                }
-                else if (tafelService.Occupied(i + 1) == false)
+                orders = gerecht.Orderstatus(i);
+                if (tables[i].bezet == false)
                 {
                     btnList[i].BackColor = Color.Green;
                 }
-
-                if (tafelService.Occupied(i + 1) == true && tafelService.CheckOrderStatus(i + 1) == "nietafgeleverd")
+                else if (tables[i].bezet == true)
                 {
-                    btnList[i].BackColor = Color.Yellow;
-                }else if(tafelService.Occupied(i + 1) == true && tafelService.CheckOrderStatus(i + 1) == "Bezig")
+                    btnList[i].BackColor = Color.Red;
+                } else if (orders[i].ToString() == "nietafgeleverd")
                 {
                     btnList[i].BackColor = Color.Orange;
+                } else if (orders[i].ToString() == "bezig" || orders[i].ToString() == "Bezig")
+                {
+                    btnList[i].BackColor = Color.Yellow;
                 }
+            }
+        }
 
+        public void Occupied(int tafelnummer)
+        {
+            if (table_service.Occupied(tafelnummer) == true)
+            {
+                this.Close();
+                OrderActionForm orderForm = new OrderActionForm(werknemer, tafelnummer);
+                orderForm.Show();
+            } else
+            {
+                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    table_service.EditStatus(tafelnummer, true);
+                    this.Close();
+                    OrderActionForm orderForm = new OrderActionForm(werknemer, tafelnummer);
+                    orderForm.Show();
+                }
             }
         }
 
         private void btn_Tafel9_Click(object sender, EventArgs e)
         {
-            if(tafelService.Occupied(9) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,9);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if(dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(9, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,9);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(9);
         }
 
         private void btn_Tafel10_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(10) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,10);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(10, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,10);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(10);
         }
 
         private void btn_Tafel8_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(8) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,8);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(8, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,8);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(8);
         }
 
         private void btn_Tafel7_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(7) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,7);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(7, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,7);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(7);
         }
 
         private void btn_Tafel6_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(6) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,6);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(6, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,6);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(6);
         }
 
         private void btn_Tafel5_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(5) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer, 5);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(5, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,5);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(5);
         }
 
         private void btn_Tafel4_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(4) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,4);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(4, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,4);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(4);
         }
 
         private void btn_Tafel3_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(3) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,3);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(3, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,3);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(3);
         }
 
         private void btn_Tafel2_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(2) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,2);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(2, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,2);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(2);
         }
 
         private void btn_Tafel1_Click(object sender, EventArgs e)
         {
-            if (tafelService.Occupied(1) == true)
-            {
-                this.Hide();
-                OrderActionForm orderForm = new OrderActionForm(werknemer,1);
-                orderForm.Show();
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    tafelService.EditStatus(1, true);
-                    this.Hide();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer,1);
-                    orderForm.Show();
-
-                }
-            }
+            Occupied(1);
         }
 
         private void btn_Uitlog_Click(object sender, EventArgs e)
@@ -299,3 +162,4 @@ namespace ChapooUI
         }
     }
 }
+

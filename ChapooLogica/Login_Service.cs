@@ -56,5 +56,15 @@ namespace ChapooLogica
         {
             inlog_db.FireEmployee(ID);
         }
+
+        public bool Login(string password)
+        {
+            return inlog_db.Login(password);
+        }
+
+        public Inlog GetEmployeeWithPassword(int password)
+        {
+            return inlog_db.GetEmployeeWithPassword(password);
+        }
     }
 }

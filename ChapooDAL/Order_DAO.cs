@@ -19,21 +19,21 @@ namespace ChapooDAL
 
         public List<BestellingOrderItem> Get_All_Kitchen_Orders(bool showFinished)
         {
-            string query = string.Format("SELECT b.bestelling_ID, b.commentaar as BestellingCommentaar, b.datum, b.tafel_ID, o.bestelling_ID, o.aantal, o.commentaar as OrderCommentaar,o.menu_ID,o.order_ID,o.status,o.tafelnummer,o.werknemer_ID,m.categorie,m.naam AS MenuItemNaam,m.voorraad, i.naam AS WerknemerNaam FROM Bestelling AS b JOIN OrderItem AS o ON o.bestelling_ID = b.bestelling_ID JOIN Menu AS m ON m.menu_ID = o.menu_ID JOIN Inlog AS i ON i.werknemer_ID = o.werknemer_ID WHERE datum > CAST(CURRENT_TIMESTAMP AS DATE) AND categorie != 'dranken'");
+            string query = string.Format("SELECT b.bestelling_id, b.commentaar as BestellingCommentaar, b.datum, b.tafel_id, o.bestelling_id, o.aantal, o.commentaar as OrderCommentaar,o.menu_id,o.order_id,o.status,o.tafel_id,o.werknemer_id,m.categorie,m.naam AS MenuItemNaam,m.voorraad, i.naam AS WerknemerNaam FROM Bestelling AS b JOIN Bestel_Gerecht AS o ON o.bestelling_id = b.bestelling_id JOIN Menu AS m ON m.menu_id = o.menu_ID JOIN Inlog AS i ON i.werknemer_id = o.werknemer_id WHERE datum > CAST(CURRENT_TIMESTAMP AS DATE) AND categorie != 'dranken'");
             query += !showFinished ? "" : " AND o.status != 'Gereed'";
             return readOrdersWithOrderItems(ExecuteSelectQuery(query, new SqlParameter[0]));
 
         }
         public List<BestellingOrderItem> Get_All_Bar_Orders(bool showFinished)
         {
-            string query = string.Format("SELECT b.bestelling_ID, b.commentaar as BestellingCommentaar, b.datum, b.tafel_ID, o.bestelling_ID, o.aantal, o.commentaar as OrderCommentaar,o.menu_ID,o.order_ID,o.status,o.tafelnummer,o.werknemer_ID,m.categorie,m.naam AS MenuItemNaam,m.voorraad, i.naam AS WerknemerNaam FROM Bestelling AS b JOIN OrderItem AS o ON o.bestelling_ID = b.bestelling_ID JOIN Menu AS m ON m.menu_ID = o.menu_ID JOIN Inlog AS i ON i.werknemer_ID = o.werknemer_ID WHERE datum > CAST(CURRENT_TIMESTAMP AS DATE) AND categorie = 'dranken'");
+            string query = string.Format("SELECT b.bestelling_id, b.commentaar as BestellingCommentaar, b.datum, b.tafel_id, o.bestelling_id, o.aantal, o.commentaar as OrderCommentaar,o.gerecht_id,o.order_id,o.status,o.tafel_id,o.werknemer_id,m.categorie,m.naam AS MenuItemNaam,m.voorraad, i.naam AS WerknemerNaam FROM Bestelling AS b JOIN Bestel_Gerecht AS o ON o.bestelling_id = b.bestelling_id JOIN Menu AS m ON m.menu_id = o.gerecht_id JOIN Inlog AS i ON i.werknemer_id = o.werknemer_id WHERE datum > CAST(CURRENT_TIMESTAMP AS DATE) AND categorie = 'dranken'");
             query += !showFinished ? "" : " AND o.status != 'Gereed'";
             return readOrdersWithOrderItems(ExecuteSelectQuery(query, new SqlParameter[0]));
         }
 
         public List<Bestelling> Get_Order_Per_Table(int tafelnummer)
         {
-            string query = string.Format("SELECT * FROM Bestelling WHERE tafel_ID = '{0}' ", tafelnummer);
+            string query = string.Format("SELECT * FROM Bestelling WHERE tafel_id = '{0}' ", tafelnummer);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -45,17 +45,17 @@ namespace ChapooDAL
             {
                 BestellingOrderItem order = new BestellingOrderItem()
                 {
-                    BestellingID = (int)dr["bestelling_ID"],
+                    BestellingID = (int)dr["bestelling_id"],
                     OrderCommentaar = (dr["OrderCommentaar"] == null) ? string.Empty : dr["OrderCommentaar"].ToString(),
                     Datum = dr["datum"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["datum"]),
-                    TafelID = (int)dr["tafel_ID"],
-                    OrderID = (int)dr["order_ID"],
+                    TafelID = (int)dr["tafel_id"],
+                    OrderID = (int)dr["gerecht_id"],
                     Aantal = (int)dr["aantal"],
                     BestellingCommentaar = (dr["BestellingCommentaar"] == null) ? string.Empty : dr["BestellingCommentaar"].ToString(),
                     Status = dr["status"].ToString(),
-                    TafelNummer = (int)dr["tafelnummer"],
+                    TafelNummer = (int)dr["tafel_id"],
                     Categorie = (dr["categorie"] == null) ? string.Empty : dr["categorie"].ToString(),
-                    MenuID = (int)dr["menu_ID"],
+                    MenuID = (int)dr["menu_id"],
                     Voorraad = (int)dr["voorraad"],
                     WerknemerID = (int)dr["werknemer_ID"],
                     MenuItemNaam = (dr["MenuItemNaam"] == null) ? string.Empty : dr["MenuItemNaam"].ToString(),

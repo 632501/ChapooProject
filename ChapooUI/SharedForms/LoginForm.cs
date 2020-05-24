@@ -109,24 +109,33 @@ namespace ChapooUI
             Inlog inlog = new Inlog();
             string password = txt_Password.Text;
             inlog = login.GetEmployeeWithPassword(password);
-
-            if(inlog.functie == "manager" && inlog.wachtwoord == txt_Password.Text)
+            if (inlog != null)
             {
-                this.Hide();
-                ManagementActionForm managementOverview = new ManagementActionForm(inlog);
-                managementOverview.Show();
-            }else if(inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == txt_Password.Text)
-            {
-                this.Hide();
-                KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
-                kitchenAndBar.Show();
-            }else if(inlog.functie == "bediening" && inlog.wachtwoord == txt_Password.Text)
-            {
-                this.Hide();
-                TableForm table = new TableForm(inlog);
-                table.Show();
-            }
-            else
+                if (inlog.functie == "manager" && inlog.wachtwoord == txt_Password.Text)
+                {
+                    this.Hide();
+                    ManagementActionForm managementOverview = new ManagementActionForm(inlog);
+                    managementOverview.Show();
+                }
+                else if (inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == txt_Password.Text)
+                {
+                    this.Hide();
+                    KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
+                    kitchenAndBar.Show();
+                }
+                else if (inlog.functie == "bediening" && inlog.wachtwoord == txt_Password.Text)
+                {
+                    this.Hide();
+                    TableForm table = new TableForm(inlog);
+                    table.Show();
+                }
+                else
+                {
+                    lbl_IncorrectPassword.ForeColor = Color.Red;
+                    lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
+                    txt_Password.Clear();
+                }
+            } else
             {
                 lbl_IncorrectPassword.ForeColor = Color.Red;
                 lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";

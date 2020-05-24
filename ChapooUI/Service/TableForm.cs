@@ -24,8 +24,7 @@ namespace ChapooUI
         Tafel_Service table_service;
         Inlog werknemer = new Inlog();
         public List<Tafel> tables;
-        public List<OrderItem> orders;
-        OrderItem_Service gerecht;
+        public string orders;
 
 
         public TableForm(Inlog inlog)
@@ -52,9 +51,8 @@ namespace ChapooUI
             //BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
             table_service = new Tafel_Service();
 
-            tables = table_service.DB_Get_All_Tables();
+            tables = table_service.getTables();
             
-            gerecht = new OrderItem_Service();
 
             SetTableColors();
             btnList[6].BackColor = Color.Yellow;
@@ -66,7 +64,7 @@ namespace ChapooUI
         {
             for (int i = 0; i < tables.Count; i++)
             {
-                orders = gerecht.Orderstatus(i);
+                orders = table_service.CheckOrderStatus(i);
                 if (tables[i].bezet == false)
                 {
                     btnList[i].BackColor = Color.Green;
@@ -86,7 +84,9 @@ namespace ChapooUI
 
         public void Occupied(int tafelnummer)
         {
-            if (table_service.Occupied(tafelnummer) == true)
+            List<Tafel> tafels = table_service.getTables();
+
+            if (tafels[tafelnummer].bezet ==  true)
             {
                 this.Close();
                 OrderActionForm orderForm = new OrderActionForm(werknemer, tafelnummer);

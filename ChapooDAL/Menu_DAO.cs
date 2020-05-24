@@ -83,7 +83,7 @@ namespace ChapooDAL
 
         public void RemoveItem(int ID)
         {
-            string query = "DELETE FROM Menu WHERE menu_ID = " + ID + "";
+            string query = "DELETE FROM Menu WHERE menu_id = " + ID + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

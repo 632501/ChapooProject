@@ -43,22 +43,6 @@ namespace ChapooDAL
             return ReadTafels(ExecuteSelectQuery(query, new SqlParameter[0]));
         }
 
-        public bool CheckIfOccupied(int tableNumber)
-        {
-            bool occupied;
-            //"SELECT * FROM Bestelling WHERE tafel_ID = '{0}' ", tafelnummer
-            string query = string.Format("SELECT tafel_id, bezet FROM Tafel WHERE tafel_id = '" + tableNumber + "'");
-            DataTable dataTable = ExecuteSelectQuery(query, new SqlParameter[0]);
-            Tafel Tafel = ReadTafel(dataTable);
-            if (Tafel.bezet == true) {
-                occupied = true;
-            } else {
-                occupied = false;
-            }
-
-            return occupied;
-        }
-
         public void EditStatus(int tableNumber, bool status)
         {
 

@@ -20,11 +20,6 @@ namespace ChapooLogica
             List<Tafel> tafels = tafel_DAO.Get_All_Tables();
             return tafels;
         }
-        public bool Occupied(int tafelnummer)
-        {
-            bool occupied = tafel_DAO.CheckIfOccupied(tafelnummer);
-            return occupied;
-        }
 
         public void EditStatus(int tafelnummer, bool status)
         {

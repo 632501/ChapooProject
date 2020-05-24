@@ -62,7 +62,7 @@ namespace ChapooLogica
             return inlog_db.Login(password);
         }
 
-        public Inlog GetEmployeeWithPassword(int password)
+        public Inlog GetEmployeeWithPassword(string password)
         {
             return inlog_db.GetEmployeeWithPassword(password);
         }

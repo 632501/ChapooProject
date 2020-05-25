@@ -55,7 +55,7 @@ namespace ChapooUI
         private void MbtnActionOpnemen_Click(object sender, EventArgs e)
         {
             this.Close();
-            OrderMenusForm form = new OrderMenusForm(werknemer, tafelNummer);
+            OrderMenusForm2 form = new OrderMenusForm2(werknemer, tafelNummer);
             form.Show();
         }
 

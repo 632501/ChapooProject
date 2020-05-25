@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.mlblTafel = new MaterialSkin.Controls.MaterialLabel();
-            this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
             this.mbtnActionOpnemen = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnBestellingOverview = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnTerug = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnUitloggen = new MaterialSkin.Controls.MaterialFlatButton();
+            this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // mlblTafel
@@ -48,19 +48,6 @@
             this.mlblTafel.Size = new System.Drawing.Size(53, 24);
             this.mlblTafel.TabIndex = 6;
             this.mlblTafel.Text = "Tafel";
-            // 
-            // mlblWerknemer
-            // 
-            this.mlblWerknemer.Depth = 0;
-            this.mlblWerknemer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mlblWerknemer.Location = new System.Drawing.Point(12, 36);
-            this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mlblWerknemer.Name = "mlblWerknemer";
-            this.mlblWerknemer.Size = new System.Drawing.Size(103, 24);
-            this.mlblWerknemer.TabIndex = 10;
-            this.mlblWerknemer.Text = "werknemer";
-            this.mlblWerknemer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mbtnActionOpnemen
             // 
@@ -126,6 +113,19 @@
             this.mbtnUitloggen.UseVisualStyleBackColor = true;
             this.mbtnUitloggen.Click += new System.EventHandler(this.MbtnUitloggen_Click);
             // 
+            // mlblWerknemer
+            // 
+            this.mlblWerknemer.Depth = 0;
+            this.mlblWerknemer.Font = new System.Drawing.Font("Roboto", 11F);
+            this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mlblWerknemer.Location = new System.Drawing.Point(12, 36);
+            this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlblWerknemer.Name = "mlblWerknemer";
+            this.mlblWerknemer.Size = new System.Drawing.Size(103, 24);
+            this.mlblWerknemer.TabIndex = 10;
+            this.mlblWerknemer.Text = "werknemer";
+            this.mlblWerknemer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // OrderActionForm2
             // 
             this.ClientSize = new System.Drawing.Size(300, 500);
@@ -144,18 +144,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnActionOpnemen;
-        private System.Windows.Forms.Button btn_Afronden;
-        private MaterialSkin.Controls.MaterialLabel lbl_Name;
-        private MaterialSkin.Controls.MaterialLabel lbl_Tafel;
-        private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
-        private System.Windows.Forms.Button btnBestellingOverview;
-        private System.Windows.Forms.Button btn_Uitlog;
         private MaterialSkin.Controls.MaterialLabel mlblTafel;
-        private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
         private MaterialSkin.Controls.MaterialFlatButton mbtnActionOpnemen;
         private MaterialSkin.Controls.MaterialFlatButton mbtnBestellingOverview;
         private MaterialSkin.Controls.MaterialFlatButton mbtnTerug;
         private MaterialSkin.Controls.MaterialFlatButton mbtnUitloggen;
+        private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
     }
 }

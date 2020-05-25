@@ -89,6 +89,18 @@
     <Compile Include="Service\OrderActionForm2.Designer.cs">
       <DependentUpon>OrderActionForm2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service\OrderForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderForm2.Designer.cs">
+      <DependentUpon>OrderForm2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderMenusForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderMenusForm2.Designer.cs">
+      <DependentUpon>OrderMenusForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\OrderMenusForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderActionForm2.resx">
       <DependentUpon>OrderActionForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderForm2.resx">
+      <DependentUpon>OrderForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderMenusForm2.resx">
+      <DependentUpon>OrderMenusForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenusForm.resx">
       <DependentUpon>OrderMenusForm.cs</DependentUpon>

@@ -38,14 +38,14 @@
             this.btn_Tafel3 = new System.Windows.Forms.Button();
             this.btn_Tafel2 = new System.Windows.Forms.Button();
             this.btn_Tafel1 = new System.Windows.Forms.Button();
-            this.btn_Uitlog = new System.Windows.Forms.Button();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.lbl_Naam = new System.Windows.Forms.Label();
+            this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
+            this.mbtnUitloggen = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // btn_Tafel10
             // 
-            this.btn_Tafel10.Location = new System.Drawing.Point(198, 457);
+            this.btn_Tafel10.Location = new System.Drawing.Point(179, 469);
             this.btn_Tafel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel10.Name = "btn_Tafel10";
             this.btn_Tafel10.Size = new System.Drawing.Size(108, 72);
@@ -56,7 +56,7 @@
             // 
             // btn_Tafel9
             // 
-            this.btn_Tafel9.Location = new System.Drawing.Point(44, 457);
+            this.btn_Tafel9.Location = new System.Drawing.Point(16, 469);
             this.btn_Tafel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel9.Name = "btn_Tafel9";
             this.btn_Tafel9.Size = new System.Drawing.Size(108, 72);
@@ -67,7 +67,7 @@
             // 
             // btn_Tafel8
             // 
-            this.btn_Tafel8.Location = new System.Drawing.Point(198, 380);
+            this.btn_Tafel8.Location = new System.Drawing.Point(180, 383);
             this.btn_Tafel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel8.Name = "btn_Tafel8";
             this.btn_Tafel8.Size = new System.Drawing.Size(108, 72);
@@ -78,7 +78,7 @@
             // 
             // btn_Tafel7
             // 
-            this.btn_Tafel7.Location = new System.Drawing.Point(44, 380);
+            this.btn_Tafel7.Location = new System.Drawing.Point(16, 383);
             this.btn_Tafel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel7.Name = "btn_Tafel7";
             this.btn_Tafel7.Size = new System.Drawing.Size(108, 72);
@@ -89,7 +89,7 @@
             // 
             // btn_Tafel6
             // 
-            this.btn_Tafel6.Location = new System.Drawing.Point(198, 303);
+            this.btn_Tafel6.Location = new System.Drawing.Point(179, 294);
             this.btn_Tafel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel6.Name = "btn_Tafel6";
             this.btn_Tafel6.Size = new System.Drawing.Size(108, 72);
@@ -100,7 +100,7 @@
             // 
             // btn_Tafel5
             // 
-            this.btn_Tafel5.Location = new System.Drawing.Point(44, 303);
+            this.btn_Tafel5.Location = new System.Drawing.Point(16, 294);
             this.btn_Tafel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel5.Name = "btn_Tafel5";
             this.btn_Tafel5.Size = new System.Drawing.Size(108, 72);
@@ -111,7 +111,7 @@
             // 
             // btn_Tafel4
             // 
-            this.btn_Tafel4.Location = new System.Drawing.Point(198, 226);
+            this.btn_Tafel4.Location = new System.Drawing.Point(179, 205);
             this.btn_Tafel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel4.Name = "btn_Tafel4";
             this.btn_Tafel4.Size = new System.Drawing.Size(108, 72);
@@ -122,7 +122,7 @@
             // 
             // btn_Tafel3
             // 
-            this.btn_Tafel3.Location = new System.Drawing.Point(44, 226);
+            this.btn_Tafel3.Location = new System.Drawing.Point(16, 205);
             this.btn_Tafel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel3.Name = "btn_Tafel3";
             this.btn_Tafel3.Size = new System.Drawing.Size(108, 72);
@@ -133,7 +133,7 @@
             // 
             // btn_Tafel2
             // 
-            this.btn_Tafel2.Location = new System.Drawing.Point(198, 150);
+            this.btn_Tafel2.Location = new System.Drawing.Point(179, 118);
             this.btn_Tafel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel2.Name = "btn_Tafel2";
             this.btn_Tafel2.Size = new System.Drawing.Size(108, 72);
@@ -144,7 +144,7 @@
             // 
             // btn_Tafel1
             // 
-            this.btn_Tafel1.Location = new System.Drawing.Point(44, 150);
+            this.btn_Tafel1.Location = new System.Drawing.Point(16, 118);
             this.btn_Tafel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_Tafel1.Name = "btn_Tafel1";
             this.btn_Tafel1.Size = new System.Drawing.Size(108, 72);
@@ -153,47 +153,54 @@
             this.btn_Tafel1.UseVisualStyleBackColor = true;
             this.btn_Tafel1.Click += new System.EventHandler(this.btn_Tafel1_Click);
             // 
-            // btn_Uitlog
-            // 
-            this.btn_Uitlog.Location = new System.Drawing.Point(275, 85);
-            this.btn_Uitlog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_Uitlog.Name = "btn_Uitlog";
-            this.btn_Uitlog.Size = new System.Drawing.Size(90, 29);
-            this.btn_Uitlog.TabIndex = 14;
-            this.btn_Uitlog.Text = "Uitloggen";
-            this.btn_Uitlog.UseVisualStyleBackColor = true;
-            this.btn_Uitlog.Click += new System.EventHandler(this.btn_Uitlog_Click);
-            // 
             // materialLabel1
             // 
-            this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(116, 117);
+            this.materialLabel1.Location = new System.Drawing.Point(90, 77);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(110, 24);
             this.materialLabel1.TabIndex = 26;
             this.materialLabel1.Text = "Kies je tafel";
+            this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbl_Naam
+            // mlblWerknemer
             // 
-            this.lbl_Naam.AutoSize = true;
-            this.lbl_Naam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Naam.ForeColor = System.Drawing.Color.White;
-            this.lbl_Naam.Location = new System.Drawing.Point(39, 87);
-            this.lbl_Naam.Name = "lbl_Naam";
-            this.lbl_Naam.Size = new System.Drawing.Size(64, 24);
-            this.lbl_Naam.TabIndex = 27;
-            this.lbl_Naam.Text = "Naam";
+            this.mlblWerknemer.Depth = 0;
+            this.mlblWerknemer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mlblWerknemer.Location = new System.Drawing.Point(12, 36);
+            this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlblWerknemer.Name = "mlblWerknemer";
+            this.mlblWerknemer.Size = new System.Drawing.Size(103, 24);
+            this.mlblWerknemer.TabIndex = 28;
+            this.mlblWerknemer.Text = "werknemer";
+            this.mlblWerknemer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // mbtnUitloggen
+            // 
+            this.mbtnUitloggen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mbtnUitloggen.Depth = 0;
+            this.mbtnUitloggen.Icon = null;
+            this.mbtnUitloggen.Location = new System.Drawing.Point(210, 36);
+            this.mbtnUitloggen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mbtnUitloggen.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mbtnUitloggen.Name = "mbtnUitloggen";
+            this.mbtnUitloggen.Primary = false;
+            this.mbtnUitloggen.Size = new System.Drawing.Size(77, 24);
+            this.mbtnUitloggen.TabIndex = 29;
+            this.mbtnUitloggen.Text = "Logout";
+            this.mbtnUitloggen.UseVisualStyleBackColor = true;
+            this.mbtnUitloggen.Click += new System.EventHandler(this.MbtnUitloggen_Click);
             // 
             // TableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 566);
-            this.Controls.Add(this.lbl_Naam);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.ClientSize = new System.Drawing.Size(300, 561);
+            this.Controls.Add(this.mbtnUitloggen);
+            this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.btn_Tafel10);
             this.Controls.Add(this.btn_Tafel9);
@@ -205,16 +212,12 @@
             this.Controls.Add(this.btn_Tafel3);
             this.Controls.Add(this.btn_Tafel2);
             this.Controls.Add(this.btn_Tafel1);
-            this.Controls.Add(this.btn_Uitlog);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TableForm";
             this.Sizable = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TableForm";
             this.Load += new System.EventHandler(this.TafelForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -230,8 +233,8 @@
         private System.Windows.Forms.Button btn_Tafel3;
         private System.Windows.Forms.Button btn_Tafel2;
         private System.Windows.Forms.Button btn_Tafel1;
-        private System.Windows.Forms.Button btn_Uitlog;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private System.Windows.Forms.Label lbl_Naam;
+        private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
+        private MaterialSkin.Controls.MaterialFlatButton mbtnUitloggen;
     }
 }

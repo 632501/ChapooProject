@@ -28,9 +28,9 @@ namespace ChapooUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-           
+
             //password characters
-            txt_Password.PasswordChar = '*';
+            mPasswordtxt.PasswordChar = '*';
             
         }
         private void LoginForm_Load(object sender, EventArgs e)
@@ -40,90 +40,100 @@ namespace ChapooUI
         //zorgen dat de buttons een string invoeren met opklikken
         private void btn_Nr1_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "1";
+            mPasswordtxt.Text += "1";
         }
 
         private void btn_Nr2_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "2";
+            mPasswordtxt.Text += "2";
         }
 
         private void btn_Nr3_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "3";
+            mPasswordtxt.Text += "3";
         }
 
         private void btn_Nr4_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "4";
+            mPasswordtxt.Text += "4";
         }
 
         private void btn_Nr5_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "5";
+            mPasswordtxt.Text += "5";
         }
 
         private void btn_Nr6_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "6";
+            mPasswordtxt.Text += "6";
         }
 
 
         private void btn_Nr7_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "7";
+            mPasswordtxt.Text += "7";
         }
 
 
         private void btn_Nr8_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "8";
+            mPasswordtxt.Text += "8";
         }
 
         private void btn_Nr9_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "9";
+            mPasswordtxt.Text += "9";
         }
 
         private void btn_Nr0_Click(object sender, EventArgs e)
         {
-            txt_Password.Text += "0";
+            mPasswordtxt.Text += "0";
         }
 
         private void btn_Backspace_Click(object sender, EventArgs e)
         {
-            string s = txt_Password.Text;
+            string s = mPasswordtxt.Text;
 
             if (s.Length >= 1)
             {
                 s = s.Substring(0, s.Length - 1);
             }
 
-            txt_Password.Text = s;
+            mPasswordtxt.Text = s;
         }
 
         private void btn_inlog_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void MaterialSingleLineTextField1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MbtnInloggen_Click(object sender, EventArgs e)
+        {
             Login_Service login = new Login_Service();
             //Login_DAO login = new Login_DAO();
             Inlog inlog = new Inlog();
-            string password = txt_Password.Text;
+            string password = mPasswordtxt.Text;
             inlog = login.GetEmployeeWithPassword(password);
             if (inlog != null)
             {
-                if (inlog.functie == "manager" && inlog.wachtwoord == txt_Password.Text)
+                if (inlog.functie == "manager" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
                     this.Hide();
                     ManagementActionForm managementOverview = new ManagementActionForm(inlog);
                     managementOverview.Show();
                 }
-                else if (inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == txt_Password.Text)
+                else if (inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
                     this.Hide();
                     KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
                     kitchenAndBar.Show();
                 }
-                else if (inlog.functie == "bediening" && inlog.wachtwoord == txt_Password.Text)
+                else if (inlog.functie == "bediening" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
                     this.Hide();
                     TableForm table = new TableForm(inlog);
@@ -133,13 +143,16 @@ namespace ChapooUI
                 {
                     lbl_IncorrectPassword.ForeColor = Color.Red;
                     lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
-                    txt_Password.Clear();
+
+                    mPasswordtxt.Clear();
                 }
-            } else
+            }
+            else
             {
                 lbl_IncorrectPassword.ForeColor = Color.Red;
                 lbl_IncorrectPassword.Text = "Incorrect wachtwoord, probeer opnieuw";
-                txt_Password.Clear();
+
+                mPasswordtxt.Clear();
             }
         }
     }

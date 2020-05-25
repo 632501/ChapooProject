@@ -32,7 +32,7 @@ namespace ChapooUI
             InitializeComponent();
 
 
-            lbl_Naam.Text = inlog.naam;
+            mlblWerknemer.Text = inlog.naam;
             werknemer = inlog;
 
             // Initialize MaterialSkinManager
@@ -89,7 +89,7 @@ namespace ChapooUI
             if (tafels[tafelnummer].bezet ==  true)
             {
                 this.Close();
-                OrderActionForm orderForm = new OrderActionForm(werknemer, tafelnummer);
+                OrderActionForm2 orderForm = new OrderActionForm2(werknemer, tafelnummer);
                 orderForm.Show();
             } else
             {
@@ -98,7 +98,7 @@ namespace ChapooUI
                 {
                     table_service.EditStatus(tafelnummer, true);
                     this.Close();
-                    OrderActionForm orderForm = new OrderActionForm(werknemer, tafelnummer);
+                    OrderActionForm2 orderForm = new OrderActionForm2(werknemer, tafelnummer);
                     orderForm.Show();
                 }
             }
@@ -155,6 +155,11 @@ namespace ChapooUI
         }
 
         private void btn_Uitlog_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void MbtnUitloggen_Click(object sender, EventArgs e)
         {
             this.Hide();
             LoginForm login = new LoginForm();

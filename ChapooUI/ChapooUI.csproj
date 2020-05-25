@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\OrderActionForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderActionForm2.Designer.cs">
+      <DependentUpon>OrderActionForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\OrderMenusForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderActionForm2.resx">
+      <DependentUpon>OrderActionForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenusForm.resx">
       <DependentUpon>OrderMenusForm.cs</DependentUpon>

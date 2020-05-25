@@ -102,7 +102,7 @@
             this.btn_Terug.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btn_Terug.Depth = 0;
             this.btn_Terug.Icon = null;
-            this.btn_Terug.Location = new System.Drawing.Point(244, 25);
+            this.btn_Terug.Location = new System.Drawing.Point(243, 25);
             this.btn_Terug.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btn_Terug.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_Terug.Name = "btn_Terug";
@@ -128,6 +128,7 @@
             // 
             // listviewTakenOrder
             // 
+            this.listviewTakenOrder.HideSelection = false;
             this.listviewTakenOrder.Location = new System.Drawing.Point(32, 95);
             this.listviewTakenOrder.Name = "listviewTakenOrder";
             this.listviewTakenOrder.Size = new System.Drawing.Size(241, 163);

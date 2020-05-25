@@ -38,7 +38,7 @@ namespace ChapooLogica
         {
             foreach(Inlog employee in employeeList)
             {
-                if (employee.werknemer_ID == ID)
+                if (employee.werknemer_id == ID)
                 {
                     inlog_db.AlterStatusEmployee(ID);
                     return;

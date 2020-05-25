@@ -53,10 +53,10 @@ namespace ChapooUI
             bestellingen = orderService.GetTablesOrder(tafelNummer);
             foreach (Bestelling bestelling in bestellingen)
             {
-                orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_ID);
+                orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_id);
                 foreach (OrderItem item in orderItems)
                 {
-                    ListViewItem li = new ListViewItem(bestelling.bestelling_ID.ToString());
+                    ListViewItem li = new ListViewItem(bestelling.bestelling_id.ToString());
                     li.SubItems.Add(item.menuItem.naam);
                     li.SubItems.Add(item.Aantal.ToString());
                     li.Tag = item;
@@ -86,7 +86,7 @@ namespace ChapooUI
                 if (res == DialogResult.OK)
                 {
                     OrderItem o = (OrderItem)listviewOverview.SelectedItems[0].Tag;
-                    orderService.DeleteOrder(o.order_ID);
+                    orderService.DeleteOrder(o.order_id);
 
                     LoadOrders();
                 } else if (res == DialogResult.Cancel)
@@ -111,10 +111,18 @@ namespace ChapooUI
             DialogResult res = MessageBox.Show("Weet je het zeker dat je deze bestelling wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (res == DialogResult.OK)
             {
-                int bestellingnr = int.Parse(txtGetOrderNr.Text);
-                orderService.DeleteOrderItemsByID(bestellingnr);
-                bestellingService.DeleteOrders(bestellingnr);
-                LoadOrders();
+                int value;
+                if (int.TryParse(txtGetOrderNr.Text, out value))
+                {
+                    int bestellingnr = int.Parse(txtGetOrderNr.Text);
+                    orderService.DeleteOrderItemsByID(bestellingnr);
+                    bestellingService.DeleteOrders(bestellingnr);
+                    LoadOrders();
+                } else
+                {
+                    MessageBox.Show("OrderNr was incorrect");
+                }
+                
             }
             if (res == DialogResult.Cancel)
             {

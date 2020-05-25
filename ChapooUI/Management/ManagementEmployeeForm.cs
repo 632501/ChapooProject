@@ -64,7 +64,7 @@ namespace ChapooUI
                 {
                     werknemer = (Inlog)ListView_Employee.SelectedItems[0].Tag;
 
-                    txt_ID.Text = werknemer.werknemer_ID.ToString();
+                    txt_ID.Text = werknemer.werknemer_id.ToString();
                     txt_Name.Text = werknemer.naam;
                     txt_Function.Text = werknemer.functie;
                     txt_Password.Text = werknemer.wachtwoord;
@@ -132,7 +132,7 @@ namespace ChapooUI
                     employee = (Inlog)ListView_Employee.SelectedItems[0].Tag;
                 }
 
-                txt_ID.Text = employee.werknemer_ID.ToString();
+                txt_ID.Text = employee.werknemer_id.ToString();
             }
         }
 
@@ -158,7 +158,7 @@ namespace ChapooUI
             foreach (Inlog werknemer in employeeList)
             {
 
-                ListViewItem em = new ListViewItem(werknemer.werknemer_ID.ToString());
+                ListViewItem em = new ListViewItem(werknemer.werknemer_id.ToString());
                 em.SubItems.Add(werknemer.naam);
                 em.SubItems.Add(werknemer.wachtwoord);
                 em.SubItems.Add(werknemer.functie);
@@ -249,7 +249,7 @@ namespace ChapooUI
         {
             int nextEmployeeID;
 
-            nextEmployeeID = employeeList[employeeList.Count - 1].werknemer_ID + 1;
+            nextEmployeeID = employeeList[employeeList.Count - 1].werknemer_id + 1;
 
             txt_ID.Text = nextEmployeeID.ToString();
         }

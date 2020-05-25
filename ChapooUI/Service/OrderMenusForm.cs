@@ -109,7 +109,7 @@ namespace ChapooUI
         private void btnAdd_Click(object sender, EventArgs e)
         {
             List<OrderItem> orders = bestelling.orderItems;
-            bestelling.tafel_ID = tafelNummer;
+            bestelling.tafel_id = tafelNummer;
             bestelling.datum = DateTime.Now;
             bestelling.werknemer = werknemer;
             bestelling.commentaar = txtCommentaar.Text;
@@ -128,13 +128,13 @@ namespace ChapooUI
                 menuService.ChangeSupply(o.menuItem.naam, voorraad);
                 
                 //Orderitem toevoegen aan db
-                o.bestelling_ID = bestelling.bestelling_ID;
+                o.bestelling_id = bestelling.bestelling_id;
                 o.Werknemer = werknemer;
-                o.TafelNummer = tafelNummer;
+                o.tafel_id = tafelNummer;
                 bestellingService.AddOrderItem(o);
             }
 
-            MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_ID);
+            MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_id);
 
             this.Close();
             OrderOverviewForm overviewForm = new OrderOverviewForm(werknemer, tafelNummer);

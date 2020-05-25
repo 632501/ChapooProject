@@ -24,7 +24,7 @@ namespace ChapooDAL
 
         public void FireEmployee(int ID)
         {
-            string query = "UPDATE Inlog SET [status] = 'inactief' WHERE werknemer_ID = "+ID;
+            string query = "UPDATE Inlog SET [status] = 'inactief' WHERE werknemer_id = "+ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -68,7 +68,7 @@ namespace ChapooDAL
 
             Inlog Employee = new Inlog()
             {
-                werknemer_ID = (int) dr["werknemer_ID"],
+                werknemer_id = (int) dr["werknemer_id"],
                 wachtwoord = (string) dr["wachtwoord"],
                 naam = (string) dr["naam"],
                 functie = (string) dr["functie"],
@@ -92,7 +92,7 @@ namespace ChapooDAL
                 DataRow dr = dataTable.Rows[0];
                 Employee = new Inlog()
                 {
-                    werknemer_ID = (int)dr["werknemer_ID"],
+                    werknemer_id = (int)dr["werknemer_id"],
                     wachtwoord = (string)dr["wachtwoord"],
                     naam = (string)dr["naam"],
                     functie = (string)dr["functie"],
@@ -157,7 +157,7 @@ namespace ChapooDAL
             {
                 Inlog Employee = new Inlog()
                 {
-                    werknemer_ID = (int)dr["werknemer_ID"],
+                    werknemer_id = (int)dr["werknemer_ID"],
                     naam = (String)(dr["naam"]),
                     wachtwoord = (string)dr["wachtwoord"],
                     functie = (String)(dr["functie"]),

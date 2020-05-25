@@ -43,7 +43,7 @@ namespace ChapooUI
         {
             Bestelling order = new Bestelling();
             order = orderService.Orders(tafel_ID);
-            bon.bestelling_ID = order.bestelling_ID;
+            bon.bestelling_ID = order.bestelling_id;
 
             Calculation(order);
             ShowList(order);

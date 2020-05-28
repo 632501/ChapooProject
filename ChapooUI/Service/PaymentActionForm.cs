@@ -19,13 +19,15 @@ namespace ChapooUI
     {
         private readonly MaterialSkinManager materialSkinManager;
         Order_Service orderService = new Order_Service();
+        Tafel_Service tafelService = new Tafel_Service();
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
         int tafel_ID;
         decimal amount;
         decimal btw;
+        OrderOverviewForm2 form2;
 
-        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal amount, decimal btw, Bon bon)
+        public PaymentActionForm(Inlog werknemer, int tafel_ID, decimal amount, decimal btw, Bon bon, OrderOverviewForm2 form2)
         {
             InitializeComponent();
 
@@ -40,6 +42,7 @@ namespace ChapooUI
             this.tafel_ID = tafel_ID;
             this.amount = amount;
             this.btw = btw;
+            this.form2 = form2;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
@@ -50,43 +53,44 @@ namespace ChapooUI
         private void btnBetaald_Click(object sender, EventArgs e)
         {
             TableForm form = new TableForm(werknemer);
-            string paymenttype;
+            //string paymenttype;
             string comment = txtboxOpmerking.Text;
             string amountWithBtwS = bon.totaalprijs.ToString().Replace(',', '.');
             string tipS = bon.fooi.ToString().Replace(',', '.');
 
             //bon.bestelling_ID
 
-            paymenttype = PaymentType();
+            //paymenttype = PaymentType();
 
-            if(paymenttype != "")
-            {
-                //orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID, paymenttype);
+            //if(paymenttype != "")
+            //{
+                orderService.Paid(tafel_ID, amountWithBtwS, tipS, comment, bon.bestelling_ID);
+                tafelService.EditStatus(tafel_ID, false);
                 MessageBox.Show("De bestelling is betaald!");
                 this.Close();
-                form.ShowDialog();
-            }
+                form.Show();
+            //}
         }
         
-        private string PaymentType()
-        {
-            string paymenttype = "";
+        //private string PaymentType()
+        //{
+        //    string paymenttype = "";
 
-            if (radioBtnCreditcard.Checked)
-            {
-                paymenttype = "Creditcard";
-            }
-            if (radioBtnContant.Checked)
-            {
-                paymenttype = "Contant";
-            }
-            if (radioBtnPinpas.Checked)
-            {
-                paymenttype = "Pinpas";
-            }
+        //    if (radioBtnCreditcard.Checked)
+        //    {
+        //        paymenttype = "Creditcard";
+        //    }
+        //    if (radioBtnContant.Checked)
+        //    {
+        //        paymenttype = "Contant";
+        //    }
+        //    if (radioBtnPinpas.Checked)
+        //    {
+        //        paymenttype = "Pinpas";
+        //    }
 
-            return paymenttype;
-        }
+        //    return paymenttype;
+        //}
 
         private void FillLabels()
         {
@@ -110,6 +114,7 @@ namespace ChapooUI
         private void btnTerug_Click(object sender, EventArgs e)
         {
             this.Close();
+            form2.Show();
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -52,8 +52,8 @@ namespace ChapooUI
         private void btnActionBekijken_Click(object sender, EventArgs e)
         {
             this.Close();
-            PaymentForm form = new PaymentForm(werknemer, tafelNummer);
-            form.Show();
+            //PaymentForm form = new PaymentForm(werknemer, tafelNummer, form2);
+            //form.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

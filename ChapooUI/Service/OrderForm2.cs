@@ -49,7 +49,7 @@ namespace ChapooUI.Service
         private void GetMenus()
         {
             menuList = new List<MenuItem>();
-            mlistviewMenu.Items.Clear();
+            listviewMenu.Items.Clear();
 
             //Drank kaart
             if (sort == "Drinks")
@@ -79,11 +79,13 @@ namespace ChapooUI.Service
             foreach (MenuItem m in menuList)
             {
                 ListViewItem li = new ListViewItem(m.naam);
-                mlistviewMenu.Items.Add(li);
-
+                listviewMenu.Items.Add(li);
+                li.Tag = m;
+                li.ToolTipText = m.naam;
             }
-            mlistviewMenu.View = View.Details;
-            //mlistviewMenu.Columns.Add("Naam");
+            listviewMenu.View = View.Details;
+            //listviewMenu.Columns.Add("Naam");
+            
         }
 
         //Button events
@@ -168,9 +170,9 @@ namespace ChapooUI.Service
 
         private void MbtnTerug_Click(object sender, EventArgs e)
         {
-            OrderMenusForm2 form = new OrderMenusForm2(werknemer, tafelnummer);
             this.Close();
-            form.Show();
+            orderMenusForm.Show();
+            orderMenusForm.LoadOrder();
         }
 
         private void MbtnUitloggen_Click(object sender, EventArgs e)
@@ -178,6 +180,18 @@ namespace ChapooUI.Service
             this.Close();
             LoginForm login = new LoginForm();
             login.Show();
+        }
+
+        private void ListviewMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listviewMenu.SelectedItems.Count > 0)
+            {
+                MenuItem item = new MenuItem();
+                item = (MenuItem)listviewMenu.SelectedItems[0].Tag;
+                //Open form die shit toevoegd.
+                OrderMenuAddForm form = new OrderMenuAddForm(item, orderMenusForm, this);
+                form.Show();
+            }
         }
     }
 }

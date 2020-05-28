@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listviewMenu = new System.Windows.Forms.ListView();
             this.mlblSoortBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.btnRemoveItem = new System.Windows.Forms.Button();
@@ -36,16 +35,8 @@
             this.lbl_Table = new MaterialSkin.Controls.MaterialLabel();
             this.btn_Terug = new MaterialSkin.Controls.MaterialFlatButton();
             this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
+            this.listviewMenu = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // listviewMenu
-            // 
-            this.listviewMenu.Location = new System.Drawing.Point(12, 198);
-            this.listviewMenu.Name = "listviewMenu";
-            this.listviewMenu.Size = new System.Drawing.Size(334, 262);
-            this.listviewMenu.TabIndex = 0;
-            this.listviewMenu.UseCompatibleStateImageBehavior = false;
-            this.listviewMenu.SelectedIndexChanged += new System.EventHandler(this.listviewMenu_SelectedIndexChanged);
             // 
             // mlblSoortBestelling
             // 
@@ -134,6 +125,17 @@
             this.mlblWerknemer.TabIndex = 10;
             this.mlblWerknemer.Text = "Werknemer";
             // 
+            // listviewMenu
+            // 
+            this.listviewMenu.HideSelection = false;
+            this.listviewMenu.Location = new System.Drawing.Point(12, 198);
+            this.listviewMenu.Name = "listviewMenu";
+            this.listviewMenu.Size = new System.Drawing.Size(334, 262);
+            this.listviewMenu.TabIndex = 0;
+            this.listviewMenu.UseCompatibleStateImageBehavior = false;
+            this.listviewMenu.SelectedIndexChanged += new System.EventHandler(this.listviewMenu_SelectedIndexChanged);
+            this.listviewMenu.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ListviewMenu_MouseClick);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -159,8 +161,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView listviewMenu;
         private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Button btnRemoveItem;
@@ -168,5 +168,6 @@
         private MaterialSkin.Controls.MaterialLabel lbl_Table;
         private MaterialSkin.Controls.MaterialFlatButton btn_Terug;
         private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
+        private System.Windows.Forms.ListView listviewMenu;
     }
 }

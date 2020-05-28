@@ -21,11 +21,13 @@ namespace ChapooUI
         Order_Service orderService = new Order_Service();
         Bon bon = new Bon();
         Inlog werknemer = new Inlog();
+        Bestelling order = new Bestelling();
         int tafel_ID;
         decimal amount;
         decimal btw;
+        OrderOverviewForm2 form2;
 
-        public PaymentForm(Inlog werknemer, int tafel_ID )
+        public PaymentForm(Inlog werknemer, int tafel_ID, OrderOverviewForm2 form2)
         {
             InitializeComponent();
 
@@ -37,13 +39,14 @@ namespace ChapooUI
 
             this.tafel_ID = tafel_ID;
             this.werknemer = werknemer;
+            this.form2 = form2;
         }
 
         private void PaymentForm_Load(object sender, EventArgs e)
         {
-            Bestelling order = new Bestelling();
+            
             order = orderService.Orders(tafel_ID);
-            bon.bestelling_ID = order.bestelling_id;
+            
 
             Calculation(order);
             ShowList(order);
@@ -108,8 +111,13 @@ namespace ChapooUI
                 }
             }
 
-            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, amount, btw, bon);
-            pay.ShowDialog();
+            OrderItem item = order.orderItems.First();
+            order.bestelling_id = item.bestelling_id;
+            bon.bestelling_ID = order.bestelling_id;
+
+            this.Close();
+            PaymentActionForm pay = new PaymentActionForm(werknemer, tafel_ID, amount, btw, bon, form2);
+            pay.Show();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -126,6 +134,7 @@ namespace ChapooUI
         private void btnTerug_Click(object sender, EventArgs e)
         {
             this.Close();
+            form2.Show();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace ChapooDAL
 
         public List<Bestelling> Get_Order_Per_Table(int tafelnummer)
         {
-            string query = string.Format("SELECT * FROM Bestelling WHERE tafel_id = '{0}' ", tafelnummer);
+            string query = string.Format("SELECT * FROM Bestelling WHERE tafel_id = '{0}' AND Betaald = '{1}'", tafelnummer, 0);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -136,13 +136,13 @@ namespace ChapooDAL
         }
 
         // Bon gedeelte
-        public void Paid(int tafel_ID, string date, string amountString, string tipString, string comment, int bestelling_ID, string paymentType)
+        public void Paid(int tafel_ID, string date, string amountString, string tipString, string comment, int bestelling_ID)
         {
-            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling tafel_id = '" + tafel_ID + "' AND betaald =" + false;
+            string queryPaid = "UPDATE Bestelling SET betaald = 1 FROM Bestelling WHERE tafel_id = '" + tafel_ID + "' AND betaald ='" + 0 + "'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(queryPaid, sqlParameters);
 
-            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestelling_id, betaaltype) values(" + date + ", CONVERT(varchar, CAST('" + amountString + "' AS money)), CONVERT(varchar, CAST('" + tipString + "' AS money)), '" + comment + "', '" + bestelling_ID + "', '" + paymentType + "')";
+            string queryBon = "SET IDENTITY_INSERT Bon OFF INSERT INTO Bon(datum, totaalprijs, fooi, commentaar, bestel_id) values(" + date + ", CONVERT(varchar, CAST('" + amountString + "' AS money)), CONVERT(varchar, CAST('" + tipString + "' AS money)), '" + comment + "', '" + bestelling_ID + "')";
             ExecuteEditQuery(queryBon, sqlParameters);
         }
 
@@ -157,17 +157,16 @@ namespace ChapooDAL
         {
             Bestelling Orders = new Bestelling();
             Orders.orderItems = new List<OrderItem>();
-            MenuItem m = new MenuItem();
+            //MenuItem m = new MenuItem();
 
             if (dataTable.Rows.Count > 0)
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    OrderItem oI = new OrderItem()
-                    {
-                        Aantal = (int)dr["aantal"],
-                        bestelling_id = (int)dr["bestelling_id"]
-                    };
+                    MenuItem m = new MenuItem();
+                    OrderItem oI = new OrderItem();
+                    oI.Aantal = (int)dr["aantal"];
+                    oI.bestelling_id = (int)dr["bestelling_id"];
                     m.prijs = (decimal)dr["prijs"];
                     m.naam = (string)dr["naam"];
                     m.btwPercentage = (int)dr["btwPercentage"];
@@ -176,9 +175,15 @@ namespace ChapooDAL
 
                     Orders.orderItems.Add(oI);
                 }
-                Orders.bestelling_id = Orders.orderItems[0].bestelling_id;
+                //Orders.bestelling_id = Orders.orderItems[0].bestelling_id;
             }
             return Orders;
+        }
+
+        public void EditOrder(OrderItem o)
+        {
+            string query = "UPDATE Bestel_Gerecht SET aantal = '"+o.Aantal+"', commentaar = '"+o.Comment+"' WHERE order_id ='"+o.order_id+"'";
+            ExecuteEditQuery(query, new SqlParameter[0]);
         }
     }
 }

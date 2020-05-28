@@ -32,10 +32,9 @@
             this.mbtnUitloggen = new MaterialSkin.Controls.MaterialFlatButton();
             this.mlblTafel = new MaterialSkin.Controls.MaterialLabel();
             this.mbtnTerug = new MaterialSkin.Controls.MaterialFlatButton();
-            this.mlistviewMenu = new MaterialSkin.Controls.MaterialListView();
             this.mlblSoortBestelling = new MaterialSkin.Controls.MaterialLabel();
+            this.listviewMenu = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // mlblWerknemer
@@ -69,7 +68,6 @@
             // 
             // mlblTafel
             // 
-            this.mlblTafel.AutoSize = true;
             this.mlblTafel.Depth = 0;
             this.mlblTafel.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblTafel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -79,6 +77,7 @@
             this.mlblTafel.Size = new System.Drawing.Size(53, 24);
             this.mlblTafel.TabIndex = 16;
             this.mlblTafel.Text = "Tafel";
+            this.mlblTafel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mbtnTerug
             // 
@@ -96,31 +95,8 @@
             this.mbtnTerug.UseVisualStyleBackColor = true;
             this.mbtnTerug.Click += new System.EventHandler(this.MbtnTerug_Click);
             // 
-            // mlistviewMenu
-            // 
-            this.mlistviewMenu.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mlistviewMenu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.mlistviewMenu.Depth = 0;
-            this.mlistviewMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.mlistviewMenu.FullRowSelect = true;
-            this.mlistviewMenu.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.mlistviewMenu.HideSelection = false;
-            this.mlistviewMenu.Location = new System.Drawing.Point(0, 163);
-            this.mlistviewMenu.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mlistviewMenu.MouseState = MaterialSkin.MouseState.OUT;
-            this.mlistviewMenu.MultiSelect = false;
-            this.mlistviewMenu.Name = "mlistviewMenu";
-            this.mlistviewMenu.OwnerDraw = true;
-            this.mlistviewMenu.Size = new System.Drawing.Size(300, 310);
-            this.mlistviewMenu.TabIndex = 18;
-            this.mlistviewMenu.UseCompatibleStateImageBehavior = false;
-            this.mlistviewMenu.View = System.Windows.Forms.View.Details;
-            // 
             // mlblSoortBestelling
             // 
-            this.mlblSoortBestelling.AutoSize = true;
             this.mlblSoortBestelling.Depth = 0;
             this.mlblSoortBestelling.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblSoortBestelling.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -132,30 +108,40 @@
             this.mlblSoortBestelling.Text = "Soort Bestelling";
             this.mlblSoortBestelling.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // listviewMenu
+            // 
+            this.listviewMenu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listviewMenu.HideSelection = false;
+            this.listviewMenu.Location = new System.Drawing.Point(16, 174);
+            this.listviewMenu.Name = "listviewMenu";
+            this.listviewMenu.ShowItemToolTips = true;
+            this.listviewMenu.Size = new System.Drawing.Size(271, 246);
+            this.listviewMenu.TabIndex = 20;
+            this.listviewMenu.UseCompatibleStateImageBehavior = false;
+            this.listviewMenu.SelectedIndexChanged += new System.EventHandler(this.ListviewMenu_SelectedIndexChanged);
+            // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Naam";
-            this.columnHeader1.Width = 150;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "";
+            this.columnHeader1.Width = 220;
             // 
             // OrderForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 500);
+            this.ControlBox = false;
+            this.Controls.Add(this.listviewMenu);
             this.Controls.Add(this.mlblSoortBestelling);
-            this.Controls.Add(this.mlistviewMenu);
             this.Controls.Add(this.mbtnTerug);
             this.Controls.Add(this.mlblTafel);
             this.Controls.Add(this.mbtnUitloggen);
             this.Controls.Add(this.mlblWerknemer);
             this.Name = "OrderForm2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrderForm2_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -165,9 +151,8 @@
         private MaterialSkin.Controls.MaterialFlatButton mbtnUitloggen;
         private MaterialSkin.Controls.MaterialLabel mlblTafel;
         private MaterialSkin.Controls.MaterialFlatButton mbtnTerug;
-        private MaterialSkin.Controls.MaterialListView mlistviewMenu;
         private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
+        private System.Windows.Forms.ListView listviewMenu;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

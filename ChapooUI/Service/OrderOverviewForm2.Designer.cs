@@ -1,6 +1,6 @@
 ﻿namespace ChapooUI
 {
-    partial class OrderActionForm2
+    partial class OrderOverviewForm2
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.mlblTafel = new MaterialSkin.Controls.MaterialLabel();
-            this.mbtnActionOpnemen = new MaterialSkin.Controls.MaterialFlatButton();
-            this.mbtnBestellingOverview = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnTerug = new MaterialSkin.Controls.MaterialFlatButton();
+            this.mlblNaam = new MaterialSkin.Controls.MaterialLabel();
             this.mbtnUitloggen = new MaterialSkin.Controls.MaterialFlatButton();
-            this.mlblWerknemer = new MaterialSkin.Controls.MaterialLabel();
+            this.mbtnBetalen = new MaterialSkin.Controls.MaterialFlatButton();
+            this.listviewOverview = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // mlblTafel
@@ -46,41 +46,8 @@
             this.mlblTafel.MouseState = MaterialSkin.MouseState.HOVER;
             this.mlblTafel.Name = "mlblTafel";
             this.mlblTafel.Size = new System.Drawing.Size(53, 24);
-            this.mlblTafel.TabIndex = 6;
+            this.mlblTafel.TabIndex = 18;
             this.mlblTafel.Text = "Tafel";
-            this.mlblTafel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // mbtnActionOpnemen
-            // 
-            this.mbtnActionOpnemen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mbtnActionOpnemen.Depth = 0;
-            this.mbtnActionOpnemen.Icon = null;
-            this.mbtnActionOpnemen.Location = new System.Drawing.Point(58, 163);
-            this.mbtnActionOpnemen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mbtnActionOpnemen.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mbtnActionOpnemen.Name = "mbtnActionOpnemen";
-            this.mbtnActionOpnemen.Primary = false;
-            this.mbtnActionOpnemen.Size = new System.Drawing.Size(170, 83);
-            this.mbtnActionOpnemen.TabIndex = 11;
-            this.mbtnActionOpnemen.Text = "Bestelling Opnemen";
-            this.mbtnActionOpnemen.UseVisualStyleBackColor = true;
-            this.mbtnActionOpnemen.Click += new System.EventHandler(this.MbtnActionOpnemen_Click);
-            // 
-            // mbtnBestellingOverview
-            // 
-            this.mbtnBestellingOverview.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mbtnBestellingOverview.Depth = 0;
-            this.mbtnBestellingOverview.Icon = null;
-            this.mbtnBestellingOverview.Location = new System.Drawing.Point(58, 303);
-            this.mbtnBestellingOverview.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mbtnBestellingOverview.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mbtnBestellingOverview.Name = "mbtnBestellingOverview";
-            this.mbtnBestellingOverview.Primary = false;
-            this.mbtnBestellingOverview.Size = new System.Drawing.Size(170, 83);
-            this.mbtnBestellingOverview.TabIndex = 12;
-            this.mbtnBestellingOverview.Text = "Bestelling Overview";
-            this.mbtnBestellingOverview.UseVisualStyleBackColor = true;
-            this.mbtnBestellingOverview.Click += new System.EventHandler(this.MbtnBestellingOverview_Click);
             // 
             // mbtnTerug
             // 
@@ -93,10 +60,23 @@
             this.mbtnTerug.Name = "mbtnTerug";
             this.mbtnTerug.Primary = false;
             this.mbtnTerug.Size = new System.Drawing.Size(77, 24);
-            this.mbtnTerug.TabIndex = 13;
+            this.mbtnTerug.TabIndex = 19;
             this.mbtnTerug.Text = "Terug";
             this.mbtnTerug.UseVisualStyleBackColor = true;
             this.mbtnTerug.Click += new System.EventHandler(this.MbtnTerug_Click);
+            // 
+            // mlblNaam
+            // 
+            this.mlblNaam.Depth = 0;
+            this.mlblNaam.Font = new System.Drawing.Font("Roboto", 11F);
+            this.mlblNaam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mlblNaam.Location = new System.Drawing.Point(12, 36);
+            this.mlblNaam.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mlblNaam.Name = "mlblNaam";
+            this.mlblNaam.Size = new System.Drawing.Size(103, 24);
+            this.mlblNaam.TabIndex = 20;
+            this.mlblNaam.Text = "werknemer";
+            this.mlblNaam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mbtnUitloggen
             // 
@@ -109,47 +89,65 @@
             this.mbtnUitloggen.Name = "mbtnUitloggen";
             this.mbtnUitloggen.Primary = false;
             this.mbtnUitloggen.Size = new System.Drawing.Size(77, 24);
-            this.mbtnUitloggen.TabIndex = 14;
+            this.mbtnUitloggen.TabIndex = 21;
             this.mbtnUitloggen.Text = "Logout";
             this.mbtnUitloggen.UseVisualStyleBackColor = true;
             this.mbtnUitloggen.Click += new System.EventHandler(this.MbtnUitloggen_Click);
             // 
-            // mlblWerknemer
+            // mbtnBetalen
             // 
-            this.mlblWerknemer.Depth = 0;
-            this.mlblWerknemer.Font = new System.Drawing.Font("Roboto", 11F);
-            this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mlblWerknemer.Location = new System.Drawing.Point(12, 36);
-            this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mlblWerknemer.Name = "mlblWerknemer";
-            this.mlblWerknemer.Size = new System.Drawing.Size(103, 24);
-            this.mlblWerknemer.TabIndex = 10;
-            this.mlblWerknemer.Text = "werknemer";
-            this.mlblWerknemer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.mbtnBetalen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mbtnBetalen.Depth = 0;
+            this.mbtnBetalen.Icon = null;
+            this.mbtnBetalen.Location = new System.Drawing.Point(40, 404);
+            this.mbtnBetalen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mbtnBetalen.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mbtnBetalen.Name = "mbtnBetalen";
+            this.mbtnBetalen.Primary = false;
+            this.mbtnBetalen.Size = new System.Drawing.Size(203, 23);
+            this.mbtnBetalen.TabIndex = 22;
+            this.mbtnBetalen.Text = "Betalen";
+            this.mbtnBetalen.UseVisualStyleBackColor = true;
+            this.mbtnBetalen.Click += new System.EventHandler(this.MbtnBetalen_Click);
             // 
-            // OrderActionForm2
+            // listviewOverview
             // 
+            this.listviewOverview.HideSelection = false;
+            this.listviewOverview.Location = new System.Drawing.Point(16, 119);
+            this.listviewOverview.Name = "listviewOverview";
+            this.listviewOverview.Size = new System.Drawing.Size(271, 197);
+            this.listviewOverview.TabIndex = 23;
+            this.listviewOverview.UseCompatibleStateImageBehavior = false;
+            this.listviewOverview.SelectedIndexChanged += new System.EventHandler(this.ListviewOverview_SelectedIndexChanged);
+            // 
+            // OrderOverviewForm2
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 500);
+            this.Controls.Add(this.listviewOverview);
+            this.Controls.Add(this.mbtnBetalen);
             this.Controls.Add(this.mbtnUitloggen);
+            this.Controls.Add(this.mlblNaam);
             this.Controls.Add(this.mbtnTerug);
-            this.Controls.Add(this.mbtnBestellingOverview);
-            this.Controls.Add(this.mbtnActionOpnemen);
-            this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.mlblTafel);
-            this.Name = "OrderActionForm2";
-            this.Load += new System.EventHandler(this.OrderActionForm2_Load);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.Name = "OrderOverviewForm2";
+            this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
         private MaterialSkin.Controls.MaterialLabel mlblTafel;
-        private MaterialSkin.Controls.MaterialFlatButton mbtnActionOpnemen;
-        private MaterialSkin.Controls.MaterialFlatButton mbtnBestellingOverview;
         private MaterialSkin.Controls.MaterialFlatButton mbtnTerug;
+        private MaterialSkin.Controls.MaterialLabel mlblNaam;
         private MaterialSkin.Controls.MaterialFlatButton mbtnUitloggen;
-        private MaterialSkin.Controls.MaterialLabel mlblWerknemer;
+        private MaterialSkin.Controls.MaterialFlatButton mbtnBetalen;
+        private System.Windows.Forms.ListView listviewOverview;
     }
 }

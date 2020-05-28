@@ -47,6 +47,8 @@ namespace ChapooUI
         //Laden van toegevoegde orders, leeg als er nog niks is toegevoegd
         public void LoadOrder()
         {
+            listviewOrderMenus.Clear();
+            string comment = "";
             if (bestelling.orderItems.Count < 1)
             {
                 return;
@@ -57,15 +59,21 @@ namespace ChapooUI
                 {
                     ListViewItem li = new ListViewItem(o.menuItem.naam);
                     li.SubItems.Add(o.Aantal.ToString());
+                    li.SubItems.Add(o.Comment);
                     li.Tag = o;
-                    mlistviewOrderMenus.Items.Add(li);
-                }
-                mlistviewOrderMenus.View = View.Details;
-                mlistviewOrderMenus.Columns.Add("Naam");
-                mlistviewOrderMenus.Columns.Add("Aantal");
-                mlistviewOrderMenus.Columns.Add("Commentaar");
-            }
 
+                    listviewOrderMenus.Items.Add(li);
+                    if (o.Comment != "")
+                    {
+                        comment += o.menuItem.naam + ": " + o.Comment + ", \r\n";
+                    }
+                }
+                listviewOrderMenus.View = View.Details;
+                listviewOrderMenus.Columns.Add("Naam");
+                listviewOrderMenus.Columns.Add("Aantal");
+                listviewOrderMenus.Columns.Add("Commentaar");
+            }
+            rtxtCommentaar.Text = comment;
         }
 
         //Button events
@@ -109,7 +117,7 @@ namespace ChapooUI
 
         private void MbtnDrinken_Click(object sender, EventArgs e)
         {
-            mlistviewOrderMenus.Clear();
+            //listviewOrderMenus.Clear();
             this.Hide();
             OrderForm2 drinksForm = new OrderForm2("Drinks", tafelNummer, bestelling, werknemer, this);
             drinksForm.Show();
@@ -117,7 +125,7 @@ namespace ChapooUI
 
         private void MbtnLunch_Click(object sender, EventArgs e)
         {
-            mlistviewOrderMenus.Clear();
+            //listviewOrderMenus.Clear();
             this.Hide();
             OrderForm2 lunchForm = new OrderForm2("Lunch", tafelNummer, bestelling, werknemer, this);
             lunchForm.Show();
@@ -125,7 +133,7 @@ namespace ChapooUI
 
         private void MbtnDiner_Click(object sender, EventArgs e)
         {
-            mlistviewOrderMenus.Clear();
+            //listviewOrderMenus.Clear();
             this.Hide();
             OrderForm2 dinerForm = new OrderForm2("Diner", tafelNummer, bestelling, werknemer, this);
             dinerForm.Show();
@@ -137,7 +145,7 @@ namespace ChapooUI
             bestelling.tafel_id = tafelNummer;
             bestelling.datum = DateTime.Now;
             bestelling.werknemer = werknemer;
-            //bestelling.commentaar = txtCommentaar.Text;
+            bestelling.commentaar = rtxtCommentaar.Text;
 
             //Bestelling toevoegen aan db
             bestellingService.AddOrder(bestelling);
@@ -162,7 +170,7 @@ namespace ChapooUI
             MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_id);
 
             this.Close();
-            OrderOverviewForm overviewForm = new OrderOverviewForm(werknemer, tafelNummer);
+            OrderOverviewForm2 overviewForm = new OrderOverviewForm2(werknemer, tafelNummer);
             overviewForm.Show();
         }
 

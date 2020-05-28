@@ -32,11 +32,15 @@
             this.mlblNaam = new MaterialSkin.Controls.MaterialLabel();
             this.mlblTafel = new MaterialSkin.Controls.MaterialLabel();
             this.mbtnTerug = new MaterialSkin.Controls.MaterialFlatButton();
-            this.mlistviewOrderMenus = new MaterialSkin.Controls.MaterialListView();
             this.mbtnDrinken = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnLunch = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnDiner = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnToevoegen = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rtxtCommentaar = new System.Windows.Forms.RichTextBox();
+            this.listviewOrderMenus = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // mbtnUitloggen
@@ -97,24 +101,6 @@
             this.mbtnTerug.UseVisualStyleBackColor = true;
             this.mbtnTerug.Click += new System.EventHandler(this.MbtnTerug_Click);
             // 
-            // mlistviewOrderMenus
-            // 
-            this.mlistviewOrderMenus.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mlistviewOrderMenus.Depth = 0;
-            this.mlistviewOrderMenus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.mlistviewOrderMenus.FullRowSelect = true;
-            this.mlistviewOrderMenus.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.mlistviewOrderMenus.HideSelection = false;
-            this.mlistviewOrderMenus.Location = new System.Drawing.Point(13, 101);
-            this.mlistviewOrderMenus.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mlistviewOrderMenus.MouseState = MaterialSkin.MouseState.OUT;
-            this.mlistviewOrderMenus.Name = "mlistviewOrderMenus";
-            this.mlistviewOrderMenus.OwnerDraw = true;
-            this.mlistviewOrderMenus.Size = new System.Drawing.Size(275, 176);
-            this.mlistviewOrderMenus.TabIndex = 19;
-            this.mlistviewOrderMenus.UseCompatibleStateImageBehavior = false;
-            this.mlistviewOrderMenus.View = System.Windows.Forms.View.Details;
-            // 
             // mbtnDrinken
             // 
             this.mbtnDrinken.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -168,25 +154,59 @@
             this.mbtnToevoegen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnToevoegen.Depth = 0;
             this.mbtnToevoegen.Icon = null;
-            this.mbtnToevoegen.Location = new System.Drawing.Point(16, 449);
+            this.mbtnToevoegen.Location = new System.Drawing.Point(16, 540);
             this.mbtnToevoegen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mbtnToevoegen.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnToevoegen.Name = "mbtnToevoegen";
             this.mbtnToevoegen.Primary = false;
-            this.mbtnToevoegen.Size = new System.Drawing.Size(255, 36);
+            this.mbtnToevoegen.Size = new System.Drawing.Size(271, 36);
             this.mbtnToevoegen.TabIndex = 23;
             this.mbtnToevoegen.Text = "Toevoegen";
             this.mbtnToevoegen.UseVisualStyleBackColor = true;
             this.mbtnToevoegen.Click += new System.EventHandler(this.MbtnToevoegen_Click);
             // 
+            // rtxtCommentaar
+            // 
+            this.rtxtCommentaar.Location = new System.Drawing.Point(16, 439);
+            this.rtxtCommentaar.Name = "rtxtCommentaar";
+            this.rtxtCommentaar.Size = new System.Drawing.Size(271, 92);
+            this.rtxtCommentaar.TabIndex = 24;
+            this.rtxtCommentaar.Text = "";
+            // 
+            // listviewOrderMenus
+            // 
+            this.listviewOrderMenus.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listviewOrderMenus.HideSelection = false;
+            this.listviewOrderMenus.Location = new System.Drawing.Point(16, 111);
+            this.listviewOrderMenus.Name = "listviewOrderMenus";
+            this.listviewOrderMenus.Size = new System.Drawing.Size(271, 166);
+            this.listviewOrderMenus.TabIndex = 25;
+            this.listviewOrderMenus.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Naam";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Aantal";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Commentaar";
+            // 
             // OrderMenusForm2
             // 
-            this.ClientSize = new System.Drawing.Size(300, 500);
+            this.ClientSize = new System.Drawing.Size(300, 600);
+            this.Controls.Add(this.listviewOrderMenus);
+            this.Controls.Add(this.rtxtCommentaar);
             this.Controls.Add(this.mbtnToevoegen);
             this.Controls.Add(this.mbtnDiner);
             this.Controls.Add(this.mbtnLunch);
             this.Controls.Add(this.mbtnDrinken);
-            this.Controls.Add(this.mlistviewOrderMenus);
             this.Controls.Add(this.mbtnTerug);
             this.Controls.Add(this.mlblTafel);
             this.Controls.Add(this.mlblNaam);
@@ -207,10 +227,14 @@
         private MaterialSkin.Controls.MaterialLabel mlblNaam;
         private MaterialSkin.Controls.MaterialLabel mlblTafel;
         private MaterialSkin.Controls.MaterialFlatButton mbtnTerug;
-        private MaterialSkin.Controls.MaterialListView mlistviewOrderMenus;
         private MaterialSkin.Controls.MaterialFlatButton mbtnDrinken;
         private MaterialSkin.Controls.MaterialFlatButton mbtnLunch;
         private MaterialSkin.Controls.MaterialFlatButton mbtnDiner;
         private MaterialSkin.Controls.MaterialFlatButton mbtnToevoegen;
+        private System.Windows.Forms.RichTextBox rtxtCommentaar;
+        private System.Windows.Forms.ListView listviewOrderMenus;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

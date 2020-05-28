@@ -95,6 +95,18 @@
     <Compile Include="Service\OrderForm2.Designer.cs">
       <DependentUpon>OrderForm2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service\OrderMenuAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderMenuAddForm.Designer.cs">
+      <DependentUpon>OrderMenuAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderMenuEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderMenuEditForm.Designer.cs">
+      <DependentUpon>OrderMenuEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\OrderMenusForm2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +124,12 @@
     </Compile>
     <Compile Include="Service\OrderActionForm.Designer.cs">
       <DependentUpon>OrderActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service\OrderOverviewForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderOverviewForm2.Designer.cs">
+      <DependentUpon>OrderOverviewForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="Service\OrderOverviewForm.cs">
       <SubType>Form</SubType>
@@ -200,6 +218,12 @@
     <EmbeddedResource Include="Service\OrderForm2.resx">
       <DependentUpon>OrderForm2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderMenuAddForm.resx">
+      <DependentUpon>OrderMenuAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderMenuEditForm.resx">
+      <DependentUpon>OrderMenuEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenusForm2.resx">
       <DependentUpon>OrderMenusForm2.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderActionForm.resx">
       <DependentUpon>OrderActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderOverviewForm2.resx">
+      <DependentUpon>OrderOverviewForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderOverviewForm.resx">
       <DependentUpon>OrderOverviewForm.cs</DependentUpon>

@@ -55,8 +55,8 @@ namespace ChapooUI
             
 
             SetTableColors();
-            btnList[6].BackColor = Color.Yellow;
-            btnList[8].BackColor = Color.Orange;
+            //btnList[6].BackColor = Color.Yellow;
+            //btnList[8].BackColor = Color.Orange;
 
         }
 

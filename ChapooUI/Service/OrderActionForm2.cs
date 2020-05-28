@@ -36,12 +36,12 @@ namespace ChapooUI
         //Button events
         
             //Payment form niet gebruikt hier.
-        private void btnActionBekijken_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            PaymentForm form = new PaymentForm(werknemer, tafelNummer);
-            form.Show();
-        }
+        //private void btnActionBekijken_Click(object sender, EventArgs e)
+        //{
+        //    this.Close();
+        //    PaymentForm form = new PaymentForm(werknemer, tafelNummer);
+        //    form.Show();
+        //}
 
       
 
@@ -61,7 +61,7 @@ namespace ChapooUI
 
         private void MbtnBestellingOverview_Click(object sender, EventArgs e)
         {
-            OrderOverviewForm form = new OrderOverviewForm(werknemer, tafelNummer);
+            OrderOverviewForm2 form = new OrderOverviewForm2(werknemer, tafelNummer);
             this.Close();
             form.Show();
         }

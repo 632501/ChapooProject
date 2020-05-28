@@ -27,9 +27,9 @@ namespace ChapooUI
         Inlog werknemer { get; set; }
         Bestelling_Service bestellingService = new Bestelling_Service();
         Menu_Service menuService = new Menu_Service();
-        OrderMenusForm orderMenusForm { get; set; }
+        OrderMenusForm2 orderMenusForm { get; set; }
 
-        public OrderForm(string sort, int tafelnummer, Bestelling order, Inlog werknemer, OrderMenusForm orderMenusForm)
+        public OrderForm(string sort, int tafelnummer, Bestelling order, Inlog werknemer, OrderMenusForm2 orderMenusForm)
         {
             InitializeComponent();
             // Initialize MaterialSkinManager
@@ -174,9 +174,14 @@ namespace ChapooUI
 
         private void btn_Terug_Click(object sender, EventArgs e)
         {
-            OrderMenusForm form = new OrderMenusForm(werknemer, tafelnummer);
+            OrderMenusForm2 form = new OrderMenusForm2(werknemer, tafelnummer);
             this.Close();
             form.Show();
+        }
+
+        private void ListviewMenu_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

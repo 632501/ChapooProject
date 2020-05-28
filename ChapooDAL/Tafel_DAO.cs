@@ -46,7 +46,7 @@ namespace ChapooDAL
         public void EditStatus(int tableNumber, bool status)
         {
 
-            int state = 1;
+            int state = 0;
             if(status == true)
             {
                 state = 1;

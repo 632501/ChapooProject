@@ -112,7 +112,7 @@
             this.materialLabel1.AutoSize = true;
             this.materialLabel1.Depth = 0;
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel1.Location = new System.Drawing.Point(133, 155);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
@@ -152,6 +152,7 @@
             this.materialListViewBestelling.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.materialListViewBestelling.FullRowSelect = true;
             this.materialListViewBestelling.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.materialListViewBestelling.HideSelection = false;
             this.materialListViewBestelling.Location = new System.Drawing.Point(12, 182);
             this.materialListViewBestelling.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialListViewBestelling.MouseState = MaterialSkin.MouseState.OUT;
@@ -165,7 +166,7 @@
             // Amount
             // 
             this.Amount.Text = "Aantal";
-            this.Amount.Width = 70;
+            this.Amount.Width = 31;
             // 
             // NamePayment
             // 

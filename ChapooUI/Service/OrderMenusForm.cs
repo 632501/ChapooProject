@@ -79,24 +79,24 @@ namespace ChapooUI
         {
             listviewTakenOrder.Clear();
             this.Hide();
-            OrderForm drinksForm = new OrderForm("Drinks", tafelNummer, bestelling, werknemer, this);
-            drinksForm.Show();
+            //OrderForm drinksForm = new OrderForm("Drinks", tafelNummer, bestelling, werknemer, this);
+            //drinksForm.Show();
         }
 
         public void btnLunch_Click_1(object sender, EventArgs e)
         {
             listviewTakenOrder.Clear();
             this.Hide();
-            OrderForm lunchForm = new OrderForm("Lunch",tafelNummer, bestelling, werknemer, this);
-            lunchForm.Show();
+            //OrderForm lunchForm = new OrderForm("Lunch",tafelNummer, bestelling, werknemer, this);
+            //lunchForm.Show();
         }
 
         public void btnDiner_Click_1(object sender, EventArgs e)
         {
             listviewTakenOrder.Clear();
             this.Hide();
-            OrderForm dinerForm = new OrderForm("Diner",tafelNummer, bestelling, werknemer, this);
-            dinerForm.Show();
+            //OrderForm dinerForm = new OrderForm("Diner",tafelNummer, bestelling, werknemer, this);
+            //dinerForm.Show();
         }
 
         private void btn_Terug_Click(object sender, EventArgs e)

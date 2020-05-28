@@ -62,11 +62,11 @@ namespace ChapooLogica
 
         // bon gedeelte 
 
-        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, int bestelling_ID, string paymentType)
+        public void Paid(int tafel_ID, string amountWithBtw, string tip, string comment, int bestelling_ID)
         {
             string date = DateTime.Now.ToShortDateString();
 
-            order_DAO.Paid(tafel_ID, date, amountWithBtw, tip, comment, bestelling_ID, paymentType);
+            order_DAO.Paid(tafel_ID, date, amountWithBtw, tip, comment, bestelling_ID);
         }
 
         public Bestelling Orders(int tafel_ID)
@@ -75,6 +75,11 @@ namespace ChapooLogica
             orders = order_DAO.Orders(tafel_ID);
 
             return orders;
+        }
+
+        public void EditOrder(OrderItem o)
+        {
+            order_DAO.EditOrder(o);
         }
     }
 }

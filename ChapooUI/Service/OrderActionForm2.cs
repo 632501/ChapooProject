@@ -17,7 +17,7 @@ namespace ChapooUI
     public partial class OrderActionForm2 : MaterialForm
     {
         private readonly MaterialSkinManager materialSkinManager;
-        Bestelling_Service bestellingService = new Bestelling_Service();
+        //Bestelling_Service bestellingService = new Bestelling_Service();
         Inlog werknemer = new Inlog();
         int tafelNummer { get; set; }
 

@@ -84,7 +84,8 @@ namespace ChapooUI
             listviewOverview.Columns.Add("#");
             listviewOverview.Columns.Add("Commentaar");
             listviewOverview.Columns.Add("Status");
-          
+            listviewOverview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
         }
 
         //Deleten van een enkele Orderitem
@@ -192,31 +193,5 @@ namespace ChapooUI
                 MessageBox.Show("Verwijderen is gestopt.");
             }
         }
-
-        //Deleten van volledige order uit db
-        //private void btnDeleteFullOrder_Click(object sender, EventArgs e)
-        //{
-        //    DialogResult res = MessageBox.Show("Weet je het zeker dat je deze bestelling wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        //    if (res == DialogResult.OK)
-        //    {
-        //        int value;
-        //        if (int.TryParse(txtGetOrderNr.Text, out value))
-        //        {
-        //            int bestellingnr = int.Parse(txtGetOrderNr.Text);
-        //            orderService.DeleteOrderItemsByID(bestellingnr);
-        //            bestellingService.DeleteOrders(bestellingnr);
-        //            LoadOrders();
-        //        } else
-        //        {
-        //            MessageBox.Show("OrderNr was incorrect");
-        //        }
-
-        //    }
-        //    if (res == DialogResult.Cancel)
-        //    {
-        //        MessageBox.Show("Verwijderen is gecancelled.");
-        //    }
-
-        //}
     }
 }

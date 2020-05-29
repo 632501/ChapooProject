@@ -156,7 +156,7 @@
             this.mbtnEdit.Primary = false;
             this.mbtnEdit.Size = new System.Drawing.Size(278, 36);
             this.mbtnEdit.TabIndex = 17;
-            this.mbtnEdit.Text = "Edit";
+            this.mbtnEdit.Text = "Aanpassen";
             this.mbtnEdit.UseVisualStyleBackColor = true;
             this.mbtnEdit.Click += new System.EventHandler(this.MbtnEdit_Click);
             // 
@@ -172,7 +172,7 @@
             this.mbtnAfbreken.Primary = false;
             this.mbtnAfbreken.Size = new System.Drawing.Size(278, 23);
             this.mbtnAfbreken.TabIndex = 18;
-            this.mbtnAfbreken.Text = "Afbreken";
+            this.mbtnAfbreken.Text = "Stoppen";
             this.mbtnAfbreken.UseVisualStyleBackColor = true;
             this.mbtnAfbreken.Click += new System.EventHandler(this.MbtnAfbreken_Click);
             // 

@@ -84,81 +84,10 @@ namespace ChapooUI.Service
                 li.ToolTipText = m.naam;
             }
             listviewMenu.View = View.Details;
-            //listviewMenu.Columns.Add("Naam");
-            
+            listviewMenu.Columns.Add("Naam");
+            listviewMenu.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+
         }
-
-        //Button events
-        //private void btnAddItem_Click(object sender, EventArgs e)
-        //{
-        //    //Selecteerde item aantal verhogen
-        //    int amount = int.Parse(mlistviewMenu.SelectedItems[0].SubItems[1].Text);
-        //    amount++;
-        //    mlistviewMenu.SelectedItems[0].SubItems[1].Text = amount.ToString();
-
-        //}
-
-
-        //private void btnRemoveItem_Click(object sender, EventArgs e)
-        //{
-        //    //Selecteerde item aantal verlagen
-        //    int amount = int.Parse(mlistviewMenu.SelectedItems[0].SubItems[1].Text);
-        //    if (amount == 0)
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        amount--;
-        //    }
-        //    mlistviewMenu.SelectedItems[0].SubItems[1].Text = amount.ToString();
-        //}
-
-        //private void btnAddOrder_Click(object sender, EventArgs e)
-        //{
-        //    int i;
-        //    foreach (ListViewItem li in mlistviewMenu.Items)
-        //    {
-        //        OrderItem o;
-        //        MenuItem m = new MenuItem();
-
-        //        m.naam = li.SubItems[0].Text;
-        //        string a = "";
-        //        a = li.SubItems[1].Text;
-        //        i = int.Parse(a);
-        //        if (i != 0)
-        //        {
-        //            bool duplicate;
-        //            duplicate = false;
-        //            m = menuService.GetItem(m.naam);
-
-        //            o = new OrderItem();
-        //            o.menuItem = m;
-        //            o.Aantal = i;
-        //            o.Status = "bezig";
-
-        //            //orderitems toevoegen aan lijst met orders van het ordermenusform
-        //            foreach (OrderItem item in orderMenusForm.bestelling.orderItems)
-        //            {
-        //                if (item.menuItem.naam == o.menuItem.naam)
-        //                {
-        //                    duplicate = true;
-        //                    item.Aantal += o.Aantal;
-        //                }
-        //                //continue;
-        //            }
-        //            if (duplicate == false)
-        //            {
-        //                orderMenusForm.bestelling.orderItems.Add(o);
-        //            }
-        //        }
-
-        //    }
-        //    MessageBox.Show("Er zijn items aan de bestelling toegevoegd.");
-        //    this.Close();
-        //    orderMenusForm.Show();
-        //    orderMenusForm.LoadOrder();
-        //}
 
         private void OrderForm2_Load(object sender, EventArgs e)
         {

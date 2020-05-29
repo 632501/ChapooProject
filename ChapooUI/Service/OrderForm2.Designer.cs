@@ -34,7 +34,6 @@
             this.mbtnTerug = new MaterialSkin.Controls.MaterialFlatButton();
             this.mlblSoortBestelling = new MaterialSkin.Controls.MaterialLabel();
             this.listviewMenu = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // mlblWerknemer
@@ -55,14 +54,14 @@
             this.mbtnUitloggen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnUitloggen.Depth = 0;
             this.mbtnUitloggen.Icon = null;
-            this.mbtnUitloggen.Location = new System.Drawing.Point(210, 36);
+            this.mbtnUitloggen.Location = new System.Drawing.Point(187, 36);
             this.mbtnUitloggen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mbtnUitloggen.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnUitloggen.Name = "mbtnUitloggen";
             this.mbtnUitloggen.Primary = false;
-            this.mbtnUitloggen.Size = new System.Drawing.Size(77, 24);
+            this.mbtnUitloggen.Size = new System.Drawing.Size(100, 24);
             this.mbtnUitloggen.TabIndex = 15;
-            this.mbtnUitloggen.Text = "Logout";
+            this.mbtnUitloggen.Text = "Uitloggen";
             this.mbtnUitloggen.UseVisualStyleBackColor = true;
             this.mbtnUitloggen.Click += new System.EventHandler(this.MbtnUitloggen_Click);
             // 
@@ -111,8 +110,6 @@
             // 
             // listviewMenu
             // 
-            this.listviewMenu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
             this.listviewMenu.HideSelection = false;
             this.listviewMenu.Location = new System.Drawing.Point(16, 174);
             this.listviewMenu.Name = "listviewMenu";
@@ -121,11 +118,6 @@
             this.listviewMenu.TabIndex = 20;
             this.listviewMenu.UseCompatibleStateImageBehavior = false;
             this.listviewMenu.SelectedIndexChanged += new System.EventHandler(this.ListviewMenu_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Naam";
-            this.columnHeader1.Width = 220;
             // 
             // OrderForm2
             // 
@@ -154,6 +146,5 @@
         private MaterialSkin.Controls.MaterialFlatButton mbtnTerug;
         private MaterialSkin.Controls.MaterialLabel mlblSoortBestelling;
         private System.Windows.Forms.ListView listviewMenu;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

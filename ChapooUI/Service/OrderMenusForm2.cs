@@ -69,44 +69,14 @@ namespace ChapooUI
                     }
                 }
                 listviewOrderMenus.View = View.Details;
+                
                 listviewOrderMenus.Columns.Add("Naam");
-                listviewOrderMenus.Columns.Add("Aantal");
+                listviewOrderMenus.Columns.Add("#");
                 listviewOrderMenus.Columns.Add("Commentaar");
+                listviewOrderMenus.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
             }
             rtxtCommentaar.Text = comment;
         }
-
-        //Button events
-
-        //private void btnIncrease_Click(object sender, EventArgs e)
-        //{
-        //    if (mlistviewOrderMenus.SelectedItems.Count > 0)
-        //    {
-        //        //foreach (OrderItem item in bestelling.orderItems)
-        //        //{
-        //            OrderItem item = (OrderItem)mlistviewOrderMenus.SelectedItems[0].Tag;
-        //            item.Aantal += 1;
-        //            mlistviewOrderMenus.Clear();
-        //            LoadOrder();
-        //        //}
-        //    }
-        //}
-
-        //private void btnDecrease_Click(object sender, EventArgs e)
-        //{
-        //    if (mlistviewOrderMenus.SelectedItems.Count > 0)
-        //    {
-        //        OrderItem o = (OrderItem)listviewTakenOrder.SelectedItems[0].Tag;
-        //        o.Aantal -= 1;
-
-        //        listviewTakenOrder.Clear();
-        //        if (o.Aantal == 0)
-        //        {
-        //            bestelling.orderItems.Remove(o);
-        //        }
-        //        LoadOrder();
-        //    }
-        //}
 
         private void OrderMenusForm_Load_1(object sender, EventArgs e)
         {
@@ -205,8 +175,6 @@ namespace ChapooUI
                 //Open edit form die shit edit/verwijderd
                 OrderMenusEditForm form = new OrderMenusEditForm(item, this);
                 form.Show();
-                //OrderMenuAddForm form = new OrderMenuAddForm(item, orderMenusForm, this);
-                //form.Show();
             }
         }
     }

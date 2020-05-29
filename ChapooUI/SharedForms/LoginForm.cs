@@ -102,11 +102,6 @@ namespace ChapooUI
             mPasswordtxt.Text = s;
         }
 
-        private void btn_inlog_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void MaterialSingleLineTextField1_Click(object sender, EventArgs e)
         {
 

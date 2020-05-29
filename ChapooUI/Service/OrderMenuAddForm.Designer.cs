@@ -172,7 +172,7 @@
             this.mbtnAfbreken.Primary = false;
             this.mbtnAfbreken.Size = new System.Drawing.Size(278, 23);
             this.mbtnAfbreken.TabIndex = 10;
-            this.mbtnAfbreken.Text = "Afbreken";
+            this.mbtnAfbreken.Text = "Stoppen";
             this.mbtnAfbreken.UseVisualStyleBackColor = true;
             this.mbtnAfbreken.Click += new System.EventHandler(this.MbtnAfbreken_Click);
             // 

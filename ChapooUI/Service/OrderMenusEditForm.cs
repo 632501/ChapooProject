@@ -56,24 +56,6 @@ namespace ChapooUI.Service
             mlblVoorraadAantal.Text = voorraad.ToString();
         }
 
-        //private void MbtnVerwijderen_Click(object sender, EventArgs e)
-        //{
-        //    int id = item.order_id;
-        //    DialogResult res = MessageBox.Show("Weet je het zeker dat je deze orderitem wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-        //    if (res == DialogResult.OK)
-        //    {
-        //        int voorraad = item.menuItem.voorraad + item.Aantal;
-        //        orderService.DeleteOrder(item.order_id);
-        //        menuService.ChangeSupply(item.menuItem.naam, voorraad );
-        //        form.LoadOrders();
-        //        this.Close();
-        //    }
-        //    else if (res == DialogResult.Cancel)
-        //    {
-        //        MessageBox.Show("Verwijderen is afgebroken");
-        //    }
-        //}
-
         private void MbtnEdit_Click(object sender, EventArgs e)
         {
             //update orderitem
@@ -87,7 +69,6 @@ namespace ChapooUI.Service
                     if (aantal == 0)
                     {
                         //Verwijder orderitem van de lijst
-                        //form.bestelling.orderItems[o.order_id].
                         form.bestelling.orderItems.Remove(o);
 
                     }
@@ -110,33 +91,6 @@ namespace ChapooUI.Service
             {
                 MessageBox.Show("Niet genoeg voorraad, verminder het gewenste aantal.");
             }
-            
-
-
-            
-                //if (aantal > o.Aantal)
-                //{
-                //    int verschil = aantal - o.Aantal;
-                //    int voorraad = o.menuItem.voorraad;
-                //    //menuService.ChangeSupply(o.menuItem.naam, voorraad - verschil);
-                //    form.bestelling.orderItems[o.order_id].Aantal = 1;
-                //} else
-                //{
-                //    int verschil = aantal - o.Aantal;
-                //    int voorraad = o.menuItem.voorraad;
-                //    //menuService.ChangeSupply(o.menuItem.naam, voorraad - verschil);
-
-                //}
-                //o.Aantal = aantal;
-                //o.Comment = commentaar;
-                ////form.bestelling.orderItems[o.order_id].Aantal == aantal;
-                //// doe update
-                ////orderService.EditOrder(o);
-                //form.LoadOrders();
-                //this.Close();
-                //form.Show();
-                
-            
             
         }
 

@@ -103,14 +103,14 @@
             this.mbtnUitloggen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnUitloggen.Depth = 0;
             this.mbtnUitloggen.Icon = null;
-            this.mbtnUitloggen.Location = new System.Drawing.Point(210, 36);
+            this.mbtnUitloggen.Location = new System.Drawing.Point(187, 36);
             this.mbtnUitloggen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mbtnUitloggen.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnUitloggen.Name = "mbtnUitloggen";
             this.mbtnUitloggen.Primary = false;
-            this.mbtnUitloggen.Size = new System.Drawing.Size(77, 24);
+            this.mbtnUitloggen.Size = new System.Drawing.Size(100, 24);
             this.mbtnUitloggen.TabIndex = 14;
-            this.mbtnUitloggen.Text = "Logout";
+            this.mbtnUitloggen.Text = "Uitloggen";
             this.mbtnUitloggen.UseVisualStyleBackColor = true;
             this.mbtnUitloggen.Click += new System.EventHandler(this.MbtnUitloggen_Click);
             // 

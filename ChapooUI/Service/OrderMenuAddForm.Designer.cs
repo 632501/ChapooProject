@@ -178,8 +178,7 @@
             // 
             // OrderMenuAddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(300, 500);
             this.Controls.Add(this.mbtnAfbreken);
             this.Controls.Add(this.numAantal);
@@ -192,7 +191,6 @@
             this.Controls.Add(this.mlblItem);
             this.Controls.Add(this.mlblMenuItem);
             this.Name = "OrderMenuAddForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Menu Item";
             this.Load += new System.EventHandler(this.OrderMenuAddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numAantal)).EndInit();

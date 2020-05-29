@@ -34,6 +34,8 @@
             this.mbtnUitloggen = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnBetalen = new MaterialSkin.Controls.MaterialFlatButton();
             this.listviewOverview = new System.Windows.Forms.ListView();
+            this.mbtnVerwijderBestelling = new MaterialSkin.Controls.MaterialFlatButton();
+            this.comBestellingen = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // mlblTafel
@@ -99,12 +101,12 @@
             this.mbtnBetalen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnBetalen.Depth = 0;
             this.mbtnBetalen.Icon = null;
-            this.mbtnBetalen.Location = new System.Drawing.Point(40, 404);
+            this.mbtnBetalen.Location = new System.Drawing.Point(13, 435);
             this.mbtnBetalen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mbtnBetalen.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnBetalen.Name = "mbtnBetalen";
             this.mbtnBetalen.Primary = false;
-            this.mbtnBetalen.Size = new System.Drawing.Size(203, 23);
+            this.mbtnBetalen.Size = new System.Drawing.Size(271, 38);
             this.mbtnBetalen.TabIndex = 22;
             this.mbtnBetalen.Text = "Betalen";
             this.mbtnBetalen.UseVisualStyleBackColor = true;
@@ -120,11 +122,37 @@
             this.listviewOverview.UseCompatibleStateImageBehavior = false;
             this.listviewOverview.SelectedIndexChanged += new System.EventHandler(this.ListviewOverview_SelectedIndexChanged);
             // 
+            // mbtnVerwijderBestelling
+            // 
+            this.mbtnVerwijderBestelling.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mbtnVerwijderBestelling.Depth = 0;
+            this.mbtnVerwijderBestelling.Icon = null;
+            this.mbtnVerwijderBestelling.Location = new System.Drawing.Point(76, 335);
+            this.mbtnVerwijderBestelling.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mbtnVerwijderBestelling.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mbtnVerwijderBestelling.Name = "mbtnVerwijderBestelling";
+            this.mbtnVerwijderBestelling.Primary = false;
+            this.mbtnVerwijderBestelling.Size = new System.Drawing.Size(211, 47);
+            this.mbtnVerwijderBestelling.TabIndex = 24;
+            this.mbtnVerwijderBestelling.Text = "Verwijderen Gehele Bestelling";
+            this.mbtnVerwijderBestelling.UseVisualStyleBackColor = true;
+            this.mbtnVerwijderBestelling.Click += new System.EventHandler(this.MaterialFlatButton1_Click);
+            // 
+            // comBestellingen
+            // 
+            this.comBestellingen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comBestellingen.FormattingEnabled = true;
+            this.comBestellingen.Location = new System.Drawing.Point(12, 347);
+            this.comBestellingen.Name = "comBestellingen";
+            this.comBestellingen.Size = new System.Drawing.Size(53, 24);
+            this.comBestellingen.TabIndex = 25;
+            // 
             // OrderOverviewForm2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(300, 500);
+            this.Controls.Add(this.comBestellingen);
+            this.Controls.Add(this.mbtnVerwijderBestelling);
             this.Controls.Add(this.listviewOverview);
             this.Controls.Add(this.mbtnBetalen);
             this.Controls.Add(this.mbtnUitloggen);
@@ -149,5 +177,7 @@
         private MaterialSkin.Controls.MaterialFlatButton mbtnUitloggen;
         private MaterialSkin.Controls.MaterialFlatButton mbtnBetalen;
         private System.Windows.Forms.ListView listviewOverview;
+        private MaterialSkin.Controls.MaterialFlatButton mbtnVerwijderBestelling;
+        private System.Windows.Forms.ComboBox comBestellingen;
     }
 }

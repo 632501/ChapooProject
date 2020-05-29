@@ -185,6 +185,7 @@
             this.listviewOrderMenus.Size = new System.Drawing.Size(271, 166);
             this.listviewOrderMenus.TabIndex = 25;
             this.listviewOrderMenus.UseCompatibleStateImageBehavior = false;
+            this.listviewOrderMenus.SelectedIndexChanged += new System.EventHandler(this.ListviewOrderMenus_SelectedIndexChanged);
             // 
             // columnHeader1
             // 

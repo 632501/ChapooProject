@@ -1,6 +1,6 @@
 ﻿namespace ChapooUI.Service
 {
-    partial class OrderMenuEditForm
+    partial class OrderMenusEditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,6 @@
             this.mlblVoorraad = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.mbtnEdit = new MaterialSkin.Controls.MaterialFlatButton();
-            this.mbtnVerwijderen = new MaterialSkin.Controls.MaterialFlatButton();
             this.mbtnAfbreken = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.numAantal)).BeginInit();
             this.SuspendLayout();
@@ -150,7 +149,7 @@
             this.mbtnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mbtnEdit.Depth = 0;
             this.mbtnEdit.Icon = null;
-            this.mbtnEdit.Location = new System.Drawing.Point(11, 356);
+            this.mbtnEdit.Location = new System.Drawing.Point(11, 388);
             this.mbtnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mbtnEdit.MouseState = MaterialSkin.MouseState.HOVER;
             this.mbtnEdit.Name = "mbtnEdit";
@@ -160,22 +159,6 @@
             this.mbtnEdit.Text = "Edit";
             this.mbtnEdit.UseVisualStyleBackColor = true;
             this.mbtnEdit.Click += new System.EventHandler(this.MbtnEdit_Click);
-            // 
-            // mbtnVerwijderen
-            // 
-            this.mbtnVerwijderen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mbtnVerwijderen.Depth = 0;
-            this.mbtnVerwijderen.Icon = null;
-            this.mbtnVerwijderen.Location = new System.Drawing.Point(9, 404);
-            this.mbtnVerwijderen.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mbtnVerwijderen.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mbtnVerwijderen.Name = "mbtnVerwijderen";
-            this.mbtnVerwijderen.Primary = false;
-            this.mbtnVerwijderen.Size = new System.Drawing.Size(278, 36);
-            this.mbtnVerwijderen.TabIndex = 16;
-            this.mbtnVerwijderen.Text = "Verwijderen";
-            this.mbtnVerwijderen.UseVisualStyleBackColor = true;
-            this.mbtnVerwijderen.Click += new System.EventHandler(this.MbtnVerwijderen_Click);
             // 
             // mbtnAfbreken
             // 
@@ -193,13 +176,12 @@
             this.mbtnAfbreken.UseVisualStyleBackColor = true;
             this.mbtnAfbreken.Click += new System.EventHandler(this.MbtnAfbreken_Click);
             // 
-            // OrderMenuEditForm
+            // OrderMenusEditForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(300, 500);
             this.Controls.Add(this.mbtnAfbreken);
             this.Controls.Add(this.mbtnEdit);
-            this.Controls.Add(this.mbtnVerwijderen);
             this.Controls.Add(this.numAantal);
             this.Controls.Add(this.mlblCommentaar);
             this.Controls.Add(this.mtextCommentaar);
@@ -208,7 +190,7 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.mlblItem);
             this.Controls.Add(this.mlblMenuItem);
-            this.Name = "OrderMenuEditForm";
+            this.Name = "OrderMenusEditForm";
             this.Text = "Edit Menu Item";
             this.Load += new System.EventHandler(this.OrderMenuEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numAantal)).EndInit();
@@ -228,7 +210,6 @@
         private MaterialSkin.Controls.MaterialLabel mlblVoorraad;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialFlatButton mbtnEdit;
-        private MaterialSkin.Controls.MaterialFlatButton mbtnVerwijderen;
         private MaterialSkin.Controls.MaterialFlatButton mbtnAfbreken;
     }
 }

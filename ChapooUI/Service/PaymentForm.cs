@@ -135,6 +135,7 @@ namespace ChapooUI
         {
             this.Close();
             form2.Show();
+            //error kan niet naar verwijderd object.
         }
     }
 }

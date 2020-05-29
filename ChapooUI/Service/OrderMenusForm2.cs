@@ -141,37 +141,44 @@ namespace ChapooUI
 
         private void MbtnToevoegen_Click(object sender, EventArgs e)
         {
-            List<OrderItem> orders = bestelling.orderItems;
-            bestelling.tafel_id = tafelNummer;
-            bestelling.datum = DateTime.Now;
-            bestelling.werknemer = werknemer;
-            bestelling.commentaar = rtxtCommentaar.Text;
-
-            //Bestelling toevoegen aan db
-            bestellingService.AddOrder(bestelling);
-
-            //krijg het ID van toegevoegde bestelling voor orderitems.
-            bestelling = bestellingService.GetLatestOrder();
-
-            foreach (OrderItem o in orders)
+            if (bestelling.orderItems.Count > 0)
             {
-                //voorraad aanpassen in db
-                int voorraad = o.menuItem.voorraad;
-                voorraad = voorraad - o.Aantal;
-                menuService.ChangeSupply(o.menuItem.naam, voorraad);
+                List<OrderItem> orders = bestelling.orderItems;
+                bestelling.tafel_id = tafelNummer;
+                bestelling.datum = DateTime.Now;
+                bestelling.werknemer = werknemer;
+                bestelling.commentaar = rtxtCommentaar.Text;
 
-                //Orderitem toevoegen aan db
-                o.bestelling_id = bestelling.bestelling_id;
-                o.Werknemer = werknemer;
-                o.tafel_id = tafelNummer;
-                bestellingService.AddOrderItem(o);
+                //Bestelling toevoegen aan db
+                bestellingService.AddOrder(bestelling);
+
+                //krijg het ID van toegevoegde bestelling voor orderitems.
+                bestelling = bestellingService.GetLatestOrder();
+
+                foreach (OrderItem o in orders)
+                {
+                    //voorraad aanpassen in db
+                    int voorraad = o.menuItem.voorraad;
+                    voorraad = voorraad - o.Aantal;
+                    menuService.ChangeSupply(o.menuItem.naam, voorraad);
+
+                    //Orderitem toevoegen aan db
+                    o.bestelling_id = bestelling.bestelling_id;
+                    o.Werknemer = werknemer;
+                    o.tafel_id = tafelNummer;
+                    bestellingService.AddOrderItem(o);
+                }
+
+                MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_id);
+
+                this.Close();
+                OrderOverviewForm2 overviewForm = new OrderOverviewForm2(werknemer, tafelNummer);
+                overviewForm.Show();
             }
-
-            MessageBox.Show("Bestelling is doorgevoerd met id: " + bestelling.bestelling_id);
-
-            this.Close();
-            OrderOverviewForm2 overviewForm = new OrderOverviewForm2(werknemer, tafelNummer);
-            overviewForm.Show();
+            else
+            {
+                MessageBox.Show("Bestelling is leeg, Voeg items toe");
+            }
         }
 
         private void MbtnTerug_Click(object sender, EventArgs e)
@@ -186,6 +193,21 @@ namespace ChapooUI
             this.Close();
             LoginForm login = new LoginForm();
             login.Show();
+        }
+
+        private void ListviewOrderMenus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (listviewOrderMenus.SelectedItems.Count > 0)
+            {
+                OrderItem item = new OrderItem();
+                item = (OrderItem)listviewOrderMenus.SelectedItems[0].Tag;
+                //Open edit form die shit edit/verwijderd
+                OrderMenusEditForm form = new OrderMenusEditForm(item, this);
+                form.Show();
+                //OrderMenuAddForm form = new OrderMenuAddForm(item, orderMenusForm, this);
+                //form.Show();
+            }
         }
     }
 }

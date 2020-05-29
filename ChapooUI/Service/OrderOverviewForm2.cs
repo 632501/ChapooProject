@@ -51,18 +51,29 @@ namespace ChapooUI
         public void LoadOrders()
         {
             listviewOverview.Clear();
+            comBestellingen.Items.Clear();
             bestellingen = orderService.GetTablesOrder(tafelNummer);
             foreach (Bestelling bestelling in bestellingen)
             {
                 orderItems = orderService.GetTablesOrderItems(tafelNummer, bestelling.bestelling_id);
-                foreach (OrderItem item in orderItems)
+                if (orderItems.Count > 0)
                 {
-                    ListViewItem li = new ListViewItem(bestelling.bestelling_id.ToString());
-                    li.SubItems.Add(item.menuItem.naam);
-                    li.SubItems.Add(item.Aantal.ToString());
-                    li.SubItems.Add(item.Comment);
-                    li.Tag = item;
-                    listviewOverview.Items.Add(li);
+                    foreach (OrderItem item in orderItems)
+                    {
+                        ListViewItem li = new ListViewItem(bestelling.bestelling_id.ToString());
+                        li.SubItems.Add(item.menuItem.naam);
+                        li.SubItems.Add(item.Aantal.ToString());
+                        li.SubItems.Add(item.Comment);
+                        li.SubItems.Add(item.Status);
+                        li.Tag = item;
+                        listviewOverview.Items.Add(li);
+                    }
+                    comBestellingen.Items.Add(bestelling.bestelling_id);
+                }
+                else
+                {
+                    Tafel_Service tafelservice = new Tafel_Service();
+                    tafelservice.EditStatus(tafelNummer, false);
                 }
             }
 
@@ -72,6 +83,7 @@ namespace ChapooUI
             listviewOverview.Columns.Add("Besteld");
             listviewOverview.Columns.Add("#");
             listviewOverview.Columns.Add("Commentaar");
+            listviewOverview.Columns.Add("Status");
           
         }
 
@@ -94,7 +106,7 @@ namespace ChapooUI
                     LoadOrders();
                 } else if (res == DialogResult.Cancel)
                 {
-                    MessageBox.Show("Verwijderen is gecancelled.");
+                    MessageBox.Show("Verwijderen is gestopt.");
                 }
             }
             
@@ -118,10 +130,27 @@ namespace ChapooUI
 
         private void MbtnBetalen_Click(object sender, EventArgs e)
         {
-            PaymentForm pform = new PaymentForm(werknemer, tafelNummer, this);
-            
-            pform.Show();
-            this.Close();
+            bool canPay = false;
+            foreach (OrderItem o in orderItems)
+            {
+                if (o.Status == "Gereed")
+                {
+                    canPay = true;
+                } else
+                {
+                    canPay = false;
+                }
+            }
+            if (canPay)
+            {
+                PaymentForm pform = new PaymentForm(werknemer, tafelNummer, this);
+
+                pform.Show();
+                this.Hide();
+            } else
+            {
+                MessageBox.Show("Nog niet alle bestellingen zijn afgeleverd of er zijn geen bestellingen om betaald te worden.");
+            }
         }
 
         private void ListviewOverview_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +164,32 @@ namespace ChapooUI
                 form.Show();
                 //OrderMenuAddForm form = new OrderMenuAddForm(item, orderMenusForm, this);
                 //form.Show();
+            }
+        }
+
+        private void MaterialFlatButton1_Click(object sender, EventArgs e)
+        {
+            //verwijder bestelling
+            DialogResult res = MessageBox.Show("Weet je het zeker dat je deze bestelling wilt verwijderen?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (res == DialogResult.OK)
+            {
+                if (comBestellingen.SelectedItem != null) {
+                string value = comBestellingen.SelectedItem.ToString();
+                int val = int.Parse(value);
+                    int bestellingnr = val;
+                    orderService.DeleteOrderItemsByID(bestellingnr);
+                    bestellingService.DeleteOrders(bestellingnr);
+                    LoadOrders();
+                }
+                else
+                {
+                    MessageBox.Show("Er is geen bestellingid geselecteerd.");
+                }
+
+            }
+            if (res == DialogResult.Cancel)
+            {
+                MessageBox.Show("Verwijderen is gestopt.");
             }
         }
 

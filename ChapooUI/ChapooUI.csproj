@@ -101,6 +101,12 @@
     <Compile Include="Service\OrderMenuAddForm.Designer.cs">
       <DependentUpon>OrderMenuAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Service\OrderMenusEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service\OrderMenusEditForm.Designer.cs">
+      <DependentUpon>OrderMenusEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service\OrderMenuEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenuAddForm.resx">
       <DependentUpon>OrderMenuAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Service\OrderMenusEditForm.resx">
+      <DependentUpon>OrderMenusEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Service\OrderMenuEditForm.resx">
       <DependentUpon>OrderMenuEditForm.cs</DependentUpon>

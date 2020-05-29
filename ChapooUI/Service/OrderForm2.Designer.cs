@@ -68,6 +68,7 @@
             // 
             // mlblTafel
             // 
+            this.mlblTafel.AutoSize = true;
             this.mlblTafel.Depth = 0;
             this.mlblTafel.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblTafel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -128,8 +129,7 @@
             // 
             // OrderForm2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(300, 500);
             this.ControlBox = false;
             this.Controls.Add(this.listviewMenu);
@@ -142,6 +142,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrderForm2_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

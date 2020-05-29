@@ -123,20 +123,23 @@ namespace ChapooUI
             {
                 if (inlog.functie == "manager" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
-                    this.Hide();
+                    
                     ManagementActionForm managementOverview = new ManagementActionForm(inlog);
+                    this.Hide();
                     managementOverview.Show();
                 }
                 else if (inlog.functie == "barman" || inlog.functie == "kok" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
-                    this.Hide();
+                    
                     KitchenActionForm kitchenAndBar = new KitchenActionForm(inlog);
+                    this.Hide();
                     kitchenAndBar.Show();
                 }
                 else if (inlog.functie == "bediening" && inlog.wachtwoord == mPasswordtxt.Text)
                 {
-                    this.Hide();
+                    
                     TableForm table = new TableForm(inlog);
+                    this.Hide();
                     table.Show();
                 }
                 else

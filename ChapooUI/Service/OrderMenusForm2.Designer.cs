@@ -161,7 +161,7 @@
             this.mbtnToevoegen.Primary = false;
             this.mbtnToevoegen.Size = new System.Drawing.Size(271, 36);
             this.mbtnToevoegen.TabIndex = 23;
-            this.mbtnToevoegen.Text = "Toevoegen";
+            this.mbtnToevoegen.Text = "Doorvoeren naar Keuken";
             this.mbtnToevoegen.UseVisualStyleBackColor = true;
             this.mbtnToevoegen.Click += new System.EventHandler(this.MbtnToevoegen_Click);
             // 
@@ -212,6 +212,7 @@
             this.Controls.Add(this.mlblNaam);
             this.Controls.Add(this.mbtnUitloggen);
             this.Name = "OrderMenusForm2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrderMenusForm_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();

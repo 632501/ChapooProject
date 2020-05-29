@@ -21,10 +21,10 @@ namespace ChapooUI
         private readonly MaterialSkinManager materialSkinManager;
 
         Button[] btnList;
-        Tafel_Service table_service;
         Inlog werknemer = new Inlog();
         public List<Tafel> tables;
         public string orders;
+        Tafel_Service tafelService = new Tafel_Service();
 
 
         public TableForm(Inlog inlog)
@@ -49,9 +49,8 @@ namespace ChapooUI
 
             //Inlog_DAO inlog_DAO = new Inlog_DAO();
             //BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
-            table_service = new Tafel_Service();
 
-            tables = table_service.getTables();
+            tables = tafelService.getTables();
             
 
             SetTableColors();
@@ -64,29 +63,31 @@ namespace ChapooUI
         {
             for (int i = 0; i < tables.Count; i++)
             {
-                orders = table_service.CheckOrderStatus(i);
+                orders = tafelService.CheckOrderStatus(i+1);
                 if (tables[i].bezet == false)
                 {
                     btnList[i].BackColor = Color.Green;
                 }
-                else if (tables[i].bezet == true)
-                {
-                    btnList[i].BackColor = Color.Red;
-                } else if (orders[i].ToString() == "nietafgeleverd")
+                else if (tables[i].bezet == true && (orders == "bezig" || orders == "Bezig"))
                 {
                     btnList[i].BackColor = Color.Orange;
-                } else if (orders[i].ToString() == "bezig" || orders[i].ToString() == "Bezig")
+                    
+                } else if (tables[i].bezet == true && orders == "Gereed")
                 {
-                    btnList[i].BackColor = Color.Yellow;
+                    btnList[i].BackColor = Color.Red;
+                } else if (orders == "" || orders == " ")
+                {
+                    tafelService.EditStatus(i, false);
+                    btnList[i].BackColor = Color.Green;
                 }
             }
         }
 
         public void Occupied(int tafelnummer)
         {
-            List<Tafel> tafels = table_service.getTables();
+            List<Tafel> tafels = tafelService.getTables();
 
-            if (tafels[tafelnummer].bezet ==  true)
+            if (tafels[tafelnummer-1].bezet ==  true)
             {
                 this.Close();
                 OrderActionForm2 orderForm = new OrderActionForm2(werknemer, tafelnummer);
@@ -96,7 +97,7 @@ namespace ChapooUI
                 DialogResult dialogResult = MessageBox.Show("Wil je deze tafel op bezet zetten?", "Bezet zetten", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    table_service.EditStatus(tafelnummer, true);
+                    tafelService.EditStatus(tafelnummer, true);
                     this.Close();
                     OrderActionForm2 orderForm = new OrderActionForm2(werknemer, tafelnummer);
                     orderForm.Show();

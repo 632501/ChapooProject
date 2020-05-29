@@ -110,6 +110,7 @@ namespace ChapooUI
 
         private void MbtnTerug_Click(object sender, EventArgs e)
         {
+            //ordermenusform
             OrderActionForm2 form = new OrderActionForm2(werknemer, tafelNummer);
             this.Close();
             form.Show();

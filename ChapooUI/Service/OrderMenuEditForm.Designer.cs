@@ -210,6 +210,7 @@
             this.Controls.Add(this.mlblItem);
             this.Controls.Add(this.mlblMenuItem);
             this.Name = "OrderMenuEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Menu Item";
             this.Load += new System.EventHandler(this.OrderMenuEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numAantal)).EndInit();

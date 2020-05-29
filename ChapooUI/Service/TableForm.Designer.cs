@@ -169,7 +169,7 @@
             // mlblWerknemer
             // 
             this.mlblWerknemer.Depth = 0;
-            this.mlblWerknemer.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.mlblWerknemer.Font = new System.Drawing.Font("Roboto", 11F);
             this.mlblWerknemer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.mlblWerknemer.Location = new System.Drawing.Point(12, 36);
             this.mlblWerknemer.MouseState = MaterialSkin.MouseState.HOVER;
@@ -216,6 +216,7 @@
             this.MaximizeBox = false;
             this.Name = "TableForm";
             this.Sizable = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.TafelForm_Load);
             this.ResumeLayout(false);
 

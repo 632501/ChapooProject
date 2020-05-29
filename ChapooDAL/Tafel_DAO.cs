@@ -59,15 +59,19 @@ namespace ChapooDAL
 
         public string CheckOrderStatus(int tableNumber)
         {
-            string status = " ";
+            string status = "";
             try
             {
                 string query = "Select status from Bestel_Gerecht where tafel_id = '" + tableNumber + "'";
                 SqlParameter[] sqlParameters = new SqlParameter[0];
                 DataTable table = ExecuteSelectQuery(query, sqlParameters);
-                DataRow dr = table.Rows[0];
+                foreach (DataRow dr in table.Rows)
+                {
+                    status = (string)dr["status"];
+                }
+                //DataRow dr = table.Rows[0];
 
-                status = (string)dr["status"];
+                
                 
 
                 return status;

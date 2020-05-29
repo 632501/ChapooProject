@@ -53,7 +53,7 @@ namespace ChapooUI.Service
                     OrderItem o = new OrderItem();
                     o.menuItem = item;
                     o.Aantal = a;
-                    o.Status = "bezig";
+                    o.Status = "Bezig";
                     o.Comment = commentaar;
                     foreach (OrderItem item in orderMenusForm2.bestelling.orderItems)
                     {

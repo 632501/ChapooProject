@@ -78,7 +78,7 @@
             this.mbtnBestellingOverview.Primary = false;
             this.mbtnBestellingOverview.Size = new System.Drawing.Size(170, 83);
             this.mbtnBestellingOverview.TabIndex = 12;
-            this.mbtnBestellingOverview.Text = "Bestelling Overview";
+            this.mbtnBestellingOverview.Text = "Bestelling Overzicht";
             this.mbtnBestellingOverview.UseVisualStyleBackColor = true;
             this.mbtnBestellingOverview.Click += new System.EventHandler(this.MbtnBestellingOverview_Click);
             // 
@@ -137,6 +137,7 @@
             this.Controls.Add(this.mlblWerknemer);
             this.Controls.Add(this.mlblTafel);
             this.Name = "OrderActionForm2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.OrderActionForm2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

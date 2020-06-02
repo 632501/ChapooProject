@@ -46,21 +46,13 @@ namespace ChapooUI
 
         private void TafelForm_Load(object sender, EventArgs e)
         {
-
-            //Inlog_DAO inlog_DAO = new Inlog_DAO();
-            //BestelGerecht_DAO gerecht = new BestelGerecht_DAO();
-
             tables = tafelService.getTables();
-            
-
             SetTableColors();
-            //btnList[6].BackColor = Color.Yellow;
-            //btnList[8].BackColor = Color.Orange;
-
         }
 
         public void SetTableColors()
         {
+            tables = tafelService.getTables();
             for (int i = 0; i < tables.Count; i++)
             {
                 orders = tafelService.CheckOrderStatus(i+1);
@@ -68,11 +60,11 @@ namespace ChapooUI
                 {
                     btnList[i].BackColor = Color.Green;
                 }
-                else if (tables[i].bezet == true && (orders == "bezig" || orders == "Bezig"))
+                else if (tables[i].bezet == true || (orders == "bezig" || orders == "Bezig"))
                 {
                     btnList[i].BackColor = Color.Orange;
                     
-                } else if (tables[i].bezet == true && orders == "Gereed")
+                } else if (tables[i].bezet == true || orders == "Gereed")
                 {
                     btnList[i].BackColor = Color.Red;
                 } else if (orders == "" || orders == " ")
@@ -85,9 +77,9 @@ namespace ChapooUI
 
         public void Occupied(int tafelnummer)
         {
-            List<Tafel> tafels = tafelService.getTables();
+            //List<Tafel> tafels = tafelService.getTables();
 
-            if (tafels[tafelnummer-1].bezet ==  true)
+            if (tables[tafelnummer-1].bezet ==  true)
             {
                 this.Close();
                 OrderActionForm2 orderForm = new OrderActionForm2(werknemer, tafelnummer);

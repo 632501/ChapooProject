@@ -154,6 +154,7 @@ namespace ChapooUI
         private void MbtnTerug_Click(object sender, EventArgs e)
         {
             OrderActionForm2 form = new OrderActionForm2(werknemer, tafelNummer);
+
             this.Close();
             form.Show();
         }
@@ -173,7 +174,8 @@ namespace ChapooUI
                 OrderItem item = new OrderItem();
                 item = (OrderItem)listviewOrderMenus.SelectedItems[0].Tag;
                 //Open edit form die shit edit/verwijderd
-                OrderMenusEditForm form = new OrderMenusEditForm(item, this);
+                int index = listviewOrderMenus.SelectedItems[0].Index;
+                OrderMenusEditForm form = new OrderMenusEditForm(item, this, index);
                 form.Show();
             }
         }

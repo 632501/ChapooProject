@@ -98,11 +98,11 @@ namespace ChapooUI
 
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
-            lblAmount.Text = "€ " + amount.ToString("0.##");
-            lblBtw.Text = "€ " + btw.ToString("0.##");
-            lblBtwAmount.Text = "€ " + bon.totaalprijs.ToString("0.##");
-            lblTip.Text = "€ " + bon.fooi.ToString("0.##");
-            lblTotalAmount.Text = "€ " + totalPayment.ToString("0.##");
+            lblAmount.Text = amount.ToString("C2");
+            lblBtw.Text = btw.ToString("C2");
+            lblBtwAmount.Text = bon.totaalprijs.ToString("C2");
+            lblTip.Text =  bon.fooi.ToString("C2");
+            lblTotalAmount.Text = totalPayment.ToString("C2");
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

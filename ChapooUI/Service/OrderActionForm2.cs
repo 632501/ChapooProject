@@ -71,6 +71,7 @@ namespace ChapooUI
             TableForm form = new TableForm(werknemer);
             this.Close();
             form.Show();
+            form.SetTableColors();
         }
 
         private void MbtnUitloggen_Click(object sender, EventArgs e)

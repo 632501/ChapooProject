@@ -25,7 +25,8 @@ namespace ChapooUI.Service
         OrderMenusForm2 form;
         Order_Service orderService = new Order_Service();
         Menu_Service menuService = new Menu_Service();
-        public OrderMenusEditForm(OrderItem item, OrderMenusForm2 form)
+        int index;
+        public OrderMenusEditForm(OrderItem item, OrderMenusForm2 form, int index)
         {
             InitializeComponent();
 
@@ -37,6 +38,7 @@ namespace ChapooUI.Service
             this.form = form;
             this.item = item;
             itemvoorraad = item.menuItem.voorraad;
+            this.index = index;
         }
 
         private void OrderMenuEditForm_Load(object sender, EventArgs e)
@@ -75,8 +77,10 @@ namespace ChapooUI.Service
                     else
                     {
                         //Verander aantal
-                        form.bestelling.orderItems[o.order_id].Aantal = aantal;
-                        form.bestelling.orderItems[o.order_id].Comment = commentaar;
+                        form.bestelling.orderItems[index].Aantal = aantal;
+                        //form.bestelling.orderItems.
+                        form.bestelling.orderItems[index].Comment = commentaar;
+                        //o.menuItem.menu_id
                     }
                 }
                 else

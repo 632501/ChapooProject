@@ -62,7 +62,8 @@ namespace ChapooDAL
             string status = "";
             try
             {
-                string query = "Select status from Bestel_Gerecht where tafel_id = '" + tableNumber + "'";
+                
+                string query = "Select status from Bestel_Gerecht where tafel_id = '" + tableNumber + "' AND order_id = (SELECT max(order_id) FROM Bestel_Gerecht)";
                 SqlParameter[] sqlParameters = new SqlParameter[0];
                 DataTable table = ExecuteSelectQuery(query, sqlParameters);
                 foreach (DataRow dr in table.Rows)

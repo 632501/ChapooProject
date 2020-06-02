@@ -72,8 +72,8 @@ namespace ChapooUI
                 }
                 else
                 {
-                    Tafel_Service tafelservice = new Tafel_Service();
-                    tafelservice.EditStatus(tafelNummer, false);
+                    //Tafel_Service tafelservice = new Tafel_Service();
+                    //tafelservice.EditStatus(tafelNummer, false);
                 }
             }
 
@@ -131,25 +131,32 @@ namespace ChapooUI
 
         private void MbtnBetalen_Click(object sender, EventArgs e)
         {
-            bool canPay = false;
-            foreach (OrderItem o in orderItems)
+            if (orderItems != null)
             {
-                if (o.Status == "Gereed")
+                bool canPay = false;
+                foreach (OrderItem o in orderItems)
                 {
-                    canPay = true;
-                } else
-                {
-                    canPay = false;
+                    if (o.Status == "Gereed")
+                    {
+                        canPay = true;
+                    }
+                    else
+                    {
+                        canPay = false;
+                    }
                 }
-            }
-            if (canPay)
-            {
-                PaymentForm pform = new PaymentForm(werknemer, tafelNummer, this);
+                if (canPay)
+                {
+                    PaymentForm pform = new PaymentForm(werknemer, tafelNummer, this);
 
-                pform.Show();
-                this.Hide();
-            } else
-            {
+                    pform.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Nog niet alle bestellingen zijn afgeleverd of er zijn geen bestellingen om betaald te worden.");
+                }
+            } else {
                 MessageBox.Show("Nog niet alle bestellingen zijn afgeleverd of er zijn geen bestellingen om betaald te worden.");
             }
         }
@@ -160,6 +167,7 @@ namespace ChapooUI
             {
                 OrderItem item = new OrderItem();
                 item = (OrderItem)listviewOverview.SelectedItems[0].Tag;
+                
                 //Open edit form die shit edit/verwijderd
                 OrderMenuEditForm form = new OrderMenuEditForm(item, this);
                 form.Show();

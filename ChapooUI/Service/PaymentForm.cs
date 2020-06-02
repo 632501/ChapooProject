@@ -57,24 +57,22 @@ namespace ChapooUI
         {
             lblName.Text = werknemer.naam;
             lblTafelNr.Text = tafel_ID.ToString();
-            lblTotaalbedrag.Text = "€ " + bon.totaalprijs.ToString("0.##");
+            lblTotaalbedrag.Text = bon.totaalprijs.ToString("C2");
         }
 
         private void Calculation(Bestelling order)
         {
             amount = 0;
-            decimal amountWithBtw = 0;
 
             foreach (OrderItem o in order.orderItems)
             {
                 decimal btwPercentage = (decimal)o.menuItem.btwPercentage / 100;
 
-                amountWithBtw = amountWithBtw + (o.Aantal * o.menuItem.prijs) * (btwPercentage + 1);
+                //amountWithBtw = amountWithBtw + (o.Aantal * o.menuItem.prijs) * (btwPercentage + 1);
                 amount = amount + (o.Aantal * o.menuItem.prijs);
+                btw = btw + (amount * btwPercentage);
             }
-
-            btw = amountWithBtw - amount;
-            bon.totaalprijs = amountWithBtw;
+            bon.totaalprijs = amount;
         }
 
         private void ShowList(Bestelling order)

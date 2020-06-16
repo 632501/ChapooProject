@@ -89,6 +89,7 @@ namespace ChapooUI
                 MessageBox.Show("Er is een ongeldige invoer gegeven...");
                 return;
             }
+            rbtn_SupplyId.Checked = true;
         }
 
         private void button6_Click(object sender, EventArgs e)

@@ -270,12 +270,22 @@ namespace ChapooUI
 
         private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            List<MenuItem> sortedList = new List<MenuItem>();
+            sortedList = menu;
 
+            sortedList.Sort();
+
+            DisplayListView(sortedList);
         }
 
         private void materialLabel1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void rbtn_ID_CheckedChanged(object sender, EventArgs e)
+        {
+            DisplayListView(menu);
         }
     }
 }

@@ -283,6 +283,7 @@
             this.rbtn_ID.TabStop = true;
             this.rbtn_ID.Text = "ID";
             this.rbtn_ID.UseVisualStyleBackColor = true;
+            this.rbtn_ID.CheckedChanged += new System.EventHandler(this.rbtn_ID_CheckedChanged);
             // 
             // rbtn_Naam
             // 

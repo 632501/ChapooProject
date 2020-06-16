@@ -268,7 +268,15 @@ namespace ChapooUI
             return false;
         }
 
-        
+        private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -48,6 +48,11 @@
             this.btn_Remove = new System.Windows.Forms.Button();
             this.lbl_btw = new System.Windows.Forms.Label();
             this.txt_Btw = new System.Windows.Forms.TextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.rbtn_ID = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbtn_Naam = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbtn_Prijs = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbtn_Categorie = new MaterialSkin.Controls.MaterialRadioButton();
             this.SuspendLayout();
             // 
             // ListView_ViewMenu
@@ -59,9 +64,10 @@
             this.Prijs,
             this.Category});
             this.ListView_ViewMenu.Depth = 0;
-            this.ListView_ViewMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.ListView_ViewMenu.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.ListView_ViewMenu.FullRowSelect = true;
             this.ListView_ViewMenu.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ListView_ViewMenu.HideSelection = false;
             this.ListView_ViewMenu.Location = new System.Drawing.Point(12, 142);
             this.ListView_ViewMenu.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ListView_ViewMenu.MouseState = MaterialSkin.MouseState.OUT;
@@ -247,12 +253,100 @@
             this.txt_Btw.TabIndex = 15;
             this.txt_Btw.TextChanged += new System.EventHandler(this.txt_Btw_TextChanged);
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(28, 96);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(83, 19);
+            this.materialLabel1.TabIndex = 16;
+            this.materialLabel1.Text = "Sorteer op:";
+            this.materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
+            // 
+            // rbtn_ID
+            // 
+            this.rbtn_ID.AutoSize = true;
+            this.rbtn_ID.Depth = 0;
+            this.rbtn_ID.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_ID.Location = new System.Drawing.Point(145, 91);
+            this.rbtn_ID.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_ID.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_ID.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_ID.Name = "rbtn_ID";
+            this.rbtn_ID.Ripple = true;
+            this.rbtn_ID.Size = new System.Drawing.Size(42, 30);
+            this.rbtn_ID.TabIndex = 17;
+            this.rbtn_ID.TabStop = true;
+            this.rbtn_ID.Text = "ID";
+            this.rbtn_ID.UseVisualStyleBackColor = true;
+            // 
+            // rbtn_Naam
+            // 
+            this.rbtn_Naam.AutoSize = true;
+            this.rbtn_Naam.Depth = 0;
+            this.rbtn_Naam.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_Naam.Location = new System.Drawing.Point(228, 91);
+            this.rbtn_Naam.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_Naam.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_Naam.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_Naam.Name = "rbtn_Naam";
+            this.rbtn_Naam.Ripple = true;
+            this.rbtn_Naam.Size = new System.Drawing.Size(66, 30);
+            this.rbtn_Naam.TabIndex = 18;
+            this.rbtn_Naam.TabStop = true;
+            this.rbtn_Naam.Text = "Naam";
+            this.rbtn_Naam.UseVisualStyleBackColor = true;
+            this.rbtn_Naam.CheckedChanged += new System.EventHandler(this.materialRadioButton2_CheckedChanged);
+            // 
+            // rbtn_Prijs
+            // 
+            this.rbtn_Prijs.AutoSize = true;
+            this.rbtn_Prijs.Depth = 0;
+            this.rbtn_Prijs.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_Prijs.Location = new System.Drawing.Point(336, 91);
+            this.rbtn_Prijs.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_Prijs.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_Prijs.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_Prijs.Name = "rbtn_Prijs";
+            this.rbtn_Prijs.Ripple = true;
+            this.rbtn_Prijs.Size = new System.Drawing.Size(57, 30);
+            this.rbtn_Prijs.TabIndex = 19;
+            this.rbtn_Prijs.TabStop = true;
+            this.rbtn_Prijs.Text = "Prijs";
+            this.rbtn_Prijs.UseVisualStyleBackColor = true;
+            // 
+            // rbtn_Categorie
+            // 
+            this.rbtn_Categorie.AutoSize = true;
+            this.rbtn_Categorie.Depth = 0;
+            this.rbtn_Categorie.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_Categorie.Location = new System.Drawing.Point(429, 91);
+            this.rbtn_Categorie.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_Categorie.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_Categorie.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_Categorie.Name = "rbtn_Categorie";
+            this.rbtn_Categorie.Ripple = true;
+            this.rbtn_Categorie.Size = new System.Drawing.Size(89, 30);
+            this.rbtn_Categorie.TabIndex = 20;
+            this.rbtn_Categorie.TabStop = true;
+            this.rbtn_Categorie.Text = "Categorie";
+            this.rbtn_Categorie.UseVisualStyleBackColor = true;
+            // 
             // ManagementMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.rbtn_Categorie);
+            this.Controls.Add(this.rbtn_Prijs);
+            this.Controls.Add(this.rbtn_Naam);
+            this.Controls.Add(this.rbtn_ID);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.txt_Btw);
             this.Controls.Add(this.lbl_btw);
             this.Controls.Add(this.btn_Remove);
@@ -302,5 +396,10 @@
         private System.Windows.Forms.Button btn_Remove;
         private System.Windows.Forms.Label lbl_btw;
         private System.Windows.Forms.TextBox txt_Btw;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_ID;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_Naam;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_Prijs;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_Categorie;
     }
 }

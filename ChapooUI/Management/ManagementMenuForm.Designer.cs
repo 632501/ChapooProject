@@ -319,6 +319,7 @@
             this.rbtn_Prijs.TabStop = true;
             this.rbtn_Prijs.Text = "Prijs";
             this.rbtn_Prijs.UseVisualStyleBackColor = true;
+            this.rbtn_Prijs.CheckedChanged += new System.EventHandler(this.rbtn_Prijs_CheckedChanged);
             // 
             // rbtn_Categorie
             // 
@@ -336,6 +337,7 @@
             this.rbtn_Categorie.TabStop = true;
             this.rbtn_Categorie.Text = "Categorie";
             this.rbtn_Categorie.UseVisualStyleBackColor = true;
+            this.rbtn_Categorie.CheckedChanged += new System.EventHandler(this.rbtn_Categorie_CheckedChanged);
             // 
             // ManagementMenuForm
             // 

@@ -202,5 +202,65 @@ namespace ChapooUI
                 }
             }
         }
+
+        private void rbtn_SupplyId_CheckedChanged(object sender, EventArgs e)
+        {
+            List<int> sortedListID = new List<int>();
+            List<MenuItem> sortedList = new List<MenuItem>();
+            foreach (MenuItem item in menu)
+            {
+                sortedListID.Add(item.menu_id);
+            }
+            sortedListID.Sort();
+            foreach (int name in sortedListID)
+            {
+                foreach (MenuItem item in menu)
+                {
+                    if (name == item.menu_id)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_SupplyName_CheckedChanged(object sender, EventArgs e)
+        {
+            List<string> sortedListNames = new List<string>();
+            List<MenuItem> sortedList = new List<MenuItem>();
+            foreach (MenuItem item in menu)
+            {
+                sortedListNames.Add(item.naam);
+            }
+            sortedListNames.Sort();
+            foreach (string name in sortedListNames)
+            {
+                foreach (MenuItem item in menu)
+                {
+                    if (name == item.naam)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_SupplyCategorie_CheckedChanged(object sender, EventArgs e)
+        {
+            List<MenuItem> sortedList = new List<MenuItem>();
+            sortedList = menu;
+            sortedList.Sort((x, y) => string.Compare(x.categorie, y.categorie));
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_Voorraad_CheckedChanged(object sender, EventArgs e)
+        {
+            List<MenuItem> sortedList = new List<MenuItem>();
+            sortedList = menu;
+            sortedList.Sort((x, y) => x.voorraad.CompareTo(y.voorraad));
+            DisplayListView(sortedList);
+        }
     }   
 }

@@ -147,6 +147,8 @@ namespace ChapooUI
 
             HideAllControlls();
             ClearAllTextFields();
+
+            rbtn_ID.Checked = true;
         }
 
         private void btn_Remove_Click(object sender, EventArgs e)
@@ -160,6 +162,8 @@ namespace ChapooUI
 
             HideAllControlls();
             ClearAllTextFields();
+
+            rbtn_ID.Checked = true;
         }
 
 
@@ -253,7 +257,7 @@ namespace ChapooUI
         {
             int nextMenuID;
 
-            nextMenuID = menu[menu.Count - 1].menu_id + 1;
+            nextMenuID = menu.Count()+1;
 
             txt_ItemID.Text = nextMenuID.ToString();
         }
@@ -270,11 +274,23 @@ namespace ChapooUI
 
         private void materialRadioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            List<string> sortedListNames = new List<string>();
             List<MenuItem> sortedList = new List<MenuItem>();
-            sortedList = menu;
-
-            sortedList.Sort();
-
+            foreach(MenuItem item in menu)
+            {
+                sortedListNames.Add(item.naam);
+            }
+            sortedListNames.Sort();
+            foreach(string name in sortedListNames)
+            {
+                foreach(MenuItem item in menu)
+                {
+                    if(name == item.naam)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
             DisplayListView(sortedList);
         }
 
@@ -285,7 +301,40 @@ namespace ChapooUI
 
         private void rbtn_ID_CheckedChanged(object sender, EventArgs e)
         {
-            DisplayListView(menu);
+            List<int> sortedListID = new List<int>();
+            List<MenuItem> sortedList = new List<MenuItem>();
+            foreach (MenuItem item in menu)
+            {
+                sortedListID.Add(item.menu_id);
+            }
+            sortedListID.Sort();
+            foreach (int name in sortedListID)
+            {
+                foreach (MenuItem item in menu)
+                {
+                    if (name == item.menu_id)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_Prijs_CheckedChanged(object sender, EventArgs e)
+        {
+            List<MenuItem> sortedList = new List<MenuItem>();
+            sortedList = menu;
+            sortedList.Sort((x, y) => decimal.Compare(x.prijs, y.prijs));
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_Categorie_CheckedChanged(object sender, EventArgs e)
+        {
+            List<MenuItem> sortedList = new List<MenuItem>();
+            sortedList = menu;
+            sortedList.Sort((x, y) => string.Compare(x.categorie, y.categorie));
+            DisplayListView(sortedList);
         }
     }
 }

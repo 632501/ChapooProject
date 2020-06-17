@@ -167,6 +167,7 @@
             // 
             this.rtxtCommentaar.Location = new System.Drawing.Point(16, 467);
             this.rtxtCommentaar.Name = "rtxtCommentaar";
+            this.rtxtCommentaar.ReadOnly = true;
             this.rtxtCommentaar.Size = new System.Drawing.Size(271, 64);
             this.rtxtCommentaar.TabIndex = 24;
             this.rtxtCommentaar.Text = "";

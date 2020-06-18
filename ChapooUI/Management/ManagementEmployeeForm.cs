@@ -99,6 +99,8 @@ namespace ChapooUI
 
             HideAllControlls();
             ClearAllTextFields();
+
+            rbtn_PersID.Checked = true;
         }
 
         private void btn_Remove_Click(object sender, EventArgs e)
@@ -115,13 +117,15 @@ namespace ChapooUI
 
             HideAllControlls();
             ClearAllTextFields();
+
+            rbtn_PersID.Checked = true;
         }
 
         private void txt_ID_TextChanged(object sender, EventArgs e)
         {
             if (ListView_Employee.Items[0].Selected)
             {
-                OnlyNumbersAllowed(txt_ID);
+                NextID();
             }
             else
             {
@@ -213,7 +217,7 @@ namespace ChapooUI
         {
             if (function.ToLower() != "kok" && function.ToLower() != "bediening" && function.ToLower() != "barman" && function.ToLower() != "manager")
             {
-                MessageBox.Show("De categorie kan alleen 'bediening', 'kok', 'barman' of 'manager' zijn...");
+                MessageBox.Show("De functie kan alleen 'bediening', 'kok', 'barman' of 'manager' zijn...");
                 txt_Function.Text = "";
                 return true;
             }
@@ -247,11 +251,77 @@ namespace ChapooUI
 
         private void NextID()
         {
-            int nextEmployeeID;
+            int count = 1;
+            foreach (Inlog item in employeeList)
+            {
+                if (item.werknemer_id != count)
+                {
+                    txt_ID.Text = count.ToString();
+                    return;
+                }
+                count++;
+            }
+        }
 
-            nextEmployeeID = employeeList[employeeList.Count - 1].werknemer_id + 1;
+        private void rbtn_PersID_CheckedChanged(object sender, EventArgs e)
+        {
+            List<int> sortedListID = new List<int>();
+            List<Inlog> sortedList = new List<Inlog>();
+            foreach (Inlog item in employeeList)
+            {
+                sortedListID.Add(item.werknemer_id);
+            }
+            sortedListID.Sort();
+            foreach (int name in sortedListID)
+            {
+                foreach (Inlog item in employeeList)
+                {
+                    if (name == item.werknemer_id)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
+            DisplayListView(sortedList);
+        }
 
-            txt_ID.Text = nextEmployeeID.ToString();
+        private void rbtn_PersNaam_CheckedChanged(object sender, EventArgs e)
+        {
+            List<string> sortedListNames = new List<string>();
+            List<Inlog> sortedList = new List<Inlog>();
+            foreach (Inlog item in employeeList)
+            {
+                sortedListNames.Add(item.naam);
+            }
+            sortedListNames.Sort();
+            foreach (string name in sortedListNames)
+            {
+                foreach (Inlog item in employeeList)
+                {
+                    if (name == item.naam)
+                    {
+                        sortedList.Add(item);
+                    }
+                }
+            }
+            DisplayListView(sortedList);
+        }
+
+        private void rbtn_PersFunctie_CheckedChanged(object sender, EventArgs e)
+        {
+            List<Inlog> sortedList = new List<Inlog>();
+            sortedList = employeeList;
+            sortedList.Sort((x, y) => string.Compare(x.functie, y.functie));
+            DisplayListView(sortedList);
+        }
+
+        private void txt_Name_Leave(object sender, EventArgs e)
+        {
+            if (txt_Name.Text.Contains("'"))
+            {
+                MessageBox.Show("Hier kun je geen hoge komma's gebruiken...");
+                txt_Name.Text = "";
+            }
         }
     }
 }

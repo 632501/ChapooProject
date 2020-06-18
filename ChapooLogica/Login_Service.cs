@@ -36,14 +36,7 @@ namespace ChapooLogica
         }
         public void AddEmployee(int ID, string name, string password, string function)
         {
-            foreach(Inlog employee in employeeList)
-            {
-                if (employee.werknemer_id == ID)
-                {
-                    inlog_db.AlterStatusEmployee(ID);
-                    return;
-                }
-            }
+            
             inlog_db.AddUser(ID, password, name, function); 
         }
 

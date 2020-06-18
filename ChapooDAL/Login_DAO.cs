@@ -17,14 +17,14 @@ namespace ChapooDAL
 
         public void AddUser(int werknemerID, string wachtWoord, string naam, string functie)
         {
-            string query = "SET IDENTITY_INSERT Inlog ON INSERT INTO Inlog(wachtwoord, naam, functie, status) values(" + werknemerID + " '" + wachtWoord + "', '" + naam + "', '" + functie + "', 'werkend') SET IDENTITY_INSERT Inlog OFF";
+            string query = "INSERT INTO Inlog(werknemer_id, wachtwoord, naam, functie, status) values(" + werknemerID + ", '" + wachtWoord + "', '" + naam + "', '" + functie + "', 'werkend')";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
 
         public void FireEmployee(int ID)
         {
-            string query = "UPDATE Inlog SET [status] = 'inactief' WHERE werknemer_id = "+ID;
+            string query = "DELETE FROM Inlog WHERE werknemer_id = " + ID;
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

@@ -44,6 +44,10 @@
             this.txt_Function = new System.Windows.Forms.TextBox();
             this.btn_Change = new System.Windows.Forms.Button();
             this.btn_Remove = new System.Windows.Forms.Button();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.rbtn_PersID = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbtn_PersNaam = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbtn_PersFunctie = new MaterialSkin.Controls.MaterialRadioButton();
             this.SuspendLayout();
             // 
             // ListView_Employee
@@ -55,9 +59,10 @@
             this.Password,
             this.Function});
             this.ListView_Employee.Depth = 0;
-            this.ListView_Employee.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.ListView_Employee.Font = new System.Drawing.Font("Roboto", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.ListView_Employee.FullRowSelect = true;
             this.ListView_Employee.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ListView_Employee.HideSelection = false;
             this.ListView_Employee.Location = new System.Drawing.Point(12, 122);
             this.ListView_Employee.MouseLocation = new System.Drawing.Point(-1, -1);
             this.ListView_Employee.MouseState = MaterialSkin.MouseState.OUT;
@@ -165,6 +170,7 @@
             this.txt_Name.Name = "txt_Name";
             this.txt_Name.Size = new System.Drawing.Size(302, 31);
             this.txt_Name.TabIndex = 10;
+            this.txt_Name.Leave += new System.EventHandler(this.txt_Name_Leave);
             // 
             // txt_Password
             // 
@@ -203,12 +209,83 @@
             this.btn_Remove.UseVisualStyleBackColor = true;
             this.btn_Remove.Click += new System.EventHandler(this.btn_Remove_Click);
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(33, 89);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(83, 19);
+            this.materialLabel1.TabIndex = 15;
+            this.materialLabel1.Text = "Sorteer op:";
+            // 
+            // rbtn_PersID
+            // 
+            this.rbtn_PersID.AutoSize = true;
+            this.rbtn_PersID.Depth = 0;
+            this.rbtn_PersID.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_PersID.Location = new System.Drawing.Point(167, 84);
+            this.rbtn_PersID.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_PersID.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_PersID.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_PersID.Name = "rbtn_PersID";
+            this.rbtn_PersID.Ripple = true;
+            this.rbtn_PersID.Size = new System.Drawing.Size(42, 30);
+            this.rbtn_PersID.TabIndex = 16;
+            this.rbtn_PersID.TabStop = true;
+            this.rbtn_PersID.Text = "ID";
+            this.rbtn_PersID.UseVisualStyleBackColor = true;
+            this.rbtn_PersID.CheckedChanged += new System.EventHandler(this.rbtn_PersID_CheckedChanged);
+            // 
+            // rbtn_PersNaam
+            // 
+            this.rbtn_PersNaam.AutoSize = true;
+            this.rbtn_PersNaam.Depth = 0;
+            this.rbtn_PersNaam.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_PersNaam.Location = new System.Drawing.Point(243, 84);
+            this.rbtn_PersNaam.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_PersNaam.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_PersNaam.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_PersNaam.Name = "rbtn_PersNaam";
+            this.rbtn_PersNaam.Ripple = true;
+            this.rbtn_PersNaam.Size = new System.Drawing.Size(66, 30);
+            this.rbtn_PersNaam.TabIndex = 17;
+            this.rbtn_PersNaam.TabStop = true;
+            this.rbtn_PersNaam.Text = "Naam";
+            this.rbtn_PersNaam.UseVisualStyleBackColor = true;
+            this.rbtn_PersNaam.CheckedChanged += new System.EventHandler(this.rbtn_PersNaam_CheckedChanged);
+            // 
+            // rbtn_PersFunctie
+            // 
+            this.rbtn_PersFunctie.AutoSize = true;
+            this.rbtn_PersFunctie.Depth = 0;
+            this.rbtn_PersFunctie.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rbtn_PersFunctie.Location = new System.Drawing.Point(340, 84);
+            this.rbtn_PersFunctie.Margin = new System.Windows.Forms.Padding(0);
+            this.rbtn_PersFunctie.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rbtn_PersFunctie.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rbtn_PersFunctie.Name = "rbtn_PersFunctie";
+            this.rbtn_PersFunctie.Ripple = true;
+            this.rbtn_PersFunctie.Size = new System.Drawing.Size(74, 30);
+            this.rbtn_PersFunctie.TabIndex = 18;
+            this.rbtn_PersFunctie.TabStop = true;
+            this.rbtn_PersFunctie.Text = "Functie";
+            this.rbtn_PersFunctie.UseVisualStyleBackColor = true;
+            this.rbtn_PersFunctie.CheckedChanged += new System.EventHandler(this.rbtn_PersFunctie_CheckedChanged);
+            // 
             // ManagementEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.rbtn_PersFunctie);
+            this.Controls.Add(this.rbtn_PersNaam);
+            this.Controls.Add(this.rbtn_PersID);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.btn_Remove);
             this.Controls.Add(this.btn_Change);
             this.Controls.Add(this.txt_Function);
@@ -250,5 +327,9 @@
         private System.Windows.Forms.ColumnHeader Password;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.Button btn_Remove;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_PersID;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_PersNaam;
+        private MaterialSkin.Controls.MaterialRadioButton rbtn_PersFunctie;
     }
 }

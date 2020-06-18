@@ -38,6 +38,7 @@
             this.mbtnToevoegen = new MaterialSkin.Controls.MaterialFlatButton();
             this.rtxtCommentaar = new System.Windows.Forms.RichTextBox();
             this.listviewOrderMenus = new System.Windows.Forms.ListView();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // mbtnUitloggen
@@ -164,9 +165,10 @@
             // 
             // rtxtCommentaar
             // 
-            this.rtxtCommentaar.Location = new System.Drawing.Point(16, 439);
+            this.rtxtCommentaar.Location = new System.Drawing.Point(16, 467);
             this.rtxtCommentaar.Name = "rtxtCommentaar";
-            this.rtxtCommentaar.Size = new System.Drawing.Size(271, 92);
+            this.rtxtCommentaar.ReadOnly = true;
+            this.rtxtCommentaar.Size = new System.Drawing.Size(271, 64);
             this.rtxtCommentaar.TabIndex = 24;
             this.rtxtCommentaar.Text = "";
             // 
@@ -180,9 +182,24 @@
             this.listviewOrderMenus.UseCompatibleStateImageBehavior = false;
             this.listviewOrderMenus.SelectedIndexChanged += new System.EventHandler(this.ListviewOrderMenus_SelectedIndexChanged);
             // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(12, 435);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(124, 24);
+            this.materialLabel1.TabIndex = 26;
+            this.materialLabel1.Text = "Commentaar:";
+            this.materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // OrderMenusForm2
             // 
             this.ClientSize = new System.Drawing.Size(300, 600);
+            this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.listviewOrderMenus);
             this.Controls.Add(this.rtxtCommentaar);
             this.Controls.Add(this.mbtnToevoegen);
@@ -216,5 +233,6 @@
         private MaterialSkin.Controls.MaterialFlatButton mbtnToevoegen;
         private System.Windows.Forms.RichTextBox rtxtCommentaar;
         private System.Windows.Forms.ListView listviewOrderMenus;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

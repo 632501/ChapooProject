@@ -313,6 +313,8 @@ namespace ChapooUI
             sortedList = employeeList;
             sortedList.Sort((x, y) => string.Compare(x.functie, y.functie));
             DisplayListView(sortedList);
+
+            employeeList.Sort((x, y) => x.werknemer_id.CompareTo(y.werknemer_id));
         }
 
         private void txt_Name_Leave(object sender, EventArgs e)

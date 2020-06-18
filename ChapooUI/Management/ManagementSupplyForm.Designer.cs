@@ -209,9 +209,9 @@
             this.materialLabel1.Location = new System.Drawing.Point(45, 82);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(108, 19);
+            this.materialLabel1.Size = new System.Drawing.Size(83, 19);
             this.materialLabel1.TabIndex = 14;
-            this.materialLabel1.Text = "materialLabel1";
+            this.materialLabel1.Text = "Sorteer op:";
             // 
             // rbtn_SupplyId
             // 

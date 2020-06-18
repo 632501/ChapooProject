@@ -155,7 +155,7 @@ namespace ChapooUI
 
             ListView_Employee.View = View.Details;
             ListViewItem add = new ListViewItem("--");
-            add.SubItems.Add("Klik hier om een nieuwe werknemer toetevoegen +");
+            add.SubItems.Add("Klik hier om een nieuwe werknemer toe te voegen +");
             add.SubItems.Add("--");
             add.SubItems.Add("--");
             ListView_Employee.Items.Add(add);

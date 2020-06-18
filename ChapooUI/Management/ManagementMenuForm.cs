@@ -180,7 +180,7 @@ namespace ChapooUI
 
             ListView_ViewMenu.View = View.Details;
             ListViewItem add = new ListViewItem("--");
-            add.SubItems.Add("Klik hier omeen nieuw menu item toetevoegen");
+            add.SubItems.Add("Klik hier om een nieuw menu item toe te voegen");
             add.SubItems.Add("+");
             ListView_ViewMenu.Items.Add(add);
             foreach (MenuItem item in menu)

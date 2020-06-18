@@ -68,6 +68,7 @@ namespace ChapooUI
                 lbl_Supply.Hide();
                 txt_Btw.Hide();
                 lbl_btw.Hide();
+                label1.Hide();
 
                 if (ListView_ViewMenu.SelectedItems.Count > 0)
                 {
@@ -212,6 +213,8 @@ namespace ChapooUI
             btn_Remove.Hide();
             txt_Btw.Hide();
             lbl_btw.Hide();
+            label1.Hide();
+            label2.Hide();
         }
 
         private void ShowExistingListViewItems()
@@ -228,6 +231,8 @@ namespace ChapooUI
             btn_Remove.Show();
             lbl_btw.Show();
             txt_Btw.Show();
+            label1.Show();
+            label2.Show();
         }
 
         private void ClearAllTextFields()

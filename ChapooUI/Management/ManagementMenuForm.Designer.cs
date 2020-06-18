@@ -54,6 +54,7 @@
             this.rbtn_Prijs = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbtn_Categorie = new MaterialSkin.Controls.MaterialRadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ListView_ViewMenu
@@ -351,12 +352,24 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "%";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label2.Location = new System.Drawing.Point(384, 571);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(24, 25);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "€";
+            // 
             // ManagementMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtn_Categorie);
             this.Controls.Add(this.rbtn_Prijs);
@@ -418,5 +431,6 @@
         private MaterialSkin.Controls.MaterialRadioButton rbtn_Prijs;
         private MaterialSkin.Controls.MaterialRadioButton rbtn_Categorie;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

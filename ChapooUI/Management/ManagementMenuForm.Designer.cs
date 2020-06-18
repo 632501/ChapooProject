@@ -53,6 +53,7 @@
             this.rbtn_Naam = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbtn_Prijs = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbtn_Categorie = new MaterialSkin.Controls.MaterialRadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ListView_ViewMenu
@@ -339,12 +340,24 @@
             this.rbtn_Categorie.UseVisualStyleBackColor = true;
             this.rbtn_Categorie.CheckedChanged += new System.EventHandler(this.rbtn_Categorie_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(384, 687);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 25);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "%";
+            // 
             // ManagementMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(937, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtn_Categorie);
             this.Controls.Add(this.rbtn_Prijs);
             this.Controls.Add(this.rbtn_Naam);
@@ -404,5 +417,6 @@
         private MaterialSkin.Controls.MaterialRadioButton rbtn_Naam;
         private MaterialSkin.Controls.MaterialRadioButton rbtn_Prijs;
         private MaterialSkin.Controls.MaterialRadioButton rbtn_Categorie;
+        private System.Windows.Forms.Label label1;
     }
 }
